@@ -120,7 +120,7 @@
             background-color: #f8f9fa;
             padding: 30px;
             border-radius: 8px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
         .intro-section h2 {
@@ -132,25 +132,29 @@
         
         .intro-section p {
             color: #5a5a5a;
-            font-size: 1em;
+            font-size: 1.1em;
             line-height: 1.7;
             margin-bottom: 15px;
         }
         
         .research-focus {
             margin-bottom: 30px;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e5e5e5;
         }
         
         .research-focus h3 {
             color: #2c2c2c;
-            margin-bottom: 12px;
-            font-size: 1.1em;
+            margin-bottom: 15px;
+            font-size: 1.2em;
             font-weight: 500;
         }
         
         .research-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
             list-style: none;
             padding: 0;
@@ -158,12 +162,45 @@
         }
         
         .research-list li {
-            background-color: #ffffff;
+            background-color: #f8f9fa;
             padding: 15px;
             border-radius: 6px;
             border: 1px solid #e5e5e5;
             color: #5a5a5a;
             font-size: 0.95em;
+        }
+        
+        .featured-work {
+            background-color: #e3f2fd;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #bbdefb;
+            margin-bottom: 30px;
+        }
+        
+        .featured-work h3 {
+            color: #1565c0;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+        
+        .featured-link {
+            display: inline-block;
+            background-color: #1976d2;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .featured-link:hover {
+            background-color: #1565c0;
+            text-decoration: none;
+            color: white;
         }
         
         .quick-links {
@@ -176,7 +213,7 @@
         .quick-links h3 {
             color: #2c2c2c;
             margin-bottom: 15px;
-            font-size: 1.1em;
+            font-size: 1.2em;
             font-weight: 500;
         }
         
@@ -187,21 +224,29 @@
         }
         
         .link-item {
-            padding: 15px;
+            padding: 18px;
             background-color: #f8f9fa;
             border-radius: 6px;
-            text-align: center;
+            border: 1px solid #e5e5e5;
         }
         
         .link-item a {
             color: #2c2c2c;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95em;
+            font-size: 1em;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .link-item .description {
+            color: #6c757d;
+            font-size: 0.85em;
+            line-height: 1.4;
         }
         
         .link-item a:hover {
-            color: #5a5a5a;
+            color: #1976d2;
             text-decoration: underline;
         }
         
@@ -244,7 +289,7 @@
 <body>
     <div class="header">
         <h1 itemprop="name">Nitish Ranjan Sinha</h1>
-        <div class="current-position" itemprop="jobTitle">Group Manager, Financial Projections</div>
+        <div class="current-position" itemprop="jobTitle">Group Manager, Financial Projections Group</div>
         <div class="organization" itemprop="worksFor">Board of Governors of the Federal Reserve System</div>
         
         <nav class="navigation">
@@ -257,20 +302,46 @@
 
     <div class="main-content">
         <section class="intro-section">
-            <p>Welcome to the research webpage for Nitish Ranjan Sinha.</p>
-            
-            <p>I am the Group Manager of the Financial Projections Group at the Board of Governors of Federal Reserve System. I work on macroeconomics including AI, financial markets, and AI applications in economic research.</p>
-            
-            <p>See the <a href="reflections.html"class="nav-link">Reflections</a> page to see what I am up to.</p>
-            
-            <p>See the <a href="cv.html"class="nav-link">CV</a> page for an overview of what I have been up to.</p>
+            <p>I work on macroeconomic research and analysis at the Federal Reserve, focusing on the intersection of artificial intelligence, financial markets, and economic forecasting. My work involves developing tools and methodologies to understand how financial conditions impact economic growth and the role of AI in enhancing economic research capabilities.</p>
+        </section>
 
-            <p> See the <a href="fci-g-calculator.html" class="nav-link">Financial Conditions</a> to see what recent Financial Conditions mean for U.S. economic growth.</p>
+        <section class="research-focus">
+            <h3>Current Research Areas</h3>
+            <ul class="research-list">
+                <li>AI applications in economic research and forecasting</li>
+                <li>Financial conditions and their impact on macroeconomic outcomes</li>
+                <li>Advanced econometric modeling for policy analysis</li>
+                <li>Financial market dynamics and monetary policy transmission</li>
+            </ul>
+        </section>
+
+        <section class="featured-work">
+            <h3>Featured Research Tool</h3>
+            <p>An educational tool demonstrating how financial conditions relate to economic growth, based on Federal Reserve research methodologies. This calculator illustrates the practical application of econometric techniques used to analyze the relationship between financial variables and GDP growth.</p>
+            <a href="fci-g-calculator.html" class="featured-link">Explore Financial Conditions Calculator</a>
+        </section>
+
+        <section class="quick-links">
+            <h3>Professional Resources</h3>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="cv.html">Professional Background</a>
+                    <div class="description">Complete academic and professional history, publications, and experience</div>
+                </div>
+                <div class="link-item">
+                    <a href="reflections.html">Current Research & Reflections</a>
+                    <div class="description">Ongoing projects, research insights, and professional perspectives</div>
+                </div>
+                <div class="link-item">
+                    <a href="fci-g-calculator.html">Research Tools</a>
+                    <div class="description">Interactive calculators and analytical tools for economic research</div>
+                </div>
+            </div>
         </section>
     </div>
 
     <div class="disclaimer">
-        <strong>Disclaimer:</strong> Anything on this page does not indicate concurrence either by other members of the Board's staff or by the Board of Governors.
+        <strong>Academic Research Disclosure:</strong> This website represents my personal academic and research interests in my individual capacity. The views expressed here do not indicate concurrence by other members of the Board's staff or by the Board of Governors of the Federal Reserve System.
     </div>
 </body>
 </html>

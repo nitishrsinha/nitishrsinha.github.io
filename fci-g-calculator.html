@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FCI-G Interactive Calculator</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -105,17 +106,12 @@
             padding: 15px;
             margin-bottom: 20px;
         }
-        .loading {
-            text-align: center;
-            padding: 20px;
-            color: #7f8c8d;
-        }
-        .error {
-            background-color: #fcf8f8;
-            border-left: 4px solid #e74c3c;
+        .data-info {
+            background-color: #e8f5e8;
+            border-left: 4px solid #27ae60;
             padding: 15px;
-            color: #c0392b;
             margin-bottom: 20px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -125,102 +121,102 @@
         <p class="subtitle">Financial Conditions Impulse on Growth - Roll Your Own Index</p>
         
         <div class="info-panel">
-            <p><strong>About FCI-G:</strong> The Financial Conditions Impulse on Growth index measures how changes in financial conditions affect GDP growth. Positive values indicate headwinds to growth, negative values indicate tailwinds.</p>
+            <p><strong>About FCI-G:</strong> The Financial Conditions Impulse on Growth index measures how changes in financial conditions affect GDP growth over the next 12 months. Positive values indicate headwinds to growth, negative values indicate tailwinds.</p>
         </div>
 
-        <div id="loading" class="loading">
-            Loading historical FCI-G data...
+        <div class="data-info">
+            <p><strong>About the calculator:</strong> This calculator automatically loads the latest FCI-G data from the Federal Reserve. Enter your expected 3-month changes in financial variables to calculate your projected FCI-G value.</p>
+            <p><strong>Data source:</strong> <span id="data-status">Loading fresh data...</span></p>
+            <p><strong>Research:</strong> See the research note at <a href="https://www.federalreserve.gov/econres/notes/feds-notes/a-new-index-to-measure-us-financial-conditions-20230630.html" target="_blank" style="color: #27ae60; text-decoration: underline;">this link</a>.</p>
         </div>
 
-        <div id="error" class="error" style="display: none;">
-            <p><strong>Error:</strong> Unable to load FCI-G data. Please check your internet connection.</p>
+        <div class="chart-container">
+            <canvas id="fciChart"></canvas>
         </div>
 
-        <div id="main-content" style="display: none;">
-            <div class="chart-container">
-                <canvas id="fciChart"></canvas>
+        <div class="controls">
+            <div class="control-group">
+                <h3>Federal Funds Rate (FFR)</h3>
+                <div class="input-group">
+                    <label for="ffr-change">3-Month Change (%)</label>
+                    <input type="number" id="ffr-change" step="0.01" value="0" placeholder="Enter change in percentage points">
+                </div>
             </div>
 
-            <div class="controls">
-                <div class="control-group">
-                    <h3>Federal Funds Rate (FFR)</h3>
-                    <div class="input-group">
-                        <label for="ffr-change">3-Month Change (%)</label>
-                        <input type="number" id="ffr-change" step="0.01" value="0" placeholder="Enter change in basis points">
-                    </div>
+            <div class="control-group">
+                <h3>10-Year Treasury Yield</h3>
+                <div class="input-group">
+                    <label for="treasury-change">3-Month Change (%)</label>
+                    <input type="number" id="treasury-change" step="0.01" value="0" placeholder="Enter change in percentage points">
                 </div>
+            </div>
 
-                <div class="control-group">
-                    <h3>10-Year Treasury Yield</h3>
-                    <div class="input-group">
-                        <label for="treasury-change">3-Month Change (%)</label>
-                        <input type="number" id="treasury-change" step="0.01" value="0" placeholder="Enter change in basis points">
-                    </div>
+            <div class="control-group">
+                <h3>30-Year Fixed Mortgage Rate</h3>
+                <div class="input-group">
+                    <label for="mortgage-change">3-Month Change (%)</label>
+                    <input type="number" id="mortgage-change" step="0.01" value="0" placeholder="Enter change in percentage points">
                 </div>
+            </div>
 
-                <div class="control-group">
-                    <h3>30-Year Fixed Mortgage Rate</h3>
-                    <div class="input-group">
-                        <label for="mortgage-change">3-Month Change (%)</label>
-                        <input type="number" id="mortgage-change" step="0.01" value="0" placeholder="Enter change in basis points">
-                    </div>
+            <div class="control-group">
+                <h3>BBB Corporate Bond Yield</h3>
+                <div class="input-group">
+                    <label for="bbb-change">3-Month Change (%)</label>
+                    <input type="number" id="bbb-change" step="0.01" value="0" placeholder="Enter change in percentage points">
                 </div>
+            </div>
 
-                <div class="control-group">
-                    <h3>BBB Corporate Bond Yield</h3>
-                    <div class="input-group">
-                        <label for="bbb-change">3-Month Change (%)</label>
-                        <input type="number" id="bbb-change" step="0.01" value="0" placeholder="Enter change in basis points">
-                    </div>
+            <div class="control-group">
+                <h3>Stock Market Index</h3>
+                <div class="input-group">
+                    <label for="stock-change">3-Month Change (%)</label>
+                    <input type="number" id="stock-change" step="0.01" value="0" placeholder="Enter percentage change">
                 </div>
+            </div>
 
-                <div class="control-group">
-                    <h3>Stock Market Index</h3>
-                    <div class="input-group">
-                        <label for="stock-change">3-Month Change (%)</label>
-                        <input type="number" id="stock-change" step="0.01" value="0" placeholder="Enter percentage change">
-                    </div>
+            <div class="control-group">
+                <h3>House Price Index</h3>
+                <div class="input-group">
+                    <label for="house-change">3-Month Change (%)</label>
+                    <input type="number" id="house-change" step="0.01" value="0" placeholder="Enter percentage change">
                 </div>
+            </div>
 
-                <div class="control-group">
-                    <h3>House Price Index</h3>
-                    <div class="input-group">
-                        <label for="house-change">3-Month Change (%)</label>
-                        <input type="number" id="house-change" step="0.01" value="0" placeholder="Enter percentage change">
-                    </div>
+            <div class="control-group">
+                <h3>Broad Dollar Index</h3>
+                <div class="input-group">
+                    <label for="dollar-change">3-Month Change (%)</label>
+                    <input type="number" id="dollar-change" step="0.01" value="0" placeholder="Enter percentage change">
                 </div>
+            </div>
 
-                <div class="control-group">
-                    <h3>Broad Dollar Index</h3>
-                    <div class="input-group">
-                        <label for="dollar-change">3-Month Change (%)</label>
-                        <input type="number" id="dollar-change" step="0.01" value="0" placeholder="Enter percentage change">
-                    </div>
+            <div class="control-group forecast-controls">
+                <h3>Calculate Your FCI-G</h3>
+                <div class="input-group">
+                    <label for="current-fci">Current FCI-G Value</label>
+                    <input type="text" id="current-fci" readonly value="0.000" style="font-weight: bold; font-size: 16px; text-align: center;">
                 </div>
-
-                <div class="control-group forecast-controls">
-                    <h3>Forecast Controls</h3>
-                    <div class="input-group">
-                        <label for="forecast-months">Forecast Months</label>
-                        <input type="number" id="forecast-months" min="1" max="36" value="12" placeholder="Number of months to forecast">
-                    </div>
-                    <button onclick="calculateForecast()">Update Forecast</button>
-                    <button class="reset-btn" onclick="resetInputs()">Reset All</button>
-                </div>
+                <button onclick="calculateForecast()">Calculate FCI-G</button>
+                <button class="reset-btn" onclick="resetInputs()">Reset All</button>
             </div>
         </div>
     </div>
 
     <script>
-        // FCI-G calculation coefficients (simplified version based on methodology)
+        // Real FCI-G data from Federal Reserve (2020-2025) - Format: [date, fci-g, ffr, treasury, mortgage, bbb, stock, house, dollar]
+        const FCI_DATA = [["2020-01-31",-0.642062514385577,-0.0486782678113383,0.00631680678488231,-0.108745745461425,-0.0450824369625215,-0.415781746094203,-0.151098933465761,0.121007808624789],["2020-02-28",-0.454868904790084,-0.0443334234260002,0.00944507823580482,-0.136039260191964,-0.0576710610818757,-0.187175977600373,-0.156693171886808,0.117598911161133],["2020-03-31",-0.134393621787846,-0.070082761714238,0.0120580273083341,-0.157306923844097,-0.0315319490217246,0.0923720368892598,-0.163545306909794,0.183643255504413],["2020-04-30",-0.270704122667572,-0.117502580618362,0.0152633429968996,-0.16706861337697,-0.00752907122744383,-0.110895328761059,-0.16824035848407,0.285268486803433],["2020-05-29",-0.315160992064641,-0.16236402568318,0.0183857126497576,-0.165147700152591,5.48603789246627e-05,-0.189878877193928,-0.165099583285338,0.348888621221713],["2020-06-30",-0.474667215821666,-0.1661669011765,0.0202703377243674,-0.182028002110545,-0.0282023980496878,-0.284358141454443,-0.157598626017557,0.323416515262699],["2020-07-31",-0.613255070841154,-0.144230422369713,0.0236513307194336,-0.203074963777771,-0.0651843589823348,-0.322413158255437,-0.153163046595836,0.251159548420505],["2020-08-31",-0.855124096298703,-0.126644125418631,0.0273043486973138,-0.222885668327686,-0.0923785925778361,-0.449236754371659,-0.160883000941243,0.169599696641037],["2020-09-30",-0.903822875717428,-0.110919921225955,0.0310186597541711,-0.222736090489788,-0.109107721268517,-0.420829810941055,-0.18355507993557,0.112307088389286],["2020-10-30",-0.861781977756921,-0.100683713392537,0.0338726521377182,-0.211007847878612,-0.121428145816905,-0.303368907106205,-0.213688194087724,0.0545221783873438],["2020-11-30",-1.12969757415124,-0.0938455075411463,0.0373823877794181,-0.194793673776311,-0.13357332008847,-0.503940651062764,-0.248565444951823,0.00763863548985541],["2020-12-31",-1.39162670314275,-0.0829903689078769,0.0403042514230611,-0.182446350220614,-0.150949062232472,-0.663056892255636,-0.281293343074851,-0.0711949378743585],["2021-01-29",-1.36922415715291,-0.0720926203863406,0.0423603701317497,-0.161746072148699,-0.170060543569162,-0.545169649559852,-0.311107395560329,-0.151408246060272],["2021-02-26",-1.45237723626409,-0.0630587319589688,0.0447731417135835,-0.133610122231807,-0.183067562576274,-0.58371035061196,-0.340812091125472,-0.192891519473194],["2021-03-31",-1.53185591818697,-0.057355029714519,0.0452329850507201,-0.068158902713458,-0.181483155154646,-0.71975536620389,-0.372144970268866,-0.178191479182311],["2021-04-30",-1.57300793942428,-0.0549161828675559,0.045507457322303,-0.0308124369028425,-0.186416464771048,-0.760134802776139,-0.405702228331023,-0.180533281097976],["2021-05-28",-1.55830082669881,-0.0531798419429191,0.0453861928790622,-0.0134560637073473,-0.191364935802592,-0.70536929813537,-0.443095690216244,-0.1972211897734],["2021-06-30",-1.75245489322835,-0.0489326086439937,0.0444177541323336,-0.0262834903123052,-0.199180181481634,-0.819566886962048,-0.481386714265982,-0.221522765694724],["2021-07-30",-1.73925433096831,-0.0439484767251329,0.0436007634870593,-0.0381774640642882,-0.209264717578511,-0.758671282920084,-0.512493657896163,-0.220299495271192],["2021-08-31",-1.7319584996208,-0.0393945714061133,0.0430443407318429,-0.0429166232153616,-0.213726625039717,-0.76771397688278,-0.526340233419699,-0.184910810388967],["2021-09-30",-1.62738611161142,-0.0356184411199311,0.0420519901747301,-0.0391414016546072,-0.211144465951022,-0.712855346046669,-0.523714060901581,-0.146964386112338],["2021-10-29",-1.62689446591944,-0.0332712360555125,0.0406926913296985,-0.0172789670469306,-0.20492238493526,-0.767736144038192,-0.517253343058198,-0.127125082115042],["2021-11-30",-1.51357411600297,-0.031337509521825,0.0396755522526001,0.00564733721660642,-0.198149523204244,-0.721387684557612,-0.516018601401255,-0.0920036867872373],["2021-12-31",-1.56005190163094,-0.0278657586864497,0.0367475213017253,0.0238115218535281,-0.183406861713473,-0.84732321911934,-0.519359285751569,-0.0426558195153578],["2022-01-31",-1.24255071599459,-0.0244164333374073,0.031820949323393,0.0527292930777372,-0.16459265074622,-0.583297933339652,-0.533977923870649,-0.020816017101791],["2022-02-28",-1.11132193548822,-0.0216485428685365,0.0261537133386567,0.105010908520607,-0.130895788145781,-0.524302543984363,-0.555083906211149,-0.0105557761376568],["2022-03-31",-1.02725291390226,-0.0141847698956716,0.0209059429532395,0.200032652386664,-0.0760936066532295,-0.58497349031578,-0.582401725031373,0.00946208265389477],["2022-04-29",-0.607826260620117,-0.00339001949100336,0.0149090365025971,0.301486944301047,-0.0239155122725712,-0.336513805892813,-0.605721490060678,0.0453185862933049],["2022-05-31",-0.379692713551948,0.0204310283819464,0.00882769837204336,0.37563933739856,0.0259273950241183,-0.305132429526742,-0.617326449952172,0.111940706750297],["2022-06-30",0.0394890559901319,0.0550930155722556,0.00172629707171918,0.441568075435176,0.0774262002000414,-0.0909070314719719,-0.61662087327672,0.171203372459632],["2022-07-29",0.0305412549853604,0.0982907684802928,-0.00406655820083046,0.435685265213954,0.113443551850606,-0.268235664136203,-0.5935403735167,0.24896426529424],["2022-08-31",0.264653948636314,0.148415042197839,-0.0105326864784531,0.415392541058111,0.13982264888462,-0.164455638661004,-0.550836119407304,0.286848161042504],["2022-09-30",0.643572989872233,0.184430272397101,-0.0182639172718042,0.421822551261024,0.166066644385227,0.0224967332557471,-0.492931173386274,0.359951879231213],["2022-10-31",0.743408814339745,0.215243684572828,-0.02716757790299,0.48845534116699,0.203303907590275,-0.11618818438565,-0.436046712056465,0.415808355354757],["2022-11-30",0.875571803055506,0.243424497795309,-0.0337784802355115,0.549552302816328,0.239959741630275,-0.188586130400909,-0.381644138916081,0.446644010366095],["2022-12-30",0.999286718136176,0.276617956347935,-0.038945156944448,0.49728117780608,0.253976217353605,-0.0624948933710357,-0.32862205959857,0.40147347654261],["2023-01-31",0.689439241847883,0.293578784577149,-0.0433815482351412,0.371805587466337,0.245559255966199,-0.196185200610263,-0.272438015132337,0.290500377815939],["2023-02-28",0.662368606219303,0.290998832082143,-0.0494247898258675,0.300000758311988,0.24897843390098,-0.130570564017669,-0.219317856549633,0.221703792317361],["2023-03-31",0.552060199764612,0.281834250022123,-0.0572208089643109,0.303930533544834,0.257841252457203,-0.253680940538017,-0.174728335108996,0.194084248351775],["2023-04-28",0.559184734331042,0.269232166238312,-0.0629705023817177,0.307909086430717,0.253273723600694,-0.226648919409286,-0.139871293083405,0.158260472935727],["2023-05-31",0.636213602028822,0.253055287530329,-0.0677765319472469,0.310721350770677,0.26022210979085,-0.15658427930318,-0.111183070616726,0.147758735804119],["2023-06-30",0.487096974192142,0.242462215855914,-0.0701503004207895,0.292951950354305,0.28906608438427,-0.298732898464343,-0.0864189901923976,0.117918912675183],["2023-07-31",0.419593312949796,0.229433898947505,-0.0711252766655424,0.291830483366545,0.315995387091378,-0.35818639837838,-0.0629483101063958,0.0745935286946878],["2023-08-31",0.577709788325049,0.213137559649571,-0.0731391682867963,0.307186576740748,0.341166765889234,-0.239335798043434,-0.0443990529011466,0.0730929052768725],["2023-09-29",0.701605786300675,0.199540868942259,-0.0740199139745935,0.320062500361202,0.356505986544354,-0.16039159876533,-0.0288112418306569,0.08871918502344],["2023-10-31",0.877737231056431,0.188314578278042,-0.0745544375508811,0.348235288154698,0.371901585482243,-0.0727675305087447,-0.0144610807108945,0.131068827911969],["2023-11-30",0.750559283558483,0.168380444247396,-0.075244519750339,0.333091846806103,0.380166165179231,-0.200962190294697,-0.00196686494545247,0.147094402316241],["2023-12-29",0.533863361036225,0.153600838263704,-0.0737546903612761,0.265302928971536,0.369060647222753,-0.304360736859714,0.0103289394272986,0.113685434371923],["2024-01-31",0.325645699437066,0.140229842334927,-0.0716879729113405,0.143401119680602,0.339896377815478,-0.298421890032088,0.0195437521384633,0.0526844704110239],["2024-02-29",0.164295746626001,0.12647778218907,-0.0717110857906295,0.0830762982561649,0.326541475494722,-0.37157943446154,0.0218641982175124,0.0496265127207004],["2024-03-29",0.0759958673142,0.115406760648003,-0.0701394766297581,0.082265145734134,0.320578904996967,-0.442665183427774,0.0143425617771837,0.0562071542154446],["2024-04-30",0.237495041943724,0.10534432543303,-0.0686213936481068,0.112887130501953,0.317311545567648,-0.299698189254792,0.000534842411757664,0.0697367809322327],["2024-05-31",0.165001864111949,0.0945792492879313,-0.0691633242372216,0.118525067318582,0.316116314126591,-0.361737013888231,-0.0128379015778939,0.0795194730821906],["2024-06-28",0.106669887414354,0.0860085030408432,-0.0712745117937224,0.112298494528202,0.316405368848599,-0.427839220918417,-0.0209241722142324,0.111995425923081],["2024-07-31",-0.00118936576187566,0.0777995973923965,-0.0711089250618274,0.0651402792132223,0.298492419034407,-0.462454837757144,-0.0246313750921998,0.11557347650927],["2024-08-30",-0.0921453302602909,0.0693686012590845,-0.0709902782624998,0.00565662290681933,0.277866323440557,-0.470873335400647,-0.0253811767056086,0.122207912502004],["2024-09-30",-0.240759569703261,0.0561577660483386,-0.0694614399653513,-0.0489101953823117,0.248835220041397,-0.501000080368741,-0.0244918362844813,0.0981109962078883],["2024-10-31",-0.309335207929846,0.032418978320383,-0.064472952735674,-0.0629578145812296,0.216149718641248,-0.492098079276868,-0.0252134442457004,0.0868383859479953],["2024-11-29",-0.412891660894709,0.0033199151978966,-0.0612085016778164,-0.0271137716678598,0.198508399363242,-0.626393300776754,-0.02687145289016,0.126867051556743],["2024-12-31",-0.214862663939114,-0.0229550904409195,-0.058365264053136,0.0295186904208563,0.184605035858306,-0.512884391737384,-0.0319742234527217,0.197192579465885],["2025-01-31",-0.264868162969348,-0.0406105421472592,-0.0552478181731159,0.0530288694277772,0.165945550825803,-0.602749453253908,-0.0394740342541492,0.254239264605505],["2025-02-28",-0.264494219237228,-0.0494889475156408,-0.0525694335818091,0.0342188330763472,0.144319318760293,-0.561814379951471,-0.0472558897835848,0.268096279758638],["2025-03-31",-0.198012291666341,-0.0515881204192605,-0.0471750131976718,0.00505610742728909,0.112710921595539,-0.41324823974316,-0.0505190710643729,0.246751123735296],["2025-04-30",-0.306676717922021,-0.0472982249570702,-0.0391071067547531,-0.0274736443408236,0.0741102839264373,-0.390641954405459,-0.0517633314532182,0.175497260062866],["2025-05-30",-0.545930161117636,-0.0450074785319834,-0.0333479729487886,-0.0300526715320381,0.0482923452313876,-0.543126011208246,-0.050226103590965,0.107537731462997],["2025-06-30",-0.732599050545637,-0.0411274405701998,-0.0286811610255837,-0.0211732376946635,0.0297620757068073,-0.651984401777844,-0.0477974805915946,0.028402595407441],["2025-07-31",-0.783874544148512,-0.0373508646528966,-0.0259664103203285,-0.0225418686217595,0.00521068663775422,-0.625580674680697,-0.0416819347712901,-0.0359634777392947]];
+
+        // FCI-G calculation coefficients - Complete Federal Reserve methodology (Table 1)
+        // 12 quarterly coefficients (β4-β0 through β15-β11) for each financial variable
         const COEFFICIENTS = {
-            ffr: [0.09994, 0.06858, 0.05093, 0.03039],
-            treasury: [0.08500, 0.05800, 0.04200, 0.02500],
-            mortgage: [0.07200, 0.04900, 0.03600, 0.02100],
-            bbb: [0.06800, 0.04600, 0.03400, 0.02000],
-            stock: [-0.05200, -0.03500, -0.02600, -0.01500],
-            house: [-0.04100, -0.02800, -0.02100, -0.01200],
-            dollar: [0.03900, 0.02600, 0.01900, 0.01100]
+            ffr: [0.09994, 0.06858, 0.05093, 0.03039, 0.02569, 0.02001, 0.01581, 0.01135, 0.00739, 0.00396, 0.00171, 0.00039],
+            treasury: [-0.00815, -0.01400, -0.01839, -0.02152, -0.02322, -0.02437, -0.02522, -0.02591, -0.02640, -0.02670, -0.02012, -0.01345],
+            mortgage: [0.21743, 0.14525, 0.11905, 0.07750, 0.06243, 0.04514, 0.03370, 0.02484, 0.01846, 0.01373, 0.00866, 0.00490],
+            bbb: [0.07927, 0.09118, 0.09864, 0.10047, 0.10065, 0.09958, 0.09766, 0.09535, 0.09277, 0.09008, 0.06654, 0.04368],
+            stock: [-0.02132, -0.02022, -0.01844, -0.01616, -0.01444, -0.01302, -0.01175, -0.01066, -0.00970, -0.00887, -0.00634, -0.00404],
+            house: [-0.03223, -0.03127, -0.02970, -0.02676, -0.01978, -0.01342, -0.00605, 0.00077, 0.00424, 0.00667, 0.00786, 0.00886],
+            dollar: [0.048, 0.048, 0.045, 0.039, 0.031, 0.023, 0.017, 0.012, 0.008, 0.005, 0.002, 0.000]
         };
 
         let chart;
@@ -228,118 +224,190 @@
         let forecastData = [];
 
         async function loadData() {
-            try {
-                const response = await fetch('https://www.federalreserve.gov/econres/notes/feds-notes/fci_g_public_monthly_3yr.csv', {
-                    headers: {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                    }
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data');
-                }
-                
-                const csvText = await response.text();
-                parseCSVData(csvText);
-                initializeChart();
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-            } catch (error) {
-                console.error('Error loading data:', error);
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('error').style.display = 'block';
-                // Fallback to demo data
-                createDemoData();
-                initializeChart();
-                document.getElementById('main-content').style.display = 'block';
-            }
-        }
-
-        function parseCSVData(csvText) {
-            const lines = csvText.trim().split('\n');
-            const headers = lines[0].split(',');
+            console.log('Loading fresh FCI-G data from Federal Reserve...');
+            document.getElementById('data-status').textContent = 'Loading fresh data from Federal Reserve...';
             
             historicalData = [];
+            let dataSource = 'live';
+            
+            try {
+                // Try multiple methods to fetch live data
+                let csvText = await fetchLiveData();
+                
+                if (csvText) {
+                    parseLiveCSVData(csvText);
+                    console.log('Successfully loaded live data');
+                } else {
+                    throw new Error('No live data available');
+                }
+                
+            } catch (error) {
+                console.warn('Live data fetch failed, using embedded fallback data:', error);
+                dataSource = 'fallback';
+                loadFallbackData();
+            }
+            
+            historicalData.sort((a, b) => a.date - b.date);
+            console.log('Loaded', historicalData.length, 'data points from', dataSource, 'source');
+            
+            // Update data status
+            updateDataStatus(dataSource);
+            
+            initializeChart();
+        }
+        
+        async function fetchLiveData() {
+            const fedUrl = 'https://www.federalreserve.gov/econres/notes/feds-notes/fci_g_public_monthly_3yr.csv';
+            
+            // Try multiple CORS proxy methods
+            const proxyUrls = [
+                `https://api.allorigins.win/raw?url=${encodeURIComponent(fedUrl)}`,
+                `https://cors-anywhere.herokuapp.com/${fedUrl}`,
+                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(fedUrl)}`
+            ];
+            
+            for (let proxyUrl of proxyUrls) {
+                try {
+                    console.log('Trying proxy:', proxyUrl);
+                    const response = await fetch(proxyUrl, {
+                        headers: {
+                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        const text = await response.text();
+                        if (text && text.length > 1000 && text.includes('FCI-G Index')) {
+                            console.log('Successfully fetched data via', proxyUrl);
+                            return text;
+                        }
+                    }
+                } catch (e) {
+                    console.log('Proxy failed:', proxyUrl, e.message);
+                }
+            }
+            
+            return null;
+        }
+        
+        function parseLiveCSVData(csvText) {
+            const lines = csvText.trim().split('\n');
+            if (lines.length < 2) {
+                throw new Error('Invalid CSV format');
+            }
+            
+            const headers = lines[0].split(',');
+            console.log('CSV Headers:', headers);
             
             for (let i = 1; i < lines.length; i++) {
                 const values = lines[i].split(',');
-                if (values.length >= 2) {
-                    const date = new Date(values[0]);
-                    const fciValue = parseFloat(values[1]);
-                    
-                    if (!isNaN(fciValue)) {
-                        historicalData.push({
-                            date: date,
-                            value: fciValue,
-                            raw: {
-                                ffr: parseFloat(values[2]) || 0,
-                                treasury: parseFloat(values[3]) || 0,
-                                mortgage: parseFloat(values[4]) || 0,
-                                bbb: parseFloat(values[5]) || 0,
-                                stock: parseFloat(values[6]) || 0,
-                                house: parseFloat(values[7]) || 0,
-                                dollar: parseFloat(values[8]) || 0
-                            }
-                        });
+                if (values.length >= 9) {
+                    try {
+                        const date = new Date(values[0]);
+                        const fciValue = parseFloat(values[1]);
+                        
+                        // Only include data from 2020 onwards
+                        if (date.getFullYear() >= 2020 && !isNaN(fciValue)) {
+                            historicalData.push({
+                                date: date,
+                                value: fciValue,
+                                raw: {
+                                    ffr: parseFloat(values[2]) || 0,
+                                    treasury: parseFloat(values[3]) || 0,
+                                    mortgage: parseFloat(values[4]) || 0,
+                                    bbb: parseFloat(values[5]) || 0,
+                                    stock: parseFloat(values[6]) || 0,
+                                    house: parseFloat(values[7]) || 0,
+                                    dollar: parseFloat(values[8]) || 0
+                                }
+                            });
+                        }
+                    } catch (e) {
+                        console.warn('Skipping invalid row:', values[0], e.message);
                     }
                 }
             }
-            
-            // Sort by date
-            historicalData.sort((a, b) => a.date - b.date);
         }
-
-        function createDemoData() {
-            // Create demo data when real data fails to load
-            historicalData = [];
-            const startDate = new Date('2021-01-01');
-            
-            for (let i = 0; i < 36; i++) {
-                const date = new Date(startDate);
-                date.setMonth(date.getMonth() + i);
-                
-                // Generate realistic FCI-G values
-                const trend = Math.sin(i * 0.2) * 0.5;
-                const noise = (Math.random() - 0.5) * 0.3;
-                const value = trend + noise;
+        
+        function loadFallbackData() {
+            // Use embedded data as fallback
+            FCI_DATA.forEach(row => {
+                const date = new Date(row[0]);
+                const fciValue = row[1];
                 
                 historicalData.push({
                     date: date,
-                    value: value,
+                    value: fciValue,
                     raw: {
-                        ffr: 0, treasury: 0, mortgage: 0, bbb: 0,
-                        stock: 0, house: 0, dollar: 0
+                        ffr: row[2],
+                        treasury: row[3],
+                        mortgage: row[4],
+                        bbb: row[5],
+                        stock: row[6],
+                        house: row[7],
+                        dollar: row[8]
                     }
                 });
+            });
+        }
+        
+        function updateDataStatus(dataSource) {
+            const statusElement = document.getElementById('data-status');
+            const now = new Date().toLocaleDateString();
+            
+            if (dataSource === 'live') {
+                const lastDataDate = historicalData[historicalData.length - 1].date.toLocaleDateString();
+                statusElement.innerHTML = `✅ Fresh data loaded (${historicalData.length} observations, latest: ${lastDataDate})`;
+                statusElement.style.color = '#27ae60';
+            } else {
+                statusElement.innerHTML = `⚠️ Using cached data (live data unavailable, ${historicalData.length} observations)`;
+                statusElement.style.color = '#f39c12';
             }
         }
 
         function initializeChart() {
-            const ctx = document.getElementById('fciChart').getContext('2d');
+            console.log('Initializing chart...');
+            console.log('Chart.js available:', typeof Chart);
             
-            chart = new Chart(ctx, {
+            const canvas = document.getElementById('fciChart');
+            console.log('Canvas element:', canvas);
+            
+            if (!canvas) {
+                console.error('Canvas element not found!');
+                return;
+            }
+            
+            const ctx = canvas.getContext('2d');
+            console.log('Canvas context:', ctx);
+            
+            const chartData = historicalData.map(d => ({
+                x: d.date,
+                y: d.value
+            }));
+            console.log('Chart data sample:', chartData.slice(0, 3));
+            
+            try {
+                chart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     datasets: [{
-                        label: 'Historical FCI-G',
-                        data: historicalData.map(d => ({
-                            x: d.date,
-                            y: d.value
-                        })),
+                        label: 'Historical FCI-G (Federal Reserve Data)',
+                        data: chartData,
                         borderColor: 'rgb(52, 73, 94)',
                         backgroundColor: 'rgba(52, 73, 94, 0.1)',
                         borderWidth: 2,
                         fill: false,
                         tension: 0.1
                     }, {
-                        label: 'Forecast',
+                        label: 'Your FCI-G Calculation',
                         data: [],
                         borderColor: 'rgb(231, 76, 60)',
-                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                        borderWidth: 2,
-                        borderDash: [5, 5],
-                        fill: false,
-                        tension: 0.1
+                        backgroundColor: 'rgba(231, 76, 60, 0.8)',
+                        borderWidth: 3,
+                        pointRadius: 8,
+                        pointHoverRadius: 12,
+                        showLine: false,
+                        fill: false
                     }]
                 },
                 options: {
@@ -374,7 +442,7 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Financial Conditions Impulse on Growth (FCI-G)'
+                            text: 'Financial Conditions Impulse on Growth (FCI-G) - 2020-2025'
                         },
                         legend: {
                             display: true
@@ -396,18 +464,24 @@
                     }
                 }
             });
+            
+            console.log('Chart created successfully:', chart);
+            
+        } catch (error) {
+            console.error('Error creating chart:', error);
+            document.getElementById('fciChart').parentElement.innerHTML = 
+                '<div style="text-align: center; padding: 40px; color: #e74c3c;">Error loading chart. Please check browser console for details.</div>';
+        }
         }
 
         function calculateFCI(changes) {
             let fciValue = 0;
             
-            // Apply coefficients for each variable
             Object.keys(COEFFICIENTS).forEach(variable => {
                 if (changes[variable] !== undefined) {
-                    const change = changes[variable] / 100; // Convert percentage to decimal
+                    const change = changes[variable] / 100;
                     const coeffs = COEFFICIENTS[variable];
                     
-                    // Sum up the weighted impacts (simplified calculation)
                     for (let i = 0; i < coeffs.length; i++) {
                         fciValue += change * coeffs[i];
                     }
@@ -428,29 +502,23 @@
                 dollar: parseFloat(document.getElementById('dollar-change').value) || 0
             };
             
-            const forecastMonths = parseInt(document.getElementById('forecast-months').value) || 12;
             const fciImpact = calculateFCI(changes);
-            
-            // Generate forecast data
-            forecastData = [];
             const lastHistoricalDate = historicalData[historicalData.length - 1].date;
             const lastHistoricalValue = historicalData[historicalData.length - 1].value;
             
-            for (let i = 0; i <= forecastMonths; i++) {
-                const forecastDate = new Date(lastHistoricalDate);
-                forecastDate.setMonth(forecastDate.getMonth() + i);
-                
-                // Apply the FCI impact with some decay over time
-                const decayFactor = Math.exp(-i * 0.05);
-                const forecastValue = lastHistoricalValue + (fciImpact * decayFactor);
-                
-                forecastData.push({
-                    x: forecastDate,
-                    y: forecastValue
-                });
-            }
+            // Calculate your FCI-G value
+            const yourFciValue = lastHistoricalValue + fciImpact;
             
-            // Update chart
+            // Update the display
+            document.getElementById('current-fci').value = yourFciValue.toFixed(3);
+            
+            // Show as a single point on the chart
+            const currentDate = new Date();
+            forecastData = [{
+                x: currentDate,
+                y: yourFciValue
+            }];
+            
             chart.data.datasets[1].data = forecastData;
             chart.update();
         }
@@ -463,14 +531,12 @@
             document.getElementById('stock-change').value = 0;
             document.getElementById('house-change').value = 0;
             document.getElementById('dollar-change').value = 0;
-            document.getElementById('forecast-months').value = 12;
+            document.getElementById('current-fci').value = '0.000';
             
-            // Clear forecast
             chart.data.datasets[1].data = [];
             chart.update();
         }
 
-        // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
             loadData();
         });

@@ -209,7 +209,7 @@ class PortfolioMonitor:
         # Calculate daily returns
         returns = prices.pct_change().dropna()
         
-        # Calculate portfolio daily returns (weighted)
+        # Calculate original portfolio daily returns (fixed weights from base date)
         portfolio_returns = pd.Series(index=returns.index, dtype=float)
         
         for date in returns.index:
@@ -219,8 +219,64 @@ class PortfolioMonitor:
                     daily_return += self.weights[ticker] * returns.loc[date, ticker]
             portfolio_returns[date] = daily_return
         
-        # Calculate cumulative returns
+        # Calculate cumulative returns for original portfolio
         portfolio_cumulative = (1 + portfolio_returns).cumprod()
+        
+        # Calculate daily market cap weighted portfolio ("New AI Information")
+        # This portfolio rebalances daily based on previous day's market caps
+        daily_weighted_returns = pd.Series(index=returns.index, dtype=float)
+        daily_weighted_cumulative = pd.Series(index=returns.index, dtype=float)
+        
+        # Initialize daily weights dictionary
+        daily_weights = {}
+        
+        for i, date in enumerate(returns.index):
+            if i == 0:
+                # First day: use base date weights
+                current_weights = self.weights.copy()
+            else:
+                # Calculate market caps from previous day's prices
+                prev_date = returns.index[i-1]
+                total_market_cap = 0
+                ticker_market_caps = {}
+                
+                for ticker in tickers_list:
+                    if ticker in prices.columns and not pd.isna(prices.loc[prev_date, ticker]):
+                        # Use previous day's price and base shares outstanding for market cap
+                        prev_price = prices.loc[prev_date, ticker]
+                        if ticker in self.market_caps:
+                            base_price = self.market_caps[ticker]['price']
+                            base_market_cap = self.market_caps[ticker]['market_cap']
+                            # Estimate shares outstanding from base data
+                            shares_outstanding = base_market_cap / base_price
+                            current_market_cap = prev_price * shares_outstanding
+                        else:
+                            # Fallback if ticker not in original market caps
+                            current_market_cap = prev_price * 1_000_000
+                        
+                        ticker_market_caps[ticker] = current_market_cap
+                        total_market_cap += current_market_cap
+                
+                # Calculate new weights based on previous day's market caps
+                current_weights = {}
+                for ticker in tickers_list:
+                    if ticker in ticker_market_caps:
+                        current_weights[ticker] = ticker_market_caps[ticker] / total_market_cap
+                    else:
+                        current_weights[ticker] = 0
+            
+            # Store daily weights for analysis
+            daily_weights[date] = current_weights.copy()
+            
+            # Calculate daily return using current weights
+            daily_return = 0
+            for ticker in tickers_list:
+                if ticker in returns.columns and not pd.isna(returns.loc[date, ticker]) and ticker in current_weights:
+                    daily_return += current_weights[ticker] * returns.loc[date, ticker]
+            daily_weighted_returns[date] = daily_return
+        
+        # Calculate cumulative returns for daily weighted portfolio
+        daily_weighted_cumulative = (1 + daily_weighted_returns).cumprod()
         
         # Calculate S&P 500 returns and cumulative performance
         spy_returns = returns['SPY'] if 'SPY' in returns.columns else pd.Series(index=returns.index)
@@ -232,6 +288,9 @@ class PortfolioMonitor:
             'daily_return': portfolio_returns.values,
             'cumulative_return': portfolio_cumulative.values,
             'portfolio_value': portfolio_cumulative.values * 100,  # Starting at $100
+            'daily_weighted_return': daily_weighted_returns.values,
+            'daily_weighted_cumulative': daily_weighted_cumulative.values,
+            'daily_weighted_value': daily_weighted_cumulative.values * 100,  # Starting at $100
             'spy_daily_return': spy_returns.values,
             'spy_cumulative_return': spy_cumulative.values,
             'spy_value': spy_cumulative.values * 100  # Starting at $100
@@ -298,7 +357,7 @@ class PortfolioMonitor:
         
         # Add metadata
         metadata_df = pd.DataFrame([
-            ['# AI Shocks Portfolio Data'],
+            ['# AI Stocks Portfolio Data'],
             [f'# Generated on: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}'],
             [f'# Base date for weights: {self.base_date}'],
             [f'# Number of stocks: {len(self.weights)}'],
@@ -333,24 +392,39 @@ class PortfolioMonitor:
         """Create interactive plotly chart of portfolio performance"""
         print(f"Creating interactive chart: {html_filename}")
         
-        # Create subplots
+        # Create subplots with 3 panels
         fig = make_subplots(
-            rows=2, cols=1,
-            subplot_titles=('Portfolio Cumulative Value', 'Daily Returns'),
-            vertical_spacing=0.08,
-            row_heights=[0.7, 0.3]
+            rows=3, cols=1,
+            subplot_titles=('Portfolio Cumulative Value', 'Original Portfolio Daily Returns', 'New AI Information Daily Returns'),
+            vertical_spacing=0.06,
+            row_heights=[0.5, 0.25, 0.25]
         )
         
-        # Portfolio value line
+        # Original AI Portfolio value line
         fig.add_trace(
             go.Scatter(
                 x=self.portfolio_data['date'],
                 y=self.portfolio_data['portfolio_value'],
                 mode='lines',
-                name='AI Portfolio',
+                name='AI Portfolio (Fixed Weights)',
                 line=dict(color='#2E86AB', width=3),
                 hovertemplate='<b>Date:</b> %{x}<br>' +
                               '<b>AI Portfolio:</b> $%{y:.2f}<br>' +
+                              '<extra></extra>'
+            ),
+            row=1, col=1
+        )
+        
+        # New AI Information Portfolio (daily weighted)
+        fig.add_trace(
+            go.Scatter(
+                x=self.portfolio_data['date'],
+                y=self.portfolio_data['daily_weighted_value'],
+                mode='lines',
+                name='New AI Information (Daily Weighted)',
+                line=dict(color='#A23B72', width=3),
+                hovertemplate='<b>Date:</b> %{x}<br>' +
+                              '<b>New AI Information:</b> $%{y:.2f}<br>' +
                               '<extra></extra>'
             ),
             row=1, col=1
@@ -371,54 +445,74 @@ class PortfolioMonitor:
             row=1, col=1
         )
         
-        # Daily returns
+        # Original Portfolio Daily returns (Panel 2)
         colors = ['green' if x >= 0 else 'red' for x in self.portfolio_data['daily_return']]
         fig.add_trace(
             go.Bar(
                 x=self.portfolio_data['date'],
                 y=self.portfolio_data['daily_return'] * 100,  # Convert to percentage
-                name='Daily Return (%)',
+                name='Original AI Portfolio Daily Return (%)',
                 marker_color=colors,
                 hovertemplate='<b>Date:</b> %{x}<br>' +
                               '<b>Daily Return:</b> %{y:.2f}%<br>' +
-                              '<extra></extra>'
+                              '<extra></extra>',
+                showlegend=False
             ),
             row=2, col=1
+        )
+        
+        # New AI Information Daily returns (Panel 3)
+        colors_new = ['#2E8B57' if x >= 0 else '#DC143C' for x in self.portfolio_data['daily_weighted_return']]
+        fig.add_trace(
+            go.Bar(
+                x=self.portfolio_data['date'],
+                y=self.portfolio_data['daily_weighted_return'] * 100,  # Convert to percentage
+                name='New AI Information Daily Return (%)',
+                marker_color=colors_new,
+                hovertemplate='<b>Date:</b> %{x}<br>' +
+                              '<b>Daily Return:</b> %{y:.2f}%<br>' +
+                              '<extra></extra>',
+                showlegend=False
+            ),
+            row=3, col=1
         )
         
         # Update layout
         fig.update_layout(
             title={
                 'text': 'AI Shocks Portfolio Performance<br>' +
-                        f'<sub>Value-weighted portfolio based on {self.base_date} market caps</sub>',
+                        f'<sub>Fixed weights vs Daily rebalancing comparison</sub>',
                 'x': 0.5,
                 'font': {'size': 20}
             },
             showlegend=True,
-            height=800,
+            height=1000,
             template='plotly_white',
             hovermode='x unified'
         )
         
         # Update axes
-        fig.update_xaxes(title_text="Date", row=2, col=1)
+        fig.update_xaxes(title_text="Date", row=3, col=1)
         fig.update_yaxes(title_text="Portfolio Value ($)", row=1, col=1)
         fig.update_yaxes(title_text="Daily Return (%)", row=2, col=1)
+        fig.update_yaxes(title_text="Daily Return (%)", row=3, col=1)
         
         # Add performance statistics as annotation
         portfolio_return = (self.portfolio_data['portfolio_value'].iloc[-1] / 100 - 1) * 100
+        daily_weighted_return = (self.portfolio_data['daily_weighted_value'].iloc[-1] / 100 - 1) * 100
         spy_return = (self.portfolio_data['spy_value'].iloc[-1] / 100 - 1) * 100
-        outperformance = portfolio_return - spy_return
         
         portfolio_vol = self.portfolio_data['daily_return'].std() * np.sqrt(252) * 100  # Annualized
+        daily_weighted_vol = self.portfolio_data['daily_weighted_return'].std() * np.sqrt(252) * 100
         spy_vol = self.portfolio_data['spy_daily_return'].std() * np.sqrt(252) * 100
         
         stats_text = (f"<b>Performance Summary</b><br>"
-                     f"AI Portfolio: {portfolio_return:.1f}%<br>"
+                     f"AI Fixed Weights: {portfolio_return:.1f}%<br>"
+                     f"New AI Info (Daily): {daily_weighted_return:.1f}%<br>"
                      f"S&P 500: {spy_return:.1f}%<br>"
-                     f"Outperformance: {outperformance:+.1f}%<br>"
                      f"<br>"
-                     f"Portfolio Vol: {portfolio_vol:.1f}%<br>"
+                     f"Fixed Weight Vol: {portfolio_vol:.1f}%<br>"
+                     f"Daily Vol: {daily_weighted_vol:.1f}%<br>"
                      f"S&P 500 Vol: {spy_vol:.1f}%<br>"
                      f"Stocks: {len(self.weights)}")
         
@@ -442,9 +536,10 @@ class PortfolioMonitor:
         )
         
         print(f"Interactive chart saved as {html_filename}")
-        print(f"  AI Portfolio Return: {portfolio_return:.2f}%")
+        print(f"  AI Fixed Weights Return: {portfolio_return:.2f}%")
+        print(f"  New AI Info (Daily) Return: {daily_weighted_return:.2f}%")
         print(f"  S&P 500 Return: {spy_return:.2f}%")
-        print(f"  Outperformance: {outperformance:+.2f}%")
+        print(f"  Fixed vs Daily Difference: {daily_weighted_return - portfolio_return:+.2f}%")
     
     def run_full_analysis(self):
         """Run the complete portfolio analysis workflow"""

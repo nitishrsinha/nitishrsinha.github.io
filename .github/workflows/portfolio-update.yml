@@ -28,48 +28,32 @@ jobs:
     
     - name: Run portfolio analysis
       run: python portfolio_monitor.py
-    
-    - name: Setup Git for Pages repo
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-    
-    - name: Clone Pages repository
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        git clone https://github.com/nitishrsinha/nitishrsinha.github.io.git pages-repo
-    
-    - name: Create files directory if it doesn't exist
-      run: |
-        mkdir -p pages-repo/files
-    
-    - name: Copy output files to Pages repository
-      run: |
-        # Copy all generated files
-        cp ai_portfolio_data.csv pages-repo/files/ || true
-        cp ai_portfolio_data_weights.csv pages-repo/files/ || true
-        cp ai_portfolio_chart.html pages-repo/files/ || true
-        cp ai_portfolio_data_changes.csv pages-repo/files/ 2>/dev/null || true
-        
-        # Add timestamp file
-        echo "Last updated: $(date -u)" > pages-repo/files/portfolio-last-updated.txt
-    
-    - name: Commit and push to Pages repository
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        cd pages-repo
 
-        # Configure git to use the token
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/nitishrsinha/nitishrsinha.github.io.git
+    - name: Create files directory if it doesn't exist
+      run: mkdir -p files
+
+    - name: Move generated files to files directory
+      run: |
+        # Move all generated files to the files directory
+        mv ai_portfolio_data.csv files/
+        mv ai_portfolio_data_weights.csv files/
+        mv ai_portfolio_chart.html files/
+        mv ai_portfolio_data_changes.csv files/ 2>/dev/null || true
+
+        # Add timestamp file
+        echo "Last updated: $(date -u)" > files/portfolio-last-updated.txt
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.name 'github-actions[bot]'
+        git config --local user.email 'github-actions[bot]@users.noreply.github.com'
 
         git add files/
 
         # Only commit if there are changes
         if ! git diff --staged --quiet; then
           git commit -m "Update AI portfolio data - $(date -u +%Y-%m-%d)"
-          git push origin main
+          git push
         else
           echo "No changes to commit"
         fi

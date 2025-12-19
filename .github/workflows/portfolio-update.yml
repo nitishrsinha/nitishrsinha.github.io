@@ -9,7 +9,9 @@ on:
 jobs:
   update-portfolio:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write  # Required to push changes
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -55,15 +57,19 @@ jobs:
     
     - name: Commit and push to Pages repository
       env:
-        GITHUB_TOKEN: ${{ secrets.PAGES_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         cd pages-repo
+
+        # Configure git to use the token
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/nitishrsinha/nitishrsinha.github.io.git
+
         git add files/
-        
+
         # Only commit if there are changes
         if ! git diff --staged --quiet; then
           git commit -m "Update AI portfolio data - $(date -u +%Y-%m-%d)"
-          git push https://${{ secrets.PAGES_TOKEN }}@github.com/nitishrsinha/nitishrsinha.github.io.git
+          git push origin main
         else
           echo "No changes to commit"
         fi

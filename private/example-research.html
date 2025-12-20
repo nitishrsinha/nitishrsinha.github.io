@@ -1,241 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Notes Template - Nitish Ranjan Sinha</title>
-    <meta name="description" content="Template for research notes and working papers">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protected Research Materials - Nitish Ranjan Sinha</title>
+  <meta name="description" content="Password-protected research materials and working papers" />
 
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.7;
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            color: #2c2c2c;
-            background-color: #ffffff;
-        }
+  <style>
+    /* ---- Site-wide look (matches your screenshots) ---- */
+    :root {
+      --blue: #0b5bd3;
+      --text: #111;
+      --muted: #444;
+      --rule: #e6e6e6;
+      --rule-thick: #dfe3e8;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 25px;
-            border-bottom: 2px solid #1976d2;
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.6;
+    }
 
-        h1 {
-            color: #1565c0;
-            margin-bottom: 12px;
-            font-size: 2em;
-            font-weight: 400;
-            line-height: 1.3;
-        }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 22px 22px 60px;
+    }
 
-        .paper-meta {
-            color: #6c757d;
-            font-size: 0.95em;
-            margin-top: 15px;
-            font-style: italic;
-        }
+    .site-header {
+      margin-top: 6px;
+    }
 
-        .paper-meta .status {
-            display: inline-block;
-            background-color: #fff3cd;
-            color: #856404;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-style: normal;
-            font-weight: 500;
-            margin-top: 8px;
-        }
+    .site-title {
+      font-size: 56px;
+      line-height: 1.05;
+      margin: 0 0 14px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
 
-        .abstract-section {
-            background-color: #e8f4fc;
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border-left: 4px solid #1976d2;
-        }
+    .site-title a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .site-title a:hover { text-decoration: underline; }
 
-        .abstract-section h2 {
-            color: #1565c0;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.4em;
-            font-weight: 500;
-        }
+    .thin-rule {
+      border: 0;
+      border-top: 1px solid var(--rule);
+      margin: 0 0 26px;
+    }
 
-        .abstract-section p {
-            color: #2c2c2c;
-            line-height: 1.7;
-            margin: 0;
-        }
+    .page-title {
+      font-size: 56px;
+      line-height: 1.1;
+      margin: 0 0 14px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+    }
 
-        section {
-            margin-bottom: 35px;
-        }
+    .page-desc {
+      font-size: 20px;
+      color: var(--muted);
+      margin: 0 0 34px;
+    }
 
-        h2 {
-            color: #1565c0;
-            margin-top: 0;
-            margin-bottom: 18px;
-            font-size: 1.4em;
-            font-weight: 500;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e5e5e5;
-        }
+    /* ---- Your existing “paper” components (kept, but made left-aligned) ---- */
+    .paper-meta {
+      color: #6c757d;
+      font-size: 0.95em;
+      margin-top: 10px;
+      font-style: italic;
+    }
 
-        h3 {
-            color: #2c2c2c;
-            margin-top: 25px;
-            margin-bottom: 12px;
-            font-size: 1.15em;
-            font-weight: 500;
-        }
+    .paper-meta .status {
+      display: inline-block;
+      background-color: #fff3cd;
+      color: #856404;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-style: normal;
+      font-weight: 600;
+      margin-top: 10px;
+    }
 
-        p {
-            margin-bottom: 15px;
-        }
+    .disclaimer {
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 6px;
+      padding: 15px;
+      margin: 26px 0 34px;
+      font-size: 0.95em;
+      color: #856404;
+      font-style: italic;
+    }
 
-        ul, ol {
-            margin-bottom: 15px;
-            padding-left: 25px;
-        }
+    .navigation {
+      margin-top: 34px;
+      padding-top: 22px;
+      border-top: 1px solid var(--rule);
+    }
 
-        li {
-            margin-bottom: 8px;
-            color: #5a5a5a;
-        }
+    .navigation a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      margin-right: 18px;
+    }
+    .navigation a:hover { text-decoration: underline; }
 
-        .key-finding {
-            background-color: #f8f9fa;
-            border-left: 4px solid #28a745;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-        }
+    /* ---- Footer line from your second screenshot ---- */
+    .footer-rule {
+      height: 6px;
+      background: var(--rule-thick);
+      border: 0;
+      margin: 64px 0 18px;
+    }
 
-        .key-finding strong {
-            color: #2c2c2c;
-        }
+    .footer-meta {
+      font-size: 18px;
+      color: var(--text);
+    }
+    .footer-meta strong { font-weight: 800; }
 
-        .data-source {
-            background-color: #ffffff;
-            border: 1px solid #e5e5e5;
-            padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 6px;
-        }
-
-        .data-source .source-name {
-            color: #1565c0;
-            font-weight: 500;
-            margin-bottom: 6px;
-        }
-
-        .data-source .source-details {
-            color: #6c757d;
-            font-size: 0.9em;
-        }
-
-        .next-steps-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .next-steps-list li {
-            background-color: #f8f9fa;
-            padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 6px;
-            border-left: 4px solid #1976d2;
-            color: #2c2c2c;
-        }
-
-        .next-steps-list li strong {
-            color: #1565c0;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .methodology-note {
-            background-color: #e3f2fd;
-            border: 1px solid #bbdefb;
-            padding: 20px;
-            border-radius: 6px;
-            margin: 25px 0;
-        }
-
-        .methodology-note h3 {
-            margin-top: 0;
-            color: #1565c0;
-        }
-
-        .navigation {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #e5e5e5;
-        }
-
-        .navigation a {
-            color: #1976d2;
-            text-decoration: none;
-            font-weight: 500;
-            margin: 0 15px;
-        }
-
-        .navigation a:hover {
-            text-decoration: underline;
-        }
-
-        .disclaimer {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 6px;
-            padding: 15px;
-            margin-top: 40px;
-            font-size: 0.85em;
-            color: #856404;
-            font-style: italic;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 30px 15px;
-            }
-
-            h1 {
-                font-size: 1.6em;
-            }
-
-            .abstract-section,
-            .methodology-note {
-                padding: 20px;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .site-title { font-size: 40px; }
+      .page-title { font-size: 38px; }
+      .page-desc { font-size: 17px; }
+      .footer-meta { font-size: 16px; }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="header">
-        <h1>Research Notes Template: [Your Title Here]</h1>
-        <div class="paper-meta">
-            Last Updated: December 2025<br>
-            Author: Nitish Ranjan Sinha<br>
-            <span class="status">WORKING DRAFT</span>
-        </div>
+  <div class="container">
+    <!-- Top header like your screenshot -->
+    <header class="site-header">
+      <h1 class="site-title"><a href="../index.html">Nitish Ranjan Sinha</a></h1>
+      <hr class="thin-rule" />
+    </header>
+
+    <!-- Big page title + description like your screenshot -->
+    <h2 class="page-title">Protected Research Materials</h2>
+    <p class="page-desc">
+      This directory contains password-protected research materials and working papers for Nitish Ranjan Sinha’s academic website.
+    </p>
+
+    <!-- Keep your “working draft” meta (optional; remove if you don’t want it here) -->
+    <div class="paper-meta">
+      Last Updated: December 2025<br />
+      Author: Nitish Ranjan Sinha<br />
+      <span class="status">WORKING DRAFT</span>
     </div>
 
-
+    <!-- Your confidentiality notice -->
     <div class="disclaimer">
-        <strong>Confidentiality Notice:</strong> This document contains preliminary research materials and working notes. The findings are subject to revision and should not be cited or distributed without permission. Views expressed are those of the author and do not represent the official position of the Federal Reserve Board or the Federal Reserve System.
+      <strong>Confidentiality Notice:</strong>
+      This document contains preliminary research materials and working notes. The findings are subject to revision and should not be cited or distributed without permission. Views expressed are those of the author and do not represent the official position of the Federal Reserve Board or the Federal Reserve System.
     </div>
 
+    <!-- Your navigation links -->
     <div class="navigation">
-        <a href="index.html">← Back to Protected Materials</a>
-        <span style="color: #e5e5e5;">|</span>
-        <a href="../index.html">← Back to Main Site</a>
+      <a href="index.html">← Back to Protected Materials</a>
+      <a href="../index.html">← Back to Main Site</a>
     </div>
+
+    <!-- Footer bar + line like your second screenshot -->
+    <hr class="footer-rule" />
+    <div class="footer-meta">
+      <strong>Last Updated:</strong> December 2025
+      <strong>Maintained by:</strong> Nitish Ranjan Sinha
+      <strong>License:</strong> Content is protected; scripts are provided as-is for personal use
+    </div>
+  </div>
 </body>
 </html>

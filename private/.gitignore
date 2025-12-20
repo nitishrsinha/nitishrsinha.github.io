@@ -1,0 +1,15 @@
+# Backup files created by encrypt.sh
+.backups/
+*.original.html
+
+# Temporary files
+*.tmp
+*.temp
+
+# macOS files
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~

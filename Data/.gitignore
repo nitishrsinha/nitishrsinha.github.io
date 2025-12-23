@@ -1,0 +1,11 @@
+# Ignore all data files
+*.xlsx
+*.xls
+*.csv
+*.zip
+
+# But keep the README
+!README.md
+
+# Keep directory structure
+!.gitignore

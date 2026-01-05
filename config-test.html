@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Config Loading Test</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        .test { padding: 10px; margin: 5px 0; border-left: 3px solid #4ec9b0; }
+        .pass { border-color: #4ec9b0; color: #4ec9b0; }
+        .fail { border-color: #f48771; color: #f48771; }
+    </style>
+</head>
+<body>
+    <h1>Config Loading Test</h1>
+    <div id="results"></div>
+
+    <script>
+        console.log('=== CONFIG TEST START ===');
+        const results = document.getElementById('results');
+
+        function test(name, condition) {
+            const div = document.createElement('div');
+            div.className = 'test ' + (condition ? 'pass' : 'fail');
+            div.textContent = (condition ? '✓' : '✗') + ' ' + name;
+            results.appendChild(div);
+            console.log((condition ? '✓' : '✗'), name);
+        }
+
+        // Test 1: Check if window object exists
+        test('window object exists', typeof window !== 'undefined');
+
+        // Test 2: Try to set a test property
+        window.TEST_PROPERTY = 'test';
+        test('Can set window properties', window.TEST_PROPERTY === 'test');
+
+        console.log('=== ABOUT TO LOAD CONFIG ===');
+    </script>
+
+    <!-- Load the config -->
+    <script src="traffic-config.js"></script>
+
+    <!-- Test after loading -->
+    <script>
+        console.log('=== AFTER CONFIG LOAD ===');
+
+        // Test 3: Check if TRAFFIC_CONFIG exists
+        test('TRAFFIC_CONFIG exists on window', typeof window.TRAFFIC_CONFIG !== 'undefined');
+
+        // Test 4: Check if it has properties
+        if (window.TRAFFIC_CONFIG) {
+            test('TRAFFIC_CONFIG has TOMTOM_API_KEY', 'TOMTOM_API_KEY' in window.TRAFFIC_CONFIG);
+            test('API key is set', window.TRAFFIC_CONFIG.TOMTOM_API_KEY !== 'YOUR_TOMTOM_API_KEY_HERE');
+
+            // Show the config
+            const pre = document.createElement('pre');
+            pre.style.cssText = 'background: #2d2d2d; padding: 15px; border-radius: 5px; margin-top: 20px;';
+            pre.textContent = 'Config loaded:\n' + JSON.stringify(window.TRAFFIC_CONFIG, null, 2);
+            results.appendChild(pre);
+        } else {
+            const div = document.createElement('div');
+            div.className = 'test fail';
+            div.innerHTML = '<strong>ERROR: Config did not load!</strong><br>Check browser console for errors.';
+            results.appendChild(div);
+        }
+
+        console.log('=== TEST COMPLETE ===');
+        console.log('window.TRAFFIC_CONFIG:', window.TRAFFIC_CONFIG);
+    </script>
+</body>
+</html>

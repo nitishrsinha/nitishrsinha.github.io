@@ -12,7 +12,8 @@
 // - traffic-config.js is in .gitignore to prevent accidental commits
 // - For production, use a backend proxy to hide your API key
 
-const TRAFFIC_CONFIG = {
+// Make TRAFFIC_CONFIG globally accessible by attaching to window
+window.TRAFFIC_CONFIG = {
     // TomTom API Key - Replace with your actual key
     TOMTOM_API_KEY: 'YOUR_TOMTOM_API_KEY_HERE',
 

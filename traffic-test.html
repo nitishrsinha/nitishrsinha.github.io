@@ -42,8 +42,23 @@
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="traffic-config.js"></script>
-    <script src="traffic-data.js"></script>
+    <script>
+        // Add error handler for script loading
+        window.addEventListener('error', function(e) {
+            console.error('Script loading error:', e);
+            if (e.filename) {
+                const statusDiv = document.getElementById('status');
+                if (statusDiv) {
+                    const div = document.createElement('div');
+                    div.className = 'status error';
+                    div.textContent = '✗ Script error: ' + e.filename + ' - ' + e.message;
+                    statusDiv.appendChild(div);
+                }
+            }
+        }, true);
+    </script>
+    <script src="traffic-config.js" onerror="console.error('Failed to load traffic-config.js')"></script>
+    <script src="traffic-data.js" onerror="console.error('Failed to load traffic-data.js')"></script>
 
     <script>
         const statusDiv = document.getElementById('status');
@@ -64,6 +79,10 @@
         if (typeof TRAFFIC_CONFIG !== 'undefined') {
             log('  - API Key set: ' + (TRAFFIC_CONFIG.TOMTOM_API_KEY !== 'YOUR_TOMTOM_API_KEY_HERE'));
             log('  - Real-time enabled: ' + TRAFFIC_CONFIG.USE_REALTIME_DATA);
+        } else {
+            log('✗ TRAFFIC_CONFIG is undefined - check browser console for errors', true);
+            log('  Checking window object...', true);
+            log('  window.TRAFFIC_CONFIG: ' + window.TRAFFIC_CONFIG, true);
         }
 
         // Test 3: Check if data loaded

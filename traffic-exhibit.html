@@ -251,6 +251,14 @@
             <span id="scenario-description">Real-time traffic simulation</span>
         </div>
 
+        <div class="info-banner" id="api-setup-notice" style="display: none; background: #e3f2fd; border-color: #90caf9; color: #0d47a1;">
+            <strong>💡 Enable Live Traffic Data</strong>
+            <p style="margin: 8px 0 0 0; font-size: 11px;">
+                Currently showing simulated data. To enable real-time traffic from TomTom API,
+                see <a href="TRAFFIC_API_SETUP.md" style="color: #1565c0; font-weight: bold;">setup instructions</a>.
+            </p>
+        </div>
+
         <div class="clock-display" id="sim-clock">6:00 AM</div>
 
         <div class="scenario-selector">
@@ -334,6 +342,7 @@
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="traffic-config.js"></script>
     <script src="traffic-data.js"></script>
     <script src="traffic-app.js"></script>
 </body>

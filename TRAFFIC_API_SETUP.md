@@ -31,26 +31,32 @@ Unlike Google Maps, TomTom allows you to use historical data for comparisons and
 
 ### 3. Configure the Exhibit
 
-1. Open `traffic-config.js` in your project
-2. Replace `'YOUR_TOMTOM_API_KEY_HERE'` with your actual API key:
+1. **Copy the template file**:
+   ```bash
+   cp traffic-config.example.js traffic-config.js
+   ```
 
-```javascript
-TOMTOM_API_KEY: 'your-actual-api-key-here',
-```
+2. **Open `traffic-config.js`** in your editor
 
-3. Enable real-time data:
+3. **Replace `'YOUR_TOMTOM_API_KEY_HERE'`** with your actual API key:
+   ```javascript
+   TOMTOM_API_KEY: 'your-actual-api-key-here',
+   ```
 
-```javascript
-USE_REALTIME_DATA: true,
-```
+4. **Enable real-time data**:
+   ```javascript
+   USE_REALTIME_DATA: true,
+   ```
 
-4. Save the file
+5. **Save the file**
+
+**Note:** `traffic-config.js` is in `.gitignore` and will not be committed to your repository. This keeps your API key secure.
 
 ### 4. Security Best Practices
 
-**⚠️ IMPORTANT**: Never commit your API key to public repositories!
+**✅ Built-in Security**: The repository includes `.gitignore` which prevents `traffic-config.js` from being committed. Your API key stays private on your local machine.
 
-For production deployment, use one of these approaches:
+**For Production Deployment**, use one of these approaches:
 
 #### Option A: Backend Proxy (Recommended)
 Create a backend service that proxies TomTom API requests:

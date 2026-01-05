@@ -146,12 +146,21 @@ async function updateRealtimeTraffic() {
 
 // Initialize the map
 function initMap() {
-    map = L.map('map').setView([38.975, -76.944], 14);
+    console.log('Initializing map...');
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-        maxZoom: 19
-    }).addTo(map);
+    try {
+        map = L.map('map').setView([38.975, -76.944], 14);
+        console.log('Map object created');
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+        console.log('Map tiles added');
+    } catch (error) {
+        console.error('Error initializing map:', error);
+        throw error;
+    }
 
     // Add intersection markers
     Object.keys(intersectionCoords).forEach(nodeId => {
@@ -178,8 +187,12 @@ function initMap() {
 // Load a scenario
 async function loadScenario(scenarioId) {
     const scenario = scenarios[scenarioId];
-    if (!scenario) return;
+    if (!scenario) {
+        console.error('Scenario not found:', scenarioId);
+        return;
+    }
 
+    console.log('Loading scenario:', scenarioId);
     currentScenario = scenarioId;
 
     // Clear any existing realtime update interval
@@ -190,18 +203,28 @@ async function loadScenario(scenarioId) {
 
     // Try to fetch real-time or historical data from TomTom
     if (scenario.isRealtime && TRAFFIC_CONFIG.USE_REALTIME_DATA) {
-        const tomtomData = await fetchTomTomTrafficFlow();
-        trafficData = tomtomData || scenario.data;
+        console.log('Attempting to fetch TomTom real-time data...');
+        try {
+            const tomtomData = await fetchTomTomTrafficFlow();
+            trafficData = tomtomData || scenario.data;
 
-        // Set up periodic updates for real-time data
-        if (tomtomData) {
-            realtimeUpdateInterval = setInterval(
-                updateRealtimeTraffic,
-                TRAFFIC_CONFIG.REALTIME_UPDATE_INTERVAL
-            );
+            if (tomtomData) {
+                console.log('TomTom data loaded successfully');
+                // Set up periodic updates for real-time data
+                realtimeUpdateInterval = setInterval(
+                    updateRealtimeTraffic,
+                    TRAFFIC_CONFIG.REALTIME_UPDATE_INTERVAL
+                );
+            } else {
+                console.log('Using synthetic data (TomTom unavailable)');
+            }
+        } catch (error) {
+            console.error('Error loading TomTom data, using synthetic:', error);
+            trafficData = scenario.data;
         }
     } else {
         // Use synthetic data for historical scenarios
+        console.log('Using synthetic data for scenario:', scenarioId);
         trafficData = scenario.data;
     }
 

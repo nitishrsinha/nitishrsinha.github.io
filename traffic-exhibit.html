@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Park Traffic Study - Interactive Exhibit</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+        }
+
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+
+        .control-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-width: 350px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .control-panel h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #1565c0;
+            border-bottom: 2px solid #1565c0;
+            padding-bottom: 8px;
+        }
+
+        .control-panel h3 {
+            font-size: 14px;
+            margin: 15px 0 10px 0;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .scenario-selector {
+            margin-bottom: 20px;
+        }
+
+        .scenario-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .scenario-btn:hover {
+            background: #e3f2fd;
+            border-color: #1976d2;
+        }
+
+        .scenario-btn.active {
+            background: #1976d2;
+            color: white;
+            border-color: #1565c0;
+        }
+
+        .scenario-btn .scenario-date {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .scenario-btn .scenario-desc {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .date-time-picker {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .date-time-picker label {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .date-time-picker input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .clock-display {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1565c0;
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #e3f2fd;
+            border-radius: 6px;
+        }
+
+        .simulation-controls {
+            margin-bottom: 15px;
+        }
+
+        .control-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .control-row label {
+            font-size: 13px;
+            color: #666;
+        }
+
+        button {
+            padding: 8px 16px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #1565c0;
+        }
+
+        input[type="range"] {
+            width: 150px;
+        }
+
+        .legend {
+            margin-top: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 4px;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+
+        .info-banner {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: #856404;
+        }
+
+        .info-banner strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .top-routes {
+            margin-top: 15px;
+            font-size: 12px;
+        }
+
+        .route-item {
+            padding: 8px;
+            margin: 6px 0;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #bd0026;
+        }
+
+        .route-item .route-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .route-item .route-count {
+            color: #666;
+            font-size: 11px;
+        }
+
+        .mode-indicator {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #28a745;
+            color: white;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .mode-indicator.historical {
+            background: #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            .control-panel {
+                max-width: calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <div class="control-panel">
+        <h2>
+            University Park Traffic Study
+            <span id="mode-indicator" class="mode-indicator">LIVE</span>
+        </h2>
+
+        <div class="info-banner" id="scenario-info">
+            <strong>Current View:</strong>
+            <span id="scenario-description">Real-time traffic simulation</span>
+        </div>
+
+        <div class="clock-display" id="sim-clock">6:00 AM</div>
+
+        <div class="scenario-selector">
+            <h3>Select Scenario</h3>
+
+            <button class="scenario-btn active" data-scenario="realtime">
+                <span class="scenario-date">Real-Time Data</span>
+                <span class="scenario-desc">Current traffic patterns (simulated)</span>
+            </button>
+
+            <h3 style="margin-top: 20px;">Purple Line Construction Period</h3>
+
+            <button class="scenario-btn" data-scenario="april-2025-am">
+                <span class="scenario-date">April 23, 2025 - Morning</span>
+                <span class="scenario-desc">6:00-10:00 AM • Active construction • Lane reductions on MD 193</span>
+            </button>
+
+            <button class="scenario-btn" data-scenario="april-2025-pm">
+                <span class="scenario-date">April 23, 2025 - Evening</span>
+                <span class="scenario-desc">3:00-7:00 PM • Active construction • Turn restrictions</span>
+            </button>
+
+            <h3 style="margin-top: 20px;">Recent Historical Data</h3>
+
+            <button class="scenario-btn" data-scenario="dec-2025-am">
+                <span class="scenario-date">December 15, 2025 - Morning</span>
+                <span class="scenario-desc">6:00-10:00 AM • Post-construction baseline</span>
+            </button>
+
+            <button class="scenario-btn" data-scenario="dec-2025-pm">
+                <span class="scenario-date">December 15, 2025 - Evening</span>
+                <span class="scenario-desc">3:00-7:00 PM • Normal conditions</span>
+            </button>
+
+            <button class="scenario-btn" data-scenario="jan-2026-am">
+                <span class="scenario-date">January 2, 2026 - Morning</span>
+                <span class="scenario-desc">6:00-10:00 AM • Post-holiday traffic</span>
+            </button>
+        </div>
+
+        <div class="date-time-picker" style="display: none;">
+            <label for="custom-date">Custom Date & Time</label>
+            <input type="datetime-local" id="custom-date">
+        </div>
+
+        <div class="simulation-controls">
+            <h3>Simulation Controls</h3>
+            <div class="control-row">
+                <button id="play-pause">Pause</button>
+                <label>Speed: <span id="speed-value">1x</span></label>
+            </div>
+            <div class="control-row">
+                <input type="range" id="speed-slider" min="0.1" max="5" step="0.1" value="1">
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>Traffic Volume</h3>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #bd0026;"></div>
+                <span>High (>50 vehicles)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #f03b20;"></div>
+                <span>Medium-High (21-50)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #fd8d3c;"></div>
+                <span>Medium (11-20)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #feb24c;"></div>
+                <span>Low (1-10)</span>
+            </div>
+        </div>
+
+        <div class="top-routes">
+            <h3>Top Traffic Routes</h3>
+            <div id="route-list"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="traffic-data.js"></script>
+    <script src="traffic-app.js"></script>
+</body>
+</html>

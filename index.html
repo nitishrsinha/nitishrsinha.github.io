@@ -6,7 +6,6 @@
     <title>Nitish Ranjan Sinha</title>
     <meta name="description" content="Professional website of Nitish Ranjan Sinha, Group Manager at Federal Reserve Board, specializing in macroeconomics, AI, and financial markets.">
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3bda9b1c7a894cc5bc64a095ba1a5208"}'></script><!-- End Cloudflare Web Analytics -->
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -30,13 +29,13 @@
                 "degree": "Ph.D. in Finance"
             },
             {
-                "@type": "EducationalOrganization", 
+                "@type": "EducationalOrganization",
                 "name": "Indian Institute of Management, Ahmedabad",
                 "degree": "P.G.D.M. (MBA)"
             },
             {
                 "@type": "EducationalOrganization",
-                "name": "Indian Institute of Technology, Kanpur", 
+                "name": "Indian Institute of Technology, Kanpur",
                 "degree": "B.Tech. in Electrical Engineering"
             }
         ],
@@ -50,305 +49,124 @@
         ]
     }
     </script>
-    
+
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
+            line-height: 1.65;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 64px 24px;
             color: #2c2c2c;
             background-color: #ffffff;
         }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #1976d2;
+
+        header {
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e5e5e5;
         }
-        
+
         h1 {
             color: #1565c0;
-            margin-bottom: 8px;
-            font-size: 2.5em;
-            font-weight: 300;
+            margin: 0 0 6px;
+            font-size: 2em;
+            font-weight: 400;
             letter-spacing: -0.5px;
         }
-        
-        .current-position {
-            font-size: 1.2em;
+
+        .role {
             color: #5a5a5a;
-            margin-bottom: 4px;
-            font-weight: 400;
+            margin-bottom: 22px;
+            font-size: 1.05em;
         }
-        
-        .organization {
-            font-size: 1.1em;
-            color: #5a5a5a;
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
-        
-        .navigation {
+
+        nav {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 25px;
+            gap: 22px;
+            flex-wrap: wrap;
         }
-        
-        .nav-link {
-            color: #2c2c2c;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-        }
-        
-        .nav-link:hover {
-            background-color: #e3f2fd;
+
+        nav a {
             color: #1565c0;
             text-decoration: none;
-        }
-        
-        .main-content {
-            margin-bottom: 40px;
-        }
-        
-        .intro-section {
-            background-color: #e8f4fc;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border-left: 4px solid #1976d2;
-        }
-        
-        .intro-section h2 {
-            color: #2c2c2c;
-            margin-bottom: 20px;
-            font-size: 1.4em;
-            font-weight: 500;
-        }
-        
-        .intro-section p {
-            color: #5a5a5a;
-            font-size: 1.1em;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-        
-        .research-focus {
-            margin-bottom: 30px;
-            background-color: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #e5e5e5;
-        }
-        
-        .research-focus h3 {
-            color: #1565c0;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-            font-weight: 500;
-        }
-        
-        .research-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .research-list li {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 6px;
-            border: 1px solid #e5e5e5;
-            color: #5a5a5a;
             font-size: 0.95em;
         }
-        
-        .featured-work {
-            background-color: #e3f2fd;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #bbdefb;
-            margin-bottom: 30px;
-        }
-        
-        .featured-work h3 {
-            color: #1565c0;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-            font-weight: 500;
-        }
-        
-        .featured-link {
-            display: inline-block;
-            background-color: #1976d2;
-            color: white;
-            padding: 12px 20px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            margin-top: 10px;
-            transition: background-color 0.2s ease;
-        }
-        
-        .featured-link:hover {
-            background-color: #1565c0;
-            text-decoration: none;
-            color: white;
-        }
-        
-        .quick-links {
-            background-color: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #e5e5e5;
-        }
-        
-        .quick-links h3 {
-            color: #1565c0;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-            font-weight: 500;
-        }
-        
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .link-item {
-            padding: 18px;
-            background-color: #f8f9fa;
-            border-radius: 6px;
-            border: 1px solid #e5e5e5;
-        }
-        
-        .link-item a {
-            color: #1976d2;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1em;
-            display: block;
-            margin-bottom: 8px;
-        }
-        
-        .link-item .description {
-            color: #6c757d;
-            font-size: 0.85em;
-            line-height: 1.4;
-        }
-        
-        .link-item a:hover {
-            color: #1976d2;
+
+        nav a:hover {
             text-decoration: underline;
         }
-        
-        .disclaimer {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 6px;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #856404;
-            font-style: italic;
+
+        main p {
+            margin: 0 0 1.2em;
         }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 30px 15px;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            .navigation {
-                flex-direction: column;
-                gap: 15px;
-                align-items: center;
-            }
-            
-            .research-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
+
+        h2 {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: #888;
+            margin: 36px 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .live-badge {
+            display: inline-block;
+            font-size: 0.7em;
+            font-weight: 600;
+            color: #1565c0;
+            background: #e3f2fd;
+            padding: 2px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        a {
+            color: #1565c0;
+        }
+
+        .disclaimer {
+            margin-top: 56px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+            font-size: 0.85em;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 40px 20px; }
+            h1 { font-size: 1.7em; }
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <header>
         <h1 itemprop="name">Nitish Ranjan Sinha</h1>
-        <div class="current-position" itemprop="jobTitle">Group Manager, Financial Projections Group</div>
-        <div class="organization" itemprop="worksFor">Board of Governors of the Federal Reserve System</div>
-        
-        <nav class="navigation">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="reflections.html" class="nav-link">Reflections</a>
-            <a href="cv.html" class="nav-link">CV</a>
-            <a href="fci-g-calculator.html" class="nav-link">Financial Conditions</a>
-            <a href="private/index.html" class="nav-link">Research Materials</a>
+        <div class="role">Group Manager, Financial Projections Group &middot; Federal Reserve Board</div>
+        <nav>
+            <a href="reflections.html">Reflections</a>
+            <a href="cv.html">CV</a>
+            <a href="fci-g-calculator.html">Financial Conditions</a>
+            <a href="private/index.html">Research Materials</a>
         </nav>
-    </div>
+    </header>
 
-    <div class="main-content">
-        <section class="intro-section">
-            <p>I work on macroeconomic research and analysis at the Federal Reserve, focusing on the intersection of artificial intelligence, financial markets, and economic forecasting. </p>
-        </section>
+    <main>
+        <p>I work on macroeconomic research at the Federal Reserve, at the intersection of AI, financial markets, and economic forecasting. Current interests span AI applications in economic research, financial conditions and macro outcomes, asset pricing, and monetary policy transmission.</p>
 
-        <section class="research-focus">
-            <h3>Current Research Areas</h3>
-            <ul class="research-list">
-                <li>AI applications in economic research and forecasting</li>
-                <li>Financial conditions and their impact on macroeconomic outcomes</li>
-                <li>Asset pricing</li>
-                <li>Financial market dynamics and monetary policy transmission</li>
-            </ul>
-        </section>
+        <h2>AI Stock Tracker <span class="live-badge">Updated daily</span></h2>
+        <p>An <a href="ai-stock-info.html">interactive tracker</a> comparing two AI-themed equity portfolios &mdash; one with fixed weights, one reweighted daily &mdash; benchmarked against the S&amp;P 500. Refreshed each day via GitHub Actions.</p>
 
-        <section class="featured-work">
-            <h3>Featured Research Tool</h3>
-            <p>An educational tool demonstrating how financial conditions relate to economic growth, based on the FCI-G methodology described in this <a href="https://www.federalreserve.gov/econres/notes/feds-notes/a-new-index-to-measure-us-financial-conditions-20230630.html">research note </a>. 
-            This calculator allows users to explore how changes in seven key financial variables—including interest rates, stock prices, mortgage rates, and the dollar index—translate into GDP growth projections.
-            Developed using Claude Code, the tool illustrates how econometric approaches can be used in monetary policy analysis. 
-                This illustrates how AI can lower communication barriers in economic research. For a broader perspective and more suggestions on how-tos, see Anton Korinek’s excellent paper AI Agents for Economic Research.
-                </p>
-            <a href="fci-g-calculator.html" class="featured-link">Explore Financial Conditions Calculator</a>
-        </section>
-
-        <section class="quick-links">
-            <h3>Professional Resources</h3>
-            <div class="links-grid">
-                <div class="link-item">
-                    <a href="cv.html">Professional Background</a>
-                    <div class="description">Complete academic and professional history, publications, and experience</div>
-                </div>
-                <div class="link-item">
-                    <a href="reflections.html">Current Research & Reflections</a>
-                    <div class="description">Ongoing projects, research insights, and professional perspectives</div>
-                </div>
-                <div class="link-item">
-                    <a href="fci-g-calculator.html">Research Tools</a>
-                    <div class="description">Interactive calculators and analytical tools for economic research</div>
-                </div>
-             </div>
-        </section>
-    </div>
+        <h2>Financial Conditions Calculator</h2>
+        <p>An <a href="fci-g-calculator.html">interactive tool</a> for exploring how changes in seven key financial variables translate into GDP growth projections, based on the FCI-G methodology in this <a href="https://www.federalreserve.gov/econres/notes/feds-notes/a-new-index-to-measure-us-financial-conditions-20230630.html">FEDS Note</a>.</p>
+    </main>
 
     <div class="disclaimer">
-        <strong>Academic Research Disclosure:</strong> This website represents my personal academic and research interests in my individual capacity. The views expressed here do not indicate concurrence by other members of the Board's staff or by the Board of Governors of the Federal Reserve System.
+        The views expressed here are my own and do not necessarily represent those of the Federal Reserve Board or its staff.
     </div>
 </body>
 </html>

@@ -5,167 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reflections - Nitish Ranjan Sinha</title>
     <meta name="description" content="Research reflections and current work by Nitish Ranjan Sinha on text analysis in finance, AI applications in economics, and monetary policy.">
-    
+
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
+            line-height: 1.65;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 64px 24px;
             color: #2c2c2c;
             background-color: #ffffff;
         }
-        
-        .header {
-            text-align: center;
+
+        header {
             margin-bottom: 40px;
-            padding-bottom: 20px;
+            padding-bottom: 24px;
             border-bottom: 1px solid #e5e5e5;
         }
-        
+
         h1 {
-            color: #2c2c2c;
-            margin-bottom: 8px;
-            font-size: 2.2em;
-            font-weight: 300;
+            color: #1565c0;
+            margin: 0 0 22px;
+            font-size: 2em;
+            font-weight: 400;
             letter-spacing: -0.5px;
         }
-        
-        .navigation {
+
+        nav {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
+            gap: 22px;
+            flex-wrap: wrap;
         }
-        
-        .nav-link {
-            color: #2c2c2c;
+
+        nav a {
+            color: #1565c0;
             text-decoration: none;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
+            font-size: 0.95em;
         }
-        
-        .nav-link:hover {
-            background-color: #f5f5f5;
-            text-decoration: none;
+
+        nav a:hover {
+            text-decoration: underline;
         }
-        
-        .nav-link.active {
-            background-color: #e3f2fd;
-            color: #1976d2;
+
+        main p {
+            margin: 0 0 1.2em;
         }
-        
-        .content-section {
-            margin-bottom: 40px;
-            background-color: #f8f9fa;
-            padding: 30px;
-            border-radius: 8px;
+
+        a {
+            color: #1565c0;
         }
-        
-        .content-section h2 {
-            color: #2c2c2c;
-            margin-bottom: 20px;
-            font-size: 1.4em;
-            font-weight: 500;
-        }
-        
-        .content-section h3 {
-            color: #2c2c2c;
-            margin: 25px 0 15px 0;
-            font-size: 1.2em;
-            font-weight: 500;
-        }
-        
-        .content-section p {
-            color: #5a5a5a;
-            font-size: 1em;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-        
-        .research-area {
-            background-color: #ffffff;
-            padding: 25px;
-            border-radius: 6px;
-            border: 1px solid #e5e5e5;
-            margin-bottom: 25px;
-        }
-        
-        .coming-soon {
-            text-align: center;
-            padding: 60px 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border: 2px dashed #dee2e6;
-        }
-        
-        .coming-soon h2 {
-            color: #6c757d;
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
-        
-        .coming-soon p {
-            color: #6c757d;
-            font-size: 1.1em;
-        }
-        
+
         .disclaimer {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 6px;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #856404;
-            font-style: italic;
+            margin-top: 56px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+            font-size: 0.85em;
+            color: #888;
+            line-height: 1.5;
         }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 30px 15px;
-            }
-            
-            h1 {
-                font-size: 1.8em;
-            }
-            
-            .navigation {
-                flex-direction: column;
-                gap: 15px;
-                align-items: center;
-            }
+
+        @media (max-width: 600px) {
+            body { padding: 40px 20px; }
+            h1 { font-size: 1.7em; }
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <header>
         <h1>AI and Research</h1>
-        
-        <nav class="navigation">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="reflections.html" class="nav-link active">Reflections</a>
-            <a href="cv.html" class="nav-link">CV</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cv.html">CV</a>
+            <a href="fci-g-calculator.html">Financial Conditions</a>
+            <a href="private/index.html">Research Materials</a>
         </nav>
-    </div>
+    </header>
 
-    <div class="content-section">
+    <main>
         <p>I work on macroeconomics, monetary economics, as well as financial markets. My role at the Federal Reserve involves translating this research into practical financial market assessments that inform policy discussions.</p>
-        
-        <p>I research how <a href="https://www.federalreserve.gov/econres/notes/feds-notes/a-new-index-to-measure-us-financial-conditions-20230630.html" target="_blank" rel="noopener noreferrer">policymakers</a>, <a href="https://doi.org/10.17016/FEDS.2023.058" target="_blank" rel="noopener noreferrer">individuals</a>, and <a href="https://doi.org/10.2469/faj.v73.n3.3" target="_blank" rel="noopener noreferrer">markets</a> <a href="https://doi.org/10.1016/j.ijforecast.2022.04.008" target="_blank" rel="noopener noreferrer">process information</a> and its impact on decision-making.</p>
-        
-        <p>I am working on the emerging paradigm on information gathering and decision making brought about by AI, <a href="https://doi.org/10.17016/2380-7172.3678" target="_blank" rel="noopener noreferrer">particularly large language models</a>. This includes exploring how these technologies can enhance economic forecasting and policy analysis.</p>
-        
-     <p>For latest on this, see my <a href="https://www.federalreserve.gov/econres/nitish-r-sinha.htm" target="_blank" rel="noopener noreferrer">Federal Reserve research</a> page.</p>
 
-        <p>Generative AI is a-learning-by-doing technology. In that spirit, I vibed a webpage with help from ChatGPT, Claude and Gemini on <a href="https://nitishrsinha.github.io/ai-stock-info.html" target="_blank" rel="noopener noreferrer"> stock market reaction to AI information. </a> </p>
-        <p>As we are seeing more AI agents at work, I built a family secretary agent that monitors a Gmail inbox and automatically creates Google Calendar events from forwarded emails. The core logic is on <a href="https://gist.github.com/nitishrsinha/c1cf6648b6e4d4cbbe0676f3e4ec4eb8" target="_blank" rel="noopener noreferrer"> GitHub Gist. </a>  </p>
+        <p>I research how <a href="https://www.federalreserve.gov/econres/notes/feds-notes/a-new-index-to-measure-us-financial-conditions-20230630.html" target="_blank" rel="noopener noreferrer">policymakers</a>, <a href="https://doi.org/10.17016/FEDS.2023.058" target="_blank" rel="noopener noreferrer">individuals</a>, and <a href="https://doi.org/10.2469/faj.v73.n3.3" target="_blank" rel="noopener noreferrer">markets</a> <a href="https://doi.org/10.1016/j.ijforecast.2022.04.008" target="_blank" rel="noopener noreferrer">process information</a> and its impact on decision-making.</p>
+
+        <p>I am working on the emerging paradigm on information gathering and decision making brought about by AI, <a href="https://doi.org/10.17016/2380-7172.3678" target="_blank" rel="noopener noreferrer">particularly large language models</a>. This includes exploring how these technologies can enhance economic forecasting and policy analysis.</p>
+
+        <p>For latest on this, see my <a href="https://www.federalreserve.gov/econres/nitish-r-sinha.htm" target="_blank" rel="noopener noreferrer">Federal Reserve research</a> page.</p>
+
+        <p>Generative AI is a-learning-by-doing technology. In that spirit, I built a webpage with help from ChatGPT, Claude and Gemini on <a href="ai-stock-info.html">stock market reaction to AI information</a>.</p>
+
         <p>For my complete research, see my <a href="https://scholar.google.com/citations?user=9P9e80MAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar page</a>.</p>
-         
+
         <p>I keep the <a href="https://sites.google.com/site/nitishranjansinha/home/reflections/text-analysis-in-finance">Text Analysis in Finance</a> course documents on this webpage. I taught this course in 2012 and 2013. The field has moved a lot since then, and I have kept it around for mostly archival purposes. The link directs to google sites page.</p>
+    </main>
+
+    <div class="disclaimer">
+        The views expressed here are my own and do not necessarily represent those of the Federal Reserve Board or its staff.
     </div>
 </body>
 </html>

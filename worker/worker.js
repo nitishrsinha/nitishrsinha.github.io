@@ -13,6 +13,8 @@
  *                  public CORS proxies the calculator used have all died).
  * GET  /memos   -> proxies to voicememos worker (requires Authorization: Bearer <memo_session>)
  *                  query params: q, from, to, mode, folder (for today: add ?today=1)
+ * POST /memos   {"session": "<uuid>", "transcript": "...", "tags": "...", "mode": "free"}
+ *                 -> creates a text memo in the voicememos DB.
  * GET  /links   -> proxies links for a folder (requires Authorization: Bearer <memo_session>)
  *                  query params: folder
  * POST /links   {"session": "<uuid>", "url": "...", "label": "...", "folder": "..."}
@@ -404,7 +406,7 @@ async function handleMemoOrLink(env, request, url, corsHeaders) {
 
   if (url.pathname === "/memos" && request.method === "GET") {
     const params = new URLSearchParams();
-    for (const key of ["q", "from", "to", "mode"]) {
+    for (const key of ["q", "from", "to", "mode", "folder"]) {
       const v = url.searchParams.get(key);
       if (v) params.set(key, v);
     }
@@ -414,6 +416,20 @@ async function handleMemoOrLink(env, request, url, corsHeaders) {
       : `${base}/api/external/memos${params.toString() ? "?" + params.toString() : ""}`;
     const res = await fetch(voiceUrl, {
       headers: { Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}` },
+    });
+    const data = await res.json().catch(() => ({}));
+    return json(data, res.status, corsHeaders);
+  }
+
+  if (url.pathname === "/memos" && request.method === "POST") {
+    const { transcript, mode, tags } = bodyForForward;
+    const res = await fetch(`${base}/api/external/memos`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ transcript, mode, tags }),
     });
     const data = await res.json().catch(() => ({}));
     return json(data, res.status, corsHeaders);

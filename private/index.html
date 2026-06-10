@@ -497,6 +497,11 @@
       <div class="side-panel" id="memos-panel" style="display:none">
         <h3>Voice memos</h3>
         <div id="memo-list"></div>
+        <form class="add-link-form" id="add-memo-form">
+          <input type="text" id="memo-text" placeholder="Type a memo…" required />
+          <button type="submit">Add memo</button>
+        </form>
+        <p class="panel-status" id="memo-status"></p>
       </div>
 
       <div class="publish-box">
@@ -991,9 +996,10 @@
       container.innerHTML = "<p class='panel-empty'>Loading…</p>";
 
       try {
-        // At root: show today's memos. Inside a folder: search by folder name.
+        // At root: show today's memos. Inside a folder: match folder name
+        // against transcript or tags.
         const url = folder
-          ? `${WORKER_URL}/memos?q=${encodeURIComponent(folder)}`
+          ? `${WORKER_URL}/memos?folder=${encodeURIComponent(folder)}`
           : `${WORKER_URL}/memos?today=1`;
         const res = await fetch(url, { headers: { Authorization: `Bearer ${session}` } });
         if (res.status === 401) {
@@ -1043,6 +1049,31 @@
         container.appendChild(div);
       }
     }
+
+    document.getElementById("add-memo-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const session = memoSession();
+      if (!session) return;
+      const text = document.getElementById("memo-text").value.trim();
+      const status = document.getElementById("memo-status");
+      status.textContent = "Saving…";
+      status.className = "panel-status";
+      try {
+        const res = await fetch(`${WORKER_URL}/memos`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ session, transcript: text, tags: currentFolder || "" }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) { status.className = "panel-status err"; status.textContent = data.error || "Could not save."; return; }
+        document.getElementById("memo-text").value = "";
+        status.textContent = "";
+        loadMemos(currentFolder);
+      } catch {
+        status.className = "panel-status err";
+        status.textContent = "Could not reach the service.";
+      }
+    });
 
     render();
   </script>

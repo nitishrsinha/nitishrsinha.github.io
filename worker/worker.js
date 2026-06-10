@@ -6,6 +6,8 @@
  * POST /upload  {"code": "123456", "filename": "paper.html", "content": "<html>..."}
  *                 -> encrypts content in StatiCrypt format with STATICRYPT_KEY and
  *                    commits it to private/<filename> on GitHub. {"ok": true, ...}
+ * POST /delete  {"code": "123456", "filename": "paper.html"}
+ *                 -> removes private/<filename> from the repo. {"ok": true, ...}
  *
  * Secrets (set via `wrangler secret put`):
  *   TOTP_SECRET    - base32 TOTP secret (the one behind the authenticator QR code)
@@ -173,6 +175,22 @@ async function githubRequest(env, method, path, body) {
   });
 }
 
+function isValidFilename(filename) {
+  return (
+    typeof filename === "string" &&
+    /^[A-Za-z0-9][A-Za-z0-9._-]{0,80}\.html$/.test(filename) &&
+    filename !== "index.html"
+  );
+}
+
+/** Look up the blob sha of private/<filename>; undefined if it doesn't exist. */
+async function getFileSha(env, apiPath, branch) {
+  const res = await githubRequest(env, "GET", `${apiPath}?ref=${branch}`);
+  if (res.status === 200) return (await res.json()).sha;
+  if (res.status === 404) return undefined;
+  throw new Error(`GitHub lookup failed (${res.status})`);
+}
+
 async function handleUpload(env, request, corsHeaders) {
   if (!env.GITHUB_TOKEN) {
     return json({ error: "GITHUB_TOKEN secret not configured" }, 500, corsHeaders);
@@ -190,11 +208,7 @@ async function handleUpload(env, request, corsHeaders) {
     return json({ error: auth.error }, auth.status, corsHeaders);
   }
 
-  if (
-    typeof filename !== "string" ||
-    !/^[A-Za-z0-9][A-Za-z0-9._-]{0,80}\.html$/.test(filename) ||
-    filename === "index.html"
-  ) {
+  if (!isValidFilename(filename)) {
     return json(
       { error: "filename must be a simple .html name (and not index.html)" },
       400,
@@ -218,11 +232,10 @@ async function handleUpload(env, request, corsHeaders) {
 
   // existing file? need its sha to update
   let sha;
-  const getRes = await githubRequest(env, "GET", `${apiPath}?ref=${branch}`);
-  if (getRes.status === 200) {
-    sha = (await getRes.json()).sha;
-  } else if (getRes.status !== 404) {
-    return json({ error: `GitHub lookup failed (${getRes.status})` }, 502, corsHeaders);
+  try {
+    sha = await getFileSha(env, apiPath, branch);
+  } catch (err) {
+    return json({ error: err.message }, 502, corsHeaders);
   }
 
   const putRes = await githubRequest(env, "PUT", apiPath, {
@@ -248,6 +261,71 @@ async function handleUpload(env, request, corsHeaders) {
       updated: Boolean(sha),
       commit: result.commit && result.commit.sha,
       note: "GitHub Pages usually publishes within a minute or two",
+    },
+    200,
+    corsHeaders
+  );
+}
+
+async function handleDelete(env, request, corsHeaders) {
+  if (!env.GITHUB_TOKEN) {
+    return json({ error: "GITHUB_TOKEN secret not configured" }, 500, corsHeaders);
+  }
+
+  let code, filename;
+  try {
+    ({ code, filename } = await request.json());
+  } catch {
+    return json({ error: "invalid JSON body" }, 400, corsHeaders);
+  }
+
+  const auth = await authenticate(env, request, code);
+  if (!auth.ok) {
+    return json({ error: auth.error }, auth.status, corsHeaders);
+  }
+
+  if (!isValidFilename(filename)) {
+    return json(
+      { error: "filename must be a simple .html name (and not index.html)" },
+      400,
+      corsHeaders
+    );
+  }
+
+  const repo = env.GITHUB_REPO || "nitishrsinha/nitishrsinha.github.io";
+  const branch = env.GITHUB_BRANCH || "main";
+  const apiPath = `/repos/${repo}/contents/private/${filename}`;
+
+  let sha;
+  try {
+    sha = await getFileSha(env, apiPath, branch);
+  } catch (err) {
+    return json({ error: err.message }, 502, corsHeaders);
+  }
+  if (!sha) {
+    return json({ error: "file not found" }, 404, corsHeaders);
+  }
+
+  const delRes = await githubRequest(env, "DELETE", apiPath, {
+    message: `Remove protected document: ${filename}`,
+    sha,
+    branch,
+  });
+  if (!delRes.ok) {
+    const detail = await delRes.text();
+    return json(
+      { error: `GitHub delete failed (${delRes.status}): ${detail.slice(0, 200)}` },
+      502,
+      corsHeaders
+    );
+  }
+
+  const result = await delRes.json();
+  return json(
+    {
+      ok: true,
+      path: `private/${filename}`,
+      commit: result.commit && result.commit.sha,
     },
     200,
     corsHeaders
@@ -298,6 +376,9 @@ export default {
     const url = new URL(request.url);
     if (url.pathname === "/upload") {
       return handleUpload(env, request, corsHeaders);
+    }
+    if (url.pathname === "/delete") {
+      return handleDelete(env, request, corsHeaders);
     }
 
     let code;

@@ -62,7 +62,8 @@ secrets/bindings are present.
   fresh code (each code works once), submit. The worker encrypts, commits, and
   the document appears in the list; the page itself is live when GitHub Pages
   rebuilds (a minute or two).
-- **Remove:** delete the file from `private/` in the repo (GitHub web UI works).
+- **Remove:** click "delete" next to the document in the gate page and confirm
+  with a fresh code. (Deleting from `private/` in the repo works too.)
 
 ## Recovery
 

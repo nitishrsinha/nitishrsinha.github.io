@@ -185,6 +185,23 @@
     }
     .doc-list a:hover { text-decoration: underline; }
 
+    .doc-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .doc-delete {
+      background: none;
+      border: 0;
+      color: #b02a37;
+      font-size: 14px;
+      cursor: pointer;
+      padding: 2px 6px;
+    }
+    .doc-delete:hover { text-decoration: underline; }
+
     .disclaimer {
       background-color: #fff3cd;
       border: 1px solid #ffeaa7;
@@ -258,6 +275,7 @@
     <!-- Unlocked: document list + publishing -->
     <div id="unlocked-view" class="hidden">
       <ul class="doc-list" id="doc-list"></ul>
+      <p class="status-msg" id="doc-msg"></p>
 
       <div class="publish-box">
         <h3>Publish a document</h3>
@@ -342,11 +360,45 @@
           const a = document.createElement("a");
           a.href = doc.name;
           a.textContent = doc.name.replace(/\.html$/, "").replace(/[_-]+/g, " ");
+          const del = document.createElement("button");
+          del.className = "doc-delete";
+          del.textContent = "delete";
+          del.addEventListener("click", () => deleteDoc(doc.name));
           li.appendChild(a);
+          li.appendChild(del);
           list.appendChild(li);
         }
       } catch {
         list.innerHTML = "<li>Could not load the document list (GitHub API unreachable).</li>";
+      }
+    }
+
+    async function deleteDoc(filename) {
+      const docMsg = document.getElementById("doc-msg");
+      const code = window.prompt(
+        `Delete "${filename}" from the site?\n\nEnter a fresh 6-digit code to confirm:`
+      );
+      if (code === null) return;
+      docMsg.className = "status-msg";
+      docMsg.textContent = "Deleting…";
+      try {
+        const res = await fetch(WORKER_URL + "/delete", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code: code.trim(), filename }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          docMsg.className = "status-msg err";
+          docMsg.textContent = body.error || `Delete failed (${res.status}).`;
+          return;
+        }
+        docMsg.className = "status-msg ok";
+        docMsg.textContent = `Removed ${body.path}. Gone from the site once GitHub Pages rebuilds.`;
+        loadDocList();
+      } catch {
+        docMsg.className = "status-msg err";
+        docMsg.textContent = "Could not reach the publishing service.";
       }
     }
 

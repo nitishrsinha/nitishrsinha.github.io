@@ -4,10 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Protected Research Materials - Nitish Ranjan Sinha</title>
-  <meta name="description" content="Password-protected research materials and working papers" />
+  <meta name="description" content="Protected research materials and working papers" />
+  <meta name="robots" content="noindex" />
 
   <style>
-    /* ---- Site-wide look (matches your screenshots) ---- */
+    /* ---- Site-wide look ---- */
     :root {
       --blue: #0b5bd3;
       --text: #111;
@@ -68,24 +69,79 @@
       margin: 0 0 34px;
     }
 
-    /* ---- Your existing “paper” components (kept, but made left-aligned) ---- */
-    .paper-meta {
-      color: #6c757d;
-      font-size: 0.95em;
-      margin-top: 10px;
-      font-style: italic;
+    /* ---- TOTP unlock form ---- */
+    .unlock-box {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 28px;
+      max-width: 420px;
+      margin: 0 0 34px;
     }
 
-    .paper-meta .status {
-      display: inline-block;
-      background-color: #fff3cd;
-      color: #856404;
-      padding: 4px 12px;
-      border-radius: 4px;
-      font-style: normal;
+    .unlock-box label {
+      display: block;
       font-weight: 600;
-      margin-top: 10px;
+      margin-bottom: 10px;
     }
+
+    .unlock-box input[type="text"] {
+      font-size: 28px;
+      letter-spacing: 8px;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      border: 1px solid var(--rule-thick);
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .unlock-box button,
+    .lock-button {
+      background: var(--blue);
+      color: #fff;
+      border: 0;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 22px;
+      cursor: pointer;
+    }
+    .unlock-box button:hover, .lock-button:hover { opacity: 0.9; }
+    .unlock-box button:disabled { opacity: 0.5; cursor: wait; }
+
+    .lock-button {
+      background: #6c757d;
+      margin-top: 26px;
+    }
+
+    .error-msg {
+      color: #b02a37;
+      margin: 10px 0 0;
+      min-height: 1.4em;
+    }
+
+    .hidden { display: none; }
+
+    /* ---- Document list ---- */
+    .doc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px;
+    }
+
+    .doc-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .doc-list a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 20px;
+    }
+    .doc-list a:hover { text-decoration: underline; }
 
     .disclaimer {
       background-color: #fff3cd;
@@ -112,7 +168,6 @@
     }
     .navigation a:hover { text-decoration: underline; }
 
-    /* ---- Footer line from your second screenshot ---- */
     .footer-rule {
       height: 6px;
       background: var(--rule-thick);
@@ -137,43 +192,136 @@
 
 <body>
   <div class="container">
-    <!-- Top header like your screenshot -->
     <header class="site-header">
       <h1 class="site-title"><a href="../index.html">Nitish Ranjan Sinha</a></h1>
       <hr class="thin-rule" />
     </header>
 
-    <!-- Big page title + description like your screenshot -->
     <h2 class="page-title">Protected Research Materials</h2>
     <p class="page-desc">
-      This directory contains password-protected research materials and working papers for Nitish Ranjan Sinha’s academic website.
+      This directory contains protected research materials and working papers. Access requires a one-time code.
     </p>
 
-    <!-- Keep your “working draft” meta (optional; remove if you don’t want it here) -->
-    <div class="paper-meta">
-      Last Updated: December 2025<br />
-      Author: Nitish Ranjan Sinha<br />
-      <span class="status">WORKING DRAFT</span>
+    <!-- Locked: TOTP code entry -->
+    <div id="locked-view" class="unlock-box hidden">
+      <form id="unlock-form">
+        <label for="totp-code">Enter the 6-digit code from your authenticator app</label>
+        <input type="text" id="totp-code" inputmode="numeric" autocomplete="one-time-code"
+               pattern="[0-9]{6}" maxlength="6" placeholder="••••••" required />
+        <button type="submit" id="unlock-button">Unlock</button>
+        <p class="error-msg" id="error-msg"></p>
+      </form>
     </div>
 
-    <!-- Your confidentiality notice -->
+    <!-- Unlocked: document list -->
+    <div id="unlocked-view" class="hidden">
+      <ul class="doc-list" id="doc-list"></ul>
+      <button class="lock-button" id="lock-button">Lock</button>
+    </div>
+
     <div class="disclaimer">
       <strong>Confidentiality Notice:</strong>
       This document contains preliminary research materials and working notes. The findings are subject to revision and should not be cited or distributed without permission. Views expressed are those of the author and do not represent the official position of the Federal Reserve Board or the Federal Reserve System.
     </div>
 
-    <!-- Your navigation links -->
     <div class="navigation">
-      <a href="../index.html">← Back to Main Site</a>
+      <a href="../index.html">&larr; Back to Main Site</a>
     </div>
 
-    <!-- Footer bar + line like your second screenshot -->
     <hr class="footer-rule" />
     <div class="footer-meta">
-      <strong>Last Updated:</strong> December 2025
+      <strong>Last Updated:</strong> June 2026
       <strong>Maintained by:</strong> Nitish Ranjan Sinha
-      <strong>License:</strong> Content is protected; scripts are provided as-is for personal use
     </div>
   </div>
+
+  <script>
+    // Set after `wrangler deploy` prints the URL of the research-gate worker.
+    const WORKER_URL = "https://research-gate.nitish-ranjan.workers.dev";
+
+    // Edit titles/files as materials change. Files must be StatiCrypt-encrypted
+    // with the password whose derived key is stored in the worker.
+    const DOCS = [
+      { file: "insight_replication.html", title: "Insight Replication" },
+      { file: "index_opus.html", title: "Index (Opus)" },
+      { file: "index_sonnet.html", title: "Index (Sonnet)" },
+      { file: "indexgemini.html", title: "Index (Gemini)" },
+      { file: "init.html", title: "Init" },
+    ];
+
+    // StatiCrypt's own remember-me storage keys: writing the derived key here
+    // makes every encrypted page on this origin auto-decrypt on load.
+    const PASSPHRASE_KEY = "staticrypt_passphrase";
+    const EXPIRATION_KEY = "staticrypt_expiration";
+
+    const lockedView = document.getElementById("locked-view");
+    const unlockedView = document.getElementById("unlocked-view");
+    const errorMsg = document.getElementById("error-msg");
+    const unlockButton = document.getElementById("unlock-button");
+
+    function render() {
+      const unlocked = Boolean(localStorage.getItem(PASSPHRASE_KEY));
+      lockedView.classList.toggle("hidden", unlocked);
+      unlockedView.classList.toggle("hidden", !unlocked);
+      if (unlocked) {
+        const list = document.getElementById("doc-list");
+        list.innerHTML = "";
+        for (const doc of DOCS) {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = doc.file;
+          a.textContent = doc.title;
+          li.appendChild(a);
+          list.appendChild(li);
+        }
+      } else {
+        document.getElementById("totp-code").focus();
+      }
+    }
+
+    document.getElementById("unlock-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorMsg.textContent = "";
+
+      const code = document.getElementById("totp-code").value.trim();
+      if (!/^\d{6}$/.test(code)) {
+        errorMsg.textContent = "Please enter the 6-digit code.";
+        return;
+      }
+      if (WORKER_URL.includes("YOUR-SUBDOMAIN")) {
+        errorMsg.textContent = "Setup incomplete: WORKER_URL is not configured in this page.";
+        return;
+      }
+
+      unlockButton.disabled = true;
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          errorMsg.textContent = body.error || `Verification failed (${res.status}).`;
+          return;
+        }
+        localStorage.setItem(PASSPHRASE_KEY, body.key);
+        render();
+      } catch {
+        errorMsg.textContent = "Could not reach the verification service.";
+      } finally {
+        unlockButton.disabled = false;
+        document.getElementById("totp-code").value = "";
+      }
+    });
+
+    document.getElementById("lock-button").addEventListener("click", () => {
+      localStorage.removeItem(PASSPHRASE_KEY);
+      localStorage.removeItem(EXPIRATION_KEY);
+      render();
+    });
+
+    render();
+  </script>
 </body>
 </html>

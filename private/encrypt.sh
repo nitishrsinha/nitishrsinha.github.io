@@ -118,8 +118,20 @@ if [[ "$HAS_PANDOC" -eq 1 ]]; then
   fi
 fi
 
-# Find HTML files to encrypt (excluding already-encrypted-named files)
-mapfile -t HTML_FILES < <(find . -maxdepth 1 -type f -name "*.html" ! -name "*.encrypted.html" -printf "%f\n" | sort)
+# Find HTML files to encrypt.
+# Excluded: index.html (the TOTP gate page - must stay unencrypted) and any
+# file that is already StatiCrypt output (re-encrypting would double-wrap it).
+mapfile -t CANDIDATE_FILES < <(find . -maxdepth 1 -type f -name "*.html" ! -name "*.encrypted.html" ! -name "index.html" -printf "%f\n" | sort)
+
+HTML_FILES=()
+for file in "${CANDIDATE_FILES[@]}"; do
+  if grep -q 'staticrypt-html' "$file"; then
+    echo -e "${YELLOW}⚠ Skipping ${file}: already StatiCrypt-encrypted.${NC}"
+    echo -e "${YELLOW}  To re-encrypt it, restore the plaintext original first (see .backups/).${NC}"
+  else
+    HTML_FILES+=("$file")
+  fi
+done
 NUM_FILES=${#HTML_FILES[@]}
 
 if [[ "$NUM_FILES" -eq 0 ]]; then
@@ -135,26 +147,42 @@ for file in "${HTML_FILES[@]}"; do
 done
 echo ""
 
-# Prompt for password
-echo -e "${YELLOW}Enter the password for encryption:${NC}"
-read -rs PASSWORD
-echo ""
+# Password selection:
+#   STATICRYPT_PASSWORD=auto      generate a strong random password (recommended;
+#                                 you never need to know it - the TOTP worker stores the derived key)
+#   STATICRYPT_PASSWORD=<value>   use that password
+#   unset                         prompt interactively (legacy behavior)
+if [[ "${STATICRYPT_PASSWORD:-}" == "auto" ]]; then
+  PASSWORD=$(head -c 24 /dev/urandom | base64 | tr -d '=+/')
+  echo -e "${GREEN}✓ Generated random password (shown once; you do not need to keep it):${NC}"
+  echo -e "  ${PASSWORD}"
+elif [[ -n "${STATICRYPT_PASSWORD:-}" ]]; then
+  PASSWORD="$STATICRYPT_PASSWORD"
+  echo -e "${GREEN}✓ Using password from STATICRYPT_PASSWORD${NC}"
+else
+  echo -e "${YELLOW}Enter the password for encryption (or rerun with STATICRYPT_PASSWORD=auto):${NC}"
+  read -rs PASSWORD
+  echo ""
 
-# Confirm password
-echo -e "${YELLOW}Confirm password:${NC}"
-read -rs PASSWORD_CONFIRM
-echo ""
+  echo -e "${YELLOW}Confirm password:${NC}"
+  read -rs PASSWORD_CONFIRM
+  echo ""
 
-if [[ "$PASSWORD" != "$PASSWORD_CONFIRM" ]]; then
-  echo -e "${RED}ERROR: Passwords do not match!${NC}"
-  exit 1
+  if [[ "$PASSWORD" != "$PASSWORD_CONFIRM" ]]; then
+    echo -e "${RED}ERROR: Passwords do not match!${NC}"
+    exit 1
+  fi
+  if [[ -z "$PASSWORD" ]]; then
+    echo -e "${RED}ERROR: Password cannot be empty!${NC}"
+    exit 1
+  fi
+
+  echo -e "${GREEN}✓ Password confirmed${NC}"
 fi
-if [[ -z "$PASSWORD" ]]; then
-  echo -e "${RED}ERROR: Password cannot be empty!${NC}"
-  exit 1
-fi
 
-echo -e "${GREEN}✓ Password confirmed${NC}"
+# staticrypt itself reads STATICRYPT_PASSWORD from the environment, which would
+# override the -p flag (and use the literal string "auto"). Clear it.
+unset STATICRYPT_PASSWORD
 echo ""
 echo -e "${BLUE}Starting encryption process...${NC}"
 echo ""
@@ -217,11 +245,25 @@ echo -e "${BLUE}Backups saved in: .backups/${NC}"
 echo ""
 
 if [[ "$ENCRYPTED_COUNT" -gt 0 ]]; then
+  # Derive the StatiCrypt key for the TOTP worker (see ../worker/README.md)
+  if command -v node &>/dev/null && [[ -f "$SCRIPT_DIR/../worker/derive-key.mjs" && -f .staticrypt.json ]]; then
+    DERIVED_KEY=$(node "$SCRIPT_DIR/../worker/derive-key.mjs" "$PASSWORD")
+    echo -e "${BLUE}Derived StatiCrypt key (this is what the TOTP worker hands out):${NC}"
+    echo -e "  ${DERIVED_KEY}"
+    echo ""
+    echo -e "${YELLOW}Store it in the worker:${NC}"
+    echo -e "  cd ../worker && echo -n '${DERIVED_KEY}' | wrangler secret put STATICRYPT_KEY"
+    echo ""
+  else
+    echo -e "${YELLOW}⚠ Could not derive the TOTP worker key (need node, ../worker/derive-key.mjs, and .staticrypt.json).${NC}"
+    echo ""
+  fi
+
   echo -e "${YELLOW}IMPORTANT NOTES:${NC}"
   echo -e "1. Original files have been backed up to .backups/"
   echo -e "2. Commit + push the encrypted HTML files (otherwise GitHub will still show plaintext)"
-  echo -e "3. If .staticrypt.json appears, consider committing it (keeps salts stable between runs)"
-  echo -e "4. ${RED}Keep the password secure - there is no recovery if lost!${NC}"
+  echo -e "3. Commit .staticrypt.json - the salt must stay stable so one key opens all files"
+  echo -e "4. After changing the password, update the STATICRYPT_KEY worker secret (command above)"
   echo ""
   echo -e "${GREEN}Next steps:${NC}"
   echo -e "  git status"

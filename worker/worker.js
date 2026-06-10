@@ -8,6 +8,9 @@
  *                    commits it to private/<filename> on GitHub. {"ok": true, ...}
  * POST /delete  {"code": "123456", "filename": "paper.html"}
  *                 -> removes private/<filename> from the repo. {"ok": true, ...}
+ * GET  /fci-g   -> the Fed's FCI-G monthly CSV, proxied with CORS headers and
+ *                  edge-cached for a day (the Fed doesn't serve CORS, and the
+ *                  public CORS proxies the calculator used have all died).
  *
  * Secrets (set via `wrangler secret put`):
  *   TOTP_SECRET    - base32 TOTP secret (the one behind the authenticator QR code)
@@ -32,6 +35,9 @@ const MAX_FAILS_PER_IP = 5; // per FAIL_TTL_SECONDS
 const MAX_FAILS_GLOBAL = 10; // per FAIL_TTL_SECONDS, across all IPs
 const FAIL_TTL_SECONDS = 900;
 const MAX_CONTENT_BYTES = 25 * 1024 * 1024;
+
+const FCI_G_CSV_URL =
+  "https://www.federalreserve.gov/econres/notes/feds-notes/fci_g_public_monthly_3yr.csv";
 
 const BASE32_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
 
@@ -363,6 +369,25 @@ export default {
       return new Response(null, { status: 204, headers: corsHeaders });
     }
 
+    const url = new URL(request.url);
+
+    if (request.method === "GET" && url.pathname === "/fci-g") {
+      const res = await fetch(FCI_G_CSV_URL, {
+        cf: { cacheTtl: 86400, cacheEverything: true },
+      });
+      if (!res.ok) {
+        return json({ error: `Fed source returned ${res.status}` }, 502, corsHeaders);
+      }
+      return new Response(res.body, {
+        status: 200,
+        headers: {
+          "Content-Type": "text/csv",
+          "Cache-Control": "public, max-age=21600",
+          ...corsHeaders,
+        },
+      });
+    }
+
     if (request.method === "GET") {
       // status endpoint for setup debugging; reveals configuration state only
       return json(
@@ -392,7 +417,6 @@ export default {
       return json({ error: "RATE_LIMIT KV namespace not bound" }, 500, corsHeaders);
     }
 
-    const url = new URL(request.url);
     if (url.pathname === "/upload") {
       return handleUpload(env, request, corsHeaders);
     }

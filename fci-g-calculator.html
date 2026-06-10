@@ -259,21 +259,17 @@
         async function fetchLiveData() {
             const fedUrl = 'https://www.federalreserve.gov/econres/notes/feds-notes/fci_g_public_monthly_3yr.csv';
             
-            // Try multiple CORS proxy methods
+            // Primary: own Cloudflare Worker (server-side fetch, day-long edge cache).
+            // Backup: a public CORS proxy, in case the worker is down.
             const proxyUrls = [
-                `https://api.allorigins.win/raw?url=${encodeURIComponent(fedUrl)}`,
-                `https://cors-anywhere.herokuapp.com/${fedUrl}`,
-                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(fedUrl)}`
+                'https://research-gate.nitish-ranjan.workers.dev/fci-g',
+                `https://api.allorigins.win/raw?url=${encodeURIComponent(fedUrl)}`
             ];
-            
+
             for (let proxyUrl of proxyUrls) {
                 try {
                     console.log('Trying proxy:', proxyUrl);
-                    const response = await fetch(proxyUrl, {
-                        headers: {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                        }
-                    });
+                    const response = await fetch(proxyUrl);
                     
                     if (response.ok) {
                         const text = await response.text();

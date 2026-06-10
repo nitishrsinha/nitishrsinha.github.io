@@ -202,6 +202,38 @@
     }
     .doc-delete:hover { text-decoration: underline; }
 
+    .doc-meta-right {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .doc-date {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .sort-bar {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .sort-toggle {
+      background: none;
+      border: 0;
+      color: var(--blue);
+      font-size: 14px;
+      cursor: pointer;
+      padding: 0 2px;
+    }
+    .sort-toggle.active {
+      color: var(--text);
+      font-weight: 700;
+      cursor: default;
+    }
+
     .disclaimer {
       background-color: #fff3cd;
       border: 1px solid #ffeaa7;
@@ -274,6 +306,10 @@
 
     <!-- Unlocked: document list + publishing -->
     <div id="unlocked-view" class="hidden">
+      <div class="sort-bar">Sort by:
+        <button class="sort-toggle active" id="sort-date">date</button> ·
+        <button class="sort-toggle" id="sort-name">name</button>
+      </div>
       <ul class="doc-list" id="doc-list"></ul>
       <p class="status-msg" id="doc-msg"></p>
 
@@ -339,6 +375,12 @@
       }
     }
 
+    const GITHUB_COMMITS_URL =
+      "https://api.github.com/repos/nitishrsinha/nitishrsinha.github.io/commits";
+
+    let docList = [];
+    let sortMode = "date";
+
     async function loadDocList() {
       const list = document.getElementById("doc-list");
       list.innerHTML = "<li>Loading…</li>";
@@ -346,32 +388,76 @@
         const res = await fetch(GITHUB_CONTENTS_URL);
         if (!res.ok) throw new Error(res.status);
         const entries = await res.json();
-        const docs = entries.filter(
+        docList = entries.filter(
           (e) => e.type === "file" && e.name.endsWith(".html") && e.name !== "index.html"
         );
-        list.innerHTML = "";
-        if (docs.length === 0) {
-          const li = document.createElement("li");
-          li.textContent = "No documents published yet.";
-          list.appendChild(li);
-        }
-        for (const doc of docs) {
-          const li = document.createElement("li");
-          const a = document.createElement("a");
-          a.href = doc.name;
-          a.textContent = doc.name.replace(/\.html$/, "").replace(/[_-]+/g, " ");
-          const del = document.createElement("button");
-          del.className = "doc-delete";
-          del.textContent = "delete";
-          del.addEventListener("click", () => deleteDoc(doc.name));
-          li.appendChild(a);
-          li.appendChild(del);
-          list.appendChild(li);
-        }
+        // last-commit date per file (best effort; sorts to the end if unavailable)
+        await Promise.all(
+          docList.map(async (doc) => {
+            try {
+              const r = await fetch(
+                `${GITHUB_COMMITS_URL}?path=private/${encodeURIComponent(doc.name)}&per_page=1`
+              );
+              if (r.ok) {
+                const commits = await r.json();
+                doc.date = commits[0] && commits[0].commit.committer.date;
+              }
+            } catch {}
+          })
+        );
+        renderDocList();
       } catch {
         list.innerHTML = "<li>Could not load the document list (GitHub API unreachable).</li>";
       }
     }
+
+    function renderDocList() {
+      const list = document.getElementById("doc-list");
+      const docs = [...docList].sort((a, b) =>
+        sortMode === "date"
+          ? (b.date || "").localeCompare(a.date || "") // newest first
+          : a.name.localeCompare(b.name)
+      );
+      list.innerHTML = "";
+      if (docs.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "No documents published yet.";
+        list.appendChild(li);
+      }
+      for (const doc of docs) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = doc.name;
+        a.textContent = doc.name.replace(/\.html$/, "").replace(/[_-]+/g, " ");
+        const right = document.createElement("span");
+        right.className = "doc-meta-right";
+        if (doc.date) {
+          const date = document.createElement("span");
+          date.className = "doc-date";
+          date.textContent = new Date(doc.date).toLocaleDateString(undefined, {
+            year: "numeric", month: "short", day: "numeric",
+          });
+          right.appendChild(date);
+        }
+        const del = document.createElement("button");
+        del.className = "doc-delete";
+        del.textContent = "delete";
+        del.addEventListener("click", () => deleteDoc(doc.name));
+        right.appendChild(del);
+        li.appendChild(a);
+        li.appendChild(right);
+        list.appendChild(li);
+      }
+    }
+
+    function setSortMode(mode) {
+      sortMode = mode;
+      document.getElementById("sort-date").classList.toggle("active", mode === "date");
+      document.getElementById("sort-name").classList.toggle("active", mode === "name");
+      renderDocList();
+    }
+    document.getElementById("sort-date").addEventListener("click", () => setSortMode("date"));
+    document.getElementById("sort-name").addEventListener("click", () => setSortMode("name"));
 
     async function deleteDoc(filename) {
       const docMsg = document.getElementById("doc-msg");

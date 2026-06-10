@@ -878,14 +878,21 @@
       const panel = document.getElementById("links-panel");
       const list = document.getElementById("link-list");
       const session = memoSession();
-      if (!session) { panel.style.display = "none"; return; }
       panel.style.display = "";
+      if (!session) {
+        list.innerHTML = "<li><span class='panel-empty'>Session expired — lock and re-enter your code to load links.</span></li>";
+        return;
+      }
       list.innerHTML = "<li style='color:#888;font-size:14px'>Loading…</li>";
       try {
         const res = await fetch(
           `${WORKER_URL}/links?folder=${encodeURIComponent(folder)}`,
           { headers: { Authorization: `Bearer ${session}` } }
         );
+        if (res.status === 401) {
+          list.innerHTML = "<li><span class='panel-empty'>Session expired — lock and re-enter your code to load links.</span></li>";
+          return;
+        }
         const data = await res.json().catch(() => ({}));
         renderLinks(data.links || []);
       } catch {
@@ -976,8 +983,11 @@
       const panel = document.getElementById("memos-panel");
       const container = document.getElementById("memo-list");
       const session = memoSession();
-      if (!session) { panel.style.display = "none"; return; }
       panel.style.display = "";
+      if (!session) {
+        container.innerHTML = "<p class='panel-empty'>Session expired — lock and re-enter your code to load voice memos.</p>";
+        return;
+      }
       container.innerHTML = "<p class='panel-empty'>Loading…</p>";
 
       try {
@@ -986,6 +996,10 @@
           ? `${WORKER_URL}/memos?q=${encodeURIComponent(folder)}`
           : `${WORKER_URL}/memos?today=1`;
         const res = await fetch(url, { headers: { Authorization: `Bearer ${session}` } });
+        if (res.status === 401) {
+          container.innerHTML = "<p class='panel-empty'>Session expired — lock and re-enter your code to load voice memos.</p>";
+          return;
+        }
         const data = await res.json().catch(() => ({}));
         renderMemos(data.memos || [], folder);
       } catch {

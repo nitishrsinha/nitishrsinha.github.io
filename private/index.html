@@ -336,7 +336,7 @@
       <div class="publish-box">
         <h3>Publish a document</h3>
         <form id="publish-form">
-          <input type="file" id="publish-file" accept=".html,.htm" required />
+          <input type="file" id="publish-file" required />
           <input type="text" id="publish-filename" placeholder="filename.html"
                  pattern="[A-Za-z0-9][A-Za-z0-9._-]*\.html" required />
           <input type="text" id="publish-folder" placeholder="folder (optional)"
@@ -602,9 +602,54 @@
 
     publishFile.addEventListener("change", () => {
       if (publishFile.files[0] && !publishFilename.value) {
-        publishFilename.value = publishFile.files[0].name.replace(/\.htm$/, ".html");
+        const name = publishFile.files[0].name;
+        // non-HTML files get wrapped in an HTML page, so the published name
+        // keeps the original (e.g. paper.pdf -> paper.pdf.html)
+        publishFilename.value = /\.html?$/i.test(name)
+          ? name.replace(/\.htm$/i, ".html")
+          : name.replace(/[^A-Za-z0-9._-]+/g, "_") + ".html";
       }
     });
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    function fileToDataUri(file) {
+      return new Promise((resolve, reject) => {
+        const r = new FileReader();
+        r.onload = () => resolve(r.result);
+        r.onerror = () => reject(r.error);
+        r.readAsDataURL(file);
+      });
+    }
+
+    // Anything that isn't already HTML gets wrapped in a self-contained HTML
+    // page, so the worker/encryption pipeline only ever sees HTML.
+    async function buildContent(file) {
+      const name = file.name;
+      if (/\.html?$/i.test(name)) {
+        return file.text();
+      }
+      if (/\.(md|txt|csv|log)$/i.test(name)) {
+        const text = await file.text();
+        return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(name)}</title>` +
+          `<style>body{font-family:Georgia,serif;max-width:760px;margin:40px auto;padding:0 20px;` +
+          `line-height:1.6;white-space:pre-wrap;overflow-wrap:break-word}</style></head><body>` +
+          escapeHtml(text) + `</body></html>`;
+      }
+      const dataUri = await fileToDataUri(file);
+      const link = `<a download="${escapeHtml(name)}" href="${dataUri}">Download ${escapeHtml(name)}</a>`;
+      if (/\.pdf$/i.test(name)) {
+        return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(name)}</title>` +
+          `<style>html,body{margin:0;height:100%}</style></head><body>` +
+          `<object data="${dataUri}" type="application/pdf" style="width:100%;height:100%">` +
+          `<p style="font-family:sans-serif;padding:40px">Preview unavailable here. ${link}</p>` +
+          `</object></body></html>`;
+      }
+      return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(name)}</title></head>` +
+        `<body style="font-family:sans-serif;padding:60px"><p>${link}</p></body></html>`;
+    }
 
     document.getElementById("publish-form").addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -620,7 +665,7 @@
       publishButton.disabled = true;
       publishMsg.textContent = "Encrypting and publishing…";
       try {
-        const content = await file.text();
+        const content = await buildContent(file);
         const res = await fetch(WORKER_URL + "/upload", {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -999,7 +999,7 @@
       panelTitle.textContent = folder ? "Voice memos — " + folder : "Voice memos — today";
       container.innerHTML = "";
       if (!memos.length) {
-        container.innerHTML = "<p class='panel-empty'>No voice memos" + (folder ? " tagged "" + escapeHtml(folder) + """ : " recorded today") + ".</p>";
+        container.innerHTML = "<p class='panel-empty'>No voice memos" + (folder ? " tagged “" + escapeHtml(folder) + "”" : " recorded today") + ".</p>";
         return;
       }
       for (const memo of memos) {

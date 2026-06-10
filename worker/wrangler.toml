@@ -18,3 +18,9 @@ GITHUB_BRANCH = "main"
 [[kv_namespaces]]
 binding = "RATE_LIMIT"
 id = "d609d0fe8a30401ea162ad07ab24d961"
+
+# Worker-to-worker calls over workers.dev URLs are blocked (error 1042);
+# the voicememos worker must be reached through a service binding.
+[[services]]
+binding = "VOICE"
+service = "voicememos"

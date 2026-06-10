@@ -377,9 +377,11 @@ async function verifyMemoSession(env, token) {
 }
 
 async function handleMemoOrLink(env, request, url, corsHeaders) {
-  if (!env.VOICE_MEMO_URL || !env.VOICE_EXTERNAL_KEY) {
+  if (!env.VOICE || !env.VOICE_EXTERNAL_KEY) {
     return json({ error: "voice memo service not configured" }, 503, corsHeaders);
   }
+  // Service binding: the hostname is ignored, requests go to the bound worker.
+  const voiceFetch = (u, init) => env.VOICE.fetch(u, init);
 
   // Session token comes from Authorization header for GET, from body for POST/DELETE
   let sessionToken = null;
@@ -402,7 +404,7 @@ async function handleMemoOrLink(env, request, url, corsHeaders) {
     return json({ error: "invalid or expired session" }, 401, corsHeaders);
   }
 
-  const base = String(env.VOICE_MEMO_URL).replace(/\/$/, "");
+  const base = String(env.VOICE_MEMO_URL || "https://voicememos.internal").replace(/\/$/, "");
 
   if (url.pathname === "/memos" && request.method === "GET") {
     const params = new URLSearchParams();
@@ -414,7 +416,7 @@ async function handleMemoOrLink(env, request, url, corsHeaders) {
     const voiceUrl = today
       ? `${base}/api/external/memos/today`
       : `${base}/api/external/memos${params.toString() ? "?" + params.toString() : ""}`;
-    const res = await fetch(voiceUrl, {
+    const res = await voiceFetch(voiceUrl, {
       headers: { Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}` },
     });
     const data = await res.json().catch(() => ({}));
@@ -423,7 +425,7 @@ async function handleMemoOrLink(env, request, url, corsHeaders) {
 
   if (url.pathname === "/memos" && request.method === "POST") {
     const { transcript, mode, tags } = bodyForForward;
-    const res = await fetch(`${base}/api/external/memos`, {
+    const res = await voiceFetch(`${base}/api/external/memos`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}`,
@@ -438,7 +440,7 @@ async function handleMemoOrLink(env, request, url, corsHeaders) {
   if (url.pathname === "/links" && request.method === "GET") {
     const folder = String(url.searchParams.get("folder") ?? "");
     const voiceUrl = `${base}/api/external/links?folder=${encodeURIComponent(folder)}`;
-    const res = await fetch(voiceUrl, {
+    const res = await voiceFetch(voiceUrl, {
       headers: { Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}` },
     });
     const data = await res.json().catch(() => ({}));
@@ -447,7 +449,7 @@ async function handleMemoOrLink(env, request, url, corsHeaders) {
 
   if (url.pathname === "/links" && request.method === "POST") {
     const { url: linkUrl, label, folder } = bodyForForward;
-    const res = await fetch(`${base}/api/external/links`, {
+    const res = await voiceFetch(`${base}/api/external/links`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}`,
@@ -462,7 +464,7 @@ async function handleMemoOrLink(env, request, url, corsHeaders) {
   if (url.pathname === "/links" && request.method === "DELETE") {
     const { id } = bodyForForward;
     if (!id) return json({ error: "id is required" }, 400, corsHeaders);
-    const res = await fetch(`${base}/api/external/links/${encodeURIComponent(id)}`, {
+    const res = await voiceFetch(`${base}/api/external/links/${encodeURIComponent(id)}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}` },
     });

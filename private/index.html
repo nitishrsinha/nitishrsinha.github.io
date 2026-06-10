@@ -121,6 +121,48 @@
       min-height: 1.4em;
     }
 
+    /* ---- Publish form ---- */
+    .publish-box {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 22px 28px;
+      max-width: 420px;
+      margin: 30px 0 0;
+    }
+
+    .publish-box h3 { margin: 0 0 14px; }
+
+    .publish-box input[type="file"],
+    .publish-box input[type="text"] {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 16px;
+      padding: 8px;
+      border: 1px solid var(--rule-thick);
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .publish-box button {
+      background: var(--blue);
+      color: #fff;
+      border: 0;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 22px;
+      cursor: pointer;
+    }
+    .publish-box button:disabled { opacity: 0.5; cursor: wait; }
+
+    .status-msg {
+      margin: 10px 0 0;
+      min-height: 1.4em;
+    }
+    .status-msg.ok { color: #1a7f37; }
+    .status-msg.err { color: #b02a37; }
+
     .hidden { display: none; }
 
     /* ---- Document list ---- */
@@ -213,9 +255,23 @@
       </form>
     </div>
 
-    <!-- Unlocked: document list -->
+    <!-- Unlocked: document list + publishing -->
     <div id="unlocked-view" class="hidden">
       <ul class="doc-list" id="doc-list"></ul>
+
+      <div class="publish-box">
+        <h3>Publish a document</h3>
+        <form id="publish-form">
+          <input type="file" id="publish-file" accept=".html,.htm" required />
+          <input type="text" id="publish-filename" placeholder="filename.html"
+                 pattern="[A-Za-z0-9][A-Za-z0-9._-]*\.html" required />
+          <input type="text" id="publish-code" inputmode="numeric" autocomplete="one-time-code"
+                 pattern="[0-9]{6}" maxlength="6" placeholder="fresh 6-digit code" required />
+          <button type="submit" id="publish-button">Encrypt &amp; publish</button>
+          <p class="status-msg" id="publish-msg"></p>
+        </form>
+      </div>
+
       <button class="lock-button" id="lock-button">Lock</button>
     </div>
 
@@ -239,15 +295,10 @@
     // Set after `wrangler deploy` prints the URL of the research-gate worker.
     const WORKER_URL = "https://research-gate.nitish-ranjan.workers.dev";
 
-    // Edit titles/files as materials change. Files must be StatiCrypt-encrypted
-    // with the password whose derived key is stored in the worker.
-    const DOCS = [
-      { file: "insight_replication.html", title: "Insight Replication" },
-      { file: "index_opus.html", title: "Index (Opus)" },
-      { file: "index_sonnet.html", title: "Index (Sonnet)" },
-      { file: "indexgemini.html", title: "Index (Gemini)" },
-      { file: "init.html", title: "Init" },
-    ];
+    // Documents are listed live from the repo: every .html in private/ except
+    // this page. Publishing happens through the worker's /upload endpoint.
+    const GITHUB_CONTENTS_URL =
+      "https://api.github.com/repos/nitishrsinha/nitishrsinha.github.io/contents/private?ref=main";
 
     // StatiCrypt's own remember-me storage keys: writing the derived key here
     // makes every encrypted page on this origin auto-decrypt on load.
@@ -264,18 +315,38 @@
       lockedView.classList.toggle("hidden", unlocked);
       unlockedView.classList.toggle("hidden", !unlocked);
       if (unlocked) {
-        const list = document.getElementById("doc-list");
+        loadDocList();
+      } else {
+        document.getElementById("totp-code").focus();
+      }
+    }
+
+    async function loadDocList() {
+      const list = document.getElementById("doc-list");
+      list.innerHTML = "<li>Loading…</li>";
+      try {
+        const res = await fetch(GITHUB_CONTENTS_URL);
+        if (!res.ok) throw new Error(res.status);
+        const entries = await res.json();
+        const docs = entries.filter(
+          (e) => e.type === "file" && e.name.endsWith(".html") && e.name !== "index.html"
+        );
         list.innerHTML = "";
-        for (const doc of DOCS) {
+        if (docs.length === 0) {
+          const li = document.createElement("li");
+          li.textContent = "No documents published yet.";
+          list.appendChild(li);
+        }
+        for (const doc of docs) {
           const li = document.createElement("li");
           const a = document.createElement("a");
-          a.href = doc.file;
-          a.textContent = doc.title;
+          a.href = doc.name;
+          a.textContent = doc.name.replace(/\.html$/, "").replace(/[_-]+/g, " ");
           li.appendChild(a);
           list.appendChild(li);
         }
-      } else {
-        document.getElementById("totp-code").focus();
+      } catch {
+        list.innerHTML = "<li>Could not load the document list (GitHub API unreachable).</li>";
       }
     }
 
@@ -319,6 +390,60 @@
       localStorage.removeItem(PASSPHRASE_KEY);
       localStorage.removeItem(EXPIRATION_KEY);
       render();
+    });
+
+    // ---- Publishing ----
+    const publishFile = document.getElementById("publish-file");
+    const publishFilename = document.getElementById("publish-filename");
+    const publishCode = document.getElementById("publish-code");
+    const publishButton = document.getElementById("publish-button");
+    const publishMsg = document.getElementById("publish-msg");
+
+    publishFile.addEventListener("change", () => {
+      if (publishFile.files[0] && !publishFilename.value) {
+        publishFilename.value = publishFile.files[0].name.replace(/\.htm$/, ".html");
+      }
+    });
+
+    document.getElementById("publish-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      publishMsg.className = "status-msg";
+      publishMsg.textContent = "";
+
+      const file = publishFile.files[0];
+      const filename = publishFilename.value.trim();
+      const code = publishCode.value.trim();
+      if (!file) return;
+
+      publishButton.disabled = true;
+      publishMsg.textContent = "Encrypting and publishing…";
+      try {
+        const content = await file.text();
+        const res = await fetch(WORKER_URL + "/upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code, filename, content }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          publishMsg.className = "status-msg err";
+          publishMsg.textContent = body.error || `Publish failed (${res.status}).`;
+          return;
+        }
+        publishMsg.className = "status-msg ok";
+        publishMsg.textContent =
+          (body.updated ? "Updated " : "Published ") + body.path +
+          ". Live on the site in a minute or two.";
+        publishFile.value = "";
+        publishFilename.value = "";
+        loadDocList();
+      } catch {
+        publishMsg.className = "status-msg err";
+        publishMsg.textContent = "Could not reach the publishing service.";
+      } finally {
+        publishButton.disabled = false;
+        publishCode.value = "";
+      }
     });
 
     render();

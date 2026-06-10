@@ -2,8 +2,16 @@ name = "research-gate"
 main = "worker.js"
 compatibility_date = "2026-06-01"
 
+# lets worker.js `import template from "./template.html"` as a string
+[[rules]]
+type = "Text"
+globs = ["**/*.html"]
+fallthrough = true
+
 [vars]
 ALLOWED_ORIGIN = "https://nitishrsinha.github.io"
+GITHUB_REPO = "nitishrsinha/nitishrsinha.github.io"
+GITHUB_BRANCH = "main"
 
 # Create with:  wrangler kv namespace create RATE_LIMIT
 # then paste the printed id below.

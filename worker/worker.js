@@ -1,24 +1,35 @@
 /**
- * research-gate: TOTP-gated key release for StatiCrypt-protected pages.
+ * research-gate: TOTP-gated key release and publishing for StatiCrypt-protected pages.
  *
- * POST {"code": "123456"}  ->  {"key": "<staticrypt hashed password>"} on success.
+ * POST /        {"code": "123456"}
+ *                 -> {"key": "<staticrypt hashed password>"} on success.
+ * POST /upload  {"code": "123456", "filename": "paper.html", "content": "<html>..."}
+ *                 -> encrypts content in StatiCrypt format with STATICRYPT_KEY and
+ *                    commits it to private/<filename> on GitHub. {"ok": true, ...}
  *
  * Secrets (set via `wrangler secret put`):
  *   TOTP_SECRET    - base32 TOTP secret (the one behind the authenticator QR code)
  *   STATICRYPT_KEY - StatiCrypt derived key (output of derive-key.mjs / staticrypt --share)
+ *   GITHUB_TOKEN   - fine-grained PAT, contents read/write on the site repo only
  *
  * Bindings:
  *   RATE_LIMIT     - KV namespace for rate limiting and replay protection (required)
  *
  * Vars:
  *   ALLOWED_ORIGIN - origin allowed to call this worker from a browser
+ *   GITHUB_REPO    - owner/repo to publish into
+ *   GITHUB_BRANCH  - branch to commit to
  */
+
+import template from "./template.html";
+import { staticryptEncrypt, buildProtectedPage } from "./staticrypt-format.js";
 
 const TOTP_STEP_SECONDS = 30;
 const TOTP_WINDOW = 1; // accept previous/current/next step (clock drift)
 const MAX_FAILS_PER_IP = 5; // per FAIL_TTL_SECONDS
 const MAX_FAILS_GLOBAL = 10; // per FAIL_TTL_SECONDS, across all IPs
 const FAIL_TTL_SECONDS = 900;
+const MAX_CONTENT_BYTES = 25 * 1024 * 1024;
 
 const BASE32_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
 
@@ -86,6 +97,15 @@ export async function verifyTotp(secret, code, nowMs = Date.now()) {
   return matched;
 }
 
+function bytesToBase64(bytes) {
+  let bin = "";
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    bin += String.fromCharCode(...bytes.subarray(i, i + chunk));
+  }
+  return btoa(bin);
+}
+
 function json(body, status, corsHeaders) {
   return new Response(JSON.stringify(body), {
     status,
@@ -96,6 +116,142 @@ function json(body, status, corsHeaders) {
 async function bumpFailCounter(kv, key) {
   const current = parseInt((await kv.get(key)) || "0", 10);
   await kv.put(key, String(current + 1), { expirationTtl: FAIL_TTL_SECONDS });
+}
+
+/**
+ * Rate-limited, replay-protected TOTP check shared by all routes.
+ * Returns { ok: true } or { ok: false, status, error }.
+ */
+async function authenticate(env, request, code) {
+  if (typeof code !== "string" || !/^\d{6}$/.test(code)) {
+    return { ok: false, status: 400, error: "code must be 6 digits" };
+  }
+
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  const ipKey = `fails:${ip}`;
+  const [ipFails, globalFails] = await Promise.all([
+    env.RATE_LIMIT.get(ipKey),
+    env.RATE_LIMIT.get("fails:global"),
+  ]);
+  if (
+    parseInt(ipFails || "0", 10) >= MAX_FAILS_PER_IP ||
+    parseInt(globalFails || "0", 10) >= MAX_FAILS_GLOBAL
+  ) {
+    return { ok: false, status: 429, error: "too many attempts, try again later" };
+  }
+
+  const matchedCounter = await verifyTotp(env.TOTP_SECRET, code);
+
+  if (matchedCounter === null) {
+    await Promise.all([
+      bumpFailCounter(env.RATE_LIMIT, ipKey),
+      bumpFailCounter(env.RATE_LIMIT, "fails:global"),
+    ]);
+    return { ok: false, status: 401, error: "invalid code" };
+  }
+
+  // replay protection: each code (time step) can only be used once
+  const lastCounter = parseInt((await env.RATE_LIMIT.get("last_counter")) || "0", 10);
+  if (matchedCounter <= lastCounter) {
+    return { ok: false, status: 401, error: "code already used, wait for the next one" };
+  }
+  await env.RATE_LIMIT.put("last_counter", String(matchedCounter));
+
+  return { ok: true };
+}
+
+async function githubRequest(env, method, path, body) {
+  return fetch(`https://api.github.com${path}`, {
+    method,
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github+json",
+      "User-Agent": "research-gate-worker",
+      ...(body ? { "Content-Type": "application/json" } : {}),
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+}
+
+async function handleUpload(env, request, corsHeaders) {
+  if (!env.GITHUB_TOKEN) {
+    return json({ error: "GITHUB_TOKEN secret not configured" }, 500, corsHeaders);
+  }
+
+  let code, filename, content;
+  try {
+    ({ code, filename, content } = await request.json());
+  } catch {
+    return json({ error: "invalid JSON body" }, 400, corsHeaders);
+  }
+
+  const auth = await authenticate(env, request, code);
+  if (!auth.ok) {
+    return json({ error: auth.error }, auth.status, corsHeaders);
+  }
+
+  if (
+    typeof filename !== "string" ||
+    !/^[A-Za-z0-9][A-Za-z0-9._-]{0,80}\.html$/.test(filename) ||
+    filename === "index.html"
+  ) {
+    return json(
+      { error: "filename must be a simple .html name (and not index.html)" },
+      400,
+      corsHeaders
+    );
+  }
+  if (typeof content !== "string" || content.length === 0) {
+    return json({ error: "content must be a non-empty string" }, 400, corsHeaders);
+  }
+  if (content.length > MAX_CONTENT_BYTES) {
+    return json({ error: "content too large (25MB max)" }, 413, corsHeaders);
+  }
+
+  const payload = await staticryptEncrypt(content, env.STATICRYPT_KEY);
+  const page = buildProtectedPage(payload, template);
+  const pageBase64 = bytesToBase64(new TextEncoder().encode(page));
+
+  const repo = env.GITHUB_REPO || "nitishrsinha/nitishrsinha.github.io";
+  const branch = env.GITHUB_BRANCH || "main";
+  const apiPath = `/repos/${repo}/contents/private/${filename}`;
+
+  // existing file? need its sha to update
+  let sha;
+  const getRes = await githubRequest(env, "GET", `${apiPath}?ref=${branch}`);
+  if (getRes.status === 200) {
+    sha = (await getRes.json()).sha;
+  } else if (getRes.status !== 404) {
+    return json({ error: `GitHub lookup failed (${getRes.status})` }, 502, corsHeaders);
+  }
+
+  const putRes = await githubRequest(env, "PUT", apiPath, {
+    message: `Publish protected document: ${filename}`,
+    content: pageBase64,
+    branch,
+    ...(sha ? { sha } : {}),
+  });
+  if (!putRes.ok) {
+    const detail = await putRes.text();
+    return json(
+      { error: `GitHub commit failed (${putRes.status}): ${detail.slice(0, 200)}` },
+      502,
+      corsHeaders
+    );
+  }
+
+  const result = await putRes.json();
+  return json(
+    {
+      ok: true,
+      path: `private/${filename}`,
+      updated: Boolean(sha),
+      commit: result.commit && result.commit.sha,
+      note: "GitHub Pages usually publishes within a minute or two",
+    },
+    200,
+    corsHeaders
+  );
 }
 
 export default {
@@ -119,6 +275,7 @@ export default {
             totp_secret: Boolean(env.TOTP_SECRET),
             staticrypt_key: Boolean(env.STATICRYPT_KEY),
             rate_limit_kv: Boolean(env.RATE_LIMIT),
+            github_token: Boolean(env.GITHUB_TOKEN),
           },
         },
         200,
@@ -138,45 +295,22 @@ export default {
       return json({ error: "RATE_LIMIT KV namespace not bound" }, 500, corsHeaders);
     }
 
+    const url = new URL(request.url);
+    if (url.pathname === "/upload") {
+      return handleUpload(env, request, corsHeaders);
+    }
+
     let code;
     try {
       ({ code } = await request.json());
     } catch {
       return json({ error: "invalid JSON body" }, 400, corsHeaders);
     }
-    if (typeof code !== "string" || !/^\d{6}$/.test(code)) {
-      return json({ error: "code must be 6 digits" }, 400, corsHeaders);
-    }
 
-    const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-    const ipKey = `fails:${ip}`;
-    const [ipFails, globalFails] = await Promise.all([
-      env.RATE_LIMIT.get(ipKey),
-      env.RATE_LIMIT.get("fails:global"),
-    ]);
-    if (parseInt(ipFails || "0", 10) >= MAX_FAILS_PER_IP) {
-      return json({ error: "too many attempts, try again later" }, 429, corsHeaders);
+    const auth = await authenticate(env, request, code);
+    if (!auth.ok) {
+      return json({ error: auth.error }, auth.status, corsHeaders);
     }
-    if (parseInt(globalFails || "0", 10) >= MAX_FAILS_GLOBAL) {
-      return json({ error: "too many attempts, try again later" }, 429, corsHeaders);
-    }
-
-    const matchedCounter = await verifyTotp(env.TOTP_SECRET, code);
-
-    if (matchedCounter === null) {
-      await Promise.all([
-        bumpFailCounter(env.RATE_LIMIT, ipKey),
-        bumpFailCounter(env.RATE_LIMIT, "fails:global"),
-      ]);
-      return json({ error: "invalid code" }, 401, corsHeaders);
-    }
-
-    // replay protection: each code (time step) can only be used once
-    const lastCounter = parseInt((await env.RATE_LIMIT.get("last_counter")) || "0", 10);
-    if (matchedCounter <= lastCounter) {
-      return json({ error: "code already used, wait for the next one" }, 401, corsHeaders);
-    }
-    await env.RATE_LIMIT.put("last_counter", String(matchedCounter));
 
     return json({ key: env.STATICRYPT_KEY }, 200, corsHeaders);
   },

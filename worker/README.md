@@ -1,78 +1,79 @@
-# research-gate — TOTP unlock for the protected research materials
+# research-gate — TOTP unlock + publishing for the protected research materials
 
-A dependency-free Cloudflare Worker that replaces the memorized StatiCrypt
-password with a 6-digit authenticator code.
+A dependency-free Cloudflare Worker. One authenticator app replaces both the
+reading password and the publishing machine: documents are encrypted **and**
+published from any browser with a 6-digit code.
 
 ## How it works
 
-- The pages in `../private/` stay StatiCrypt-encrypted (AES-256) in the public
-  repo, but under a strong **random** password nobody memorizes.
-- This worker stores two secrets: the TOTP secret (shared with your
-  authenticator app) and the **derived** StatiCrypt key (600k-round PBKDF2
-  output — the worker never sees the cleartext password).
-- `private/index.html` is the gate: you enter the 6-digit code, the worker
-  verifies it (RFC 6238, ±30s window, KV-backed rate limiting, one use per
-  code), and returns the derived key. The gate writes it to
-  `localStorage.staticrypt_passphrase` — StatiCrypt's own remember-me slot —
-  so every encrypted page on the site auto-decrypts until you press "Lock".
+- Protected pages are StatiCrypt-format (AES-256-CBC + HMAC) HTML in
+  `private/` in the public repo. They self-decrypt in the browser given the
+  key — no server involved in reading beyond the one-time key release.
+- `POST /` with a valid TOTP code returns the key. The gate page
+  (`private/index.html`) stores it in `localStorage.staticrypt_passphrase`
+  (StatiCrypt's own remember-me slot), so all encrypted pages auto-decrypt
+  until "Lock" is pressed.
+- `POST /upload` with a valid TOTP code + plaintext HTML encrypts it in the
+  worker (Web Crypto, byte-compatible with the staticrypt CLI format) and
+  commits it to `private/<filename>` via the GitHub Contents API. GitHub Pages
+  publishes it within a minute or two. The gate page lists documents live from
+  the GitHub API, so there is nothing to edit by hand.
+- Brute-force protection: 5 bad codes per IP / 10 global per 15 minutes
+  (KV-backed, fails closed), each code valid once.
+
+## Secrets (set with `wrangler secret put <NAME>` in this directory)
+
+| Secret           | What                                              | How to make it |
+|------------------|---------------------------------------------------|----------------|
+| `TOTP_SECRET`    | base32 secret shared with your authenticator app  | `./setup.sh`   |
+| `STATICRYPT_KEY` | 256-bit encryption key, hex                       | `openssl rand -hex 32` |
+| `GITHUB_TOKEN`   | fine-grained PAT, this repo only, Contents: R/W   | see below      |
+
+`STATICRYPT_KEY` does not need to come from a password — random bytes are
+fine, since the worker both encrypts and releases the same key. (Only if you
+also want to encrypt offline with the staticrypt CLI does it need to be a
+derived key; then use `derive-key.mjs` and `private/encrypt.sh`.)
+
+GitHub token: github.com → Settings → Developer settings → Personal access
+tokens → Fine-grained tokens → Generate. Resource owner: you; Repository
+access: only `nitishrsinha/nitishrsinha.github.io`; Permissions → Repository →
+Contents: **Read and write**. Pick an expiration you can live with renewing.
 
 ## One-time setup
 
-Prereqs: `npm install -g wrangler && wrangler login`.
-
 ```bash
 cd worker
-
-# 1. Generate the TOTP secret and add it to your authenticator app
-./setup.sh
-
-# 2. Store the TOTP secret in the worker (command printed by setup.sh)
+./setup.sh                                    # TOTP secret -> authenticator app
 echo -n '<SECRET>' | wrangler secret put TOTP_SECRET
-
-# 3. Create the rate-limit KV namespace; paste the printed id into wrangler.toml
-wrangler kv namespace create RATE_LIMIT
-
-# 4. Re-encrypt the private materials with a fresh random password.
-#    Plaintext originals must be in private/ first (see migration note below).
-cd ../private && STATICRYPT_PASSWORD=auto ./encrypt.sh
-#    -> prints the derived key and the `wrangler secret put STATICRYPT_KEY` command; run it.
-
-# 5. Deploy and wire up the gate page
-cd ../worker && wrangler deploy
-#    -> note the URL (https://research-gate.<subdomain>.workers.dev)
-#    -> set WORKER_URL at the top of the <script> in private/index.html
-
-# 6. Commit and push (encrypted html, .staticrypt.json, index.html, worker/)
+openssl rand -hex 32 | tr -d '\n' | wrangler secret put STATICRYPT_KEY
+echo -n '<PAT>'    | wrangler secret put GITHUB_TOKEN
+wrangler kv namespace create RATE_LIMIT       # paste id into wrangler.toml
+wrangler deploy                               # URL -> WORKER_URL in private/index.html
 ```
 
-Check configuration anytime: `curl https://research-gate.<subdomain>.workers.dev`
-returns which secrets/bindings are present.
+Check configuration anytime: a GET to the worker URL reports which
+secrets/bindings are present.
 
-## Migration note (existing files)
+## Day-to-day (from any browser, any machine)
 
-The committed files in `private/` are already encrypted with the old password,
-and the plaintext originals are not in this repo. Two paths:
+- **Read:** open the private page, enter a code, everything decrypts. "Lock"
+  clears the key from that browser.
+- **Publish:** unlock, then in "Publish a document" pick an HTML file, enter a
+  fresh code (each code works once), submit. The worker encrypts, commits, and
+  the document appears in the list; the page itself is live when GitHub Pages
+  rebuilds (a minute or two).
+- **Remove:** delete the file from `private/` in the repo (GitHub web UI works).
 
-- **Re-encrypt (preferred):** restore the plaintext originals into `private/`
-  (from wherever they live, or decrypt once with the old password), then run
-  step 4. `encrypt.sh` refuses to double-wrap files that are already encrypted.
-- **Quick path (keeps old, weaker password underneath):** if you remember the
-  old password, derive its key directly and skip re-encryption:
-  `node derive-key.mjs '<old password>' ebe1a16146777d85539ba7aec6d97a50`
-  then store that as `STATICRYPT_KEY`. TOTP convenience immediately, but the
-  underlying encryption stays only as strong as the old password.
+## Recovery
 
-Either way: anything committed under the old weak password remains in public
-git history and should be treated as exposed.
+Nothing depends on a remembered password or a specific machine. Worst case
+(all secrets lost): generate new TOTP secret + key, re-publish documents from
+their plaintext sources, rotate the PAT. Keep plaintext sources wherever you
+normally keep your working papers.
 
-## Day-to-day
+## History note
 
-- Visit the page → enter authenticator code → everything decrypts. "Lock"
-  clears the key from the browser.
-- Adding new material: drop the plaintext `.html`/`.md` into `private/`, run
-  `STATICRYPT_PASSWORD=auto ./encrypt.sh`... **but** that generates a *new*
-  password, so restore + re-encrypt all files together, then update
-  `STATICRYPT_KEY`. (One password must cover all files since one key unlocks
-  everything.)
-- Rate limits: 5 bad codes per IP / 10 global per 15 minutes; each code works
-  only once.
+The materials encrypted before June 2026 were abandoned (password lost,
+plaintext originals unavailable) and removed from the working tree. Their
+ciphertext remains in public git history; treat that content as exposed to
+whatever extent the old password was guessable.

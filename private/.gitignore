@@ -13,3 +13,6 @@
 *.swp
 *.swo
 *~
+
+# Encryption password (reused across runs; never commit)
+.staticrypt-password

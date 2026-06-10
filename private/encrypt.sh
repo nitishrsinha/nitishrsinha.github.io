@@ -153,9 +153,19 @@ echo ""
 #   STATICRYPT_PASSWORD=<value>   use that password
 #   unset                         prompt interactively (legacy behavior)
 if [[ "${STATICRYPT_PASSWORD:-}" == "auto" ]]; then
-  PASSWORD=$(head -c 24 /dev/urandom | base64 | tr -d '=+/')
-  echo -e "${GREEN}✓ Generated random password (shown once; you do not need to keep it):${NC}"
-  echo -e "  ${PASSWORD}"
+  # Reuse the saved password so new files join the existing set without
+  # re-encrypting everything or updating the worker secret. The file is
+  # gitignored and owner-only; the plaintext .backups/ on this same disk are
+  # the more sensitive artifact anyway.
+  PASSWORD_FILE="$SCRIPT_DIR/.staticrypt-password"
+  if [[ -f "$PASSWORD_FILE" ]]; then
+    PASSWORD=$(cat "$PASSWORD_FILE")
+    echo -e "${GREEN}✓ Reusing saved password from .staticrypt-password${NC}"
+  else
+    PASSWORD=$(head -c 24 /dev/urandom | base64 | tr -d '=+/')
+    (umask 077; printf '%s' "$PASSWORD" > "$PASSWORD_FILE")
+    echo -e "${GREEN}✓ Generated random password and saved it to .staticrypt-password (gitignored)${NC}"
+  fi
 elif [[ -n "${STATICRYPT_PASSWORD:-}" ]]; then
   PASSWORD="$STATICRYPT_PASSWORD"
   echo -e "${GREEN}✓ Using password from STATICRYPT_PASSWORD${NC}"

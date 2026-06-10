@@ -183,6 +183,21 @@ function isValidFilename(filename) {
   );
 }
 
+/** Optional single-level folder under private/. */
+function isValidFolder(folder) {
+  return (
+    folder === undefined ||
+    folder === "" ||
+    (typeof folder === "string" && /^[A-Za-z0-9][A-Za-z0-9._-]{0,40}$/.test(folder))
+  );
+}
+
+function contentApiPath(env, folder, filename) {
+  const repo = env.GITHUB_REPO || "nitishrsinha/nitishrsinha.github.io";
+  const dir = folder ? `private/${folder}` : "private";
+  return { apiPath: `/repos/${repo}/contents/${dir}/${filename}`, relPath: `${dir}/${filename}` };
+}
+
 /** Look up the blob sha of private/<filename>; undefined if it doesn't exist. */
 async function getFileSha(env, apiPath, branch) {
   const res = await githubRequest(env, "GET", `${apiPath}?ref=${branch}`);
@@ -196,9 +211,9 @@ async function handleUpload(env, request, corsHeaders) {
     return json({ error: "GITHUB_TOKEN secret not configured" }, 500, corsHeaders);
   }
 
-  let code, filename, content;
+  let code, filename, content, folder;
   try {
-    ({ code, filename, content } = await request.json());
+    ({ code, filename, content, folder } = await request.json());
   } catch {
     return json({ error: "invalid JSON body" }, 400, corsHeaders);
   }
@@ -215,6 +230,9 @@ async function handleUpload(env, request, corsHeaders) {
       corsHeaders
     );
   }
+  if (!isValidFolder(folder)) {
+    return json({ error: "folder must be a simple name (letters, digits, ._-)" }, 400, corsHeaders);
+  }
   if (typeof content !== "string" || content.length === 0) {
     return json({ error: "content must be a non-empty string" }, 400, corsHeaders);
   }
@@ -226,9 +244,8 @@ async function handleUpload(env, request, corsHeaders) {
   const page = buildProtectedPage(payload, template);
   const pageBase64 = bytesToBase64(new TextEncoder().encode(page));
 
-  const repo = env.GITHUB_REPO || "nitishrsinha/nitishrsinha.github.io";
   const branch = env.GITHUB_BRANCH || "main";
-  const apiPath = `/repos/${repo}/contents/private/${filename}`;
+  const { apiPath, relPath } = contentApiPath(env, folder, filename);
 
   // existing file? need its sha to update
   let sha;
@@ -257,7 +274,7 @@ async function handleUpload(env, request, corsHeaders) {
   return json(
     {
       ok: true,
-      path: `private/${filename}`,
+      path: relPath,
       updated: Boolean(sha),
       commit: result.commit && result.commit.sha,
       note: "GitHub Pages usually publishes within a minute or two",
@@ -272,9 +289,9 @@ async function handleDelete(env, request, corsHeaders) {
     return json({ error: "GITHUB_TOKEN secret not configured" }, 500, corsHeaders);
   }
 
-  let code, filename;
+  let code, filename, folder;
   try {
-    ({ code, filename } = await request.json());
+    ({ code, filename, folder } = await request.json());
   } catch {
     return json({ error: "invalid JSON body" }, 400, corsHeaders);
   }
@@ -291,10 +308,12 @@ async function handleDelete(env, request, corsHeaders) {
       corsHeaders
     );
   }
+  if (!isValidFolder(folder)) {
+    return json({ error: "folder must be a simple name (letters, digits, ._-)" }, 400, corsHeaders);
+  }
 
-  const repo = env.GITHUB_REPO || "nitishrsinha/nitishrsinha.github.io";
   const branch = env.GITHUB_BRANCH || "main";
-  const apiPath = `/repos/${repo}/contents/private/${filename}`;
+  const { apiPath, relPath } = contentApiPath(env, folder, filename);
 
   let sha;
   try {
@@ -324,7 +343,7 @@ async function handleDelete(env, request, corsHeaders) {
   return json(
     {
       ok: true,
-      path: `private/${filename}`,
+      path: relPath,
       commit: result.commit && result.commit.sha,
     },
     200,

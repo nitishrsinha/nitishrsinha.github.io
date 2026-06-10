@@ -61,7 +61,9 @@ secrets/bindings are present.
 - **Publish:** unlock, then in "Publish a document" pick an HTML file, enter a
   fresh code (each code works once), submit. The worker encrypts, commits, and
   the document appears in the list; the page itself is live when GitHub Pages
-  rebuilds (a minute or two).
+  rebuilds (a minute or two). An optional folder (one level) organizes
+  documents; folders appear automatically and the page only fetches dates for
+  the folder in view, which keeps GitHub API usage low.
 - **Remove:** click "delete" next to the document in the gate page and confirm
   with a fresh code. (Deleting from `private/` in the repo works too.)
 

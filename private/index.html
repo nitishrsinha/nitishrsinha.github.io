@@ -220,6 +220,25 @@
       margin-bottom: 6px;
     }
 
+    .crumb-bar {
+      font-size: 16px;
+      margin-bottom: 10px;
+      min-height: 1.4em;
+    }
+    .crumb-bar button {
+      background: none;
+      border: 0;
+      color: var(--blue);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+    }
+    .crumb-bar button:hover { text-decoration: underline; }
+    .crumb-bar .crumb-here { font-weight: 700; }
+
+    .doc-folder::before { content: "📁 "; }
+
     .sort-toggle {
       background: none;
       border: 0;
@@ -306,6 +325,7 @@
 
     <!-- Unlocked: document list + publishing -->
     <div id="unlocked-view" class="hidden">
+      <div class="crumb-bar" id="crumb-bar"></div>
       <div class="sort-bar">Sort by:
         <button class="sort-toggle active" id="sort-date">date</button> ·
         <button class="sort-toggle" id="sort-name">name</button>
@@ -319,6 +339,8 @@
           <input type="file" id="publish-file" accept=".html,.htm" required />
           <input type="text" id="publish-filename" placeholder="filename.html"
                  pattern="[A-Za-z0-9][A-Za-z0-9._-]*\.html" required />
+          <input type="text" id="publish-folder" placeholder="folder (optional)"
+                 pattern="[A-Za-z0-9][A-Za-z0-9._-]*" />
           <input type="text" id="publish-code" inputmode="numeric" autocomplete="one-time-code"
                  pattern="[0-9]{6}" maxlength="6" placeholder="fresh 6-digit code" required />
           <button type="submit" id="publish-button">Encrypt &amp; publish</button>
@@ -349,10 +371,12 @@
     // Set after `wrangler deploy` prints the URL of the research-gate worker.
     const WORKER_URL = "https://research-gate.nitish-ranjan.workers.dev";
 
-    // Documents are listed live from the repo: every .html in private/ except
-    // this page. Publishing happens through the worker's /upload endpoint.
-    const GITHUB_CONTENTS_URL =
-      "https://api.github.com/repos/nitishrsinha/nitishrsinha.github.io/contents/private?ref=main";
+    // Documents are listed live from the repo: every .html in private/ (and
+    // one level of folders) except this page. Publishing/deleting happens
+    // through the worker. Dates are fetched only for the folder in view, to
+    // stay well under GitHub's 60 unauthenticated API calls/hour.
+    const GITHUB_CONTENTS_BASE =
+      "https://api.github.com/repos/nitishrsinha/nitishrsinha.github.io/contents/private";
 
     // StatiCrypt's own remember-me storage keys: writing the derived key here
     // makes every encrypted page on this origin auto-decrypt on load.
@@ -379,24 +403,32 @@
       "https://api.github.com/repos/nitishrsinha/nitishrsinha.github.io/commits";
 
     let docList = [];
+    let folderList = [];
+    let currentFolder = "";
     let sortMode = "date";
 
     async function loadDocList() {
       const list = document.getElementById("doc-list");
       list.innerHTML = "<li>Loading…</li>";
+      const folder = currentFolder;
+      const dirPath = "private" + (folder ? "/" + folder : "");
       try {
-        const res = await fetch(GITHUB_CONTENTS_URL);
+        const res = await fetch(
+          GITHUB_CONTENTS_BASE + (folder ? "/" + encodeURIComponent(folder) : "") + "?ref=main"
+        );
         if (!res.ok) throw new Error(res.status);
         const entries = await res.json();
+        // folders are shown at the root level only (publishing is one level deep)
+        folderList = folder ? [] : entries.filter((e) => e.type === "dir").map((e) => e.name);
         docList = entries.filter(
           (e) => e.type === "file" && e.name.endsWith(".html") && e.name !== "index.html"
         );
-        // last-commit date per file (best effort; sorts to the end if unavailable)
+        // last-commit date per file in view (best effort; sorts last if unavailable)
         await Promise.all(
           docList.map(async (doc) => {
             try {
               const r = await fetch(
-                `${GITHUB_COMMITS_URL}?path=private/${encodeURIComponent(doc.name)}&per_page=1`
+                `${GITHUB_COMMITS_URL}?path=${encodeURIComponent(dirPath + "/" + doc.name)}&per_page=1`
               );
               if (r.ok) {
                 const commits = await r.json();
@@ -411,23 +443,53 @@
       }
     }
 
+    function openFolder(folder) {
+      currentFolder = folder;
+      document.getElementById("publish-folder").value = folder;
+      loadDocList();
+    }
+
     function renderDocList() {
       const list = document.getElementById("doc-list");
+      const crumbs = document.getElementById("crumb-bar");
+
+      crumbs.innerHTML = "";
+      if (currentFolder) {
+        const back = document.createElement("button");
+        back.textContent = "← All documents";
+        back.addEventListener("click", () => openFolder(""));
+        crumbs.appendChild(back);
+        const here = document.createElement("span");
+        here.className = "crumb-here";
+        here.textContent = " / " + currentFolder;
+        crumbs.appendChild(here);
+      }
+
       const docs = [...docList].sort((a, b) =>
         sortMode === "date"
           ? (b.date || "").localeCompare(a.date || "") // newest first
           : a.name.localeCompare(b.name)
       );
       list.innerHTML = "";
-      if (docs.length === 0) {
+      if (folderList.length === 0 && docs.length === 0) {
         const li = document.createElement("li");
         li.textContent = "No documents published yet.";
+        list.appendChild(li);
+      }
+      for (const folder of [...folderList].sort()) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = "#";
+        a.className = "doc-folder";
+        a.textContent = folder;
+        a.addEventListener("click", (e) => { e.preventDefault(); openFolder(folder); });
+        li.appendChild(a);
         list.appendChild(li);
       }
       for (const doc of docs) {
         const li = document.createElement("li");
         const a = document.createElement("a");
-        a.href = doc.name;
+        a.href = (currentFolder ? currentFolder + "/" : "") + doc.name;
         a.textContent = doc.name.replace(/\.html$/, "").replace(/[_-]+/g, " ");
         const right = document.createElement("span");
         right.className = "doc-meta-right";
@@ -461,8 +523,9 @@
 
     async function deleteDoc(filename) {
       const docMsg = document.getElementById("doc-msg");
+      const where = currentFolder ? `${currentFolder}/${filename}` : filename;
       const code = window.prompt(
-        `Delete "${filename}" from the site?\n\nEnter a fresh 6-digit code to confirm:`
+        `Delete "${where}" from the site?\n\nEnter a fresh 6-digit code to confirm:`
       );
       if (code === null) return;
       docMsg.className = "status-msg";
@@ -471,7 +534,7 @@
         const res = await fetch(WORKER_URL + "/delete", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ code: code.trim(), filename }),
+          body: JSON.stringify({ code: code.trim(), filename, folder: currentFolder }),
         });
         const body = await res.json().catch(() => ({}));
         if (!res.ok) {
@@ -550,6 +613,7 @@
 
       const file = publishFile.files[0];
       const filename = publishFilename.value.trim();
+      const folder = document.getElementById("publish-folder").value.trim();
       const code = publishCode.value.trim();
       if (!file) return;
 
@@ -560,7 +624,7 @@
         const res = await fetch(WORKER_URL + "/upload", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ code, filename, content }),
+          body: JSON.stringify({ code, filename, content, folder }),
         });
         const body = await res.json().catch(() => ({}));
         if (!res.ok) {
@@ -574,7 +638,7 @@
           ". Live on the site in a minute or two.";
         publishFile.value = "";
         publishFilename.value = "";
-        loadDocList();
+        openFolder(folder);
       } catch {
         publishMsg.className = "status-msg err";
         publishMsg.textContent = "Could not reach the publishing service.";

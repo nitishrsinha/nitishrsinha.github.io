@@ -264,6 +264,156 @@
       font-style: italic;
     }
 
+    /* ---- Links panel ---- */
+    .side-panel {
+      margin: 28px 0 0;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 18px 22px;
+    }
+
+    .side-panel h3 {
+      margin: 0 0 12px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+
+    .link-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .link-list li:last-child { border-bottom: 0; }
+
+    .link-list a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .link-list a:hover { text-decoration: underline; }
+
+    .link-delete {
+      background: none;
+      border: 0;
+      color: #b02a37;
+      font-size: 13px;
+      cursor: pointer;
+      padding: 2px 6px;
+      white-space: nowrap;
+    }
+
+    .link-delete:hover { text-decoration: underline; }
+
+    .add-link-form {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      margin-top: 4px;
+    }
+
+    .add-link-form input {
+      font-size: 14px;
+      padding: 7px 10px;
+      border: 1px solid var(--rule-thick);
+      border-radius: 6px;
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .add-link-form button {
+      background: var(--blue);
+      color: #fff;
+      border: 0;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 7px 16px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .add-link-form button:hover { opacity: 0.9; }
+
+    .link-url {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+
+    /* ---- Memos panel ---- */
+    .memo-item {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .memo-item:last-child { border-bottom: 0; }
+
+    .memo-item-head {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .memo-item-date {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .memo-item-mode {
+      font-size: 12px;
+      color: var(--muted);
+      background: var(--rule);
+      border-radius: 4px;
+      padding: 1px 6px;
+    }
+
+    .memo-item-tags {
+      font-size: 12px;
+      color: var(--muted);
+      background: #eef3ff;
+      border-radius: 4px;
+      padding: 1px 6px;
+    }
+
+    .memo-item-text {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text);
+      white-space: pre-wrap;
+    }
+
+    .panel-empty {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .panel-status {
+      font-size: 13px;
+      min-height: 1.2em;
+      margin: 8px 0 0;
+    }
+
+    .panel-status.ok { color: #1a7f37; }
+    .panel-status.err { color: #b02a37; }
+
     .navigation {
       margin-top: 34px;
       padding-top: 22px;
@@ -333,6 +483,22 @@
       <ul class="doc-list" id="doc-list"></ul>
       <p class="status-msg" id="doc-msg"></p>
 
+      <div class="side-panel" id="links-panel" style="display:none">
+        <h3>Links</h3>
+        <ul class="link-list" id="link-list"></ul>
+        <form class="add-link-form" id="add-link-form">
+          <input type="url" id="link-url" placeholder="https://…" required />
+          <input type="text" id="link-label" placeholder="Label" required />
+          <button type="submit">Add link</button>
+        </form>
+        <p class="panel-status" id="link-status"></p>
+      </div>
+
+      <div class="side-panel" id="memos-panel" style="display:none">
+        <h3>Voice memos</h3>
+        <div id="memo-list"></div>
+      </div>
+
       <div class="publish-box">
         <h3>Publish a document</h3>
         <form id="publish-form">
@@ -382,6 +548,7 @@
     // makes every encrypted page on this origin auto-decrypt on load.
     const PASSPHRASE_KEY = "staticrypt_passphrase";
     const EXPIRATION_KEY = "staticrypt_expiration";
+    const MEMO_SESSION_KEY = "research_memo_session";
 
     const lockedView = document.getElementById("locked-view");
     const unlockedView = document.getElementById("unlocked-view");
@@ -394,6 +561,8 @@
       unlockedView.classList.toggle("hidden", !unlocked);
       if (unlocked) {
         loadDocList();
+        loadLinks(currentFolder);
+        loadMemos(currentFolder);
       } else {
         document.getElementById("totp-code").focus();
       }
@@ -447,6 +616,8 @@
       currentFolder = folder;
       document.getElementById("publish-folder").value = folder;
       loadDocList();
+      loadLinks(folder);
+      loadMemos(folder);
     }
 
     function renderDocList() {
@@ -578,6 +749,9 @@
           return;
         }
         localStorage.setItem(PASSPHRASE_KEY, body.key);
+        if (body.memo_session) {
+          localStorage.setItem(MEMO_SESSION_KEY, body.memo_session);
+        }
         render();
       } catch {
         errorMsg.textContent = "Could not reach the verification service.";
@@ -590,6 +764,7 @@
     document.getElementById("lock-button").addEventListener("click", () => {
       localStorage.removeItem(PASSPHRASE_KEY);
       localStorage.removeItem(EXPIRATION_KEY);
+      localStorage.removeItem(MEMO_SESSION_KEY);
       render();
     });
 
@@ -692,6 +867,168 @@
         publishCode.value = "";
       }
     });
+
+    // ---- Links ----
+
+    function memoSession() {
+      return localStorage.getItem(MEMO_SESSION_KEY) || "";
+    }
+
+    async function loadLinks(folder) {
+      const panel = document.getElementById("links-panel");
+      const list = document.getElementById("link-list");
+      const session = memoSession();
+      if (!session) { panel.style.display = "none"; return; }
+      panel.style.display = "";
+      list.innerHTML = "<li style='color:#888;font-size:14px'>Loading…</li>";
+      try {
+        const res = await fetch(
+          `${WORKER_URL}/links?folder=${encodeURIComponent(folder)}`,
+          { headers: { Authorization: `Bearer ${session}` } }
+        );
+        const data = await res.json().catch(() => ({}));
+        renderLinks(data.links || []);
+      } catch {
+        list.innerHTML = "<li style='color:#888;font-size:14px'>Could not load links.</li>";
+      }
+    }
+
+    function renderLinks(links) {
+      const list = document.getElementById("link-list");
+      list.innerHTML = "";
+      if (!links.length) {
+        list.innerHTML = "<li><span class='panel-empty'>No links yet.</span></li>";
+        return;
+      }
+      for (const link of links) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = link.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = link.label;
+        const urlSpan = document.createElement("span");
+        urlSpan.className = "link-url";
+        try { urlSpan.textContent = new URL(link.url).hostname; } catch { urlSpan.textContent = ""; }
+        const del = document.createElement("button");
+        del.className = "link-delete";
+        del.textContent = "remove";
+        del.addEventListener("click", () => deleteLink(link.id));
+        li.appendChild(a);
+        li.appendChild(urlSpan);
+        li.appendChild(del);
+        list.appendChild(li);
+      }
+    }
+
+    async function deleteLink(id) {
+      const session = memoSession();
+      if (!session) return;
+      const status = document.getElementById("link-status");
+      status.textContent = "Removing…";
+      status.className = "panel-status";
+      try {
+        const res = await fetch(`${WORKER_URL}/links`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ session, id }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) { status.className = "panel-status err"; status.textContent = data.error || "Could not remove."; return; }
+        status.textContent = "";
+        loadLinks(currentFolder);
+      } catch {
+        status.className = "panel-status err";
+        status.textContent = "Could not reach the service.";
+      }
+    }
+
+    document.getElementById("add-link-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const session = memoSession();
+      if (!session) return;
+      const url = document.getElementById("link-url").value.trim();
+      const label = document.getElementById("link-label").value.trim();
+      const status = document.getElementById("link-status");
+      status.textContent = "Saving…";
+      status.className = "panel-status";
+      try {
+        const res = await fetch(`${WORKER_URL}/links`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ session, url, label, folder: currentFolder }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) { status.className = "panel-status err"; status.textContent = data.error || "Could not save."; return; }
+        document.getElementById("link-url").value = "";
+        document.getElementById("link-label").value = "";
+        status.textContent = "";
+        loadLinks(currentFolder);
+      } catch {
+        status.className = "panel-status err";
+        status.textContent = "Could not reach the service.";
+      }
+    });
+
+    // ---- Memos ----
+
+    async function loadMemos(folder) {
+      const panel = document.getElementById("memos-panel");
+      const container = document.getElementById("memo-list");
+      const session = memoSession();
+      if (!session) { panel.style.display = "none"; return; }
+      panel.style.display = "";
+      container.innerHTML = "<p class='panel-empty'>Loading…</p>";
+
+      try {
+        // At root: show today's memos. Inside a folder: search by folder name.
+        const url = folder
+          ? `${WORKER_URL}/memos?q=${encodeURIComponent(folder)}`
+          : `${WORKER_URL}/memos?today=1`;
+        const res = await fetch(url, { headers: { Authorization: `Bearer ${session}` } });
+        const data = await res.json().catch(() => ({}));
+        renderMemos(data.memos || [], folder);
+      } catch {
+        container.innerHTML = "<p class='panel-empty'>Could not load voice memos.</p>";
+      }
+    }
+
+    function renderMemos(memos, folder) {
+      const container = document.getElementById("memo-list");
+      const panelTitle = document.querySelector("#memos-panel h3");
+      panelTitle.textContent = folder ? "Voice memos — " + folder : "Voice memos — today";
+      container.innerHTML = "";
+      if (!memos.length) {
+        container.innerHTML = "<p class='panel-empty'>No voice memos" + (folder ? " tagged "" + escapeHtml(folder) + """ : " recorded today") + ".</p>";
+        return;
+      }
+      for (const memo of memos) {
+        const div = document.createElement("div");
+        div.className = "memo-item";
+        const head = document.createElement("div");
+        head.className = "memo-item-head";
+        const date = document.createElement("span");
+        date.className = "memo-item-date";
+        date.textContent = memo.local_date || "";
+        const mode = document.createElement("span");
+        mode.className = "memo-item-mode";
+        mode.textContent = memo.mode || "free";
+        head.appendChild(date);
+        head.appendChild(mode);
+        if (memo.tags) {
+          const tags = document.createElement("span");
+          tags.className = "memo-item-tags";
+          tags.textContent = memo.tags;
+          head.appendChild(tags);
+        }
+        const text = document.createElement("p");
+        text.className = "memo-item-text";
+        text.textContent = memo.transcript || "";
+        div.appendChild(head);
+        div.appendChild(text);
+        container.appendChild(div);
+      }
+    }
 
     render();
   </script>

@@ -2,7 +2,7 @@
  * research-gate: TOTP-gated key release and publishing for StatiCrypt-protected pages.
  *
  * POST /        {"code": "123456"}
- *                 -> {"key": "<staticrypt hashed password>"} on success.
+ *                 -> {"key": "<staticrypt hashed password>", "memo_session": "<uuid>"} on success.
  * POST /upload  {"code": "123456", "filename": "paper.html", "content": "<html>..."}
  *                 -> encrypts content in StatiCrypt format with STATICRYPT_KEY and
  *                    commits it to private/<filename> on GitHub. {"ok": true, ...}
@@ -11,19 +11,29 @@
  * GET  /fci-g   -> the Fed's FCI-G monthly CSV, proxied with CORS headers and
  *                  edge-cached for a day (the Fed doesn't serve CORS, and the
  *                  public CORS proxies the calculator used have all died).
+ * GET  /memos   -> proxies to voicememos worker (requires Authorization: Bearer <memo_session>)
+ *                  query params: q, from, to, mode, folder (for today: add ?today=1)
+ * GET  /links   -> proxies links for a folder (requires Authorization: Bearer <memo_session>)
+ *                  query params: folder
+ * POST /links   {"session": "<uuid>", "url": "...", "label": "...", "folder": "..."}
+ *                 -> creates a link in the voicememos DB.
+ * DELETE /links {"session": "<uuid>", "id": "<link-id>"}
+ *                 -> deletes a link.
  *
  * Secrets (set via `wrangler secret put`):
- *   TOTP_SECRET    - base32 TOTP secret (the one behind the authenticator QR code)
- *   STATICRYPT_KEY - StatiCrypt derived key (output of derive-key.mjs / staticrypt --share)
- *   GITHUB_TOKEN   - fine-grained PAT, contents read/write on the site repo only
+ *   TOTP_SECRET       - base32 TOTP secret (the one behind the authenticator QR code)
+ *   STATICRYPT_KEY    - StatiCrypt derived key (output of derive-key.mjs / staticrypt --share)
+ *   GITHUB_TOKEN      - fine-grained PAT, contents read/write on the site repo only
+ *   VOICE_EXTERNAL_KEY - shared secret for voicememos /api/external/* routes
  *
  * Bindings:
- *   RATE_LIMIT     - KV namespace for rate limiting and replay protection (required)
+ *   RATE_LIMIT     - KV namespace for rate limiting, replay protection, and memo sessions (required)
  *
  * Vars:
- *   ALLOWED_ORIGIN - origin allowed to call this worker from a browser
- *   GITHUB_REPO    - owner/repo to publish into
- *   GITHUB_BRANCH  - branch to commit to
+ *   ALLOWED_ORIGIN  - origin allowed to call this worker from a browser
+ *   GITHUB_REPO     - owner/repo to publish into
+ *   GITHUB_BRANCH   - branch to commit to
+ *   VOICE_MEMO_URL  - base URL of the voicememos worker (no trailing slash)
  */
 
 import template from "./template.html";
@@ -35,6 +45,7 @@ const MAX_FAILS_PER_IP = 5; // per FAIL_TTL_SECONDS
 const MAX_FAILS_GLOBAL = 10; // per FAIL_TTL_SECONDS, across all IPs
 const FAIL_TTL_SECONDS = 900;
 const MAX_CONTENT_BYTES = 25 * 1024 * 1024;
+const MEMO_SESSION_TTL_SECONDS = 4 * 3600;
 
 const FCI_G_CSV_URL =
   "https://www.federalreserve.gov/econres/notes/feds-notes/fci_g_public_monthly_3yr.csv";
@@ -357,12 +368,101 @@ async function handleDelete(env, request, corsHeaders) {
   );
 }
 
+async function verifyMemoSession(env, token) {
+  if (!token || typeof token !== "string" || token.length > 100) return false;
+  const val = await env.RATE_LIMIT.get(`memo_session:${token}`);
+  return val !== null;
+}
+
+async function handleMemoOrLink(env, request, url, corsHeaders) {
+  if (!env.VOICE_MEMO_URL || !env.VOICE_EXTERNAL_KEY) {
+    return json({ error: "voice memo service not configured" }, 503, corsHeaders);
+  }
+
+  // Session token comes from Authorization header for GET, from body for POST/DELETE
+  let sessionToken = null;
+  let bodyForForward = null;
+
+  if (request.method === "GET") {
+    const auth = String(request.headers.get("Authorization") || "");
+    sessionToken = auth.startsWith("Bearer ") ? auth.slice(7).trim() : null;
+  } else if (request.method === "POST" || request.method === "DELETE") {
+    let body = {};
+    try { body = await request.json(); } catch { return json({ error: "invalid JSON body" }, 400, corsHeaders); }
+    sessionToken = String(body.session || "").trim();
+    bodyForForward = body;
+  } else {
+    return json({ error: "method not allowed" }, 405, corsHeaders);
+  }
+
+  const sessionOk = await verifyMemoSession(env, sessionToken);
+  if (!sessionOk) {
+    return json({ error: "invalid or expired session" }, 401, corsHeaders);
+  }
+
+  const base = String(env.VOICE_MEMO_URL).replace(/\/$/, "");
+
+  if (url.pathname === "/memos" && request.method === "GET") {
+    const params = new URLSearchParams();
+    for (const key of ["q", "from", "to", "mode"]) {
+      const v = url.searchParams.get(key);
+      if (v) params.set(key, v);
+    }
+    const today = url.searchParams.get("today");
+    const voiceUrl = today
+      ? `${base}/api/external/memos/today`
+      : `${base}/api/external/memos${params.toString() ? "?" + params.toString() : ""}`;
+    const res = await fetch(voiceUrl, {
+      headers: { Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}` },
+    });
+    const data = await res.json().catch(() => ({}));
+    return json(data, res.status, corsHeaders);
+  }
+
+  if (url.pathname === "/links" && request.method === "GET") {
+    const folder = String(url.searchParams.get("folder") ?? "");
+    const voiceUrl = `${base}/api/external/links?folder=${encodeURIComponent(folder)}`;
+    const res = await fetch(voiceUrl, {
+      headers: { Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}` },
+    });
+    const data = await res.json().catch(() => ({}));
+    return json(data, res.status, corsHeaders);
+  }
+
+  if (url.pathname === "/links" && request.method === "POST") {
+    const { url: linkUrl, label, folder } = bodyForForward;
+    const res = await fetch(`${base}/api/external/links`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url: linkUrl, label, folder: folder ?? "" }),
+    });
+    const data = await res.json().catch(() => ({}));
+    return json(data, res.status, corsHeaders);
+  }
+
+  if (url.pathname === "/links" && request.method === "DELETE") {
+    const { id } = bodyForForward;
+    if (!id) return json({ error: "id is required" }, 400, corsHeaders);
+    const res = await fetch(`${base}/api/external/links/${encodeURIComponent(id)}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${env.VOICE_EXTERNAL_KEY}` },
+    });
+    const data = await res.json().catch(() => ({}));
+    return json(data, res.status, corsHeaders);
+  }
+
+  return json({ error: "not found" }, 404, corsHeaders);
+}
+
 export default {
   async fetch(request, env) {
     const corsHeaders = {
       "Access-Control-Allow-Origin": env.ALLOWED_ORIGIN || "https://nitishrsinha.github.io",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
     };
 
     if (request.method === "OPTIONS") {
@@ -388,6 +488,11 @@ export default {
       });
     }
 
+    // Memo and link routes use session token auth (no TOTP per-request)
+    if (url.pathname === "/memos" || url.pathname === "/links") {
+      return handleMemoOrLink(env, request, url, corsHeaders);
+    }
+
     if (request.method === "GET") {
       // status endpoint for setup debugging; reveals configuration state only
       return json(
@@ -398,6 +503,8 @@ export default {
             staticrypt_key: Boolean(env.STATICRYPT_KEY),
             rate_limit_kv: Boolean(env.RATE_LIMIT),
             github_token: Boolean(env.GITHUB_TOKEN),
+            voice_memo_url: Boolean(env.VOICE_MEMO_URL),
+            voice_external_key: Boolean(env.VOICE_EXTERNAL_KEY),
           },
         },
         200,
@@ -436,6 +543,11 @@ export default {
       return json({ error: auth.error }, auth.status, corsHeaders);
     }
 
-    return json({ key: env.STATICRYPT_KEY }, 200, corsHeaders);
+    const memoSession = crypto.randomUUID();
+    await env.RATE_LIMIT.put(`memo_session:${memoSession}`, "1", {
+      expirationTtl: MEMO_SESSION_TTL_SECONDS,
+    });
+
+    return json({ key: env.STATICRYPT_KEY, memo_session: memoSession }, 200, corsHeaders);
   },
 };

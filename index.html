@@ -110,6 +110,65 @@
             letter-spacing: 0.08em;
         }
 
+        .tool-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 14px;
+        }
+
+        .tool-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .tool-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .tool-name {
+            font-family: 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 600;
+            color: #1565c0;
+            font-size: 0.95em;
+        }
+
+        .tool-download {
+            display: inline-block;
+            font-size: 0.75em;
+            font-weight: 600;
+            color: #1565c0;
+            background: #e3f2fd;
+            padding: 3px 10px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .tool-download:hover {
+            background: #d0e8fb;
+            text-decoration: none;
+        }
+
+        .tool-card p {
+            margin: 0;
+            font-size: 0.95em;
+            color: #444;
+        }
+
+        .tool-card code {
+            font-size: 0.85em;
+            background: #f5f5f5;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
         .live-badge {
             display: inline-block;
             font-size: 0.7em;
@@ -151,6 +210,7 @@
             <a href="reflections.html">Reflections</a>
             <a href="cv.html">CV</a>
             <a href="fci-g-calculator.html">Financial Conditions</a>
+            <a href="#tools">Tools</a>
             <a href="private/index.html">Research Materials</a>
         </nav>
     </header>
@@ -163,6 +223,16 @@
 
         <h2>Financial Conditions Calculator</h2>
         <p>An <a href="fci-g-calculator.html">interactive tool</a> for exploring how changes in seven key financial variables translate into GDP growth projections, based on the FCI-G methodology in this <a href="https://www.federalreserve.gov/econres/notes/feds-notes/a-new-index-to-measure-us-financial-conditions-20230630.html">FEDS Note</a>.</p>
+
+        <h2 id="tools">Tools</h2>
+
+        <div class="tool-card">
+            <div class="tool-head">
+                <span class="tool-name">docx_to_md.py</span>
+                <a class="tool-download" href="files/docx_to_md.py" download>Download</a>
+            </div>
+            <p>Converts a Word <code>.docx</code> file to clean Markdown while keeping reviewer comments in place, rendered as blockquotes right after the text they annotate, with reply threads nested underneath. It also preserves headings, nested lists, tables, hyperlinks, and tracked insertions/deletions. Pure Python standard library &mdash; no dependencies to install, just run <code>python docx_to_md.py input.docx</code>.</p>
+        </div>
     </main>
 
     <div class="disclaimer">

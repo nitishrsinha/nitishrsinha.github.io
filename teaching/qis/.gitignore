@@ -1,0 +1,5 @@
+# Plaintext sources -- only the encrypted output (one level up) gets committed
+*/source/
+
+# Per-week passwords -- never commit, announce to students separately
+.week-passwords*

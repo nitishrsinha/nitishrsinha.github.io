@@ -1,0 +1,130 @@
+{
+ "days": [
+  {
+   "date": "2026-10-03",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.01897v1",
+     "title": "Shared Models, Selective Trading, and Order Flow",
+     "authors": [
+      "Victoria Ruojie Li",
+      "Arka Prava Bandyopadhyay"
+     ],
+     "date": "2026-10-01",
+     "theme": "Financial markets",
+     "score": 5,
+     "summary": "In synthetic markets of LLM traders, news presentation shifts which model families submit orders, and this selection can improve or worsen price accuracy."
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.01935v1",
+     "title": "Pragmatic DML with AI-Learned Representations",
+     "authors": [
+      "Andres Aradillas Fernandez",
+      "Victor Chernozhukov",
+      "Carlos Cinelli",
+      "Sven Klaassen",
+      "Whitney Newey",
+      "Martin Spindler",
+      "Jan Teichert-Kluge",
+      "Suhas Vijaykumar"
+     ],
+     "date": "2026-10-01",
+     "theme": "Methods",
+     "score": 4,
+     "summary": "Shows imperfect AI-learned representations bias causal parameters by a product of two errors, and develops DML inference, aggregation pipelines and sensitivity bounds, applied to estimating demand elasticity."
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.01128v1",
+     "title": "Grounding Large Language Models in DSGE Simulators for Policy Generation and Forecasting",
+     "authors": [
+      "Aditya Dubey",
+      "Namah Gupta",
+      "Vinti Agarwal"
+     ],
+     "date": "2026-10-01",
+     "theme": "Growth & macro",
+     "score": 4,
+     "summary": "Places an LLM inside DSGE simulators and trains it with PPO, so its policy actions are judged by their simulated economic consequences rather than by how plausible they sound."
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.01325v1",
+     "title": "PPO-HRAP: Proximal Policy Optimization with a Hybrid Regime-Aware Policy for Risk-Controlled Trading",
+     "authors": [
+      "Duong Hien Chi Kien",
+      "Thanh Trung Huynh"
+     ],
+     "date": "2026-10-01",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "PPO agent blended with a regime prior improves Sharpe ratio and cuts SPY drawdown to 18% versus 34% for buy-and-hold."
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.01231v1",
+     "title": "Judgement in the Age of Jev: From Evaluation Scarcity to Evaluation Abundance",
+     "authors": [
+      "Richard Hill"
+     ],
+     "date": "2026-10-01",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Formulates a conditional Jevons hypothesis that cheap machine evaluation may increase its use inside organisations, and examines the implications for judgement and authority."
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.01008v1",
+     "title": "Modeling Shipping Emissions: Machine Learning, Engineering, and Policy Counterfactuals",
+     "authors": [
+      "Hiroyuki Kasahara",
+      "Allen Peters",
+      "Oliver Xu"
+     ],
+     "date": "2026-10-01",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Pure ML models of ship emissions predict well but attenuate speed responses; hybrid structural-ML models preserve them, which matters because attenuation can flip the sign of policy net benefits."
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.01955v1",
+     "title": "Do Your Own Research: Learning to Forecast by Learning to Search",
+     "authors": [
+      "Yusuf Afifi",
+      "Artur Kiulian",
+      "Anton Polishko",
+      "Mykola Khandoga",
+      "Hamudi Naanaa",
+      "Alina Krasnobrizha"
+     ],
+     "date": "2026-10-01",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "A small RL-trained search agent forecasting Polymarket questions edges frontier models at about 5% of the inference cost."
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.01716v1",
+     "title": "Architecture Without an Architect? Global Governance of Artificial Intelligence in a Divided World",
+     "authors": [
+      "Simon Chesterman"
+     ],
+     "date": "2026-10-01",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Review essay argues global AI governance design cannot be separated from the distribution of power among states and firms."
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.01539v1",
+     "title": "The AI Assessment Sandbox Configurator: A Framework to Support Technical Assessment in AI Regulatory Sandboxes",
+     "authors": [
+      "Alessio Buscemi",
+      "German Castignani",
+      "Daniele Pagani",
+      "Maxime Cordy",
+      "Jordi Cabot"
+     ],
+     "date": "2026-10-01",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Open-source framework supports technical testing within EU AI Act regulatory sandboxes, piloted in a live sandbox engagement."
+    }
+   ]
+  }
+ ]
+}

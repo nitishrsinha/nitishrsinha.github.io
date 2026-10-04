@@ -13,7 +13,9 @@
      "date": "2026-10-01",
      "theme": "Financial markets",
      "score": 5,
-     "summary": "In synthetic markets of LLM traders, news presentation shifts which model families submit orders, and this selection can improve or worsen price accuracy."
+     "summary": "In synthetic markets of LLM traders, news presentation shifts which model families submit orders, and this selection can improve or worsen price accuracy.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.01935v1",
@@ -31,7 +33,9 @@
      "date": "2026-10-01",
      "theme": "Methods",
      "score": 4,
-     "summary": "Shows imperfect AI-learned representations bias causal parameters by a product of two errors, and develops DML inference, aggregation pipelines and sensitivity bounds, applied to estimating demand elasticity."
+     "summary": "Shows imperfect AI-learned representations bias causal parameters by a product of two errors, and develops DML inference, aggregation pipelines and sensitivity bounds, applied to estimating demand elasticity.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.01128v1",
@@ -44,7 +48,9 @@
      "date": "2026-10-01",
      "theme": "Growth & macro",
      "score": 4,
-     "summary": "Places an LLM inside DSGE simulators and trains it with PPO, so its policy actions are judged by their simulated economic consequences rather than by how plausible they sound."
+     "summary": "Places an LLM inside DSGE simulators and trains it with PPO, so its policy actions are judged by their simulated economic consequences rather than by how plausible they sound.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.01325v1",
@@ -56,7 +62,9 @@
      "date": "2026-10-01",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "PPO agent blended with a regime prior improves Sharpe ratio and cuts SPY drawdown to 18% versus 34% for buy-and-hold."
+     "summary": "PPO agent blended with a regime prior improves Sharpe ratio and cuts SPY drawdown to 18% versus 34% for buy-and-hold.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.01231v1",
@@ -67,7 +75,9 @@
      "date": "2026-10-01",
      "theme": "Labor & productivity",
      "score": 4,
-     "summary": "Formulates a conditional Jevons hypothesis that cheap machine evaluation may increase its use inside organisations, and examines the implications for judgement and authority."
+     "summary": "Formulates a conditional Jevons hypothesis that cheap machine evaluation may increase its use inside organisations, and examines the implications for judgement and authority.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.01008v1",
@@ -80,7 +90,9 @@
      "date": "2026-10-01",
      "theme": "Methods",
      "score": 3,
-     "summary": "Pure ML models of ship emissions predict well but attenuate speed responses; hybrid structural-ML models preserve them, which matters because attenuation can flip the sign of policy net benefits."
+     "summary": "Pure ML models of ship emissions predict well but attenuate speed responses; hybrid structural-ML models preserve them, which matters because attenuation can flip the sign of policy net benefits.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.01955v1",
@@ -96,7 +108,9 @@
      "date": "2026-10-01",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "A small RL-trained search agent forecasting Polymarket questions edges frontier models at about 5% of the inference cost."
+     "summary": "A small RL-trained search agent forecasting Polymarket questions edges frontier models at about 5% of the inference cost.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.01716v1",
@@ -107,7 +121,9 @@
      "date": "2026-10-01",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "Review essay argues global AI governance design cannot be separated from the distribution of power among states and firms."
+     "summary": "Review essay argues global AI governance design cannot be separated from the distribution of power among states and firms.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.01539v1",
@@ -122,7 +138,9 @@
      "date": "2026-10-01",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "Open-source framework supports technical testing within EU AI Act regulatory sandboxes, piloted in a live sandbox engagement."
+     "summary": "Open-source framework supports technical testing within EU AI Act regulatory sandboxes, piloted in a live sandbox engagement.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -148,7 +166,9 @@
      "date": "2026-10-01",
      "theme": "Other",
      "score": 3,
-     "summary": "LLM-agent simulation of research ecosystems finds resubmission amplifies reviewer burden and resource inequality can emerge without cumulative advantage from early funding."
+     "summary": "LLM-agent simulation of research ecosystems finds resubmission amplifies reviewer burden and resource inequality can emerge without cumulative advantage from early funding.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -165,7 +185,9 @@
      "date": "2026-09-30",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "Hardware tiers induce self-selection on latency preferences, justifying flat per-token pricing; two-tier pricing raises profit 26-66% over single tier."
+     "summary": "Hardware tiers induce self-selection on latency preferences, justifying flat per-token pricing; two-tier pricing raises profit 26-66% over single tier.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.40070v1",
@@ -180,7 +202,9 @@
      "date": "2026-09-30",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "Designs a truthful inference auction for LLM priority service with autobidding, increasing welfare while preserving serving efficiency."
+     "summary": "Designs a truthful inference auction for LLM priority service with autobidding, increasing welfare while preserving serving efficiency.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.00619v1",
@@ -192,7 +216,9 @@
      "date": "2026-09-30",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "Deep RL agents in an optimal execution game learn punitive responses to deviations, providing behavioural evidence of algorithmic collusion."
+     "summary": "Deep RL agents in an optimal execution game learn punitive responses to deviations, providing behavioural evidence of algorithmic collusion.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.39285v1",
@@ -203,7 +229,9 @@
      "date": "2026-09-30",
      "theme": "Policy & regulation",
      "score": 4,
-     "summary": "Argues AI concentration in Big Tech becomes private governance over rights, calling for competition policy plus rights assessments and interoperability."
+     "summary": "Argues AI concentration in Big Tech becomes private governance over rights, calling for competition policy plus rights assessments and interoperability.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.39420v1",
@@ -216,7 +244,9 @@
      "date": "2026-09-30",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Continued pretraining and fine-tuning substantially raise LLM success at generating executable algorithmic trading code on a new benchmark."
+     "summary": "Continued pretraining and fine-tuning substantially raise LLM success at generating executable algorithmic trading code on a new benchmark.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.39025v1",
@@ -228,7 +258,9 @@
      "date": "2026-09-30",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "A rank-based fairness metric and test applied to HMDA mortgage data finds disparities across all ML credit models, ranking models differently than classical criteria."
+     "summary": "A rank-based fairness metric and test applied to HMDA mortgage data finds disparities across all ML credit models, ranking models differently than classical criteria.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.38869v1",
@@ -242,7 +274,9 @@
      "date": "2026-09-30",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Externalizing numerical reasoning from SHAP evidence makes LLM narratives of ML stock return predictions far more faithful."
+     "summary": "Externalizing numerical reasoning from SHAP evidence makes LLM narratives of ML stock return predictions far more faithful.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.39537v1",
@@ -255,7 +289,9 @@
      "date": "2026-09-30",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "Semantic web knowledge graph supports EU AI Act fundamental rights impact assessments, with LLM classification performing poorly for employment."
+     "summary": "Semantic web knowledge graph supports EU AI Act fundamental rights impact assessments, with LLM classification performing poorly for employment.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.39001v1",
@@ -266,7 +302,9 @@
      "date": "2026-09-30",
      "theme": "Markets & competition",
      "score": 3,
-     "summary": "French needs 31-58% more tokens than English across major tokenizers, raising usage costs; a French-optimized tokenizer cuts tokens 11.5%."
+     "summary": "French needs 31-58% more tokens than English across major tokenizers, raising usage costs; a French-optimized tokenizer cuts tokens 11.5%.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.00782v1",
@@ -288,7 +326,9 @@
      "date": "2026-09-30",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "Proposes evaluation standards so quality AI weather forecasts for smallholder farmers are not crowded out by cheap low-quality ones."
+     "summary": "Proposes evaluation standards so quality AI weather forecasts for smallholder farmers are not crowded out by cheap low-quality ones.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.39569v1",
@@ -300,7 +340,9 @@
      "date": "2026-09-30",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "Designs a spouse-protected tontine and solves household decumulation via neural-network policies, showing spouse continuation is a first-order event."
+     "summary": "Designs a spouse-protected tontine and solves household decumulation via neural-network policies, showing spouse continuation is a first-order event.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.00654v1",
@@ -312,7 +354,9 @@
      "date": "2026-09-30",
      "theme": "Markets & competition",
      "score": 3,
-     "summary": "Theory and retailer experiment show relevant context improves generative AI recommendations while irrelevant context degrades them."
+     "summary": "Theory and retailer experiment show relevant context improves generative AI recommendations while irrelevant context degrades them.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.39958v1",
@@ -325,7 +369,9 @@
      "date": "2026-09-30",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "Agentic harness for investment banking decks scores well above direct generation by LLM judges, but judge variability obscures small improvements."
+     "summary": "Agentic harness for investment banking decks scores well above direct generation by LLM judges, but judge variability obscures small improvements.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.38818v1",
@@ -338,7 +384,39 @@
      "date": "2026-09-30",
      "theme": "Labor & productivity",
      "score": 3,
-     "summary": "LLM summaries of employee feedback drop rarely voiced concerns 86% of the time, filtering by popularity rather than sentiment."
+     "summary": "LLM summaries of employee feedback drop rarely voiced concerns 86% of the time, filtering by popularity rather than sentiment.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.00581v1",
+     "title": "The Anatomy of Commodity Risk: Micro, Market, and Economy-Wide Sources",
+     "authors": [
+      "Nektarios Aslanidis",
+      "Aurelio Bariviera",
+      "George Kapetanios",
+      "Vasilis Sarafidis",
+      "Alexia Ventouri"
+     ],
+     "date": "2026-09-30",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Using IV and high-dimensional selection, market risk accounts for about two fifths of commodity risk intensity, and indices predict future volatility.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.39442v1",
+     "title": "Executive Judgement in AI-Mediated Decision-Making Environments: A Process Theory of Formation, Qualification Attrition and Authorisation",
+     "authors": [
+      "Richard Hill"
+     ],
+     "date": "2026-09-30",
+     "theme": "Other",
+     "score": 3,
+     "summary": "A process theory explains how executive judgements in AI-mediated organisations can fail when qualifying assumptions are lost before authorisation, and proposes four governance dimensions.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -357,7 +435,9 @@
      "date": "2026-09-29",
      "theme": "Labor & productivity",
      "score": 5,
-     "summary": "After ChatGPT, Stack Overflow consumers answered more but with lower acceptance, while producers answered less but gained recognition."
+     "summary": "After ChatGPT, Stack Overflow consumers answered more but with lower acceptance, while producers answered less but gained recognition.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.38459v1",
@@ -369,7 +449,9 @@
      "date": "2026-09-29",
      "theme": "Labor & productivity",
      "score": 4,
-     "summary": "Models how better automated checking can reduce incentives to maintain human expertise, leaving organizations unable to detect errors when automation fails; proposes reserve-of-expertise requirements."
+     "summary": "Models how better automated checking can reduce incentives to maintain human expertise, leaving organizations unable to detect errors when automation fails; proposes reserve-of-expertise requirements.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.37614v1",
@@ -380,7 +462,9 @@
      "date": "2026-09-29",
      "theme": "Labor & productivity",
      "score": 4,
-     "summary": "Frames AI data-work platforms as extractivist, relying on precarious Latin American labour and unpaid reproductive work."
+     "summary": "Frames AI data-work platforms as extractivist, relying on precarious Latin American labour and unpaid reproductive work.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.36914v1",
@@ -404,7 +488,9 @@
      "date": "2026-09-29",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Post-training a 4B LLM with SFT and PPO doubles its stock return forecasting score, rivaling frontier models."
+     "summary": "Post-training a 4B LLM with SFT and PPO doubles its stock return forecasting score, rivaling frontier models.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.38262v1",
@@ -416,7 +502,9 @@
      "date": "2026-09-29",
      "theme": "Policy & regulation",
      "score": 4,
-     "summary": "Rare randomized audits can deter AI agents that conceal misconduct if evidence survives concealment; otherwise deterrence requires reducing gains from violation."
+     "summary": "Rare randomized audits can deter AI agents that conceal misconduct if evidence survives concealment; otherwise deterrence requires reducing gains from violation.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.37223v1",
@@ -427,7 +515,9 @@
      "date": "2026-09-29",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "CredWise combines a calibrated XGBoost credit-risk model on Lending Club loans with explanations, policy retrieval and agent workflows into an auditable decision-support prototype."
+     "summary": "CredWise combines a calibrated XGBoost credit-risk model on Lending Club loans with explanations, policy retrieval and agent workflows into an auditable decision-support prototype.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.37412v1",
@@ -439,7 +529,9 @@
      "date": "2026-09-29",
      "theme": "Methods",
      "score": 3,
-     "summary": "Proposes debiased ML set estimation for partially identified parameters with estimated nuisances, applied to wage distribution bounds and the gender wage gap."
+     "summary": "Proposes debiased ML set estimation for partially identified parameters with estimated nuisances, applied to wage distribution bounds and the gender wage gap.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.38545v1",
@@ -450,7 +542,9 @@
      "date": "2026-09-29",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "Models institutions that talk against their trades and shows that when the say-do covariance is negative, text signals should be faded; simulations support this."
+     "summary": "Models institutions that talk against their trades and shows that when the say-do covariance is negative, text signals should be faded; simulations support this.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.37820v1",
@@ -462,7 +556,9 @@
      "date": "2026-09-29",
      "theme": "Markets & competition",
      "score": 3,
-     "summary": "A positioning game measured with language-model representations of corporate news shows rivalry mainly changes how differently firms respond to opportunities, not whether they avoid crowding."
+     "summary": "A positioning game measured with language-model representations of corporate news shows rivalry mainly changes how differently firms respond to opportunities, not whether they avoid crowding.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.37168v1",
@@ -474,7 +570,9 @@
      "date": "2026-09-29",
      "theme": "Growth & macro",
      "score": 3,
-     "summary": "A BART-estimated mixed-frequency VAR finds euro area monetary tightening transmits as theory predicts, while easing has mostly insignificant effects."
+     "summary": "A BART-estimated mixed-frequency VAR finds euro area monetary tightening transmits as theory predicts, while easing has mostly insignificant effects.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.37902v1",
@@ -491,7 +589,9 @@
      "date": "2026-09-29",
      "theme": "Markets & competition",
      "score": 3,
-     "summary": "Measuring open-weight LLM inference providers shows that price does not predict quality or availability; a market-aware router selects cheap, quality-equivalent, healthy providers for cost savings."
+     "summary": "Measuring open-weight LLM inference providers shows that price does not predict quality or availability; a market-aware router selects cheap, quality-equivalent, healthy providers for cost savings.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.36739v1",
@@ -502,7 +602,44 @@
      "date": "2026-09-29",
      "theme": "Markets & competition",
      "score": 3,
-     "summary": "A simulated multi-agent LLM firm across technology eras recognizes shifts better than it commits to them, with organizational memory design shaping strategy, though temporal leakage undermines trust."
+     "summary": "A simulated multi-agent LLM firm across technology eras recognizes shifts better than it commits to them, with organizational memory design shaping strategy, though temporal leakage undermines trust.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.38571v1",
+     "title": "Drowning in AI Slop: How Social Media Platforms (Do Not) Label AI and Deepfake Content under EU law",
+     "authors": [
+      "Bram Rijsbosch",
+      "Luka Bekavac",
+      "Henry Tari",
+      "Gijs van Dijck",
+      "Konrad Kollnig"
+     ],
+     "date": "2026-09-29",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Audit finds platforms label only 33% of risky deepfakes and 61% of provenance-tagged AI uploads, despite EU labelling rules.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.36474v1",
+     "title": "FinRT: Distilling Adaptive Red-Teaming Strategies into Reusable Adversarial Generators in Consumer Finance",
+     "authors": [
+      "Rikhiya Ghosh",
+      "Himanshu Kumar",
+      "Sriram Venkatapathy",
+      "Sahil Wadhwa",
+      "Alexandre G. R. Day",
+      "Pranab Mohanty"
+     ],
+     "date": "2026-09-29",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Reusable adversarial prompt generators nearly double attack success against LLMs used in consumer finance compared with Rainbow Teaming.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -528,7 +665,9 @@
      "date": "2026-09-28",
      "theme": "Labor & productivity",
      "score": 5,
-     "summary": "Double-blind Swiss RCT finds ML-based refugee placement raised share of months employed by 2.2 pp (about 10%), rising to 3.9 pp for post-COVID cohorts."
+     "summary": "Double-blind Swiss RCT finds ML-based refugee placement raised share of months employed by 2.2 pp (about 10%), rising to 3.9 pp for post-COVID cohorts.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.36365v1",
@@ -541,7 +680,9 @@
      "date": "2026-09-28",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "Simple sequential mechanism interfaces like ascending auctions substantially reduce LLM agent bidding errors, without improving stated strategic understanding."
+     "summary": "Simple sequential mechanism interfaces like ascending auctions substantially reduce LLM agent bidding errors, without improving stated strategic understanding.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.35402v1",
@@ -554,7 +695,9 @@
      "date": "2026-09-28",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "Persistent partner matching raises learned pricing agents' profits by 0.27 of the competitive-monopoly gap, without clear evidence of learned punishment."
+     "summary": "Persistent partner matching raises learned pricing agents' profits by 0.27 of the competitive-monopoly gap, without clear evidence of learned punishment.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.35559v1",
@@ -573,7 +716,9 @@
      "date": "2026-09-28",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "In LLM agent factor mining, deeper search narrows model gaps and parallel search beats sequential search under fixed budgets."
+     "summary": "In LLM agent factor mining, deeper search narrows model gaps and parallel search beats sequential search under fixed budgets.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.34821v1",
@@ -588,7 +733,9 @@
      "date": "2026-09-28",
      "theme": "Markets & competition",
      "score": 4,
-     "summary": "CEO Arena benchmarks LLM CEO agents competing in a simulated market; most earn negative returns and private gains can accompany market-wide losses."
+     "summary": "CEO Arena benchmarks LLM CEO agents competing in a simulated market; most earn negative returns and private gains can accompany market-wide losses.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.34679v1",
@@ -606,7 +753,9 @@
      "date": "2026-09-28",
      "theme": "Markets & competition",
      "score": 4,
-     "summary": "Combines LLM agents with contextual bandits for decentralized matching in a simulated marriage market, achieving higher mutual welfare and fewer blocking pairs than Gale-Shapley."
+     "summary": "Combines LLM agents with contextual bandits for decentralized matching in a simulated marriage market, achieving higher mutual welfare and fewer blocking pairs than Gale-Shapley.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.36061v1",
@@ -620,7 +769,9 @@
      "date": "2026-09-28",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Introduces the CZAR loss for ML return prediction so that models with genuine but noisy directional skill are not beaten by trivial zero forecasts."
+     "summary": "Introduces the CZAR loss for ML return prediction so that models with genuine but noisy directional skill are not beaten by trivial zero forecasts.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.35137v1",
@@ -633,7 +784,9 @@
      "date": "2026-09-28",
      "theme": "Other",
      "score": 4,
-     "summary": "AI advice can harm decision quality by crowding out costly information acquisition; convexity of a continuation value function determines whether every AI signal helps."
+     "summary": "AI advice can harm decision quality by crowding out costly information acquisition; convexity of a continuation value function determines whether every AI signal helps.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.35086v1",
@@ -646,7 +799,9 @@
      "date": "2026-09-28",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "A retrieval-augmented diffusion model learns market state representations for SDF portfolios, achieving state-of-the-art risk-adjusted performance with economically meaningful signals."
+     "summary": "A retrieval-augmented diffusion model learns market state representations for SDF portfolios, achieving state-of-the-art risk-adjusted performance with economically meaningful signals.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.34474v1",
@@ -659,7 +814,9 @@
      "date": "2026-09-28",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Deep kernel hedging combining neural embeddings with kernel methods delivers competitive, robust hedging, especially in low-data regimes."
+     "summary": "Deep kernel hedging combining neural embeddings with kernel methods delivers competitive, robust hedging, especially in low-data regimes.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.34169v1",
@@ -673,7 +830,9 @@
      "date": "2026-09-28",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Sentence-transformer topic models on news produce more coherent topics and higher Sharpe ratios than LDA for factor construction, though outperformance is not statistically established."
+     "summary": "Sentence-transformer topic models on news produce more coherent topics and higher Sharpe ratios than LDA for factor construction, though outperformance is not statistically established.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.36054v1",
@@ -705,7 +864,9 @@
      "date": "2026-09-28",
      "theme": "Growth & macro",
      "score": 4,
-     "summary": "Argues automation of AI R&D could trigger an intelligence explosion with major benefits and risks, urging policymakers to monitor and prepare."
+     "summary": "Argues automation of AI R&D could trigger an intelligence explosion with major benefits and risks, urging policymakers to monitor and prepare.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.34510v1",
@@ -730,7 +891,9 @@
      "date": "2026-09-28",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Benchmarks ML, RL, LLM and agent crypto trading methods from backtests to paper and real-money trading to quantify the backtest-to-realization gap."
+     "summary": "Benchmarks ML, RL, LLM and agent crypto trading methods from backtests to paper and real-money trading to quantify the backtest-to-realization gap.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.34507v1",
@@ -742,7 +905,9 @@
      "date": "2026-09-28",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "KiT, a diffusion transformer foundation model for candlestick data, outperforms financial and general forecasters on return and volatility RankIC."
+     "summary": "KiT, a diffusion transformer foundation model for candlestick data, outperforms financial and general forecasters on return and volatility RankIC.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.34188v1",
@@ -755,7 +920,9 @@
      "date": "2026-09-28",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "LLM-guided multi-objective RL for formulaic alpha discovery that handles non-stationary rewards and outperforms competing methods on real data."
+     "summary": "LLM-guided multi-objective RL for formulaic alpha discovery that handles non-stationary rewards and outperforms competing methods on real data.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.34828v1",
@@ -768,7 +935,9 @@
      "date": "2026-09-28",
      "theme": "Methods",
      "score": 3,
-     "summary": "FR-LLM fine-tunes LLMs to simulate coherent whole-questionnaire survey respondents, better reproducing cross-question patterns and yielding the highest profit in a pricing and stocking application."
+     "summary": "FR-LLM fine-tunes LLMs to simulate coherent whole-questionnaire survey respondents, better reproducing cross-question patterns and yielding the highest profit in a pricing and stocking application.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.35744v1",
@@ -798,7 +967,9 @@
      "date": "2026-09-28",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "Expert-guided automatic rubrics for evaluating financial research agents track expert scoring and are preferred by analysts."
+     "summary": "Expert-guided automatic rubrics for evaluating financial research agents track expert scoring and are preferred by analysts.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.36304v1",
@@ -809,7 +980,9 @@
      "date": "2026-09-28",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "Documents an authorization gap between academic frontier-AI access awards and actual usable research access due to underspecified terms and institutional review."
+     "summary": "Documents an authorization gap between academic frontier-AI access awards and actual usable research access due to underspecified terms and institutional review.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.35719v1",
@@ -821,7 +994,9 @@
      "date": "2026-09-28",
      "theme": "Labor & productivity",
      "score": 3,
-     "summary": "Coding agent swarms produced substantial research output quickly, suggesting automation of routine theoretical research and raising questions about review, credit, and paying researchers."
+     "summary": "Coding agent swarms produced substantial research output quickly, suggesting automation of routine theoretical research and raising questions about review, credit, and paying researchers.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.34211v2",
@@ -835,7 +1010,56 @@
      "date": "2026-09-28",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "Multi-agent LLM framework enriches real transaction data with semantics, producing a multimodal fraud dataset that improves fraud modeling and LLM reasoning."
+     "summary": "Multi-agent LLM framework enriches real transaction data with semantics, producing a multimodal fraud dataset that improves fraud modeling and LLM reasoning.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.36280v1",
+     "title": "Probabilistic Seasonality",
+     "authors": [
+      "Feras A. Saad",
+      "Todd B. Walker"
+     ],
+     "date": "2026-09-28",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "A probabilistic model-discovery method for seasonal adjustment beats X-13 and reveals real-time uncertainty in macroeconomic series during COVID.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.35537v1",
+     "title": "Optimal Networks for Agentic Information Aggregation",
+     "authors": [
+      "MohammadHossein Bateni",
+      "Zahra Hadizadeh",
+      "MohammadTaghi Hajiaghayi",
+      "Mahdi JafariRaviz",
+      "Shayan Taherijam"
+     ],
+     "date": "2026-09-28",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "In networked learning among agents, two parents per agent suffice for exact information aggregation, while one parent cannot guarantee it.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.35470v1",
+     "title": "Representation Risk in Pretrained Image Encoders",
+     "authors": [
+      "Ardyn Nordstrom",
+      "Morgan Nordstrom",
+      "Vamuyan Sesay",
+      "Matthew D. Webb"
+     ],
+     "date": "2026-09-28",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "The choice of pretrained image encoder materially changes predictive conclusions, for example house-price prediction R² rising from 0.40 to 0.63.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -855,7 +1079,9 @@
      "date": "2026-09-27",
      "theme": "Labor & productivity",
      "score": 5,
-     "summary": "A hybrid agentic simulation using Chinese data finds repeated AI shocks widen wage gaps and Gini; targeted education subsidies partially mitigate this inequality."
+     "summary": "A hybrid agentic simulation using Chinese data finds repeated AI shocks widen wage gaps and Gini; targeted education subsidies partially mitigate this inequality.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.33058v1",
@@ -866,7 +1092,9 @@
      "date": "2026-09-27",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "Surveys market microstructure evolution through AI agents, reviewing algorithmic collusion and arguing allocation is the missing layer of agent-commerce protocols."
+     "summary": "Surveys market microstructure evolution through AI agents, reviewing algorithmic collusion and arguing allocation is the missing layer of agent-commerce protocols.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.33289v2",
@@ -881,7 +1109,9 @@
      "date": "2026-09-27",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "RL-trained LLM seller agents in multi-product bargaining with private valuations match or beat frontier models in surplus extraction and allocation quality."
+     "summary": "RL-trained LLM seller agents in multi-product bargaining with private valuations match or beat frontier models in surplus extraction and allocation quality.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.33470v1",
@@ -898,7 +1128,9 @@
      "date": "2026-09-27",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Introduces LiveOption benchmark for LLM agents in option trading; current agents often fail to achieve competitive returns."
+     "summary": "Introduces LiveOption benchmark for LLM agents in option trading; current agents often fail to achieve competitive returns.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.33767v1",
@@ -911,7 +1143,9 @@
      "date": "2026-09-27",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "A deep learning options trading framework with a differentiable Greek-risk penalty improves out-of-sample risk-adjusted returns while reducing directional exposure."
+     "summary": "A deep learning options trading framework with a differentiable Greek-risk penalty improves out-of-sample risk-adjusted returns while reducing directional exposure.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.33524v1",
@@ -927,7 +1161,9 @@
      "date": "2026-09-27",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "In long-horizon LLM-agent alpha discovery, self-evolving accumulated capabilities show no consistent gain over initial capabilities."
+     "summary": "In long-horizon LLM-agent alpha discovery, self-evolving accumulated capabilities show no consistent gain over initial capabilities.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.34004v2",
@@ -940,7 +1176,9 @@
      "date": "2026-09-27",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Event-graph LLM agent for point-in-time stock scoring more than doubles baseline ICIR and achieves high net Sharpe on Nasdaq-100 and Hang Seng."
+     "summary": "Event-graph LLM agent for point-in-time stock scoring more than doubles baseline ICIR and achieves high net Sharpe on Nasdaq-100 and Hang Seng.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.33214v1",
@@ -955,7 +1193,9 @@
      "date": "2026-09-27",
      "theme": "Other",
      "score": 3,
-     "summary": "Theory shows source-blind learners (e.g., LLM summaries) learn more slowly than source-aware ones but can match them with at most O(1/ε) more data."
+     "summary": "Theory shows source-blind learners (e.g., LLM summaries) learn more slowly than source-aware ones but can match them with at most O(1/ε) more data.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.33055v1",
@@ -966,7 +1206,9 @@
      "date": "2026-09-27",
      "theme": "Methods",
      "score": 3,
-     "summary": "LLMs predicting World Values Survey life satisfaction compress its dispersion but largely preserve the income gradient in well-being inequality."
+     "summary": "LLMs predicting World Values Survey life satisfaction compress its dispersion but largely preserve the income gradient in well-being inequality.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.33850v1",
@@ -977,7 +1219,26 @@
      "date": "2026-09-27",
      "theme": "Markets & competition",
      "score": 3,
-     "summary": "Revisits a 1996 Internet strategy article, arguing AI-enabled enterprise systems extend rather than replace Internet strategy via platforms, data governance and algorithmic coordination."
+     "summary": "Revisits a 1996 Internet strategy article, arguing AI-enabled enterprise systems extend rather than replace Internet strategy via platforms, data governance and algorithmic coordination.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.33376v1",
+     "title": "TNF based Spectral Embedding for Effective Application of Supervised Machine Learning Techniques in Automobile Insurance Fraud Detection",
+     "authors": [
+      "Rohan Yashraj Gupta",
+      "Lalith Srikanth Chintalapati",
+      "Satya Sai Mudigonda",
+      "Pallav Kumar Baruah",
+      "Raghunatha Sarma Rachakonda"
+     ],
+     "date": "2026-09-27",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Finds MWMOTE balancing, TNF spectral embedding and random forest best detect auto insurance fraud among 65 ML combinations.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -997,7 +1258,9 @@
      "date": "2026-09-26",
      "theme": "Labor & productivity",
      "score": 5,
-     "summary": "At a medical-device firm, AI usage mandates induced gaming; lowering the target cut mostly off-task queries and raised sales employees' monthly sales by 7%."
+     "summary": "At a medical-device firm, AI usage mandates induced gaming; lowering the target cut mostly off-task queries and raised sales employees' monthly sales by 7%.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.32773v1",
@@ -1010,7 +1273,9 @@
      "date": "2026-09-26",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "LLM-derived monetary-policy news signals improve intraday USD/CAD forecasts, with communication timing the strongest contributor and sentiment complementary."
+     "summary": "LLM-derived monetary-policy news signals improve intraday USD/CAD forecasts, with communication timing the strongest contributor and sentiment complementary.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.32476v1",
@@ -1024,7 +1289,9 @@
      "date": "2026-09-26",
      "theme": "Policy & regulation",
      "score": 4,
-     "summary": "Proposes a fiscal framework taxing automated value added via factor-origin accounting and recycling revenues into social automation funds for AI-robot economies."
+     "summary": "Proposes a fiscal framework taxing automated value added via factor-origin accounting and recycling revenues into social automation funds for AI-robot economies.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.32746v1",
@@ -1039,7 +1306,55 @@
      "date": "2026-09-26",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "A multi-agent LLM symbolic regression framework discovers interpretable valuation equations, outperforming classical finance methods and financial LLMs."
+     "summary": "A multi-agent LLM symbolic regression framework discovers interpretable valuation equations, outperforming classical finance methods and financial LLMs.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.32925v1",
+     "title": "Skill, Luck, or Imitation? What Actually Pays in Creator Markets",
+     "authors": [
+      "Samiha Tariq"
+     ],
+     "date": "2026-09-26",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Using ML-measured content of YouTube videos, finds content barely predicts views while a first hit raises later views 164%, and only topic copying pays.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.32835v1",
+     "title": "FinancialAuditBench: Benchmark Construction under Differential Privacy Using Real-World Priors",
+     "authors": [
+      "Jerry Huang",
+      "Sarvesh Babu",
+      "Matt Van Buren",
+      "Alexander Wang",
+      "Pranav Pillai",
+      "Arush Jain",
+      "James P. Burton",
+      "Julia Hockenmaier"
+     ],
+     "date": "2026-09-26",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Differentially private benchmark of audit tasks shows frontier agents complete much staff-level audit work but sometimes produce incorrect procedures or documentation.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.32379v1",
+     "title": "Measurement Boundaries in LLM Financial Agent Evaluation: Fixed-Tape Execution and Multi-Defect Auditing",
+     "authors": [
+      "Weicheng Xue"
+     ],
+     "date": "2026-09-26",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Shows LLM financial agent evaluations conflate execution rules with response variability and that target recall poorly measures audit quality.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1057,7 +1372,9 @@
      "date": "2026-09-25",
      "theme": "Financial markets",
      "score": 5,
-     "summary": "LLM agent societies exhibit frequent bank-run and rollover failures; commitment mechanisms help, especially when broad commitment forms early."
+     "summary": "LLM agent societies exhibit frequent bank-run and rollover failures; commitment mechanisms help, especially when broad commitment forms early.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.31468v1",
@@ -1068,7 +1385,9 @@
      "date": "2026-09-25",
      "theme": "Markets & competition",
      "score": 4,
-     "summary": "Benchmark of 28 LLM booking agents shows price sensitivity varies by over an order of magnitude, moving mean booked price from $247 to $393."
+     "summary": "Benchmark of 28 LLM booking agents shows price sensitivity varies by over an order of magnitude, moving mean booked price from $247 to $393.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.31013v1",
@@ -1080,7 +1399,9 @@
      "date": "2026-09-25",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "LLM-based textual measures of earnings calls diverge across models (rank correlation 0.52), materially changing downstream regression inferences."
+     "summary": "LLM-based textual measures of earnings calls diverge across models (rank correlation 0.52), materially changing downstream regression inferences.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.35856v1",
@@ -1091,7 +1412,9 @@
      "date": "2026-09-25",
      "theme": "Methods",
      "score": 4,
-     "summary": "Uses generative LLMs with weak supervision to classify economic policy uncertainty in news cheaply, improving on keyword-based approaches."
+     "summary": "Uses generative LLMs with weak supervision to classify economic policy uncertainty in news cheaply, improving on keyword-based approaches.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.30705v1",
@@ -1103,7 +1426,9 @@
      "date": "2026-09-25",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Across DeepSeek, GPT and Gemini, more reasoning effort does not reliably improve net portfolio returns in LLM-based US equity trading."
+     "summary": "Across DeepSeek, GPT and Gemini, more reasoning effort does not reliably improve net portfolio returns in LLM-based US equity trading.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.31263v1",
@@ -1116,7 +1441,9 @@
      "date": "2026-09-25",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Using double-selection LASSO, finds equity factors span about 91% of option factor variance, though a few jump-tail and convexity option factors add pricing-relevant information."
+     "summary": "Using double-selection LASSO, finds equity factors span about 91% of option factor variance, though a few jump-tail and convexity option factors add pricing-relevant information.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.31260v1",
@@ -1127,7 +1454,42 @@
      "date": "2026-09-25",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Limit order books populated by reinforcement-learning agents show phase transitions between orderly and hyper-volatile states and market impact deviating from square-root law."
+     "summary": "Limit order books populated by reinforcement-learning agents show phase transitions between orderly and hyper-volatile states and market impact deviating from square-root law.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.35864v1",
+     "title": "Resolving the Missing Financial Data Crisis: A Generative AI Pipeline for SEC 10-K Extraction",
+     "authors": [
+      "Prisha Nair",
+      "Roee Shraga"
+     ],
+     "date": "2026-09-25",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Evaluates LLMs for extracting missing financial variables from 10-K filings, finding that matching model size to document complexity yields high zero-shot accuracy.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.31562v1",
+     "title": "Agentic Economies for Autonomous Scientific Discovery",
+     "authors": [
+      "Nenad Tomasev",
+      "Matija Franklin",
+      "Atoosa Kasirzadeh",
+      "Vivek Natarajan",
+      "Alan Karthikesalingam",
+      "Sebastien Krier",
+      "Simon Osindero"
+     ],
+     "date": "2026-09-25",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Outlines agent economies, markets and institutions to allocate resources, assign credit and track accountability in AI-driven scientific discovery.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.31245v2",
@@ -1145,7 +1507,9 @@
      "date": "2026-09-25",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "RupeeBias benchmark finds systematic demographic bias, such as by caste and gender, in LLM salary and pricing advice in Indian contexts."
+     "summary": "RupeeBias benchmark finds systematic demographic bias, such as by caste and gender, in LLM salary and pricing advice in Indian contexts.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.31806v1",
@@ -1158,7 +1522,9 @@
      "date": "2026-09-25",
      "theme": "Growth & macro",
      "score": 3,
-     "summary": "Economic covariates improve medium-term French electricity load forecasts from a tabular foundation model by about 20%."
+     "summary": "Economic covariates improve medium-term French electricity load forecasts from a tabular foundation model by about 20%.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.35845v1",
@@ -1169,7 +1535,71 @@
      "date": "2026-09-25",
      "theme": "Growth & macro",
      "score": 3,
-     "summary": "Tracks AI technology diffusion via text embeddings of arXiv preprints and patents; paper volume alone does not Granger-cause frontier compute surges."
+     "summary": "Tracks AI technology diffusion via text embeddings of arXiv preprints and patents; paper volume alone does not Granger-cause frontier compute surges.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.30684v1",
+     "title": "PixSim: a calibrated open-source simulator of instant-payment fraud, recovery and interdiction under analyst capacity constraints",
+     "authors": [
+      "Bashir Zeimarani",
+      "Alireza Khatib",
+      "Somayeh Mousavinasr",
+      "Carlos Maurício Serodio Figueiredo"
+     ],
+     "date": "2026-09-25",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "PixSim is an open simulator of Brazil's Pix fraud and recovery, calibrated to central bank data, for evaluating interdiction policies under analyst capacity limits.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.32030v1",
+     "title": "Who Governs Data in the AI Era? A Computational Analysis of the U.S. Privacy Workforce in Job Postings",
+     "authors": [
+      "Ramazan Yener",
+      "Muhammad Hassan",
+      "Masooda Bashir"
+     ],
+     "date": "2026-09-25",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Analysis of 1,143 privacy job postings finds hybrid roles, with AI language in over half of postings and AI governance often embedded in privacy jobs.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.31188v1",
+     "title": "How can AI accelerate the green transition?",
+     "authors": [
+      "Jacques Sainte-Marie",
+      "Marie-Fleur Simmet",
+      "Fanny Terrier"
+     ],
+     "date": "2026-09-25",
+     "theme": "Growth & macro",
+     "score": 3,
+     "summary": "Essay exploring AI's environmental impacts and its potential to accelerate or constrain the ecological transition.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.31054v2",
+     "title": "Cheap, open agents make LLM pollution harder to mitigate",
+     "authors": [
+      "Raluca Rilla",
+      "Anne-Marie Nussberger",
+      "Rui Mata",
+      "Dirk U. Wulff"
+     ],
+     "date": "2026-09-25",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Cheap open-weight agents complete surveys about as well as commercial ones and evade single detection checks, raising the risk of LLM pollution in survey data.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1188,7 +1618,9 @@
      "date": "2026-09-24",
      "theme": "Labor & productivity",
      "score": 5,
-     "summary": "Models how AI job-search tools make applications less informative, hurting inexperienced but compatible applicants and motivating multistage hiring as firms' response."
+     "summary": "Models how AI job-search tools make applications less informative, hurting inexperienced but compatible applicants and motivating multistage hiring as firms' response.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.29014v1",
@@ -1202,7 +1634,9 @@
      "date": "2026-09-24",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "AlphaDiverse post-trains local LLM agents for alpha factor mining, giving competitive prediction and broader exploration in Chinese stocks."
+     "summary": "AlphaDiverse post-trains local LLM agents for alpha factor mining, giving competitive prediction and broader exploration in Chinese stocks.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.29345v1",
@@ -1213,7 +1647,9 @@
      "date": "2026-09-24",
      "theme": "Labor & productivity",
      "score": 3,
-     "summary": "A task-substitution framework shows when agents can replace human governance reviews and why automating most cases can still raise total labor."
+     "summary": "A task-substitution framework shows when agents can replace human governance reviews and why automating most cases can still raise total labor.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.29887v2",
@@ -1225,7 +1661,9 @@
      "date": "2026-09-24",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "Proposes online learning aggregation of portfolio window sizes with turnover-inclusive losses and proves cost-sensitive tracking-regret bounds."
+     "summary": "Proposes online learning aggregation of portfolio window sizes with turnover-inclusive losses and proves cost-sensitive tracking-regret bounds.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.29108v2",
@@ -1237,7 +1675,105 @@
      "date": "2026-09-24",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "Develops a functional architecture for AI-supported European electricity trading compliant with REMIT, MiFID II and other rules, with bounded, auditable AI control."
+     "summary": "Develops a functional architecture for AI-supported European electricity trading compliant with REMIT, MiFID II and other rules, with bounded, auditable AI control.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.29958v1",
+     "title": "Multi-Dimensional Matching",
+     "authors": [
+      "Irene Aldridge"
+     ],
+     "date": "2026-09-24",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "A spectral-projection matching mechanism on features achieves projected Nash social welfare optimum quickly, illustrated on an agentic AI shopping application.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.31769v1",
+     "title": "Estimating Heterogeneous Causal Effects with Tree-Based Methods under Imperfect Compliance",
+     "authors": [
+      "Karolina Gliszczyńska-Schroeder"
+     ],
+     "date": "2026-09-24",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Proposes forest-based two-step methods for heterogeneous complier effects under imperfect compliance, performing competitively with faster runtime than BCF-IV.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.30396v1",
+     "title": "An End-to-End Pipeline for Causal ML with Continuous Treatments: An Application to Financial Decision Making",
+     "authors": [
+      "Javier Moral Hernández",
+      "Clara Higuera-Cabañes",
+      "Álvaro Ibraín"
+     ],
+     "date": "2026-09-24",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "An end-to-end causal ML pipeline for continuous treatments, validated on synthetic debt-collection data, yields less biased and more efficient estimates.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.30010v1",
+     "title": "Quantifying AI impact in energy transitions: The Energy Justice Impact Assessment (EJIA) framework",
+     "authors": [
+      "Emily Bringmann",
+      "Florian Kutzner",
+      "Bianca Weber",
+      "Celina Kacperski"
+     ],
+     "date": "2026-09-24",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Reviews AI impact assessments and proposes a stakeholder-disaggregated framework for quantifying energy justice effects of AI in energy systems.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.29370v1",
+     "title": "From Policy Documents to Structured Survey Responses: Evaluating Large Language Models for Policy Monitoring",
+     "authors": [
+      "Carolyn Cole",
+      "Matthias Deschryvere",
+      "Toqeer Ehsan",
+      "Arash Hajikhani"
+     ],
+     "date": "2026-09-24",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "LLMs as 'AI respondents' extract innovation-policy survey responses from documents, reaching 84-95% agreement with humans on structured indicators.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.28876v1",
+     "title": "Forecast-Dojo: Replayable Environments for Benchmarking and Training LLM Forecasting Agents",
+     "authors": [
+      "Liqin Ye",
+      "Haorui Wang",
+      "Fardin Ahmed",
+      "Rongzhi Zhang",
+      "Yuan He",
+      "Ziyuan Lin",
+      "Yanbin Yin",
+      "Jing Peng",
+      "Michael Galarnyk",
+      "Sudheer Chava",
+      "Chao Zhang"
+     ],
+     "date": "2026-09-24",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Replayable Polymarket-based forecasting environment shows research tools help LLMs, but all models trail historical market forecasts.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1254,7 +1790,9 @@
      "date": "2026-09-23",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "Signaling model shows generative AI can push fraud toward high-trust, less-vigilant markets temporarily until verification responds, termed trust arbitrage."
+     "summary": "Signaling model shows generative AI can push fraud toward high-trust, less-vigilant markets temporarily until verification responds, termed trust arbitrage.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.28322v2",
@@ -1267,7 +1805,9 @@
      "date": "2026-09-23",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "A reverse-auction procurement platform for LLM inference reveals pricing margins of 10-71%, pointing to inefficiency in fixed-price token markets."
+     "summary": "A reverse-auction procurement platform for LLM inference reveals pricing margins of 10-71%, pointing to inefficiency in fixed-price token markets.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.28291v1",
@@ -1279,7 +1819,9 @@
      "date": "2026-09-23",
      "theme": "Policy & regulation",
      "score": 5,
-     "summary": "Models an AI capability race with disaster risk, showing racing or pacing equilibria depending on risk, and that hidden internal capabilities undermine pacing."
+     "summary": "Models an AI capability race with disaster risk, showing racing or pacing equilibria depending on risk, and that hidden internal capabilities undermine pacing.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.28372v1",
@@ -1291,7 +1833,9 @@
      "date": "2026-09-23",
      "theme": "Markets & competition",
      "score": 4,
-     "summary": "LLM shopping agents facing information costs and vague goals fall for pricing cues like human heuristics, driven by storefront information architecture."
+     "summary": "LLM shopping agents facing information costs and vague goals fall for pricing cues like human heuristics, driven by storefront information architecture.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.27654v1",
@@ -1304,7 +1848,9 @@
      "date": "2026-09-23",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Federated learning for income estimation in lending nearly matches pooled models and helps data-scarce lenders, raising simulated approval rates."
+     "summary": "Federated learning for income estimation in lending nearly matches pooled models and helps data-scarce lenders, raising simulated approval rates.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.28681v1",
@@ -1316,7 +1862,9 @@
      "date": "2026-09-23",
      "theme": "Markets & competition",
      "score": 3,
-     "summary": "Agent-based model shows collective practice repertoires with local judgment preserve diversity and discovery, while copying leaders exhausts it, relevant to generative AI."
+     "summary": "Agent-based model shows collective practice repertoires with local judgment preserve diversity and discovery, while copying leaders exhausts it, relevant to generative AI.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.27686v1",
@@ -1329,7 +1877,9 @@
      "date": "2026-09-23",
      "theme": "Methods",
      "score": 3,
-     "summary": "LLM-extracted literature metadata is reliable for binary tasks but errors substantially affect paper-level claims while barely affecting literature-wide claims."
+     "summary": "LLM-extracted literature metadata is reliable for binary tasks but errors substantially affect paper-level claims while barely affecting literature-wide claims.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.27636v2",
@@ -1340,7 +1890,9 @@
      "date": "2026-09-23",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "Proposes a multi-agent AI architecture for insurers grounded in risk pooling, game, and principal-agent theory, compliant with Solvency II and the AI Act."
+     "summary": "Proposes a multi-agent AI architecture for insurers grounded in risk pooling, game, and principal-agent theory, compliant with Solvency II and the AI Act.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.27632v2",
@@ -1352,7 +1904,36 @@
      "date": "2026-09-23",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "Proposes a compliance-first multi-agent AI architecture for regulated finance in DACH, embedding regulatory obligations and audit trails on a permissioned ledger so compliance is verifiable by auditors."
+     "summary": "Proposes a compliance-first multi-agent AI architecture for regulated finance in DACH, embedding regulatory obligations and audit trails on a permissioned ledger so compliance is verifiable by auditors.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.28675v1",
+     "title": "From Individual to Social Imitation: How Communities Expand Organizational Search",
+     "authors": [
+      "Esteve Almirall",
+      "Christopher Tucci"
+     ],
+     "date": "2026-09-23",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Agent-based model shows community-distilled social imitation improves organizational search only with situated evaluation, motivated by generative AI firms.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.28576v1",
+     "title": "Time-Series Foundation Models That Understand Data Revisions",
+     "authors": [
+      "Taimoor Ahmad"
+     ],
+     "date": "2026-09-23",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Proposes a revision-aware time-series foundation model framework for real-time macro data forecasting; only synthetic demonstrations executed, no empirical advantage claimed.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1370,7 +1951,9 @@
      "date": "2026-09-22",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Frozen anytime-valid referee admits 5-11 times fewer false factors than leaky referees for LLM factor-mining agents, at the cost of delayed admission."
+     "summary": "Frozen anytime-valid referee admits 5-11 times fewer false factors than leaky referees for LLM factor-mining agents, at the cost of delayed admission.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.26861v1",
@@ -1384,7 +1967,9 @@
      "date": "2026-09-22",
      "theme": "Markets & competition",
      "score": 4,
-     "summary": "Experiment finds pricing-tool design features, including LLM advice, mostly raise market prices via higher starting prices and more cooperative algorithms."
+     "summary": "Experiment finds pricing-tool design features, including LLM advice, mostly raise market prices via higher starting prices and more cooperative algorithms.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.26604v1",
@@ -1398,7 +1983,9 @@
      "date": "2026-09-22",
      "theme": "Growth & macro",
      "score": 4,
-     "summary": "Across 26 Chinese regions 2006-2020, interregional AI co-publication spillovers boost AI patenting, but gains concentrate in regions where private firms dominate R&D, reinforcing divergence."
+     "summary": "Across 26 Chinese regions 2006-2020, interregional AI co-publication spillovers boost AI patenting, but gains concentrate in regions where private firms dominate R&D, reinforcing divergence.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.26303v1",
@@ -1409,7 +1996,9 @@
      "date": "2026-09-22",
      "theme": "Methods",
      "score": 4,
-     "summary": "Decomposes forecasts into target-aligned and orthogonal parts, proposes a selection rule removing dilution, and applies it to LLM equity-ranking forecasts, though no combination beats no-information."
+     "summary": "Decomposes forecasts into target-aligned and orthogonal parts, proposes a selection rule removing dilution, and applies it to LLM equity-ranking forecasts, though no combination beats no-information.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.25617v1",
@@ -1426,7 +2015,9 @@
      "date": "2026-09-22",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "A hierarchical multi-task deep learning model with liquidity signals improves stock forecasts on CSI300/500 and raises backtested Sharpe from 1.22 to 1.86."
+     "summary": "A hierarchical multi-task deep learning model with liquidity signals improves stock forecasts on CSI300/500 and raises backtested Sharpe from 1.22 to 1.86.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.25677v1",
@@ -1439,7 +2030,9 @@
      "date": "2026-09-22",
      "theme": "Other",
      "score": 3,
-     "summary": "Synthetic AI consumers replicate at most two of six visual marketing effects and understate heterogeneity; proposes a governance protocol."
+     "summary": "Synthetic AI consumers replicate at most two of six visual marketing effects and understate heterogeneity; proposes a governance protocol.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1459,7 +2052,9 @@
      "date": "2026-09-21",
      "theme": "Financial markets",
      "score": 5,
-     "summary": "Proposes a milestone-based real-options valuation framework classifying firms by AI integration depth, demonstrated on one AI-native energy SaaS firm."
+     "summary": "Proposes a milestone-based real-options valuation framework classifying firms by AI integration depth, demonstrated on one AI-native energy SaaS firm.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.24927v2",
@@ -1473,7 +2068,95 @@
      "date": "2026-09-21",
      "theme": "Markets & competition",
      "score": 4,
-     "summary": "Personal AI agents steer wealthier users to pricier flights, insurance and programs, even against instructions to minimize cost."
+     "summary": "Personal AI agents steer wealthier users to pricier flights, insurance and programs, even against instructions to minimize cost.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.25474v1",
+     "title": "Spectra: A Rules-Driven LLM Pipeline for Automated KYC Document Processing",
+     "authors": [
+      "Miray Wahib",
+      "Ethan Tran",
+      "Rea Mourad",
+      "Mira Muti",
+      "Nikita Dvornik"
+     ],
+     "date": "2026-09-21",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "An LLM rules-driven pipeline automates capital-markets KYC onboarding, reaching 89.4% extraction accuracy and cutting human review by 96%.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.25144v1",
+     "title": "The Informational Content in Lepto-Variance and Its Relation to Higher Moments",
+     "authors": [
+      "Vassilis Polimenis"
+     ],
+     "date": "2026-09-21",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Simulations show regression-tree lepto-variance ratio correlates with excess kurtosis and is orthogonal to skew, informing its use for stock return variability.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.25192v1",
+     "title": "FinFIRST: Benchmarking Search Agents for Financial Information Retrieval, Sourcing and Traceability",
+     "authors": [
+      "Wenqing Wang",
+      "Haitao Xiang",
+      "Xinyi Zhao",
+      "Mingming Yin",
+      "Ying Zhong",
+      "Zhaoxin Huan",
+      "Qiheng Zhou",
+      "Jin Zhu",
+      "Xiaolu Zhang",
+      "Shi Chang",
+      "Jun Zhou"
+     ],
+     "date": "2026-09-21",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "A benchmark of 123 expert financial search tasks shows LLM agents lag in computation and answer formation versus information retrieval.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.24644v1",
+     "title": "Annie, Are You Okay? How Style- and Context-Based Personalization Shape AI-Assisted Decision-Making",
+     "authors": [
+      "Hasibur Rahman",
+      "Benjamin R. Cowan",
+      "Smit Desai"
+     ],
+     "date": "2026-09-21",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Preregistered experiment shows context-based AI personalization shifts participants' stock rankings toward AI recommendations without raising perceived AI quality, especially among lower-expertise users.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.24394v1",
+     "title": "Climate Variability Modulates the Impact of Price Spikes on Food Insecurity",
+     "authors": [
+      "Jordi Cerdà-Bautista",
+      "Vasileios Sitokonstantinou",
+      "Homer Durand",
+      "Gherardo Varando",
+      "Michele Ronco",
+      "Gustau Camps-Valls"
+     ],
+     "date": "2026-09-21",
+     "theme": "Growth & macro",
+     "score": 3,
+     "summary": "Using causal ML, food price spikes raise acute food insecurity by 5.4 points in African regions where El Niño suppresses vegetation, versus insignificant effects elsewhere.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1489,7 +2172,51 @@
      "date": "2026-09-20",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Framework for evaluating news-based LLM trading signals under market frictions finds decoder LLMs outperform encoder and dictionary sentiment baselines."
+     "summary": "Framework for evaluating news-based LLM trading signals under market frictions finds decoder LLMs outperform encoder and dictionary sentiment baselines.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.23768v1",
+     "title": "Risk Measures under Paired-Ambiguity: A Deep Learning Reflected BSDE Framework",
+     "authors": [
+      "Nacira Agram",
+      "Jan Rems",
+      "Emanuela Rosazza Gianin"
+     ],
+     "date": "2026-09-20",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Characterizes optimal stopping under model and discount ambiguity via reflected BSDEs and develops a convergent deep learning solver, applied to American options.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.23598v1",
+     "title": "OrderFusion+: Probabilistic Buy--Sell Price Trajectory Forecasting in Intraday Electricity Markets",
+     "authors": [
+      "Runyao Yu",
+      "Derek W. Bunn"
+     ],
+     "date": "2026-09-20",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Deep learning model using neighboring-product orderbooks forecasts probabilistic intraday electricity buy-sell price trajectories, benchmarked against foundation models.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.26822v1",
+     "title": "HARN: Hierarchical Associative Resonance Network for Event-Driven Multi-Timeframe Forecasting",
+     "authors": [
+      "Nabeel Ahmad Saidd"
+     ],
+     "date": "2026-09-20",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Hierarchical event-driven network for multi-timeframe asset price forecasting achieves competitive errors versus transformer baselines across equity, FX and commodities.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1508,7 +2235,9 @@
      "date": "2026-09-19",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "A universal conditional diffusion model trained on pooled stocks generates implied volatility surface dynamics, beating VolGAN on arbitrage, risk prediction and generalizing to unseen stocks."
+     "summary": "A universal conditional diffusion model trained on pooled stocks generates implied volatility surface dynamics, beating VolGAN on arbitrage, risk prediction and generalizing to unseen stocks.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.23223v1",
@@ -1521,7 +2250,9 @@
      "date": "2026-09-19",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "Reconciling hourly price and spread forecasts improves day-ahead electricity forecast accuracy up to 19.7% and battery arbitrage profits up to 10.4%."
+     "summary": "Reconciling hourly price and spread forecasts improves day-ahead electricity forecast accuracy up to 19.7% and battery arbitrage profits up to 10.4%.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1543,7 +2274,9 @@
      "date": "2026-09-18",
      "theme": "Labor & productivity",
      "score": 5,
-     "summary": "LLM exposure is higher in female-dominated occupations and spread evenly across skill levels, suggesting low-paid women may face greater AI risks."
+     "summary": "LLM exposure is higher in female-dominated occupations and spread evenly across skill levels, suggesting low-paid women may face greater AI risks.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.21632v1",
@@ -1554,7 +2287,9 @@
      "date": "2026-09-18",
      "theme": "Policy & regulation",
      "score": 4,
-     "summary": "Argues AI is reshaping capital, energy, labor and geopolitical power, so its outcomes depend on competition, infrastructure and environmental policy."
+     "summary": "Argues AI is reshaping capital, energy, labor and geopolitical power, so its outcomes depend on competition, infrastructure and environmental policy.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.21439v1",
@@ -1566,7 +2301,42 @@
      "date": "2026-09-18",
      "theme": "Markets & competition",
      "score": 4,
-     "summary": "Preregistered auction experiment shows labeling an opponent human raises escalation while labeling it an optimizing AI lowers it, a spread of about 15% of prize value."
+     "summary": "Preregistered auction experiment shows labeling an opponent human raises escalation while labeling it an optimizing AI lowers it, a spread of about 15% of prize value.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.21841v1",
+     "title": "EnterpriseVal: Quantifying the Efficacy, Reliability and Value of Generative AI in the Enterprise",
+     "authors": [
+      "Abbas Raza Ali",
+      "Muhammad Ajmal Siddiqui",
+      "Moona Zahid"
+     ],
+     "date": "2026-09-18",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Proposes an enterprise evaluation framework to judge whether generative AI workflows are reliable and worth scaling, piloted on three workflows at a global bank.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.38197v1",
+     "title": "DualCast: A Dual-Path Language Model for Bimodal Financial Time-Series Forecasting",
+     "authors": [
+      "Wentao Zhao",
+      "Hongqiang Wu",
+      "Shanghang Liu",
+      "Zhaochen Zan",
+      "Yu Zhang",
+      "Biqing Huang"
+     ],
+     "date": "2026-09-18",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "A dual-path LLM forecaster with financial tokens and news conditioning achieves lowest error in 8 of 12 equity and energy price forecasting settings.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.22408v1",
@@ -1577,7 +2347,58 @@
      "date": "2026-09-18",
      "theme": "Other",
      "score": 3,
-     "summary": "In a Music Lab-style experiment, AI agents choosing AER papers under social influence select fewer, more concentrated papers, and early selections strongly boost later selection."
+     "summary": "In a Music Lab-style experiment, AI agents choosing AER papers under social influence select fewer, more concentrated papers, and early selections strongly boost later selection.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.22549v1",
+     "title": "AI-written admissions essays are widespread but penalized",
+     "authors": [
+      "Calvin Isley",
+      "Johann D. Gaebler",
+      "Sharad Goel"
+     ],
+     "date": "2026-09-18",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Most 2025 applicants to a policy master's program used AI essays; AI improved writing quality but AI-written essays were admitted less often.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.21550v1",
+     "title": "OneBid: A Unified Auto-Bidding Foundation Model for Diverse oCPX Advertising Scenarios",
+     "authors": [
+      "Yewen Li",
+      "Peng Jiang",
+      "Yitian Li",
+      "Pengfei Lv",
+      "Xialong Liu",
+      "Peng Jiang",
+      "Qingpeng Cai"
+     ],
+     "date": "2026-09-18",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Unified decision-transformer foundation model for auto-bidding across oCPX advertising scenarios with mixture-of-experts and offline post-training.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.21192v1",
+     "title": "AI-GRACE: A Use-Case Operationalization Framework for Agentic AI: From Organizational Objectives and Obligations to Deployment Capabilities and Architecture",
+     "authors": [
+      "John Cuneo",
+      "David Chun",
+      "Gaurav Khanna"
+     ],
+     "date": "2026-09-18",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Proposes a governance framework linking organizational objectives and obligations to controls and architecture for deploying agentic AI, illustrated with retail banking.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1595,7 +2416,9 @@
      "date": "2026-09-17",
      "theme": "Policy & regulation",
      "score": 5,
-     "summary": "Derives optimal income tax conditions when AI agents execute choices via hidden rules, adding an execution wedge to sufficient statistics; lab tests show AI engines deviate heterogeneously under conflicted objectives."
+     "summary": "Derives optimal income tax conditions when AI agents execute choices via hidden rules, adding an execution wedge to sufficient statistics; lab tests show AI engines deviate heterogeneously under conflicted objectives.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.20554v1",
@@ -1610,7 +2433,56 @@
      "date": "2026-09-17",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Training financial foundation models on post-origin data generally worsens forecast accuracy and lowers certainty-equivalent returns, rather than inflating them."
+     "summary": "Training financial foundation models on post-origin data generally worsens forecast accuracy and lowers certainty-equivalent returns, rather than inflating them.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.20989v2",
+     "title": "Trustworthy FinAInce: Unpacking How AI-Mediated Financial Advice is Judged",
+     "authors": [
+      "Aryan Ramchandra Kapadia",
+      "Eshwar Chandrasekharan",
+      "Koustuv Saha"
+     ],
+     "date": "2026-09-17",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "An experiment with 285 adults finds advice style, more than AI or expert labels, drives trust and intended reliance on financial advice.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.19789v1",
+     "title": "Contagion on the Trading Floor: How Adversarial Signals Spread in Multi-Agent Trading Systems",
+     "authors": [
+      "Qi Rong Sua",
+      "Junhao Dong",
+      "Nguyen Duc Thai",
+      "Yuqing Wen",
+      "Cheston Tan",
+      "Yew-Soon Ong"
+     ],
+     "date": "2026-09-17",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Poisoned social-media inputs propagate through LLM multi-agent trading systems and sharply cut Sharpe ratios, though topology and prompts can dampen effects.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.19705v1",
+     "title": "SoK: Trading Agents or Market Crashers? Dissecting Robustness and Security Failures in Academic Financial LLM Trading Schemes",
+     "authors": [
+      "Mengxiao Wang",
+      "Nitesh Saxena"
+     ],
+     "date": "2026-09-17",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Evaluation of 15 academic LLM trading agents finds 80% fail robustness metrics and all have security flaws that could trigger market crashes.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.19866v1",
@@ -1622,7 +2494,9 @@
      "date": "2026-09-17",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "LLM annotations of AI Act consultation submissions are highly reproducible but diverge from survey measures, systematically by stakeholder group."
+     "summary": "LLM annotations of AI Act consultation submissions are highly reproducible but diverge from survey measures, systematically by stakeholder group.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.19843v1",
@@ -1636,7 +2510,9 @@
      "date": "2026-09-17",
      "theme": "Markets & competition",
      "score": 3,
-     "summary": "LLM GUI shopping agents are susceptible to nudges; reasoning reduces default-nudge effects but increases social-influence nudge susceptibility."
+     "summary": "LLM GUI shopping agents are susceptible to nudges; reasoning reduces default-nudge effects but increases social-influence nudge susceptibility.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.20016v1",
@@ -1648,7 +2524,59 @@
      "date": "2026-09-17",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "Translates EU AI Act technical requirements into 43 machine-checkable compliance criteria run in CI/CD pipelines for generative AI systems."
+     "summary": "Translates EU AI Act technical requirements into 43 machine-checkable compliance criteria run in CI/CD pipelines for generative AI systems.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.20655v1",
+     "title": "Using machine learning metrics to provide deeper insights into the performance of choice models",
+     "authors": [
+      "Lorenzo Muñoz",
+      "Stephane Hess",
+      "Thomas O. Hancock",
+      "Georges Sfeir"
+     ],
+     "date": "2026-09-17",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Probabilistic confusion matrices reveal that choice models with similar log-likelihood differ substantially in alternative-level predictions.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.20550v1",
+     "title": "Principal component error in high-dimensional factor models",
+     "authors": [
+      "Alex Bernstein",
+      "Lisa R. Goldberg",
+      "Nicholas Gunther",
+      "Alec N. Kercheval",
+      "Tian Lan",
+      "Yian Lin",
+      "Dayi Yao"
+     ],
+     "date": "2026-09-17",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Decomposes PCA estimation error in high-dimensional factor models into estimable out-of-subspace and non-estimable in-subspace terms, illustrated on equity markets.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.20474v1",
+     "title": "How Do Agent Harnesses Create Value? Planning Information and Release Control in Stateful LLM Agents",
+     "authors": [
+      "Yukun Zhang",
+      "Kemu Xu",
+      "Yishen Chen"
+     ],
+     "date": "2026-09-17",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Task plans raise LLM agent success by about 7 points, while a cheap verifier captures most false-acceptance avoidance, with the better component depending on liability costs.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1665,7 +2593,9 @@
      "date": "2026-09-16",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "Reframing market data presentation, especially sentiment, shifts LLM pricing agents' prices in simulated oligopolies, altering profits and consumer surplus; input canonicalization blocks tested attacks."
+     "summary": "Reframing market data presentation, especially sentiment, shifts LLM pricing agents' prices in simulated oligopolies, altering profits and consumer surplus; input canonicalization blocks tested attacks.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.18346v1",
@@ -1677,7 +2607,9 @@
      "date": "2026-09-16",
      "theme": "Markets & competition",
      "score": 5,
-     "summary": "LLM pricing agents' collusion and chain-of-thought faithfulness dissociate, so CoT monitoring alone cannot detect algorithmic collusion in Bertrand markets."
+     "summary": "LLM pricing agents' collusion and chain-of-thought faithfulness dissociate, so CoT monitoring alone cannot detect algorithmic collusion in Bertrand markets.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.17989v1",
@@ -1689,7 +2621,9 @@
      "date": "2026-09-16",
      "theme": "Markets & competition",
      "score": 4,
-     "summary": "LLM recommenders assigned to platforms penalize sponsored listings less, so disclosure mandates alone cannot protect consumers in AI-mediated commerce."
+     "summary": "LLM recommenders assigned to platforms penalize sponsored listings less, so disclosure mandates alone cannot protect consumers in AI-mediated commerce.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.18591v1",
@@ -1703,7 +2637,126 @@
      "date": "2026-09-16",
      "theme": "Other",
      "score": 3,
-     "summary": "LLM agents' in-context gains in public goods games reflect statistical extrapolation rather than strategic reasoning toward equilibrium."
+     "summary": "LLM agents' in-context gains in public goods games reflect statistical extrapolation rather than strategic reasoning toward equilibrium.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.19418v1",
+     "title": "Stable Policy Learning",
+     "authors": [
+      "Harvey Barnhard",
+      "Giacomo Opocher",
+      "Rahul Singh"
+     ],
+     "date": "2026-09-16",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Policy-vote bagging improves stability of learned treatment policies, preserving expected welfare while reducing sampling risk.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.19386v1",
+     "title": "Omitted Variable Bias in Difference-in-Differences Designs",
+     "authors": [
+      "Juejue Wang",
+      "Pedro H. C. Sant'Anna",
+      "Victor Chernozhukov",
+      "Carlos Cinelli"
+     ],
+     "date": "2026-09-16",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Derives omitted variable bias formulas and sensitivity statistics for difference-in-differences, with ML-based inference, illustrated on minimum wage effects on teen employment.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.18441v1",
+     "title": "Multitask Reinforcement Learning for Assisting Choice Model Specification",
+     "authors": [
+      "Gabriel Nova",
+      "Stephane Hess",
+      "Sander Van Cranenburgh"
+     ],
+     "date": "2026-09-16",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Multitask RL agent learns transferable discrete choice model specifications, matching expert models on unseen datasets.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.19225v1",
+     "title": "Making Local Government Contracts Legible: A Computational Pipeline for Classifying and Mapping Intergovernmental Service Agreements",
+     "authors": [
+      "Mohsen Ghasemizade",
+      "Raúl Gutiérrez-Meave",
+      "Cailin Gramling",
+      "Aviral Chawla",
+      "Michael Robinette",
+      "Kate Albrecht",
+      "Juniper Lovato"
+     ],
+     "date": "2026-09-16",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "LLM pipeline classifies 21,629 Iowa interlocal agreements and maps financial flows, revealing a network dominated by a few service providers with counties as versatile actors.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.18270v1",
+     "title": "BENCHCOMPASS: From Scores to Signals for Training and Harness Decisions in Payment-Domain LLMs",
+     "authors": [
+      "Sijie Dong",
+      "Wei Ren",
+      "Xuanwei Hu",
+      "Jiawei Luo",
+      "Zifan Wang",
+      "Xiaoyun Feng",
+      "Hui Cai",
+      "Lyuxin Xue",
+      "Peng Lu",
+      "Jianshe Li",
+      "Xin Zhang",
+      "Wei Wu"
+     ],
+     "date": "2026-09-16",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Payment-domain LLM benchmark reveals distinct failure modes; best frontier model reaches 89.6% on reasoning and 81.7% under attacked inputs.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.18106v1",
+     "title": "Linguistic Triggers of Gender and Racial Bias in Open-Weight LLMs Applied to Recruitment",
+     "authors": [
+      "Kosuke Kitahara",
+      "Nobuhiro Yamaguchi"
+     ],
+     "date": "2026-09-16",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Audit of six open-weight LLMs in hiring shows job-posting language triggers gender and racial bias, with proposed pre-deployment audit protocol.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.17965v1",
+     "title": "Measuring AI Leadership: Development and Validation of a Multidimensional Measure for AI-Native Organizations",
+     "authors": [
+      "Mustafa Akben",
+      "Leslie Coyne"
+     ],
+     "date": "2026-09-16",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Develops and validates a multidimensional AI Leadership Battery predicting outcomes including AI adoption and team performance.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1720,7 +2773,9 @@
      "date": "2026-09-15",
      "theme": "Labor & productivity",
      "score": 5,
-     "summary": "In a career signaling model, AI tokens alter effort and skill investment; with side sales workers under-invest in skills, and policies have ambiguous effects."
+     "summary": "In a career signaling model, AI tokens alter effort and skill investment; with side sales workers under-invest in skills, and policies have ambiguous effects.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.28504v2",
@@ -1748,7 +2803,9 @@
      "date": "2026-09-15",
      "theme": "Labor & productivity",
      "score": 5,
-     "summary": "Using Gemini logs, model inventory and a survey, finds scientists widely adopt AI, save about 7 hours weekly, and face shifting bottlenecks toward verification."
+     "summary": "Using Gemini logs, model inventory and a survey, finds scientists widely adopt AI, save about 7 hours weekly, and face shifting bottlenecks toward verification.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.17200v1",
@@ -1762,7 +2819,25 @@
      "date": "2026-09-15",
      "theme": "Growth & macro",
      "score": 4,
-     "summary": "Trade-based complexity measures of AI-enabling goods show Japan leads current specialization and China leads diversification potential."
+     "summary": "Trade-based complexity measures of AI-enabling goods show Japan leads current specialization and China leads diversification potential.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.17632v1",
+     "title": "EvolveTrade: Experience-Driven Policy Refinement for Self-Evolving LLM Trading Agents",
+     "authors": [
+      "Sehee Kim",
+      "Yumin Choi",
+      "Minki Kang",
+      "Sung Ju Hwang"
+     ],
+     "date": "2026-09-15",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Self-evolving LLM trading agents that revise their tool-use policy from portfolio feedback often improve Sharpe ratio and returns over fixed-policy baselines.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.17788v1",
@@ -1777,7 +2852,9 @@
      "date": "2026-09-15",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "Provides simulation environments for training reinforcement learning agents as liquidity providers in concentrated-liquidity AMMs."
+     "summary": "Provides simulation environments for training reinforcement learning agents as liquidity providers in concentrated-liquidity AMMs.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1801,7 +2878,9 @@
      "date": "2026-09-14",
      "theme": "Growth & macro",
      "score": 5,
-     "summary": "Models feedback loops of AI recursive self-improvement; calibration suggests loops are not yet strong enough for self-sustaining acceleration but are strengthening."
+     "summary": "Models feedback loops of AI recursive self-improvement; calibration suggests loops are not yet strong enough for self-sustaining acceleration but are strengthening.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.15744v1",
@@ -1816,7 +2895,9 @@
      "date": "2026-09-14",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Proposes an attention-based deep learning credit risk early warning system fusing heterogeneous data, outperforming rule-based approaches."
+     "summary": "Proposes an attention-based deep learning credit risk early warning system fusing heterogeneous data, outperforming rule-based approaches.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.16258v1",
@@ -1829,7 +2910,9 @@
      "date": "2026-09-14",
      "theme": "Growth & macro",
      "score": 3,
-     "summary": "Across 2,507 comparisons, AI often beats statistics at higher compute cost and increasingly beats scientific computing since 2020, but is no universal replacement."
+     "summary": "Across 2,507 comparisons, AI often beats statistics at higher compute cost and increasingly beats scientific computing since 2020, but is no universal replacement.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.16436v1",
@@ -1843,7 +2926,9 @@
      "date": "2026-09-14",
      "theme": "Methods",
      "score": 3,
-     "summary": "SAE and probe-based steering often outperform prompting for controlling risk attitudes, altruism and creativity of LLM agents in economic simulation tasks."
+     "summary": "SAE and probe-based steering often outperform prompting for controlling risk attitudes, altruism and creativity of LLM agents in economic simulation tasks.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.16192v1",
@@ -1855,7 +2940,9 @@
      "date": "2026-09-14",
      "theme": "Labor & productivity",
      "score": 3,
-     "summary": "Discusses how AI-driven feedback tools could detect silent quitting in African workplaces, alongside risks of surveillance, inequality and bias."
+     "summary": "Discusses how AI-driven feedback tools could detect silent quitting in African workplaces, alongside risks of surveillance, inequality and bias.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.15773v1",
@@ -1870,7 +2957,9 @@
      "date": "2026-09-14",
      "theme": "Growth & macro",
      "score": 3,
-     "summary": "Adapting a satellite-based vision transformer to displacement settings explains up to 66% of socioeconomic outcome variation in camp areas."
+     "summary": "Adapting a satellite-based vision transformer to displacement settings explains up to 66% of socioeconomic outcome variation in camp areas.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.15803v1",
@@ -1884,7 +2973,9 @@
      "date": "2026-09-14",
      "theme": "Policy & regulation",
      "score": 3,
-     "summary": "Shows threshold review panels of AI agents are safe exactly under k-robust coalitional alignment, enabling delegated authorization of misaligned agents."
+     "summary": "Shows threshold review panels of AI agents are safe exactly under k-robust coalitional alignment, enabling delegated authorization of misaligned agents.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.15573v1",
@@ -1897,7 +2988,9 @@
      "date": "2026-09-14",
      "theme": "Markets & competition",
      "score": 3,
-     "summary": "Models algorithmic attention allocation on ad-funded platforms, showing optimal recommendations distort content to subsidize high-ability creators."
+     "summary": "Models algorithmic attention allocation on ad-funded platforms, showing optimal recommendations distort content to subsidize high-ability creators.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.15319v1",
@@ -1908,7 +3001,22 @@
      "date": "2026-09-14",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "Audits frontier AI agents in financial due diligence, finding buried evidence lowers accuracy and agents pair accurate numbers with confident fabrications."
+     "summary": "Audits frontier AI agents in financial due diligence, finding buried evidence lowers accuracy and agents pair accurate numbers with confident fabrications.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.17609v1",
+     "title": "Separated Signal Libraries: Packing, Saturation, and Joint Spectral Limits",
+     "authors": [
+      "Marc da Costa Nunes"
+     ],
+     "date": "2026-09-14",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Studies when equal-weighted libraries of correlated-capped return signals converge to a principal component, depending on admission rules.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1926,7 +3034,9 @@
      "date": "2026-09-13",
      "theme": "Policy & regulation",
      "score": 5,
-     "summary": "Surveys redistribution under transformative AI, arguing broadly distributing capital rents via UBC or capital-tax-funded UBI best reduces inequality."
+     "summary": "Surveys redistribution under transformative AI, arguing broadly distributing capital rents via UBC or capital-tax-funded UBI best reduces inequality.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.14576v1",
@@ -1937,7 +3047,9 @@
      "date": "2026-09-13",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Reviews foundation models for insurance risk modelling and proposes a process linking outputs to actuarial calculations and compliance assessment."
+     "summary": "Reviews foundation models for insurance risk modelling and proposes a process linking outputs to actuarial calculations and compliance assessment.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.14733v1",
@@ -1949,7 +3061,9 @@
      "date": "2026-09-13",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Wavelet-denoised deep learning hybrid forecasts equity indices with directional accuracy 70-78%, outperforming benchmarks including XGBoost."
+     "summary": "Wavelet-denoised deep learning hybrid forecasts equity indices with directional accuracy 70-78%, outperforming benchmarks including XGBoost.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.14205v1",
@@ -1962,7 +3076,9 @@
      "date": "2026-09-13",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "A Kalman-filter predictor coupled with model predictive control trading system achieves strong risk-adjusted returns with substantially lower maximum drawdowns across four stock markets over 15 years."
+     "summary": "A Kalman-filter predictor coupled with model predictive control trading system achieves strong risk-adjusted returns with substantially lower maximum drawdowns across four stock markets over 15 years.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.14724v1",
@@ -1974,7 +3090,24 @@
      "date": "2026-09-13",
      "theme": "Other",
      "score": 3,
-     "summary": "Characterizes when agent reports are consistent with Bayesian updating and an informativeness order, and shows aggregating coarse reports is difficult."
+     "summary": "Characterizes when agent reports are consistent with Bayesian updating and an informativeness order, and shows aggregating coarse reports is difficult.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2609.14767v1",
+     "title": "Loop-Back Authority in LLM Agent Teams: A Paired Experiment on Flat and Hierarchical Coordination",
+     "authors": [
+      "Burak Agachan",
+      "Max van Duijn",
+      "Amirhossein Zohrehvand"
+     ],
+     "date": "2026-09-13",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "In LLM agent teams, flat organization beats hierarchical manager review on report utility and clarity, while hierarchy costs 51.5% more tokens.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -1992,7 +3125,9 @@
      "date": "2026-09-12",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "A PPO reinforcement-learning trader using Auction Market Theory order-flow features reports large out-of-sample returns on TSLA and NVDA tick data."
+     "summary": "A PPO reinforcement-learning trader using Auction Market Theory order-flow features reports large out-of-sample returns on TSLA and NVDA tick data.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -2012,7 +3147,9 @@
      "date": "2026-09-11",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Diffusion models generate arbitrage-consistent dynamic SPX implied-volatility surfaces that yield hedges with near-zero tracking error and lower tail risk."
+     "summary": "Diffusion models generate arbitrage-consistent dynamic SPX implied-volatility surfaces that yield hedges with near-zero tracking error and lower tail risk.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.12793v1",
@@ -2024,7 +3161,9 @@
      "date": "2026-09-11",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "A hybrid LSTM with penultimate-layer fusion cuts stock index forecast errors 30-54% and lowers drawdowns in trading simulations."
+     "summary": "A hybrid LSTM with penultimate-layer fusion cuts stock index forecast errors 30-54% and lowers drawdowns in trading simulations.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.12976v3",
@@ -2037,7 +3176,9 @@
      "date": "2026-09-11",
      "theme": "Labor & productivity",
      "score": 3,
-     "summary": "Automated insulin delivery adoption increases diabetologist visits, consistent with automation complementing clinical labor, though sensitive to trend assumptions."
+     "summary": "Automated insulin delivery adoption increases diabetologist visits, consistent with automation complementing clinical labor, though sensitive to trend assumptions.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.13068v2",
@@ -2049,7 +3190,9 @@
      "date": "2026-09-11",
      "theme": "Methods",
      "score": 3,
-     "summary": "A maximizing-distance classification tree identifies a high-risk rural hospital closure subgroup that standard CART misses."
+     "summary": "A maximizing-distance classification tree identifies a high-risk rural hospital closure subgroup that standard CART misses.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -2067,7 +3210,9 @@
      "date": "2026-09-10",
      "theme": "Markets & competition",
      "score": 4,
-     "summary": "Proposes Generative Marketing Mix Modeling to causally estimate business effects of generative engine optimization and marketing, with identification conditions and simulation evidence."
+     "summary": "Proposes Generative Marketing Mix Modeling to causally estimate business effects of generative engine optimization and marketing, with identification conditions and simulation evidence.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.11614v1",
@@ -2079,7 +3224,9 @@
      "date": "2026-09-10",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "A distributional deep RL market maker outperforms GLFT and, with change-point signals, stays profitable under regime-switching order flow."
+     "summary": "A distributional deep RL market maker outperforms GLFT and, with change-point signals, stays profitable under regime-switching order flow.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -2098,7 +3245,9 @@
      "date": "2026-09-09",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Benchmarks adversarial attacks on ML credit scoring in P2P lending; single-attack defenses overstate robustness while mixed-attack training gives balanced resilience."
+     "summary": "Benchmarks adversarial attacks on ML credit scoring in P2P lending; single-attack defenses overstate robustness while mixed-attack training gives balanced resilience.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -2116,7 +3265,9 @@
      "date": "2026-09-08",
      "theme": "Labor & productivity",
      "score": 5,
-     "summary": "Using FDA clearances, external AI collaboration drives AI medical device introduction, especially for small firms, and AI device introduction raises labour productivity."
+     "summary": "Using FDA clearances, external AI collaboration drives AI medical device introduction, especially for small firms, and AI device introduction raises labour productivity.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.08166v1",
@@ -2129,7 +3280,9 @@
      "date": "2026-09-08",
      "theme": "Growth & macro",
      "score": 5,
-     "summary": "Models data-center electricity demand and stochastic generation investment, showing uncertainty and overbuild risks may weaken incentives to invest fast enough to stabilize prices."
+     "summary": "Models data-center electricity demand and stochastic generation investment, showing uncertainty and overbuild risks may weaken incentives to invest fast enough to stabilize prices.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.08581v1",
@@ -2141,7 +3294,9 @@
      "date": "2026-09-08",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Proposes a reinforcement-learning method with reward-jump memory and stochastic critic for formulaic alpha discovery, delivering stable gains across equity universes."
+     "summary": "Proposes a reinforcement-learning method with reward-jump memory and stochastic critic for formulaic alpha discovery, delivering stable gains across equity universes.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.08106v1",
@@ -2152,7 +3307,9 @@
      "date": "2026-09-08",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Low-rank Nyström attention matches full inter-stock attention in MASTER for stock prediction, though cross-stock modules give no gain at large universes."
+     "summary": "Low-rank Nyström attention matches full inter-stock attention in MASTER for stock prediction, though cross-stock modules give no gain at large universes.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.10615v2",
@@ -2163,7 +3320,9 @@
      "date": "2026-09-08",
      "theme": "Markets & competition",
      "score": 3,
-     "summary": "Causal pricing framework combining double ML and conformal prediction lets retailers abstain when elasticity estimates are unreliable, sharply reducing estimation error on synthetic data."
+     "summary": "Causal pricing framework combining double ML and conformal prediction lets retailers abstain when elasticity estimates are unreliable, sharply reducing estimation error on synthetic data.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -2181,7 +3340,9 @@
      "date": "2026-09-07",
      "theme": "Labor & productivity",
      "score": 5,
-     "summary": "Incentivized experiment finds no evidence that access to live interactive AI advice changes individuals' risk aversion in lottery choices."
+     "summary": "Incentivized experiment finds no evidence that access to live interactive AI advice changes individuals' risk aversion in lottery choices.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.07731v1",
@@ -2192,7 +3353,9 @@
      "date": "2026-09-07",
      "theme": "Policy & regulation",
      "score": 4,
-     "summary": "Adding profit mandates to prompts makes LLMs dismiss safety risks more often and suppress board escalation recommendations, revealing motivated reasoning under business objectives."
+     "summary": "Adding profit mandates to prompts makes LLMs dismiss safety risks more often and suppress board escalation recommendations, revealing motivated reasoning under business objectives.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.07486v1",
@@ -2208,7 +3371,9 @@
      "date": "2026-09-07",
      "theme": "Financial markets",
      "score": 3,
-     "summary": "Using LLM-extracted insurance claims, cyber losses plausibly follow a power law, implying a 100x event roughly every 206 years costing 100-250B USD."
+     "summary": "Using LLM-extracted insurance claims, cyber losses plausibly follow a power law, implying a 100x event roughly every 206 years costing 100-250B USD.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.07944v2",
@@ -2222,7 +3387,9 @@
      "date": "2026-09-07",
      "theme": "Methods",
      "score": 3,
-     "summary": "Benchmark shows LLM-written causal analyses often fail to recover estimands even when code runs; reference designs raise recovery from 15% to 51.5%."
+     "summary": "Benchmark shows LLM-written causal analyses often fail to recover estimands even when code runs; reference designs raise recovery from 15% to 51.5%.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -2239,7 +3406,9 @@
      "date": "2026-09-05",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Explainable neural networks uncover nonlinear price-trade dynamics in high-frequency data, motivating a parsimonious SHAP-inspired parametric microstructure model."
+     "summary": "Explainable neural networks uncover nonlinear price-trade dynamics in high-frequency data, motivating a parsimonious SHAP-inspired parametric microstructure model.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   },
@@ -2256,7 +3425,9 @@
      "date": "2026-09-04",
      "theme": "Financial markets",
      "score": 4,
-     "summary": "Review finds AI progress in equity and crypto investing is mainly upstream, with no architecture shown to deliver persistent, capacity-aware net alpha."
+     "summary": "Review finds AI progress in equity and crypto investing is mainly upstream, with no architecture shown to deliver persistent, capacity-aware net alpha.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2610.00072v1",
@@ -2268,7 +3439,9 @@
      "date": "2026-09-04",
      "theme": "Methods",
      "score": 3,
-     "summary": "Dynamic spatial Bayesian tree model performs best across simulations and applies to US county intergenerational mobility and income inequality."
+     "summary": "Dynamic spatial Bayesian tree model performs best across simulations and applies to US county intergenerational mobility and income inequality.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     },
     {
      "id": "http://arxiv.org/abs/2609.04994v1",
@@ -2279,7 +3452,9 @@
      "date": "2026-09-04",
      "theme": "Methods",
      "score": 3,
-     "summary": "Debiased machine learning missing-data method removes life-cycle bias, raising US intergenerational income elasticity estimates to about 0.64."
+     "summary": "Debiased machine learning missing-data method removes life-cycle bias, raising US intergenerational income elasticity estimates to about 0.64.",
+     "ai": true,
+     "model": "claude-opus-5-5"
     }
    ]
   }

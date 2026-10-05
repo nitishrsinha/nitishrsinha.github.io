@@ -1,6 +1,235 @@
 {
  "days": [
   {
+   "date": "2026-10-05",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.02281v1",
+     "title": "The AI Risk Observatory: What Can We Learn from AI Disclosures in Annual Reports About Societal Resilience?",
+     "authors": [
+      "Bart Jaworski"
+     ],
+     "date": "2026-10-01",
+     "theme": "Policy & regulation",
+     "score": 5,
+     "summary": "LLM analysis of UK annual reports shows AI risk disclosure rose from 2.8% to 41.2% in 2020-2025, but only 4.3% of reports contain substantive disclosure.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.03080v1",
+     "title": "MintEval: Do LLMs Implement the Trading Strategy You Asked For? A Behavioural-Equivalence Benchmark for Natural-Language-to-Strategy Code",
+     "authors": [
+      "Siyu Wang",
+      "Yifan Wang",
+      "Yuecheng He"
+     ],
+     "date": "2026-10-02",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "MintEval benchmarks whether LLM-generated trading code behaves like requested strategies; even a frontier model silently fails on 27.5% of tasks despite reading specifications correctly.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.02863v1",
+     "title": "Multi-Agent AI as a Nested Principal-Agent Problem in Private Wealth Management: Mandate Representation and Evidence Control in Switzerland, Germany and Austria",
+     "authors": [
+      "Walter Kurz",
+      "Reinhard Magg",
+      "Florian Kollberg",
+      "Wojtek Stricker",
+      "Stefan Marx",
+      "Frank Reinhardt",
+      "Velimir Dedić"
+     ],
+     "date": "2026-10-02",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Models AI delegation in private wealth management as a nested principal-agent problem, showing omitted terms and mistranslated weights cause violations and client concessions in simulated mandates.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.03128v1",
+     "title": "Trading Strategy Optimization via Textual Gradient",
+     "authors": [
+      "Chaoqun Yang",
+      "Qian Wang",
+      "Fengbin Zhu",
+      "Xinyu Lin",
+      "Bingsheng He",
+      "Roger Zimmermann",
+      "Tat-Seng Chua"
+     ],
+     "date": "2026-10-02",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "TradeGrad uses LLM textual gradients with experience and a cross-period robust objective to optimize trading strategies, achieving best out-of-sample results in Chinese and US equities.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.02492v1",
+     "title": "Right Order, Wrong Scale: Auditing LLM Judges for Occupational AI Measurement",
+     "authors": [
+      "Harry Lyu",
+      "Neil Thompson"
+     ],
+     "date": "2026-10-01",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Audits LLM judges for occupational AI measurement using O*NET worker ratings; judges rank responses well but badly misestimate acceptance rates, so ranking agreement is insufficient.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.02455v1",
+     "title": "FinDialogLens: Event Extraction over Multi-Party Dialogue for Missed-Trade Identification in Financial Chatrooms",
+     "authors": [
+      "Chin-Lun Fu",
+      "Hong Ni",
+      "Behrouz Madahian"
+     ],
+     "date": "2026-10-01",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "A hybrid LLM pipeline extracts RFQ trade events from financial chatrooms with over 92% accuracy, and a router cuts LLM calls 85% saving over $300 daily.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.03598v1",
+     "title": "When a Correct Reward Is Not Enough: Diagnosing and Guiding PPO in an Analytically Solved Broker-Trader Game",
+     "authors": [
+      "Siu Tung Wong",
+      "Carlo Campajola"
+     ],
+     "date": "2026-10-02",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Tests PPO in an analytically solved broker-trader game, finding it fails with stochastic uninformed flow while a certainty-equivalent controller stays near optimal.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.03369v1",
+     "title": "Mixture-of-Experts for Cryptocurrency Order Execution: Training Stability, Tail Risk, and Failure Modes",
+     "authors": [
+      "Alexander Ardaiz",
+      "Varun Budati",
+      "Ali Habibnia"
+     ],
+     "date": "2026-10-02",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Mixture-of-experts RL for crypto order execution does not beat DDQL or TWAP; apparent collapse suppression reflects training specification, fixed by annealed exploration.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.03174v1",
+     "title": "FinNextAssist: Towards Professional Financial Deep Research Assistant",
+     "authors": [
+      "Xiangyu Li",
+      "Fengbin Zhu",
+      "Xuan Yao",
+      "Siyu Liu",
+      "Xiaoluan Liu",
+      "Chao Wang",
+      "Huanbo Luan",
+      "Xiaofen Xing",
+      "Xiangmin Xu",
+      "Ke-Wei Huang",
+      "Richang Hong",
+      "Tat-Seng Chua"
+     ],
+     "date": "2026-10-02",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "FinNextAssist, a financial deep research agent with specialized sub-agents, outperforms proprietary and open-source agents on financial research benchmarks.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.03076v1",
+     "title": "Shapley-based Structural Analysis of Neural Calibration for Stochastic Volatility Models",
+     "authors": [
+      "Shaïn Afzali",
+      "Serena Della Corte",
+      "Antonis Papapantoleon"
+     ],
+     "date": "2026-10-02",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Shapley analysis of neural calibration for Heston models shows short maturities and smile wings dominate, enabling input reduction for rough Heston without accuracy loss.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.02944v1",
+     "title": "Cross-Fitting Under Nonregularity: Normality and Inference via Locality",
+     "authors": [
+      "Bruno Fava"
+     ],
+     "date": "2026-10-02",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Shows cross-fitting estimators under nonregularity still satisfy a CLT with adjusted variance, and proposes confidence intervals attaining nominal coverage, relevant for ML-based treatment effect inference.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.02917v1",
+     "title": "Event History Over Scale: Compact Transformers for Low-Latency Limit Order Book Forecasting",
+     "authors": [
+      "David Schaurecker",
+      "Lasse B. Strand",
+      "Kevin O'Sullivan",
+      "Robert Jakob"
+     ],
+     "date": "2026-10-02",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Tiny transformers on order-level LOB event histories achieve top short-horizon price-trend forecasts in equity and electricity markets with sub-millisecond latency.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.03425v1",
+     "title": "Becoming Suspicious Across Borders: Algorithmic Extraterritoriality and AI-Driven Financial Surveillance",
+     "authors": [
+      "Georgios Pavlidis",
+      "Savvas Chatzichristofis",
+      "Eleni Gavriil"
+     ],
+     "date": "2026-10-02",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Argues AI-driven AML surveillance creates algorithmic extraterritoriality, where regulatory reach follows data infrastructures, challenging accountability and contestability.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.02290v1",
+     "title": "Expected Utility Regret Rule: Minimax and Bayes Optimal Portfolio Choice",
+     "authors": [
+      "Masahiro Kato"
+     ],
+     "date": "2026-10-01",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "An Expected Utility Regret portfolio rule attains both minimax and Bayes optimal regret bounds, nesting mean-variance and risk-parity portfolios as special cases.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    }
+   ],
+   "stats": {
+    "fetched": 219,
+    "screened": 63
+   }
+  },
+  {
    "date": "2026-10-03",
    "papers": [
     {

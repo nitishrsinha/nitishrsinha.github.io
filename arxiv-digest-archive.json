@@ -1,6 +1,251 @@
 {
  "days": [
   {
+   "date": "2026-10-06",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.06296v1",
+     "title": "Automation, Savings, and Breakaway to a Post-Labour Economy",
+     "authors": [
+      "Omer Edhan",
+      "Ziv Hellman"
+     ],
+     "date": "2026-10-05",
+     "theme": "Growth & macro",
+     "score": 5,
+     "summary": "Defines 'automation breakaway', where savings from capital and artificial labour finance continued automation, and shows labour income effects depend on substitutability, with aggregate labour income possibly contracting near full automation.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.05823v1",
+     "title": "Who Keeps the Gains from Personal AI Assistants? Seller Adaptation and the Unassisted in a Language-Model Market Simulation",
+     "authors": [
+      "Haonan Huang",
+      "Joey Xiao"
+     ],
+     "date": "2026-10-05",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "LLM agent-based rental market shows personal AI assistants cut adopters' spending, seller adaptation claws back about a third, and unassisted consumers face no significant harm.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.05697v1",
+     "title": "From Token-Max to Outcome-Max: How You Use AI Determines Its Productivity",
+     "authors": [
+      "Chen Xu",
+      "Mengqiao Liu",
+      "Beibei Li",
+      "Chenyan Xiong"
+     ],
+     "date": "2026-10-05",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Argues rewarding token consumption wastes compute; an outcome-based objective and OutcomeShare incentive mechanism improve AI-assisted production efficiency and share gains among employees, firms and LLM providers in simulations.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.05912v1",
+     "title": "MiniCorp: The Last Mile of the AI Agent Firm",
+     "authors": [
+      "Jingying Zeng",
+      "Zhenwei Dai",
+      "Jinning Li",
+      "Changho Shin",
+      "Dylan Zhang",
+      "Yuxuan Lu",
+      "Qi He",
+      "Dakuo Wang",
+      "Kai-Wei Chang"
+     ],
+     "date": "2026-10-05",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "MiniCorp simulates an e-commerce firm run by AI agents interacting with customers and competitors, generating enterprise data validated against empirical market patterns.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.04959v1",
+     "title": "AlphaPADI: Formulaic Alpha Discovery via Pool-Aware Hierarchical Discrete Diffusion",
+     "authors": [
+      "Yanzheng Jin",
+      "Pengyang Shao",
+      "Yunshan Ma",
+      "Haowen Pan",
+      "Naixin Zhai",
+      "Chen-Hui Song",
+      "Fei Shen",
+      "Kenji Kawaguchi"
+     ],
+     "date": "2026-10-04",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "AlphaPADI uses pool-aware hierarchical discrete diffusion to generate complementary formulaic alphas predicting cross-sectional asset returns.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.05077v1",
+     "title": "How Execution Assumptions Change Short-Horizon Sharpe Rankings: Evidence from a Synthetic Trading Benchmark",
+     "authors": [
+      "Weicheng Xue"
+     ],
+     "date": "2026-10-04",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Execution assumptions in backtests can reorder Sharpe rankings of LLM and classical trading agents, especially in high volatility with few assets.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.04040v1",
+     "title": "Agent Policy-Value Audit: Separating Transition Composition from Event Selection in Financial LLM Agents",
+     "authors": [
+      " Mingyang",
+      " Chen",
+      " Yida",
+      " Xu",
+      " Huiwen",
+      " Chen",
+      "Yiming Lu",
+      "Wei Jin"
+     ],
+     "date": "2026-10-02",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Proposes an audit separating transition composition from event-selection skill in financial LLM agents; applied to earnings events, the agent shows no selection skill beyond random assignment.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.06562v1",
+     "title": "Synthetic Cultural Agents from Aggregate Anchors",
+     "authors": [
+      "Augusto Gonzalez-Bonorino",
+      "Kseniia Biriukova",
+      "Monica Capra"
+     ],
+     "date": "2026-10-05",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Builds LLM adapters from Global Preferences Survey aggregate anchors via DPO; they retain the anchor signal but do not reliably reproduce human World Values Survey responses.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.06748v1",
+     "title": "BazaarBench: Delegation Safety in Decentralized C2C Marketplaces Run by LLM Agents",
+     "authors": [
+      "Ziyan Wang",
+      "Shuqing Shi",
+      "James Oldfield",
+      "Samuele Marro",
+      "Jialin Yu",
+      "Philip Torr",
+      "Yali Du",
+      "Adel Bibi"
+     ],
+     "date": "2026-10-05",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "BazaarBench simulates C2C marketplaces with LLM agents, finding all models overcommit items and adversarial instructions sharply raise deceptive completed transactions.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.06133v1",
+     "title": "Machine learning for journal entry testing: A type-aware evaluation of anomaly detectors under a review budget",
+     "authors": [
+      "Jan Gronewald",
+      "Michel Scherer",
+      "Nijat Mehdiyev"
+     ],
+     "date": "2026-10-05",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Type-aware, budget-constrained evaluation of ML anomaly detectors for audit journal-entry testing changes which detector ranks best on real ledgers.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.05196v1",
+     "title": "Measuring Learned Monotone Temporal Aggregation at Matched Admissibility",
+     "authors": [
+      "Yew Lee Tan"
+     ],
+     "date": "2026-10-04",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "A monotone recurrent network for regulated risk scoring reproduces hand-crafted aggregate statistics but fails on consecutivity and time localization features.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.05238v1",
+     "title": "The Law of DeepSeek",
+     "authors": [
+      "Jyh-An Lee",
+      "Xuan Sun"
+     ],
+     "date": "2026-10-04",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Legal analysis of DeepSeek covering US chip export controls, security scrutiny, censorship, and IP issues from distillation, concluding geopolitics will shape its legal challenges.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.04688v1",
+     "title": "Submission quotas as self-screening when manuscript production is cheap",
+     "authors": [
+      "Steve Lawford"
+     ],
+     "date": "2026-10-03",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "When AI makes manuscripts cheap, non-transferable submission quotas act as self-screening and can outperform fees under derived conditions.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.04182v1",
+     "title": "Journalist Ideology and the Production of News: Evidence from Movers",
+     "authors": [
+      "Levi Boxell",
+      "Jacob Conway",
+      "Nicolas Longuet-Marx"
+     ],
+     "date": "2026-10-03",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Using a transformer slant measure and journalist moves, finds journalists explain about 10% of newspaper slant variation and movers shift 77% toward destination outlet slant.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.04122v1",
+     "title": "Cities of Signals: Compression, Separation, and the Geometry of Novelty",
+     "authors": [
+      "Marc da Costa Nunes"
+     ],
+     "date": "2026-10-02",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Compressed 'city' angles of cross-sectional trading signals conservatively bound history angles, tested on a quant signal competition library.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    }
+   ],
+   "stats": {
+    "fetched": 458,
+    "screened": 120
+   }
+  },
+  {
    "date": "2026-10-05",
    "papers": [
     {

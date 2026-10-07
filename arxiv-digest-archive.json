@@ -1,6 +1,258 @@
 {
  "days": [
   {
+   "date": "2026-10-07",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.08264v1",
+     "title": "Understanding Interfirm AI Talent Flow Networks through Online Professional Profiles",
+     "authors": [
+      "Donghang Li",
+      "Yunhan Zheng",
+      "Alok Prakash",
+      "Shenhao Wang",
+      "Jinhua Zhao"
+     ],
+     "date": "2026-10-06",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Using 535 million employment records, AI talent flows are increasingly concentrated yet contestable, and AI network centrality predicts higher firm enterprise value.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.07162v1",
+     "title": "Adversarial Training for Deep Hedging in Nonstationary Markets",
+     "authors": [
+      "Philipp J. Schneider",
+      "Lukas Looser",
+      "Antoine Garin",
+      "Shuhan Liu",
+      "Daniel Kuhn"
+     ],
+     "date": "2026-10-05",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "WRAP, a distributionally robust adversarial training framework, improves deep hedging under nonstationary market dynamics through combined trajectory reweighting and path perturbation.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.06947v1",
+     "title": "FactorBench: A Portfolio-Aware Benchmark for Automated Factor Mining",
+     "authors": [
+      "Zhuohan Wang",
+      "Carmine Ventre"
+     ],
+     "date": "2026-10-03",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Benchmark of about five thousand factors from nine automated mining methods, including LLM agents, finds no paradigm consistently dominates in portfolio performance.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.03922v1",
+     "title": "Priority Gas Auction Cadence and Searcher Competition: Evidence from Flashblocks on Base",
+     "authors": [
+      "Pranay Anchuri",
+      "Edward W. Felten",
+      "Akaki Mamageishvili"
+     ],
+     "date": "2026-10-02",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Splitting Base's priority gas auction into 200ms flashblocks cut automated searchers' effective priority fees by 59%, with premiums scaling with auction duration.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.08558v1",
+     "title": "Measuring Gift Card Program Incrementality via Causal Data Fusion",
+     "authors": [
+      "Justin Whitehouse",
+      "William Betz",
+      "Yan Zhang",
+      "Peter Coles",
+      "Ramesh Johari",
+      "Vasilis Syrgkanis"
+     ],
+     "date": "2026-10-06",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Develops an ML-based causal data fusion estimator for gift card incrementality, finding at Airbnb that third-party channels are more incremental than first-party ones.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.08409v1",
+     "title": "Bayesian Machine Learning Methods For Large Scale Demand Estimation",
+     "authors": [
+      "Anna B. Schmidt"
+     ],
+     "date": "2026-10-06",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Compares Bayesian ML demand models and estimation methods, finding latent factorization scales better with categories and variational inference trades slight accuracy for large speed gains.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.08275v1",
+     "title": "Personalized Recommendations Without Inducing Congestion: Mitigating Disparities in the NYC High School Match",
+     "authors": [
+      "Erica Chiang",
+      "Kenny Peng",
+      "Rebecca Lichtenstein",
+      "Brielle McDaniel",
+      "Kristen O'Neil",
+      "Deja Thomas",
+      "Lianna Wright",
+      "Jon Kleinberg",
+      "Eva Tardos",
+      "Nikhil Garg"
+     ],
+     "date": "2026-10-06",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Congestion-aware algorithmic recommendations deployed in NYC high school match increased ranking of recommended programs by 57% in an RCT.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.07888v1",
+     "title": "A Functional Representation of Credit Behavior for Probability of Default Modeling",
+     "authors": [
+      "Jonas Brunholm",
+      "Bjarne Højgaard",
+      "Thomas D. Nielsen",
+      "Orimar Sauri"
+     ],
+     "date": "2026-10-06",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Functional data representation of intra-monthly credit behavior lets a regulatory-friendly functional logistic default model match XGBoost predictive performance.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.08675v1",
+     "title": "Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge",
+     "authors": [
+      "Chuhong Xu",
+      "Bo Su",
+      "Ziyao Chen",
+      "Ruiyang Xu",
+      "Shimeng Dai",
+      "Xinyu Qiu"
+     ],
+     "date": "2026-10-06",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Stress-tests a probabilistic verifier for LLM financial calculations, revealing a tradeoff between catching wrong-role citations and accepting valid ones.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.07097v1",
+     "title": "Verified, not generated: expert-verified AI study materials and the distribution of learning gains in a university course",
+     "authors": [
+      "Canh Thien Dang",
+      "An Nguyen"
+     ],
+     "date": "2026-10-05",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Expert-verified AI study materials in an economics course raised marks, with gains concentrated among lowest-performing students, narrowing attainment gaps.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.07434v1",
+     "title": "When Does AI Supervision Help? A Role-Aware Study of Network Fraud Decision Management with Blockchain Auditability",
+     "authors": [
+      "Saviz Changizi",
+      "Nasibeh Mohammadzadeh",
+      "Mohammad Shojafar",
+      "Rahim Tafazolli"
+     ],
+     "date": "2026-10-05",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Adding an AI supervisor to network fraud decisions rarely reduces errors; its value depends on role configuration and traffic mix.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.07208v1",
+     "title": "Can LLM-assisted regularization increase forecast accuracy for migration flows in low data regimes?",
+     "authors": [
+      "Nathaniel T. Hindman",
+      "Fabricio Murai"
+     ],
+     "date": "2026-10-05",
+     "theme": "Growth & macro",
+     "score": 3,
+     "summary": "LLM-extracted news signals in weighted Lasso migration forecasts give mixed results across corridors with no consistently best approach.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.07094v1",
+     "title": "Evaluating Inference Compute for Generative AI: A Framework for Enterprise Workloads",
+     "authors": [
+      "Abbas Raza Ali",
+      "Muhammad Ajmal Siddiqui",
+      "Moona Zahid"
+     ],
+     "date": "2026-10-05",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Framework for evaluating inference hardware for agentic AI workloads, including cost per successful episode and TCO models, arguing SRAM-based accelerators are favored.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.07062v1",
+     "title": "Learning to Simulate Individuals from Macro Social Signals",
+     "authors": [
+      "Yining Zhao",
+      "Bushi Liu",
+      "Haofei Yu",
+      "Zhengyang Qi",
+      "Shanyong Wang",
+      "Chuyue Li",
+      "Yuxiang Liu",
+      "Jiaxuan You"
+     ],
+     "date": "2026-10-05",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Training an LLM on prediction-market price signals yields state-of-the-art Polymarket forecasts and transfers zero-shot to user simulation.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.07003v1",
+     "title": "Reliability of AI Agents: Rater Effects, Drift, and the Return to an Evaluation Program",
+     "authors": [
+      "Liu Zhang",
+      "Mark Esposito"
+     ],
+     "date": "2026-10-04",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Rater severity and drift substantially distort firm evaluations of deployed AI agents; adjusted reliability rose 0.53 SD and evaluations lose informativeness within weeks.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    }
+   ],
+   "stats": {
+    "fetched": 258,
+    "screened": 80
+   }
+  },
+  {
    "date": "2026-10-06",
    "papers": [
     {

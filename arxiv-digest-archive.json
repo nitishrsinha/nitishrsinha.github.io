@@ -1,6 +1,98 @@
 {
  "days": [
   {
+   "date": "2026-10-09",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.11675v1",
+     "title": "Delegate Pricing to Algorithms: When Slow and Steady Wins the Race",
+     "authors": [
+      "Galit Ashkenazi-Golan",
+      "Edward Plumb",
+      "Clemens Possnig",
+      "Yufei Zhang"
+     ],
+     "date": "2026-10-08",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "When firms choose learning rates for pricing algorithms, strategic complements lead them to pick sluggish algorithms that extract supracompetitive profits during slow convergence.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.11256v1",
+     "title": "Who Leads and Who Collects:Algorithmic Collusion in Markets of Heterogeneous Language Models",
+     "authors": [
+      "Jun Yeong Lee"
+     ],
+     "date": "2026-10-08",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "In Bertrand markets with heterogeneous LLM pricing agents, collusion depends on the model; Claude and Gemini reach 72-79% of monopoly rent, and only fully mixed markets are less collusive.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.11093v1",
+     "title": "Risk Ceilings and Development Deadlines: Pacing AI under Uncertain Safety Productivity",
+     "authors": [
+      "Li Gan"
+     ],
+     "date": "2026-10-08",
+     "theme": "Policy & regulation",
+     "score": 5,
+     "summary": "Regulators can promise both an AI risk ceiling and deadline only if weak safety productivity is ruled out; learn-then-replay development nearly attains the minimum.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.11177v1",
+     "title": "Dynamic Mechanism and Information Design in AI-Agent Environments: A General Analytical Framework",
+     "authors": [
+      "Guoqiang Tian"
+     ],
+     "date": "2026-10-08",
+     "theme": "Policy & regulation",
+     "score": 4,
+     "summary": "A general dynamic mechanism and information design framework for AI agents establishes a revelation principle and separates information, verification and hidden-action rents.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.10942v1",
+     "title": "StoreBench: A Live-Commerce Environment for Evaluating and Training Autonomous Operator Agents",
+     "authors": [
+      "Daksh Raghuvanshi",
+      "Ved Vedere",
+      "Yifan Wang"
+     ],
+     "date": "2026-10-07",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "StoreBench is a live-commerce environment for testing LLM store-operator agents; no frontier model matches a scripted triage policy, and human experts outscore all models.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.10629v1",
+     "title": "The Harness as the Only Mutable Surface: Compliance-Bounded Self-Evolution of LLM Agents in Credit Pipelines, with a Measured Admission Gate",
+     "authors": [
+      "Ravil Akhtyamov"
+     ],
+     "date": "2026-10-07",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Confining self-evolving credit pipeline agents to harness changes with an admission gate keeps adaptations supervisor-reviewable and blocks harmful changes in simulation.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    }
+   ],
+   "stats": {
+    "fetched": 246,
+    "screened": 72
+   }
+  },
+  {
    "date": "2026-10-08",
    "papers": [
     {

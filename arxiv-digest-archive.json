@@ -1,6 +1,43 @@
 {
  "days": [
   {
+   "date": "2026-10-12",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.12917v1",
+     "title": "AI-Mediation in Retail Markets: Revenue Effects and Assortment Optimization",
+     "authors": [
+      "Omar El Housni",
+      "Marouane Ibn Brahim"
+     ],
+     "date": "2026-10-09",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "AI shopping assistants shortlisting products materially change optimal retail assortments; ignoring mediation costs 2.5-11.4% revenue.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.12849v1",
+     "title": "Co-Modifying Application Code and Deployment Infrastructure: A Causal Study of AI Agent Pull Requests",
+     "authors": [
+      "Mohammad Wathiq Soualhi",
+      "Basem Suleiman"
+     ],
+     "date": "2026-10-09",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Among 27k AI agent pull requests, those modifying both code and deployment infrastructure face large merge delays or bypass maintainer review.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    }
+   ],
+   "stats": {
+    "fetched": 194,
+    "screened": 55
+   }
+  },
+  {
    "date": "2026-10-09",
    "papers": [
     {

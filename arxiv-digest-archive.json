@@ -1,6 +1,199 @@
 {
  "days": [
   {
+   "date": "2026-10-14",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.17674v1",
+     "title": "AI Information Synthesis and Content Polarization",
+     "authors": [
+      "Chang Liu",
+      "Yuting Zhu"
+     ],
+     "date": "2026-10-13",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Game-theoretic model shows that sufficiently reliable AI synthesis draws consumers away, prompting content producers to shift toward horizontally differentiated content and increasing polarization, weakened by competition.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.15973v1",
+     "title": "Requested, Executed and Recoverable Credit: Shared Action Ordering among LLM Borrowers in a Simulated Lending Market",
+     "authors": [
+      "Victoria Ruojie Li"
+     ],
+     "date": "2026-10-11",
+     "theme": "Financial markets",
+     "score": 5,
+     "summary": "In simulated lending markets with LLM borrowers, a shared action-listing order moves whole markets' debt levels, concentrating leverage and liquidation risk in markets favoring borrowing.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.14984v1",
+     "title": "Too Late to Prune: Generative AI, the Screen, and Team Creative Decisions",
+     "authors": [
+      "Difang Huang",
+      "Shumin Yu",
+      "Fadong Chen",
+      "Weihua Zhou"
+     ],
+     "date": "2026-10-10",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Experiment with 148 teams finds giving generative AI access during selection rather than search lowers creativity by 0.62 SD, as late options bypass the team's screening.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.14850v1",
+     "title": "Displacement Is Endogenous: AI Workers in a Search-and-Matching Labor Market",
+     "authors": [
+      "Ibrahim Denis Fofanah"
+     ],
+     "date": "2026-10-10",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "In a search-and-matching simulation, AI workers at 70% of human wages raise unemployment 4.1 points, with displacement largest at price parity.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.14646v1",
+     "title": "Beyond Independent Values: Optimal Auctions with Correlated Valuations for LLM-Native Advertising",
+     "authors": [
+      "Shiman Sheng",
+      "Mingyu Guo"
+     ],
+     "date": "2026-10-10",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Designs a truthful optimal auction for LLM-native advertising with correlated advertiser values, earning 6.2% more than tuned second-price auctions with LLM-agent bidders.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.14305v1",
+     "title": "Safety Research and the Allocation of Frontier Compute",
+     "authors": [
+      "Li Gan"
+     ],
+     "date": "2026-10-09",
+     "theme": "Growth & macro",
+     "score": 5,
+     "summary": "In a frontier-takeoff model, customer-funded early safety compute can cut catastrophe probability from 75 to 51 percent, nearly matching rules that slow research.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.14145v1",
+     "title": "Is the business of frontier AI companies selling tokens? Value capture and equity prices",
+     "authors": [
+      "Andrew J. Peterson"
+     ],
+     "date": "2026-10-09",
+     "theme": "Financial markets",
+     "score": 5,
+     "summary": "OpenAI and Anthropic valuations imply year-ten revenues of $0.73-2.79 trillion, suggesting value capture beyond token sales via partnerships and ownership stakes.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.18435v1",
+     "title": "How Well Do LLMs Perform in Peer Review? Evidence from Finance and Accounting",
+     "authors": [
+      "Hai Lu",
+      "Yichen Luo",
+      "Luping Yu"
+     ],
+     "date": "2026-10-13",
+     "theme": "Other",
+     "score": 4,
+     "summary": "GPT-4o referee scores predict top finance journal publication, driven by judgments of correctness and exposition but not originality or significance.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.15033v1",
+     "title": "What Drives AI Citations? Content, Retrieval and Model Knowledge in Generative Engine Optimization (GEO)",
+     "authors": [
+      "Mahe Chen",
+      "Nick Koudas"
+     ],
+     "date": "2026-10-10",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Generative search citations depend mostly on the engine's own retrieval and brand knowledge, not page properties, shaping which commercial sites gain visibility.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.16863v1",
+     "title": "Better together? A performance theory of human-machine skill policies under generalization difficulty",
+     "authors": [
+      "Riccardo Zanardelli"
+     ],
+     "date": "2026-10-12",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Develops a performance theory of human-machine task allocation, separating gains from routing, joint evidence and synergy, illustrated with a 227-radiologist study.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.17365v1",
+     "title": "When Goals Leak Across Relationships: How Cached Goal Representations Shape Cross-Client Decisions",
+     "authors": [
+      "Saloni Gupta",
+      "Sébastien Krier",
+      "Glenn Matlin"
+     ],
+     "date": "2026-10-12",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "LLM agents serving opposing clients in market scenarios with shared memory deviate from the current client's goal 22% of the time, driven causally by cached goal representations.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.16916v1",
+     "title": "Transparent Information Flow Modeling for Role-Aware AI Act Assessment",
+     "authors": [
+      "Mattias Brännström",
+      "Themis Dimitra Xanthopoulou",
+      "Lili Jiang"
+     ],
+     "date": "2026-10-12",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Applies Information Flow Methodology to EU AI Act compliance in a public-sector recruitment tool, supporting role-aware, socio-technical risk assessment.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.15503v1",
+     "title": "Data Portability Revisited: Toward the Human-Centric, AI-Driven Data Ecosystems of Tomorrow",
+     "authors": [
+      "Mark Fenwick",
+      "Michael Fertik",
+      "Paulius Jurcys",
+      "Timo Minssen"
+     ],
+     "date": "2026-10-11",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Argues data portability law favors service providers and calls for human-centric portability to support individual AI applications.",
+     "ai": true,
+     "model": "claude-opus-5-5"
+    }
+   ],
+   "stats": {
+    "fetched": 645,
+    "screened": 194
+   }
+  },
+  {
    "date": "2026-10-12",
    "papers": [
     {

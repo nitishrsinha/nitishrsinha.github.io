@@ -1,8 +1,63 @@
 {
  "days": [
   {
+   "date": "2026-10-14",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.19720v1",
+     "title": "Which Text Matters: Handling Model Uncertainty in Text-as-Data Regressions, with an Application to Central Bank Communication",
+     "authors": [
+      "Martin Feldkircher",
+      "Bernd Prostmaier",
+      "Paul Hofmarcher",
+      "Pierre Siklos"
+     ],
+     "date": "2026-10-14",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Proposes spike-and-slab GAMs to handle model uncertainty over text-based covariates; only a sparse set of ECB communication indicators tracks inflation expectations.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-15"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.20200v1",
+     "title": "Drivers of LLM Consensus Formation Under Competing Incentives: A Simulation Study",
+     "authors": [
+      "Isabel Jones",
+      "Matthew Edwards",
+      "Janina A. Hoffmann"
+     ],
+     "date": "2026-10-14",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Simulations of LLM agents in a network consensus game with competing payoffs show consensus depends on model traits, communication and network structure.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-15"
+    }
+   ]
+  },
+  {
    "date": "2026-10-13",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.19316v1",
+     "title": "Truthful and Expected-Payment-Optimal Model Routing in Graph-Based Agentic Workflows",
+     "authors": [
+      "Jiayuan Liu",
+      "Mingyu Guo",
+      "Jiarui Gan",
+      "Vincent Conitzer"
+     ],
+     "date": "2026-10-13",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Proposes STAR, a strategy-proof procurement auction for routing tasks across LLM providers in graph workflows that induces truthful cost reports and minimizes expected user payments.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-15"
+    },
     {
      "id": "http://arxiv.org/abs/2610.17674v1",
      "title": "AI Information Synthesis and Content Polarization",
@@ -39,6 +94,21 @@
   {
    "date": "2026-10-12",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.18921v1",
+     "title": "Creative destruction: Human-AI competition in an experimental market",
+     "authors": [
+      "John Conlon",
+      "Peter Schwardmann"
+     ],
+     "date": "2026-10-12",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "In market experiments, games designed by AI alone beat those of human producers, including professionals, and consumers pay no premium for human-designed products.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-15"
+    },
     {
      "id": "http://arxiv.org/abs/2610.16863v1",
      "title": "Better together? A performance theory of human-machine skill policies under generalization difficulty",

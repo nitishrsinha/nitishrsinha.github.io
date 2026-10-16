@@ -1,6 +1,129 @@
 {
  "days": [
   {
+   "date": "2026-10-15",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.21867v1",
+     "title": "Algorithmic Collusion Without Deterrence: Auditing the Punishment Mechanism in Q-Learning Pricing Agents",
+     "authors": [
+      "Kaue Lopes de Moraes",
+      "Rodrigo De-Losso"
+     ],
+     "date": "2026-10-15",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Audit of Q-learning pricing collusion finds the punishment pattern doesn't identify deterrence; optimal deviations are profitable and coordination is dyad-specific.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.21711v1",
+     "title": "How language model agents reshape price competition",
+     "authors": [
+      "Martin Bichler",
+      "Philip Hierhager",
+      "Kassian Köck",
+      "Fabian Pieroth"
+     ],
+     "date": "2026-10-15",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "LLM pricing agents can sustain supracompetitive prices in repeated Bertrand competition depending on deployment interface choices, generating dynamic high-price-anchor and undercutting regimes.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.21607v1",
+     "title": "Market Incentives for AI Safety Investment",
+     "authors": [
+      "Nikita Tsoy"
+     ],
+     "date": "2026-10-15",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Game-theoretic model of an AI supply chain finds downstream competition boosts safety investment while the upstream LLM provider may underinvest; analyzes regulatory interventions.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.22201v1",
+     "title": "Decentralized LLM Workflows via Sequential Auctions",
+     "authors": [
+      "Ian Gemp",
+      "Shubhendu Trivedi",
+      "Adam Fisch",
+      "Fantine Huot",
+      "Michael Kaisers",
+      "Mirella Lapata",
+      "William W. Cohen",
+      "Alekh Agarwal",
+      "Kate Larson",
+      "Jacob Eisenstein"
+     ],
+     "date": "2026-10-15",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Shows decentralized markets of LLM agents via sequential auctions sustain profits and task success under imperfect competition, while no competition causes market failure.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.22043v1",
+     "title": "Momentum, Commentary Tone, and Earnings Surprise in LLM Financial Forecasts",
+     "authors": [
+      "Alina Khaybullina"
+     ],
+     "date": "2026-10-15",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Synthetic earnings experiments show small LLMs' forecasts rely more on commentary tone and momentum than on the earnings surprise in most of six checkpoints.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.21756v1",
+     "title": "Locally Robust Inference with Outcomes Predicted by Machine Learning",
+     "authors": [
+      "Juan Carlos Escanciano",
+      "Alejandro Puerta-Cuartas"
+     ],
+     "date": "2026-10-15",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Develops locally robust GMM inference for ML-generated outcomes; applied to mortgage data, a race-blind default score embeds much smaller Black-White disparity than realized delinquency.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.21109v1",
+     "title": "Kolab: Benchmarking Human-Agent Collaboration in Long-Horizon Workflows",
+     "authors": [
+      "Shirley Anugrah Hayati",
+      "Patricia Anugrah Setiani",
+      "Ruizi Wang",
+      "Zhouyi Li",
+      "Khanh Chi Le",
+      "Young-Jun Lee",
+      "Dongyeop Kang"
+     ],
+     "date": "2026-10-15",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Introduces Kolab, a dataset of professionals from 40 occupations collaborating with AI agents, revealing diverse collaboration patterns and frontier model weaknesses in forecasting adoption.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-16"
+    }
+   ]
+  },
+  {
    "date": "2026-10-14",
    "papers": [
     {

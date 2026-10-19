@@ -1,6 +1,107 @@
 {
  "days": [
   {
+   "date": "2026-10-16",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.23060v1",
+     "title": "Same Person, Different Advice: Auditing LLM Financial Advice with Repeated Risk-Tolerance Responses",
+     "authors": [
+      "Soovadeep Bakshi",
+      "Apurba Bose",
+      "Aishwarya Bose",
+      "Sandip Nandi"
+     ],
+     "date": "2026-10-16",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "LLM financial advisers shift recommended stock shares 10-35 points from noisy risk-tolerance answers; reliability discounting would cut swings 2.4-3.3 times.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-19"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.22882v1",
+     "title": "Cooperation Without Adaptation: LLM Agents in a Collective-Risk Dilemma",
+     "authors": [
+      "Trung-Kiet Huynh",
+      "Dao-Sy Duy-Minh",
+      "Chi-Nguyen Tran",
+      "Phu-Hoa Pham",
+      "Phu-Quy Nguyen-Lam",
+      "Le Hong Trang",
+      "The Anh Han"
+     ],
+     "date": "2026-10-16",
+     "theme": "Other",
+     "score": 4,
+     "summary": "LLM agents in a collective-risk dilemma contribute fixed fair shares regardless of risk or partners, rarely best-responding, with group outcomes sensitive to population composition.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-19"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.22864v1",
+     "title": "The Source of Data Value: Consumer Disclosure, Access Design, and Platform Monetization",
+     "authors": [
+      "Hexiao Liu",
+      "Lijian Lu",
+      "Mingzheng Wang"
+     ],
+     "date": "2026-10-16",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Game-theoretic model shows consumer disclosure rights determine whether platforms can monetize defensive seller data purchases, with welfare effects depending on transaction creation versus segmentation.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-19"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.23025v1",
+     "title": "Causal Value Attribution of Marketing Labels in LLM-Generated Ads: A Deconfounder Approach",
+     "authors": [
+      "Danhong You",
+      "Wei Jiang",
+      " Zhiqiang",
+      " Zheng"
+     ],
+     "date": "2026-10-16",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "A deconfounder VAE estimates causal value of expert marketing labels steering LLM-generated ads; recommended configurations raise engagement 32.7%, matching human experts in a field experiment.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-19"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.22980v1",
+     "title": "KiranaBench: Can a Language Model Run a Neighbourhood Shop?",
+     "authors": [
+      "Bhuvan Arora",
+      "Ankita Karmakar",
+      "Chaitanya Jain",
+      "Dilesh Churiwal",
+      "Harshit Jain",
+      "Shivansh Manish Dubey",
+      "Manish Prasad",
+      "Raja Piyush",
+      "Kshitij Tayal",
+      "Dhruv Kumar",
+      "Jagat Sesh Challa",
+      "Raunak Manekar",
+      "Yash Sinha"
+     ],
+     "date": "2026-10-16",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Multi-agent LLMs running a simulated Indian shop earn at best one-eighth of a rule-based baseline's profit, performing worse in Hindi and Hinglish.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-19"
+    }
+   ]
+  },
+  {
    "date": "2026-10-15",
    "papers": [
     {
@@ -48,6 +149,52 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-10-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.22522v1",
+     "title": "Agentic AI in Automated Markets",
+     "authors": [
+      "Irene Aldridge",
+      "Lourenco Belleau-Bhowmik",
+      "James Chan",
+      "Josh Chang",
+      "Kelly Deng",
+      "Pranav Dhingra",
+      "Xinda Ding",
+      "Haodong Fang",
+      "Satya Hanumanchi",
+      "Carter He",
+      "Shuang He",
+      "Yadong Hou",
+      "Vallab Karanam",
+      "Rithvik Kasarla",
+      "Tishya Khanna",
+      "Jihyun Kim",
+      "Sarah Konety",
+      "Abhinav Kotta",
+      "Anderson Lo",
+      "Jake Luther",
+      "Omar Mian",
+      "Ishan Patwardhan",
+      "Matteo Perona",
+      "Chenyue Qi",
+      "Shashank Ramachandran",
+      "Shubham Rateria",
+      "Jake Swain",
+      "David Thai",
+      "Michael Twersky",
+      "Susan Wu",
+      "Dean Xu",
+      "Helenna Yin",
+      "Jiachun Zheng"
+     ],
+     "date": "2026-10-15",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "RL agent archetypes in AMM markets produce distinct stress patterns—herding frequent short stress, manipulators persistent—motivating behavior-specific regulation.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-19"
     },
     {
      "id": "http://arxiv.org/abs/2610.22201v1",

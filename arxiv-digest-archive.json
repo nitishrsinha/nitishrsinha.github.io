@@ -1,8 +1,148 @@
 {
  "days": [
   {
+   "date": "2026-10-19",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.25603v1",
+     "title": "When Better Opportunities Backfire: Service Worker Responses to Parallel AI Deployment in Customer Acquisition",
+     "authors": [
+      "Xinyu Fu",
+      "Shulong Luo",
+      "Narayan Ramasubbu",
+      "Peng Shen",
+      "Xincheng Wang",
+      "Yucheng Wang"
+     ],
+     "date": "2026-10-19",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "AI voice-agent deployment enriched human workers' leads but lowered their acquisition rates as workers persisted less, outweighing gains from better lead ordering.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.26438v1",
+     "title": "Fake News, Real Crashes: Information Injection Attacks on LLM Financial Trading Agents",
+     "authors": [
+      "Mengxiao Wang",
+      "Nitesh Saxena"
+     ],
+     "date": "2026-10-19",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Fabricated news can push LLM trading agents into synchronized trades with up to 100% attack success, evading most defenses.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.26624v1",
+     "title": "From TCP/IP to MCP: Security and Governance Lessons from Internet Protocols for Agentic AI",
+     "authors": [
+      "Ben Bucknall",
+      "Andrew Byrley",
+      "Lewis Hammond"
+     ],
+     "date": "2026-10-19",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Draws on internet protocol history to warn that AI agent protocols risk costly security deficits and have concentrated, legitimacy-challenged governance.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.26524v1",
+     "title": "Beyond Behavioral Accuracy: Evaluating Individual-Level Fidelity in LLM Investor Simulation",
+     "authors": [
+      "Jiajie He",
+      "Yuanhong Jiang",
+      "Xintong Chen",
+      "Dongling Ni",
+      "Wenjin Liu"
+     ],
+     "date": "2026-10-19",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "LLMs fail to beat a persistence baseline at simulating individual investors' trades, revealing gaps in individual-level fidelity.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-17",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.24901v1",
+     "title": "Coarse Revenue Guarantee in First Price Auction and Beyond",
+     "authors": [
+      "Linchen Zhang"
+     ],
+     "date": "2026-10-17",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Characterizes worst-case first-price auction revenue under coarse correlated equilibria reached by no-regret learning, showing it is positive, below the Bergemann-Brooks-Morris guarantee, with gap closing at log N/N.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-20"
+    }
+   ]
+  },
+  {
    "date": "2026-10-16",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.24267v1",
+     "title": "How exposed is work to robotics? Occupational, industry, and geographic measures",
+     "authors": [
+      "Sebastian Sartor",
+      "Robert Seamans",
+      "Neil Thompson"
+     ],
+     "date": "2026-10-16",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Builds abilities-based robotics exposure measures for occupations, industries and counties, finding exposure concentrated in lower-wage, less-educated, physically intensive work, unlike generative AI.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.24289v1",
+     "title": "Unbounded Losses, Unchecked Inputs: Measuring the Safeguards of LLM Options-Trading Agents",
+     "authors": [
+      "Mengxiao Wang",
+      "Nitesh Saxena"
+     ],
+     "date": "2026-10-16",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Survey of LLM options-trading agents finds most lack input authentication, many trade without human step, and 13 of 26 can reach unbounded losses.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.24033v1",
+     "title": "LLM Evolution in a Simple Simulated Market",
+     "authors": [
+      "Charlie Pilgrim",
+      "Christopher Krupenye",
+      "Dora Biro",
+      "Richard P. Mann"
+     ],
+     "date": "2026-10-16",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "In simulated markets of evolving LLM agents, per-token pricing selects for cheap agents with collapsed accuracy, showing market incentives shape AI behaviour along unpriced dimensions.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-20"
+    },
     {
      "id": "http://arxiv.org/abs/2610.23060v1",
      "title": "Same Person, Different Advice: Auditing LLM Financial Advice with Repeated Risk-Tolerance Responses",

@@ -173,7 +173,7 @@
         <h2>Submissions</h2>
         <div class="table-wrap">
             <table>
-                <thead><tr><th>Name</th><th>Email</th><th class="num">Score</th><th>Submitted</th></tr></thead>
+                <thead><tr><th>Name</th><th>Email</th><th class="num">Score</th><th>Submitted</th><th>Review link</th></tr></thead>
                 <tbody id="submissions"></tbody>
             </table>
         </div>
@@ -193,6 +193,29 @@
             td.textContent = text;
             if (className) td.className = className;
             return td;
+        }
+
+        // The same link the student got after submitting: it carries their receipt,
+        // so it shows their own answers once review is open.
+        function reviewLink(s) {
+            if (!s.token) return "";
+            const url = new URL(`quiz.html?week=${encodeURIComponent($("week").value.trim())}`, location.href);
+            url.hash = new URLSearchParams({ email: s.email, token: s.token }).toString();
+            return url.href;
+        }
+
+        function mailto(s) {
+            const first = s.name.split(/\s+/)[0];
+            const body = [
+                `Hi ${first},`,
+                "",
+                `Here is your personal review link for ${data.title}. It shows your answers, the correct answers and an explanation for each question:`,
+                "",
+                reviewLink(s),
+                "",
+                "Please don't share it; it shows your own answers.",
+            ].join("\n");
+            return `mailto:${encodeURIComponent(s.email)}?subject=${encodeURIComponent(`Your review link: ${data.title}`)}&body=${encodeURIComponent(body)}`;
         }
 
         async function call(method, body) {
@@ -265,6 +288,16 @@
                     cell(`${s.score} / ${total}`, "num"),
                     cell(new Date(s.submittedAt).toLocaleTimeString())
                 );
+                const linkCell = document.createElement("td");
+                if (s.token) {
+                    const a = document.createElement("a");
+                    a.href = mailto(s);
+                    a.textContent = "Email";
+                    linkCell.append(a);
+                } else {
+                    linkCell.textContent = "\u2013";
+                }
+                tr.append(linkCell);
                 return tr;
             }));
         }
@@ -310,11 +343,12 @@
         $("csv").addEventListener("click", () => {
             const qs = data.questions;
             const lines = [
-                ["name", "email", "score", "out_of", ...qs.map((q, i) => (q.bonus ? `q${i + 1}_bonus` : `q${i + 1}`)), "submitted_at"],
+                ["name", "email", "score", "out_of", ...qs.map((q, i) => (q.bonus ? `q${i + 1}_bonus` : `q${i + 1}`)), "submitted_at", "review_link"],
                 ...data.submissions.map((s) => [
                     s.name, s.email, s.score, data.outOf,
                     ...qs.map((q) => (q.id in s.answers ? LETTERS[s.answers[q.id]] : "")),
                     s.submittedAt,
+                    reviewLink(s),
                 ]),
             ];
             const blob = new Blob([lines.map((l) => l.map(csvField).join(",")).join("\n") + "\n"], { type: "text/csv" });

@@ -16,7 +16,8 @@
  *                 -> in review only: {name, answers, score, outOf} for that submission.
  *                    The receipt token, not the email, is what proves who is asking.
  * GET  /admin?week=week01        (requires Authorization: Bearer <ADMIN_PASSWORD>)
- *                 -> {state, title, outOf, questions (with answers), submissions (scored)}
+ *                 -> {state, title, outOf, questions (with answers),
+ *                     submissions (scored, with receipt tokens for review links)}
  * POST /admin   {"week": "week01", "state": "open"}   (same Authorization header)
  *                 -> sets the state: "open", "review" or "closed".
  *
@@ -148,11 +149,11 @@ async function handleQuizPost(env, request, corsHeaders) {
     return json({ error: "A submission from this email is already recorded." }, 409, corsHeaders);
   }
 
-  // stored in KV metadata too, so the results page can read everything from one
-  // list() call; the receipt token stays in the value only
-  const submission = { name, email, answers: clean, submittedAt: new Date().toISOString() };
+  // stored in KV metadata too, so the admin page can read everything (including
+  // the receipt token, for emailing review links) from one list() call
   const token = crypto.randomUUID();
-  await env.QUIZ.put(key, JSON.stringify({ ...submission, token }), { metadata: submission });
+  const submission = { name, email, answers: clean, submittedAt: new Date().toISOString(), token };
+  await env.QUIZ.put(key, JSON.stringify(submission), { metadata: submission });
 
   return json({ ok: true, token }, 200, corsHeaders);
 }

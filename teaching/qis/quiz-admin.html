@@ -78,6 +78,7 @@
 
         .badge.open { background: #e8f5e9; color: #1b5e20; }
         .badge.closed { background: #eeeeee; color: #5a5a5a; }
+        .badge.review { background: #e3f2fd; color: #0d47a1; }
 
         .error { color: #b71c1c; }
 
@@ -115,6 +116,10 @@
             font-weight: 600;
         }
 
+        .question-text {
+            white-space: pre-wrap;
+        }
+
         .num {
             text-align: right;
             white-space: nowrap;
@@ -143,7 +148,9 @@
         <h2 id="quiz-title"></h2>
         <div class="row">
             <span id="state" class="badge"></span>
-            <button id="toggle"></button>
+            <button data-state="open">Open submissions</button>
+            <button data-state="closed" class="danger">Close</button>
+            <button data-state="review" class="secondary">Open review</button>
             <button id="refresh" class="secondary">Refresh</button>
             <button id="csv" class="secondary">Download CSV</button>
             <span id="count"></span>
@@ -213,10 +220,12 @@
             const total = data.outOf;
 
             $("quiz-title").textContent = data.title;
-            $("state").textContent = data.open ? "Open" : "Closed";
-            $("state").className = "badge " + (data.open ? "open" : "closed");
-            $("toggle").textContent = data.open ? "Close submissions" : "Open submissions";
-            $("toggle").className = data.open ? "danger" : "";
+            const labels = { open: "Open", closed: "Closed", review: "Review: students see answers" };
+            $("state").textContent = labels[data.state];
+            $("state").className = "badge " + data.state;
+            document.querySelectorAll("button[data-state]").forEach((b) => {
+                b.hidden = b.dataset.state === data.state;
+            });
             const avg = n ? subs.reduce((s, x) => s + x.score, 0) / n : 0;
             $("count").textContent = n ? `${n} submitted, average ${avg.toFixed(1)} / ${total}` : "No submissions yet";
 
@@ -239,7 +248,7 @@
                 barCell.append(bar);
                 tr.append(
                     cell(q.bonus ? "Bonus" : i + 1),
-                    cell(q.q),
+                    cell(q.code ? `${q.q}\n${q.code}` : q.q, "question-text"),
                     cell(`${LETTERS[q.answer]}. ${q.choices[q.answer]}`),
                     cell(n ? `${pct}%` : "–", "num"),
                     barCell
@@ -271,7 +280,7 @@
                 $("login-error").textContent = err.message;
             }
             clearTimeout(timer);
-            if (data && data.open) timer = setTimeout(refresh, REFRESH_MS);
+            if (data && data.state === "open") timer = setTimeout(refresh, REFRESH_MS);
         }
 
         function csvField(v) {
@@ -287,14 +296,16 @@
 
         $("refresh").addEventListener("click", refresh);
 
-        $("toggle").addEventListener("click", async () => {
+        document.querySelectorAll("button[data-state]").forEach((button) => button.addEventListener("click", async () => {
+            const state = button.dataset.state;
+            if (state === "review" && !confirm("Open review? This closes submissions and shows every student the correct answers.")) return;
             try {
-                await call("POST", { open: !data.open });
+                await call("POST", { state });
             } catch (err) {
                 $("login-error").textContent = err.message;
             }
             refresh();
-        });
+        }));
 
         $("csv").addEventListener("click", () => {
             const qs = data.questions;

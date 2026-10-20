@@ -78,6 +78,15 @@
             font-weight: 500;
         }
 
+        .question pre {
+            margin: 0 0 12px;
+            padding: 10px 12px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+
         .choice {
             display: flex;
             gap: 10px;
@@ -97,6 +106,43 @@
         .choice:has(input:checked) {
             border-color: #1565c0;
             background: #e3f2fd;
+        }
+
+        .choice.static {
+            cursor: default;
+            display: block;
+        }
+
+        .choice.correct {
+            border-color: #43a047;
+            background: #e8f5e9;
+        }
+
+        .choice.wrong {
+            border-color: #e53935;
+            background: #fdecea;
+        }
+
+        .tag {
+            display: block;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .correct .tag { color: #1b5e20; }
+        .wrong .tag { color: #b71c1c; }
+
+        .why {
+            margin: 10px 0 0;
+            font-size: 0.95em;
+            color: #5a5a5a;
+        }
+
+        .score {
+            font-size: 1.3em;
+            color: #1565c0;
+            margin: 0 0 4px;
         }
 
         .submit-bar {
@@ -141,6 +187,7 @@
     <div class="subtitle">BUFN736 Quantitative Investment Strategies</div>
 
     <div id="status" class="notice">Loading&hellip;</div>
+    <p id="receipt-note" hidden>To see your answers and the explanations later, come back to this page on this phone, or save <a id="receipt-link">your review link</a>.</p>
 
     <form id="quiz" hidden novalidate>
         <label class="field">Full name
@@ -156,12 +203,15 @@
         </div>
     </form>
 
+    <div id="review" hidden></div>
+
     <script>
         const WORKER_URL = "https://qis-quiz.nitish-ranjan.workers.dev";
         const POLL_MS = 5000;
 
         const week = new URLSearchParams(location.search).get("week") || "week01";
         const draftKey = `qis-quiz-${week}`;
+        const receiptKey = `qis-quiz-${week}-receipt`;
         const $ = (id) => document.getElementById(id);
 
         let questions = [];
@@ -179,6 +229,28 @@
 
         function saveDraft() {
             try { localStorage.setItem(draftKey, JSON.stringify(collect())); } catch { /* private mode */ }
+        }
+
+        // The receipt (email + token from the worker) proves which submission is
+        // yours in review mode. It comes from this phone's storage or from the
+        // review link (#email=...&token=...), which never reaches the server's logs.
+        function loadReceipt() {
+            const hash = new URLSearchParams(location.hash.slice(1));
+            if (hash.get("email") && hash.get("token")) {
+                return { email: hash.get("email"), token: hash.get("token") };
+            }
+            try { return JSON.parse(localStorage.getItem(receiptKey)); } catch { return null; }
+        }
+
+        function saveReceipt(receipt) {
+            try { localStorage.setItem(receiptKey, JSON.stringify(receipt)); } catch { /* private mode */ }
+        }
+
+        function showReceiptLink(receipt) {
+            const link = new URL(location.href);
+            link.hash = new URLSearchParams(receipt).toString();
+            $("receipt-link").href = link.href;
+            $("receipt-note").hidden = false;
         }
 
         function shuffle(items) {
@@ -231,6 +303,11 @@
                 const text = document.createElement("p");
                 text.textContent = q.bonus ? `Bonus: ${q.q}` : `${++number}. ${q.q}`;
                 block.append(text);
+                if (q.code) {
+                    const pre = document.createElement("pre");
+                    pre.textContent = q.code;
+                    block.append(pre);
+                }
 
                 shuffle(q.choices.map((c, i) => ({ c, i }))).forEach(({ c, i }) => {
                     const label = document.createElement("label");
@@ -254,14 +331,108 @@
             updateProgress();
         }
 
+        async function fetchMine(receipt) {
+            if (!receipt) return null;
+            try {
+                const res = await fetch(`${WORKER_URL}/quiz/mine`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ week, ...receipt }),
+                });
+                return res.ok ? await res.json() : null;
+            } catch {
+                return null;
+            }
+        }
+
+        // Review lists questions in their original order with the correct answer,
+        // the student's own pick (when we have their receipt) and the explanation.
+        function renderReview(quiz, mine) {
+            const container = $("review");
+            container.replaceChildren();
+
+            if (mine) {
+                const score = document.createElement("p");
+                score.className = "score";
+                score.textContent = `${mine.name}: ${mine.score} / ${mine.outOf}`;
+                container.append(score);
+                setStatus("");
+            } else {
+                setStatus("Showing the answer key. To see your own answers, open this page on the phone you submitted from, or use the review link you saved.");
+            }
+
+            let number = 0;
+            quiz.questions.forEach((q) => {
+                const block = document.createElement("div");
+                block.className = "question";
+                const text = document.createElement("p");
+                text.textContent = q.bonus ? `Bonus: ${q.q}` : `${++number}. ${q.q}`;
+                block.append(text);
+                if (q.code) {
+                    const pre = document.createElement("pre");
+                    pre.textContent = q.code;
+                    block.append(pre);
+                }
+
+                const picked = mine ? mine.answers[q.id] : undefined;
+                q.choices.forEach((c, i) => {
+                    const row = document.createElement("div");
+                    row.className = "choice static";
+                    row.textContent = c;
+                    let tag = "";
+                    if (i === q.answer) {
+                        row.classList.add("correct");
+                        tag = i === picked ? "✓ Your answer, correct" : "✓ Correct answer";
+                    } else if (i === picked) {
+                        row.classList.add("wrong");
+                        tag = "✗ Your answer";
+                    }
+                    if (tag) {
+                        const span = document.createElement("span");
+                        span.className = "tag";
+                        span.textContent = tag;
+                        row.append(span);
+                    }
+                    block.append(row);
+                });
+
+                if (mine && picked === undefined) {
+                    const skipped = document.createElement("p");
+                    skipped.className = "why";
+                    skipped.textContent = "You left this one blank.";
+                    block.append(skipped);
+                }
+                if (q.why) {
+                    const why = document.createElement("p");
+                    why.className = "why";
+                    why.textContent = `Why: ${q.why}`;
+                    block.append(why);
+                }
+                container.append(block);
+            });
+
+            $("quiz").hidden = true;
+            $("receipt-note").hidden = true;
+            container.hidden = false;
+        }
+
         async function load() {
             try {
                 const res = await fetch(`${WORKER_URL}/quiz?week=${encodeURIComponent(week)}`);
                 const data = await res.json();
                 if (!res.ok) throw new Error(data.error || "Could not load the quiz.");
                 if (data.title) $("title").textContent = data.title;
-                if (data.open) return render(data);
-                setStatus("The quiz hasn't opened yet. Keep this page open; it will appear automatically.");
+                const receipt = loadReceipt();
+                if (data.state === "review") return renderReview(data, await fetchMine(receipt));
+                if (receipt) {
+                    // already submitted: keep polling so the review appears on its own
+                    setStatus("Submitted. Your answers and the explanations will appear here when your instructor opens the review.", "success");
+                    showReceiptLink(receipt);
+                } else if (data.state === "open") {
+                    return render(data);
+                } else {
+                    setStatus("The quiz hasn't opened yet. Keep this page open; it will appear automatically.");
+                }
             } catch (err) {
                 setStatus(`${err.message} Retrying…`, "error");
             }
@@ -298,8 +469,12 @@
                 }
                 if (!res.ok) throw new Error(data.error || "Submission failed.");
                 try { localStorage.removeItem(draftKey); } catch { /* ignore */ }
+                const receipt = { email: body.email.trim().toLowerCase(), token: data.token };
+                saveReceipt(receipt);
                 $("quiz").hidden = true;
                 setStatus(`Submitted. Thank you, ${body.name.trim()}.`, "success");
+                showReceiptLink(receipt);
+                setTimeout(load, POLL_MS);
             } catch (err) {
                 setStatus(`${err.message} Your answers are still here; try again.`, "error");
                 $("submit").disabled = false;

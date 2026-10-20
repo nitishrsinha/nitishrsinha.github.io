@@ -1,18 +1,27 @@
 /**
  * qis-quiz: phone quizzes for BUFN736, graded on the server.
  *
+ * Each quiz is in one of three states: "closed", "open" (taking submissions) or
+ * "review" (closed, and the answer key with explanations is public).
+ *
  * GET  /quiz?week=week01
- *                 -> {open: true, title, questions: [{id, q, choices, bonus}]} while the quiz is
- *                    open (answers never leave the worker), {open: false} otherwise.
+ *                 -> open:   {state, title, questions: [{id, q, code, choices, bonus}]}
+ *                            (answers never leave the worker)
+ *                    review: {state, title, outOf, questions (with answer and why)}
+ *                    closed: {state, title}
  * POST /quiz    {"week": "week01", "name": "...", "email": "...", "answers": {"q1": 0}}
  *                 -> stores one submission per email while open; unanswered
- *                    questions score zero. {"ok": true}
+ *                    questions score zero. {"ok": true, "token": "<receipt>"}
+ * POST /quiz/mine {"week": "week01", "email": "...", "token": "<receipt>"}
+ *                 -> in review only: {name, answers, score, outOf} for that submission.
+ *                    The receipt token, not the email, is what proves who is asking.
  * GET  /admin?week=week01        (requires Authorization: Bearer <ADMIN_PASSWORD>)
- *                 -> {open, title, outOf, questions (with answers), submissions (scored)}
+ *                 -> {state, title, outOf, questions (with answers), submissions (scored)}
+ * POST /admin   {"week": "week01", "state": "open"}   (same Authorization header)
+ *                 -> sets the state: "open", "review" or "closed".
  *
  * A question with "bonus": true adds a point when correct but is left out of outOf.
- * POST /admin   {"week": "week01", "open": true}   (same Authorization header)
- *                 -> opens or closes submissions.
+ * An optional "code" string is shown as a code block under the question.
  *
  * Secrets (set via `wrangler secret put`):
  *   ADMIN_PASSWORD - password for the instructor results page
@@ -20,7 +29,7 @@
  * Bindings:
  *   QUIZ           - KV namespace. Keys:
  *                      def:<week>          quiz definition JSON (from quizzes/<week>.json)
- *                      open:<week>         "1" while accepting submissions
+ *                      state:<week>        "open" or "review"; absent means closed
  *                      sub:<week>:<email>  one submission
  *
  * Vars:
@@ -30,6 +39,7 @@
 const MAX_NAME_LENGTH = 100;
 const EMAIL_PATTERN = /^[^\s@]{1,64}@[^\s@]+\.[^\s@]+$/;
 const WEEK_PATTERN = /^week\d{2}$/;
+const STATES = ["closed", "open", "review"];
 const MAX_ADMIN_FAILS_PER_IP = 10; // per FAIL_TTL_SECONDS
 const FAIL_TTL_SECONDS = 900;
 
@@ -52,8 +62,8 @@ async function loadQuiz(env, week) {
   return env.QUIZ.get(`def:${week}`, "json");
 }
 
-async function isOpen(env, week) {
-  return (await env.QUIZ.get(`open:${week}`)) === "1";
+async function getState(env, week) {
+  return (await env.QUIZ.get(`state:${week}`)) || "closed";
 }
 
 /** Correct answers, bonus questions included. */
@@ -73,13 +83,27 @@ async function handleQuizGet(env, url, corsHeaders) {
   const week = url.searchParams.get("week");
   const quiz = await loadQuiz(env, week);
   if (!quiz) return json({ error: "no such quiz" }, 404, corsHeaders);
-  if (!(await isOpen(env, week))) return json({ open: false, title: quiz.title }, 200, corsHeaders);
+  const state = await getState(env, week);
+  if (state === "review") {
+    return json(
+      { state, title: quiz.title, outOf: outOf(quiz), questions: quiz.questions },
+      200,
+      corsHeaders
+    );
+  }
+  if (state !== "open") return json({ state, title: quiz.title }, 200, corsHeaders);
 
   return json(
     {
-      open: true,
+      state,
       title: quiz.title,
-      questions: quiz.questions.map(({ id, q, choices, bonus }) => ({ id, q, choices, bonus: Boolean(bonus) })),
+      questions: quiz.questions.map(({ id, q, code, choices, bonus }) => ({
+        id,
+        q,
+        code,
+        choices,
+        bonus: Boolean(bonus),
+      })),
     },
     200,
     corsHeaders
@@ -96,7 +120,7 @@ async function handleQuizPost(env, request, corsHeaders) {
 
   const quiz = await loadQuiz(env, week);
   if (!quiz) return json({ error: "no such quiz" }, 404, corsHeaders);
-  if (!(await isOpen(env, week))) {
+  if ((await getState(env, week)) !== "open") {
     return json({ error: "This quiz is not accepting submissions right now." }, 403, corsHeaders);
   }
 
@@ -124,11 +148,40 @@ async function handleQuizPost(env, request, corsHeaders) {
     return json({ error: "A submission from this email is already recorded." }, 409, corsHeaders);
   }
 
-  // stored in KV metadata too, so the results page can read everything from one list() call
+  // stored in KV metadata too, so the results page can read everything from one
+  // list() call; the receipt token stays in the value only
   const submission = { name, email, answers: clean, submittedAt: new Date().toISOString() };
-  await env.QUIZ.put(key, JSON.stringify(submission), { metadata: submission });
+  const token = crypto.randomUUID();
+  await env.QUIZ.put(key, JSON.stringify({ ...submission, token }), { metadata: submission });
 
-  return json({ ok: true }, 200, corsHeaders);
+  return json({ ok: true, token }, 200, corsHeaders);
+}
+
+async function handleQuizMine(env, request, corsHeaders) {
+  let week, email, token;
+  try {
+    ({ week, email, token } = await request.json());
+  } catch {
+    return json({ error: "invalid JSON body" }, 400, corsHeaders);
+  }
+
+  const quiz = await loadQuiz(env, week);
+  if (!quiz) return json({ error: "no such quiz" }, 404, corsHeaders);
+  if ((await getState(env, week)) !== "review") {
+    return json({ error: "Review is not open for this quiz." }, 403, corsHeaders);
+  }
+
+  email = typeof email === "string" ? email.trim().toLowerCase() : "";
+  const sub = EMAIL_PATTERN.test(email) ? await env.QUIZ.get(`sub:${week}:${email}`, "json") : null;
+  if (!sub || !sub.token || typeof token !== "string" || !timingSafeEqual(token, sub.token)) {
+    return json({ error: "No submission found for this receipt." }, 404, corsHeaders);
+  }
+
+  return json(
+    { name: sub.name, answers: sub.answers, score: score(quiz, sub.answers), outOf: outOf(quiz) },
+    200,
+    corsHeaders
+  );
 }
 
 async function authenticateAdmin(env, request) {
@@ -178,7 +231,7 @@ async function handleAdmin(env, request, url, corsHeaders) {
 
     return json(
       {
-        open: await isOpen(env, week),
+        state: await getState(env, week),
         title: quiz.title,
         outOf: outOf(quiz),
         questions: quiz.questions,
@@ -190,17 +243,21 @@ async function handleAdmin(env, request, url, corsHeaders) {
   }
 
   if (request.method === "POST") {
-    let week, open;
+    let week, state;
     try {
-      ({ week, open } = await request.json());
+      ({ week, state } = await request.json());
     } catch {
       return json({ error: "invalid JSON body" }, 400, corsHeaders);
     }
     if (!(await loadQuiz(env, week))) return json({ error: "no such quiz" }, 404, corsHeaders);
+    if (!STATES.includes(state)) {
+      return json({ error: `state must be one of ${STATES.join(", ")}` }, 400, corsHeaders);
+    }
 
-    if (open === true) await env.QUIZ.put(`open:${week}`, "1");
-    else await env.QUIZ.delete(`open:${week}`);
-    return json({ ok: true, open: open === true }, 200, corsHeaders);
+    // one key, so a quiz can never be open for submissions and in review at once
+    if (state === "closed") await env.QUIZ.delete(`state:${week}`);
+    else await env.QUIZ.put(`state:${week}`, state);
+    return json({ ok: true, state }, 200, corsHeaders);
   }
 
   return json({ error: "method not allowed" }, 405, corsHeaders);
@@ -228,6 +285,9 @@ export default {
     }
     if (url.pathname === "/quiz" && request.method === "POST") {
       return handleQuizPost(env, request, corsHeaders);
+    }
+    if (url.pathname === "/quiz/mine" && request.method === "POST") {
+      return handleQuizMine(env, request, corsHeaders);
     }
     if (url.pathname === "/admin") {
       return handleAdmin(env, request, url, corsHeaders);

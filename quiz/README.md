@@ -22,7 +22,8 @@ The admin password is printed at the end and kept in `.admin-password` (gitignor
 ## Each week
 
 1. Write `quizzes/weekNN.json` (same shape as `week01.json`; `answer` is the
-   0-based index of the correct choice).
+   0-based index of the correct choice; add `"bonus": true` for a question
+   that adds a point without counting toward the total).
 2. `./quiz-upload.sh weekNN`
 3. In class: open the admin page, enter the week, show the QR code, press **Open**.
    Press **Close** when time is up, then **Download CSV**.

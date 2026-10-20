@@ -199,13 +199,19 @@
             return { name: $("name").value, email: $("email").value, answers };
         }
 
-        function updateProgress() {
-            const n = Object.keys(collect().answers).length;
-            $("progress").textContent = `${n} of ${questions.length} answered`;
+        function unanswered() {
+            const answers = collect().answers;
+            return questions.filter((q) => !q.bonus && !(q.id in answers)).length;
         }
 
-        // Question and choice order are shuffled per student; answers are sent
-        // as each choice's original index, so grading is unaffected.
+        function updateProgress() {
+            const required = questions.filter((q) => !q.bonus).length;
+            $("progress").textContent = `${required - unanswered()} of ${required} answered`;
+        }
+
+        // Question and choice order are shuffled per student, with bonus questions
+        // kept at the end; answers are sent as each choice's original index, so
+        // grading is unaffected.
         function render(quiz) {
             questions = quiz.questions;
             const draft = loadDraft();
@@ -214,11 +220,16 @@
 
             const container = $("questions");
             container.replaceChildren();
-            shuffle(questions).forEach((q, n) => {
+            const ordered = [
+                ...shuffle(questions.filter((q) => !q.bonus)),
+                ...shuffle(questions.filter((q) => q.bonus)),
+            ];
+            let number = 0;
+            ordered.forEach((q) => {
                 const block = document.createElement("div");
                 block.className = "question";
                 const text = document.createElement("p");
-                text.textContent = `${n + 1}. ${q.q}`;
+                text.textContent = q.bonus ? `Bonus: ${q.q}` : `${++number}. ${q.q}`;
                 block.append(text);
 
                 shuffle(q.choices.map((c, i) => ({ c, i }))).forEach(({ c, i }) => {
@@ -263,7 +274,7 @@
         $("quiz").addEventListener("submit", async (event) => {
             event.preventDefault();
             const body = { week, ...collect() };
-            const missing = questions.length - Object.keys(body.answers).length;
+            const missing = unanswered();
             if (!body.name.trim() || !body.email.trim()) {
                 setStatus("Please enter your name and email at the top.", "error");
                 return window.scrollTo({ top: 0, behavior: "smooth" });

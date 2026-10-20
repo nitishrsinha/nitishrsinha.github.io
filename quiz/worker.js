@@ -2,13 +2,15 @@
  * qis-quiz: phone quizzes for BUFN736, graded on the server.
  *
  * GET  /quiz?week=week01
- *                 -> {open: true, title, questions: [{id, q, choices}]} while the quiz is
+ *                 -> {open: true, title, questions: [{id, q, choices, bonus}]} while the quiz is
  *                    open (answers never leave the worker), {open: false} otherwise.
  * POST /quiz    {"week": "week01", "name": "...", "email": "...", "answers": {"q1": 0}}
  *                 -> stores one submission per email while open; unanswered
  *                    questions score zero. {"ok": true}
  * GET  /admin?week=week01        (requires Authorization: Bearer <ADMIN_PASSWORD>)
- *                 -> {open, title, questions (with answers), submissions (scored)}
+ *                 -> {open, title, outOf, questions (with answers), submissions (scored)}
+ *
+ * A question with "bonus": true adds a point when correct but is left out of outOf.
  * POST /admin   {"week": "week01", "open": true}   (same Authorization header)
  *                 -> opens or closes submissions.
  *
@@ -54,12 +56,17 @@ async function isOpen(env, week) {
   return (await env.QUIZ.get(`open:${week}`)) === "1";
 }
 
+/** Correct answers, bonus questions included. */
 function score(quiz, answers) {
   let correct = 0;
   for (const q of quiz.questions) {
     if (answers[q.id] === q.answer) correct++;
   }
   return correct;
+}
+
+function outOf(quiz) {
+  return quiz.questions.filter((q) => !q.bonus).length;
 }
 
 async function handleQuizGet(env, url, corsHeaders) {
@@ -72,7 +79,7 @@ async function handleQuizGet(env, url, corsHeaders) {
     {
       open: true,
       title: quiz.title,
-      questions: quiz.questions.map(({ id, q, choices }) => ({ id, q, choices })),
+      questions: quiz.questions.map(({ id, q, choices, bonus }) => ({ id, q, choices, bonus: Boolean(bonus) })),
     },
     200,
     corsHeaders
@@ -170,7 +177,13 @@ async function handleAdmin(env, request, url, corsHeaders) {
       .sort((a, b) => a.submittedAt.localeCompare(b.submittedAt));
 
     return json(
-      { open: await isOpen(env, week), title: quiz.title, questions: quiz.questions, submissions },
+      {
+        open: await isOpen(env, week),
+        title: quiz.title,
+        outOf: outOf(quiz),
+        questions: quiz.questions,
+        submissions,
+      },
       200,
       corsHeaders
     );

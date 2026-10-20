@@ -210,7 +210,7 @@
             const week = $("week").value.trim();
             const subs = data.submissions;
             const n = subs.length;
-            const total = data.questions.length;
+            const total = data.outOf;
 
             $("quiz-title").textContent = data.title;
             $("state").textContent = data.open ? "Open" : "Closed";
@@ -238,7 +238,7 @@
                 bar.style.width = `${pct}%`;
                 barCell.append(bar);
                 tr.append(
-                    cell(i + 1),
+                    cell(q.bonus ? "Bonus" : i + 1),
                     cell(q.q),
                     cell(`${LETTERS[q.answer]}. ${q.choices[q.answer]}`),
                     cell(n ? `${pct}%` : "–", "num"),
@@ -299,9 +299,9 @@
         $("csv").addEventListener("click", () => {
             const qs = data.questions;
             const lines = [
-                ["name", "email", "score", "out_of", ...qs.map((q, i) => `q${i + 1}`), "submitted_at"],
+                ["name", "email", "score", "out_of", ...qs.map((q, i) => (q.bonus ? `q${i + 1}_bonus` : `q${i + 1}`)), "submitted_at"],
                 ...data.submissions.map((s) => [
-                    s.name, s.email, s.score, qs.length,
+                    s.name, s.email, s.score, data.outOf,
                     ...qs.map((q) => (q.id in s.answers ? LETTERS[s.answers[q.id]] : "")),
                     s.submittedAt,
                 ]),

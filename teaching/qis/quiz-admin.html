@@ -120,6 +120,19 @@
             white-space: pre-wrap;
         }
 
+        button.small {
+            padding: 4px 10px;
+            font-size: 13px;
+        }
+
+        .link-cell {
+            white-space: nowrap;
+        }
+
+        .link-cell a {
+            margin-right: 10px;
+        }
+
         .num {
             text-align: right;
             white-space: nowrap;
@@ -204,20 +217,6 @@
             return url.href;
         }
 
-        function mailto(s) {
-            const first = s.name.split(/\s+/)[0];
-            const body = [
-                `Hi ${first},`,
-                "",
-                `Here is your personal review link for ${data.title}. It shows your answers, the correct answers and an explanation for each question:`,
-                "",
-                reviewLink(s),
-                "",
-                "Please don't share it; it shows your own answers.",
-            ].join("\n");
-            return `mailto:${encodeURIComponent(s.email)}?subject=${encodeURIComponent(`Your review link: ${data.title}`)}&body=${encodeURIComponent(body)}`;
-        }
-
         async function call(method, body) {
             const week = $("week").value.trim();
             const res = await fetch(
@@ -290,10 +289,25 @@
                 );
                 const linkCell = document.createElement("td");
                 if (s.token) {
+                    const link = reviewLink(s);
                     const a = document.createElement("a");
-                    a.href = mailto(s);
-                    a.textContent = "Email";
-                    linkCell.append(a);
+                    a.href = link;
+                    a.target = "_blank";
+                    a.rel = "noopener";
+                    a.textContent = "Open";
+                    const copy = document.createElement("button");
+                    copy.className = "secondary small";
+                    copy.textContent = "Copy";
+                    copy.addEventListener("click", async () => {
+                        try {
+                            await navigator.clipboard.writeText(link);
+                            copy.textContent = "Copied";
+                        } catch {
+                            prompt("Copy the review link:", link);
+                        }
+                    });
+                    linkCell.className = "link-cell";
+                    linkCell.append(a, copy);
                 } else {
                     linkCell.textContent = "\u2013";
                 }

@@ -1,6 +1,9 @@
 /**
  * qis-quiz: phone quizzes for BUFN736, graded on the server.
  *
+ * Quiz ids are "week01", or "week02a", "week02b", ... when a week has more than one
+ * quiz. The request field is still called "week" so links already handed out keep working.
+ *
  * Each quiz is in one of three states: "closed", "open" (taking submissions) or
  * "review" (closed, and the answer key with explanations is public).
  *
@@ -15,7 +18,9 @@
  * POST /quiz/mine {"week": "week01", "email": "...", "token": "<receipt>"}
  *                 -> in review only: {name, answers, score, outOf} for that submission.
  *                    The receipt token, not the email, is what proves who is asking.
- * GET  /admin?week=week01        (requires Authorization: Bearer <ADMIN_PASSWORD>)
+ * GET  /admin/quizzes            (requires Authorization: Bearer <ADMIN_PASSWORD>)
+ *                 -> [{id, title, state}] for every uploaded quiz, sorted by id.
+ * GET  /admin?week=week01        (same Authorization header)
  *                 -> {state, title, outOf, questions (with answers),
  *                     submissions (scored, with receipt tokens for review links)}
  * POST /admin   {"week": "week01", "state": "open"}   (same Authorization header)
@@ -39,7 +44,7 @@
 
 const MAX_NAME_LENGTH = 100;
 const EMAIL_PATTERN = /^[^\s@]{1,64}@[^\s@]+\.[^\s@]+$/;
-const WEEK_PATTERN = /^week\d{2}$/;
+const WEEK_PATTERN = /^week\d{2}[a-z]?$/; // week01, week02a, week02b
 const STATES = ["closed", "open", "review"];
 const MAX_ADMIN_FAILS_PER_IP = 10; // per FAIL_TTL_SECONDS
 const FAIL_TTL_SECONDS = 900;
@@ -216,9 +221,28 @@ async function listSubmissions(env, week) {
   return subs;
 }
 
+async function listQuizzes(env) {
+  const quizzes = [];
+  let cursor;
+  do {
+    const page = await env.QUIZ.list({ prefix: "def:", cursor });
+    for (const k of page.keys) {
+      const id = k.name.slice("def:".length);
+      const quiz = await env.QUIZ.get(k.name, "json");
+      quizzes.push({ id, title: quiz ? quiz.title : id, state: await getState(env, id) });
+    }
+    cursor = page.list_complete ? undefined : page.cursor;
+  } while (cursor);
+  return quizzes.sort((a, b) => a.id.localeCompare(b.id));
+}
+
 async function handleAdmin(env, request, url, corsHeaders) {
   const auth = await authenticateAdmin(env, request);
   if (!auth.ok) return json({ error: auth.error }, auth.status, corsHeaders);
+
+  if (url.pathname === "/admin/quizzes" && request.method === "GET") {
+    return json(await listQuizzes(env), 200, corsHeaders);
+  }
 
   if (request.method === "GET") {
     const week = url.searchParams.get("week");
@@ -290,7 +314,7 @@ export default {
     if (url.pathname === "/quiz/mine" && request.method === "POST") {
       return handleQuizMine(env, request, corsHeaders);
     }
-    if (url.pathname === "/admin") {
+    if (url.pathname === "/admin" || url.pathname === "/admin/quizzes") {
       return handleAdmin(env, request, url, corsHeaders);
     }
 

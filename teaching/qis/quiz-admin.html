@@ -152,7 +152,7 @@
 
     <form id="login" class="row">
         <input id="password" type="password" placeholder="Admin password" autocomplete="current-password">
-        <input id="week" value="week01" size="8" aria-label="Week">
+        <select id="week" aria-label="Quiz"><option value="">Log in to see quizzes</option></select>
         <button type="submit">Load</button>
         <span id="login-error" class="error"></span>
     </form>
@@ -316,12 +316,34 @@
             }));
         }
 
+        // Fill the quiz dropdown from the worker, keeping the current or last-used choice.
+        async function loadQuizzes() {
+            const res = await fetch(`${WORKER_URL}/admin/quizzes`, {
+                headers: { Authorization: `Bearer ${$("password").value}` },
+            });
+            const quizzes = await res.json();
+            if (!res.ok) throw new Error(quizzes.error || `request failed (${res.status})`);
+            let wanted = $("week").value;
+            try { wanted = wanted || sessionStorage.getItem("qis-quiz-admin-quiz") || ""; } catch { /* ignore */ }
+            $("week").replaceChildren(...quizzes.map((q) => {
+                const o = document.createElement("option");
+                o.value = q.id;
+                o.textContent = `${q.id} \u00b7 ${q.title} (${q.state})`;
+                return o;
+            }));
+            const ids = quizzes.map((q) => q.id);
+            $("week").value = ids.includes(wanted) ? wanted : ids[ids.length - 1] || "";
+        }
+
         async function refresh() {
             try {
                 data = await call("GET");
                 $("login-error").textContent = "";
                 $("panel").hidden = false;
-                try { sessionStorage.setItem("qis-quiz-admin", $("password").value); } catch { /* ignore */ }
+                try {
+                    sessionStorage.setItem("qis-quiz-admin", $("password").value);
+                    sessionStorage.setItem("qis-quiz-admin-quiz", $("week").value);
+                } catch { /* ignore */ }
                 render();
             } catch (err) {
                 $("login-error").textContent = err.message;
@@ -335,8 +357,23 @@
             return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
         }
 
+        async function login() {
+            try {
+                await loadQuizzes();
+            } catch (err) {
+                $("login-error").textContent = err.message;
+                return;
+            }
+            data = null;
+            refresh();
+        }
+
         $("login").addEventListener("submit", (event) => {
             event.preventDefault();
+            login();
+        });
+
+        $("week").addEventListener("change", () => {
             data = null;
             refresh();
         });
@@ -375,7 +412,7 @@
 
         try {
             const saved = sessionStorage.getItem("qis-quiz-admin");
-            if (saved) { $("password").value = saved; refresh(); }
+            if (saved) { $("password").value = saved; login(); }
         } catch { /* ignore */ }
     </script>
 </body>

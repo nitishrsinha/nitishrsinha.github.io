@@ -8,4 +8,4 @@ ALLOWED_ORIGIN = "https://nitishrsinha.github.io"
 # Filled in by ./setup.sh (wrangler kv namespace create QUIZ).
 [[kv_namespaces]]
 binding = "QUIZ"
-id = "REPLACE_WITH_KV_ID"
+id = "864a201cfe9447a6836f7f89d51ce5e7"

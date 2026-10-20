@@ -208,8 +208,8 @@ async function listSubmissions(env, week) {
   do {
     const page = await env.QUIZ.list({ prefix: `sub:${week}:`, cursor });
     for (const k of page.keys) {
-      // metadata is normally present; fall back to the value just in case
-      subs.push(k.metadata || (await env.QUIZ.get(k.name, "json")));
+      // submissions made before tokens were added to metadata keep theirs in the value only
+      subs.push(k.metadata && k.metadata.token ? k.metadata : await env.QUIZ.get(k.name, "json"));
     }
     cursor = page.list_complete ? undefined : page.cursor;
   } while (cursor);

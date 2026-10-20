@@ -1,0 +1,4 @@
+quizzes/
+.wrangler/
+.admin-password
+.dev.vars

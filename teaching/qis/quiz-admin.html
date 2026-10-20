@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Admin - Quantitative Investment Strategies</title>
+    <meta name="robots" content="noindex">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 16px 64px;
+            color: #2c2c2c;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            color: #1565c0;
+            margin: 0 0 20px;
+            font-size: 1.4em;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #5a5a5a;
+            margin: 32px 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 10px 18px;
+            font-size: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #1565c0;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        button.secondary {
+            background: #ffffff;
+            color: #1565c0;
+            border: 1px solid #1565c0;
+        }
+
+        button.danger {
+            background: #c62828;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .badge.open { background: #e8f5e9; color: #1b5e20; }
+        .badge.closed { background: #eeeeee; color: #5a5a5a; }
+
+        .error { color: #b71c1c; }
+
+        .share {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .share a {
+            font-size: 1.1em;
+            word-break: break-all;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 0.92em;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 1px solid #e5e5e5;
+            vertical-align: top;
+        }
+
+        th {
+            color: #5a5a5a;
+            font-weight: 600;
+        }
+
+        .num {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .bar {
+            height: 8px;
+            background: #1565c0;
+            border-radius: 4px;
+        }
+
+        [hidden] { display: none !important; }
+    </style>
+</head>
+<body>
+    <h1>Quiz Admin</h1>
+
+    <form id="login" class="row">
+        <input id="password" type="password" placeholder="Admin password" autocomplete="current-password">
+        <input id="week" value="week01" size="8" aria-label="Week">
+        <button type="submit">Load</button>
+        <span id="login-error" class="error"></span>
+    </form>
+
+    <div id="panel" hidden>
+        <h2 id="quiz-title"></h2>
+        <div class="row">
+            <span id="state" class="badge"></span>
+            <button id="toggle"></button>
+            <button id="refresh" class="secondary">Refresh</button>
+            <button id="csv" class="secondary">Download CSV</button>
+            <span id="count"></span>
+        </div>
+
+        <h2>Student link</h2>
+        <div class="share">
+            <div id="qr"></div>
+            <a id="student-link" target="_blank" rel="noopener"></a>
+        </div>
+
+        <h2>By question</h2>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>#</th><th>Question</th><th>Answer</th><th class="num">Correct</th><th style="width: 120px"></th></tr></thead>
+                <tbody id="by-question"></tbody>
+            </table>
+        </div>
+
+        <h2>Submissions</h2>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Name</th><th>Email</th><th class="num">Score</th><th>Submitted</th></tr></thead>
+                <tbody id="submissions"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const WORKER_URL = "https://qis-quiz.nitish-ranjan.workers.dev";
+        const REFRESH_MS = 10000;
+        const LETTERS = "ABCDEFGH";
+
+        const $ = (id) => document.getElementById(id);
+        let data = null;
+        let timer = null;
+
+        function cell(text, className) {
+            const td = document.createElement("td");
+            td.textContent = text;
+            if (className) td.className = className;
+            return td;
+        }
+
+        async function call(method, body) {
+            const week = $("week").value.trim();
+            const res = await fetch(
+                `${WORKER_URL}/admin${method === "GET" ? `?week=${encodeURIComponent(week)}` : ""}`,
+                {
+                    method,
+                    headers: {
+                        Authorization: `Bearer ${$("password").value}`,
+                        ...(body ? { "Content-Type": "application/json" } : {}),
+                    },
+                    body: body ? JSON.stringify({ week, ...body }) : undefined,
+                }
+            );
+            const json = await res.json();
+            if (!res.ok) throw new Error(json.error || `request failed (${res.status})`);
+            return json;
+        }
+
+        function render() {
+            const week = $("week").value.trim();
+            const subs = data.submissions;
+            const n = subs.length;
+            const total = data.questions.length;
+
+            $("quiz-title").textContent = data.title;
+            $("state").textContent = data.open ? "Open" : "Closed";
+            $("state").className = "badge " + (data.open ? "open" : "closed");
+            $("toggle").textContent = data.open ? "Close submissions" : "Open submissions";
+            $("toggle").className = data.open ? "danger" : "";
+            const avg = n ? subs.reduce((s, x) => s + x.score, 0) / n : 0;
+            $("count").textContent = n ? `${n} submitted, average ${avg.toFixed(1)} / ${total}` : "No submissions yet";
+
+            const link = new URL(`quiz.html?week=${encodeURIComponent(week)}`, location.href).href;
+            if ($("student-link").href !== link) {
+                $("student-link").href = link;
+                $("student-link").textContent = link;
+                $("qr").replaceChildren();
+                if (window.QRCode) new QRCode($("qr"), { text: link, width: 200, height: 200 });
+            }
+
+            $("by-question").replaceChildren(...data.questions.map((q, i) => {
+                const right = subs.filter((s) => s.answers[q.id] === q.answer).length;
+                const pct = n ? Math.round((100 * right) / n) : 0;
+                const tr = document.createElement("tr");
+                const barCell = document.createElement("td");
+                const bar = document.createElement("div");
+                bar.className = "bar";
+                bar.style.width = `${pct}%`;
+                barCell.append(bar);
+                tr.append(
+                    cell(i + 1),
+                    cell(q.q),
+                    cell(`${LETTERS[q.answer]}. ${q.choices[q.answer]}`),
+                    cell(n ? `${pct}%` : "–", "num"),
+                    barCell
+                );
+                return tr;
+            }));
+
+            const rows = subs.slice().sort((a, b) => a.name.localeCompare(b.name));
+            $("submissions").replaceChildren(...rows.map((s) => {
+                const tr = document.createElement("tr");
+                tr.append(
+                    cell(s.name),
+                    cell(s.email),
+                    cell(`${s.score} / ${total}`, "num"),
+                    cell(new Date(s.submittedAt).toLocaleTimeString())
+                );
+                return tr;
+            }));
+        }
+
+        async function refresh() {
+            try {
+                data = await call("GET");
+                $("login-error").textContent = "";
+                $("panel").hidden = false;
+                try { sessionStorage.setItem("qis-quiz-admin", $("password").value); } catch { /* ignore */ }
+                render();
+            } catch (err) {
+                $("login-error").textContent = err.message;
+            }
+            clearTimeout(timer);
+            if (data && data.open) timer = setTimeout(refresh, REFRESH_MS);
+        }
+
+        function csvField(v) {
+            const s = String(v);
+            return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+        }
+
+        $("login").addEventListener("submit", (event) => {
+            event.preventDefault();
+            data = null;
+            refresh();
+        });
+
+        $("refresh").addEventListener("click", refresh);
+
+        $("toggle").addEventListener("click", async () => {
+            try {
+                await call("POST", { open: !data.open });
+            } catch (err) {
+                $("login-error").textContent = err.message;
+            }
+            refresh();
+        });
+
+        $("csv").addEventListener("click", () => {
+            const qs = data.questions;
+            const lines = [
+                ["name", "email", "score", "out_of", ...qs.map((q, i) => `q${i + 1}`), "submitted_at"],
+                ...data.submissions.map((s) => [
+                    s.name, s.email, s.score, qs.length,
+                    ...qs.map((q) => (q.id in s.answers ? LETTERS[s.answers[q.id]] : "")),
+                    s.submittedAt,
+                ]),
+            ];
+            const blob = new Blob([lines.map((l) => l.map(csvField).join(",")).join("\n") + "\n"], { type: "text/csv" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = `quiz-${$("week").value.trim()}.csv`;
+            a.click();
+            URL.revokeObjectURL(a.href);
+        });
+
+        try {
+            const saved = sessionStorage.getItem("qis-quiz-admin");
+            if (saved) { $("password").value = saved; refresh(); }
+        } catch { /* ignore */ }
+    </script>
+</body>
+</html>

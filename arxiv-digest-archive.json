@@ -1,6 +1,26 @@
 {
  "days": [
   {
+   "date": "2026-10-20",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.27576v1",
+     "title": "Who Gains When the Umpire Is a Machine? Evidence from the Automated Ball-Strike System (ABS)",
+     "authors": [
+      "Seung Jin Cho",
+      "Jun Yeong Lee"
+     ],
+     "date": "2026-10-20",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "Korea's automated ball-strike system removed discretionary umpire rents and redistributed strikes, with near-zero outcome effects; pitchers adapted quickly, batters did not.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-21"
+    }
+   ]
+  },
+  {
    "date": "2026-10-19",
    "papers": [
     {
@@ -21,6 +41,38 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-10-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.27296v1",
+     "title": "Stronger artificial intelligence breakthroughs hasten their own exhaustion",
+     "authors": [
+      "Beichen Lu",
+      "Honglin Bao",
+      "Qi Huang",
+      "Qingguo Meng",
+      "James A. Evans"
+     ],
+     "date": "2026-10-19",
+     "theme": "Growth & macro",
+     "score": 4,
+     "summary": "Analysis of 7.2 million papers shows AI breakthroughs narrow research attention and are followed by faster exhaustion of ideas, arguing for policies that protect diverse attention.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-21"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.27251v1",
+     "title": "AI and The Enclosure of the Scientific Commons",
+     "authors": [
+      "P. K. G. Williams"
+     ],
+     "date": "2026-10-19",
+     "theme": "Policy & regulation",
+     "score": 4,
+     "summary": "Argues, using commons and enclosure frameworks, that AI enables private enclosure of the scientific information commons and undermines its supporting social systems.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-21"
     },
     {
      "id": "http://arxiv.org/abs/2610.26438v1",

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colab Primer - Quantitative Investment Strategies</title>
+    <meta name="description" content="BUFN736 Quantitative Investment Strategies: a short primer on using Google Colab for the course notebooks.">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.65;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 64px 24px;
+            color: #2c2c2c;
+            background-color: #ffffff;
+        }
+        header {
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        h1 {
+            color: #1565c0;
+            margin: 0 0 6px;
+            font-size: 1.7em;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            color: #5a5a5a;
+            margin-bottom: 22px;
+            font-size: 1em;
+        }
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #1565c0;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main p, main ul, main ol {
+            margin: 0 0 1.2em;
+        }
+        li {
+            margin-bottom: 0.4em;
+        }
+        a {
+            color: #1565c0;
+        }
+        h2 {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: #888;
+            margin: 36px 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        code, kbd {
+            font-family: SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.88em;
+            background: #f4f6f8;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+        pre {
+            background: #f4f6f8;
+            padding: 12px 14px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.88em;
+            margin: 0 0 1.2em;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 0 0 1.2em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92em;
+        }
+        th, td {
+            text-align: left;
+            vertical-align: top;
+            padding: 10px 8px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        th {
+            color: #888;
+            font-weight: 600;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .disclaimer {
+            margin-top: 56px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+            font-size: 0.85em;
+            color: #888;
+            line-height: 1.5;
+        }
+        @media (max-width: 600px) {
+            body { padding: 40px 20px; }
+            h1 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Colab Primer</h1>
+        <div class="subtitle">How to run the course notebooks in Google Colab</div>
+        <nav>
+            <a href="../../index.html">Home</a>
+            <a href="../../teaching.html">Teaching</a>
+            <a href="index.html">QIS Course Page</a>
+        </nav>
+    </header>
+
+    <main>
+        <p>Every notebook in this course runs in <a href="https://colab.research.google.com/">Google Colab</a>. Here is an <a href="https://colab.research.google.com/github/nitishrsinha/nitishrsinha.github.io/blob/main/teaching/qis/week02/session3_dgtw_funds.ipynb">example notebook</a> to try the steps below on.</p>
+
+        <h2>Why Colab</h2>
+        <p>Setting up Python for empirical finance on your own laptop used to eat the first week of a course like this. You installed Python (or Anaconda), then pandas, numpy, statsmodels and matplotlib, then found that two packages wanted different versions of a third. Windows and Mac behaved differently. A 2 GB dataset filled your disk and a regression over millions of rows froze your laptop. And when something broke, &ldquo;it works on my machine&rdquo; was no help to anyone.</p>
+        <p>Colab makes all of that go away:</p>
+        <ul>
+            <li><strong>Nothing to install.</strong> A browser and a Google account are enough. Python and the standard data-science packages (pandas, numpy, scipy, statsmodels, scikit-learn, matplotlib) are already there.</li>
+            <li><strong>Everyone has the same setup.</strong> When a notebook runs for me, it runs for you, on any laptop, tablet or lab computer.</li>
+            <li><strong>Google's machine does the work.</strong> The code runs on a computer in Google's data center, not on your laptop. Big downloads and long loops don't slow your laptop down.</li>
+            <li><strong>One click from the course page.</strong> Notebook links open straight from GitHub, ready to run.</li>
+            <li><strong>Missing a package? Install it in one line</strong> (see section 4).</li>
+        </ul>
+
+        <h2>1. Open and save your own copy</h2>
+        <ol>
+            <li>Click the notebook's Colab link. It opens a read-only copy straight from the course's GitHub repository.</li>
+            <li>Choose <strong>File &rarr; Save a copy in Drive</strong> before you edit anything. Your edited notebook now saves to your own Google Drive, in a folder called <em>Colab Notebooks</em>. If you skip this step, your changes are lost when you close the tab.</li>
+        </ol>
+
+        <h2>2. Run cells</h2>
+        <ul>
+            <li>A notebook is a list of <em>cells</em>: text cells explain, code cells run. Click a code cell and press <kbd>Shift</kbd>+<kbd>Enter</kbd> to run it and move to the next one.</li>
+            <li>Run cells <strong>from the top, in order</strong>. Later cells use variables and data that earlier cells create.</li>
+            <li><strong>Runtime &rarr; Run all</strong> runs the whole notebook. The first run of the day takes a minute while Colab starts a machine for you.</li>
+            <li>Anything printed or plotted appears below the cell. Read it: many notebooks ask you a question about the output.</li>
+        </ul>
+
+        <h2>3. Where things live</h2>
+        <p>This is the one part of Colab worth understanding properly. Your notebook and your data live in <em>different places</em>:</p>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>Place</th>
+                    <th>What is there</th>
+                    <th>How long it lasts</th>
+                </tr>
+                <tr>
+                    <td><strong>Your Google Drive</strong></td>
+                    <td>Your saved notebook (the code, text and last outputs)</td>
+                    <td>Permanent</td>
+                </tr>
+                <tr>
+                    <td><strong>The Colab machine</strong>, a temporary computer at Google; its working folder is <code>/content</code></td>
+                    <td>Downloaded data (e.g. <code>/content/data</code>), packages you installed, every variable in memory</td>
+                    <td>Until the machine shuts down</td>
+                </tr>
+            </table>
+        </div>
+        <p>When you open a notebook, Colab rents you a fresh machine. The setup cell then downloads the class data onto that machine. In our notebooks you paste the data's Google Drive link (from the week's password-protected notes page) and run the cell:</p>
+<pre><code>DATA_ZIP_LINK = "https://drive.google.com/file/d/..."</code></pre>
+        <p>Click the <strong>folder icon</strong> in the left sidebar to see the machine's files. You can also look from code: a line that starts with <code>!</code> runs a command on the machine itself.</p>
+<pre><code>!pwd           # where am I?  -> /content
+!ls -lh data   # what did the setup cell download?</code></pre>
+        <p>The machine shuts down after about 90 minutes of inactivity, and after 12 hours at most. When it does, <strong>your notebook is safe in Drive, but the data, installed packages and variables are gone</strong>. That is normal: run the notebook again from the top, setup cell included, and everything comes back in a minute.</p>
+        <p>If you create files you want to keep (say, a cleaned dataset for your project), save them to Drive, not to <code>/content</code>. Connect your Drive to the machine first:</p>
+<pre><code>from google.colab import drive
+drive.mount("/content/drive")             # approve access in the pop-up
+df.to_parquet("/content/drive/MyDrive/qis_project/clean.parquet")</code></pre>
+        <p>For one-off files, you can also drag a file from your computer into the folder sidebar to upload it, or right-click a file there to download it. Uploaded files go to the temporary machine too.</p>
+
+        <h2>4. Install any package you need</h2>
+        <p>The machine is yours while it runs, so you can install any Python package from PyPI with one line in a code cell:</p>
+<pre><code>!pip install wrds linearmodels</code></pre>
+        <p>It takes a few seconds and needs no permission or setup. Two things to know:</p>
+        <ul>
+            <li>Installs last only as long as the machine. Put your <code>!pip install</code> lines in the first cell of the notebook so a fresh run always installs them.</li>
+            <li>To check whether a package is already there, try importing it, or run <code>!pip show pandas</code>.</li>
+        </ul>
+
+        <h2>5. When something breaks</h2>
+        <ul>
+            <li><code>NameError: name '...' is not defined</code> almost always means an earlier cell was not run, or the machine restarted. Run the notebook from the top.</li>
+            <li><code>FileNotFoundError</code> usually means the data is not on this machine (yet). Run the setup cell again.</li>
+            <li><code>ModuleNotFoundError</code> means a package is not installed: <code>!pip install</code> it.</li>
+            <li>If the notebook gets into a strange state after you have edited and re-run cells, use <strong>Runtime &rarr; Restart session and run all</strong>.</li>
+            <li>Read the last line of an error message first. It usually says what went wrong.</li>
+        </ul>
+
+        <h2>6. Connect to WRDS</h2>
+        <p>Some notebooks, and your project, pull data directly from WRDS. You need a WRDS account for this (<a href="https://wrds-www.wharton.upenn.edu/register/">register with your UMD account</a>).</p>
+<pre><code>!pip install wrds
+import wrds
+db = wrds.Connection()   # asks for your WRDS username and password</code></pre>
+        <p>Type your username and password in the boxes that appear under the cell. Approve the Duo prompt on your phone if one arrives. If asked whether to create a <code>.pgpass</code> file, answer <code>n</code>: it would be saved on the temporary machine and erased when it shuts down. The query results come straight onto the Colab machine; nothing is saved on your laptop.</p>
+
+        <h2>7. Use the AI assistant, carefully</h2>
+        <p>Colab has a built-in AI assistant (Gemini) that can explain code, fix errors and write new cells. Use it; that is part of the course. But treat its code like any code you did not write: run it, read it, and check its output against what you expect.</p>
+
+        <h2>8. Submit your work</h2>
+        <ul>
+            <li>First use <strong>Runtime &rarr; Restart session and run all</strong>. Your notebook should run cleanly from top to bottom on a fresh machine, which is exactly what will happen when someone else opens it.</li>
+            <li>To share a link: <strong>Share</strong> (top right) &rarr; set General access to <em>Anyone with the link</em> &rarr; Copy link.</li>
+            <li>To submit a file: <strong>File &rarr; Download &rarr; Download .ipynb</strong>.</li>
+        </ul>
+    </main>
+
+    <div class="disclaimer">
+        The views expressed here are my own and do not necessarily represent those of the Federal Reserve Board or its staff.
+    </div>
+</body>
+</html>

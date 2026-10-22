@@ -1,8 +1,64 @@
 {
  "days": [
   {
+   "date": "2026-10-21",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.29294v1",
+     "title": "Same Probabilities, Different Advice: Gain-Loss Framing Effects in High-Stakes LLM Decision Support",
+     "authors": [
+      "Yuyao Zhang",
+      "Yakun Cui",
+      "Han Zhu",
+      "Jinsong Lu",
+      "Yike Guo",
+      "Sirui Han"
+     ],
+     "date": "2026-10-21",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Gain-loss framing of identical probabilities changes LLM high-stakes recommendations, including finance, in 32.4% of cases; canonicalizing probabilities reduces this sensitivity.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-22"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.29245v1",
+     "title": "CrashGym: Measuring the Decision Value of Experimentation for LLM Agents in Counterfactual Market Crashes",
+     "authors": [
+      "Haocheng Lu",
+      "Haoxuan Cheng",
+      "Mingyang Chen",
+      "Minjun Zhu"
+     ],
+     "date": "2026-10-21",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "CrashGym, a limit-order-book crash simulator, measures whether LLM agents' experimentation improves crisis intervention choices; lab access cut one agent's regret by 57%.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-22"
+    }
+   ]
+  },
+  {
    "date": "2026-10-20",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.28787v1",
+     "title": "Is Anyone Enforcing the Cartel? What Reinforcement Learning Teaches LLM Agents in Markets",
+     "authors": [
+      "Hieu Tran",
+      "Hong Yu"
+     ],
+     "date": "2026-10-20",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "An enforcement audit shows RL-trained LLM pricing agents rarely learn genuine punishment-based collusion; cartel-like outcomes often arise from rules ignoring rivals, which outcome measures cannot distinguish.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-22"
+    },
     {
      "id": "http://arxiv.org/abs/2610.27576v1",
      "title": "Who Gains When the Umpire Is a Machine? Evidence from the Automated Ball-Strike System (ABS)",

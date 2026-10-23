@@ -26,7 +26,8 @@ cd grades
 1. Add the assignment to `assignments.json` (workbook, sheet, part columns).
 2. Fill in **Your final** for the rows you've reviewed.
 3. `~/.venvs/main/bin/python sync.py --dry-run`, then `sync.py` to publish. Every run
-   replaces everything in KV, so a fixed grade or removed file updates at once.
+   replaces everything in KV, so a fixed grade or removed file updates on the next
+   run. Cloudflare caches KV reads, so a change can take up to a minute to show.
 4. New students get a link in `portal/links.csv`; put it in their feedback email.
 
 Other commands: `sync.py --rotate EMAIL` (new link, old one stops working),

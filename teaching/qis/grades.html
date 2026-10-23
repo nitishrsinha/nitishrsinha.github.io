@@ -176,9 +176,6 @@
             font-size: 0.85em;
         }
 
-        @media (max-width: 480px) {
-            .summary { flex-direction: column; }
-        }
     </style>
 </head>
 <body>
@@ -277,16 +274,11 @@
         }
 
         function render(d) {
-            const graded = d.assignments.filter((a) => a.status === "graded");
-            const earned = graded.reduce((s, a) => s + a.score, 0);
-            const possible = graded.reduce((s, a) => s + a.outOf, 0);
             const submitted = d.assignments.filter((a) => a.status !== "none").length;
 
             app.replaceChildren(
                 el("p", {}, `Hi ${d.name ? d.name.split(" ")[0] : ""}, here are your submissions and grades. Only grades your instructor has confirmed appear here.`),
                 el("div", { class: "summary" },
-                    el("div", { class: "tile" }, el("div", { class: "label" }, "Graded so far"),
-                        el("div", { class: "value" }, possible ? `${fmt(earned)} / ${fmt(possible)}` : "—")),
                     el("div", { class: "tile" }, el("div", { class: "label" }, "Assignments submitted"),
                         el("div", { class: "value" }, `${submitted} / ${d.assignments.length}`))),
                 ...d.assignments.map(renderAssignment),

@@ -1,0 +1,11 @@
+name = "qis-grades"
+main = "worker.js"
+compatibility_date = "2026-06-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://nitishrsinha.github.io"
+
+# Filled in by ./setup.sh (wrangler kv namespace create GRADES).
+[[kv_namespaces]]
+binding = "GRADES"
+id = "e290c3d8f9804c8dbb1e109a0c470397"

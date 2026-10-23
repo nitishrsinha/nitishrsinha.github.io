@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Grades - Quantitative Investment Strategies</title>
+    <meta name="robots" content="noindex">
+    <meta name="referrer" content="no-referrer">
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 32px 16px 80px;
+            color: #2c2c2c;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            color: #1565c0;
+            margin: 0 0 4px;
+            font-size: 1.4em;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #5a5a5a;
+            margin-bottom: 24px;
+        }
+
+        .notice {
+            border: 1px dashed #ccc;
+            border-radius: 10px;
+            padding: 18px 20px;
+            color: #5a5a5a;
+        }
+
+        .notice.error {
+            border: 1px solid #e53935;
+            color: #b71c1c;
+            background: #fdecea;
+        }
+
+        .summary {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .tile {
+            flex: 1;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+
+        .tile .label {
+            color: #5a5a5a;
+            font-size: 0.85em;
+        }
+
+        .tile .value {
+            font-size: 1.6em;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .assignment {
+            border-top: 1px solid #e5e5e5;
+            padding: 20px 0;
+        }
+
+        .assignment-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .assignment h2 {
+            margin: 0;
+            font-size: 1.05em;
+            font-weight: 500;
+        }
+
+        .score {
+            font-size: 1.4em;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .score small {
+            color: #5a5a5a;
+            font-size: 0.6em;
+        }
+
+        .meta {
+            color: #5a5a5a;
+            font-size: 0.9em;
+            margin: 2px 0 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.8em;
+            padding: 2px 10px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .badge.submitted { background: #fff8e1; color: #8d6e00; }
+        .badge.none { background: #f5f5f5; color: #5a5a5a; }
+        .badge.missing { background: #fdecea; color: #b71c1c; }
+
+        table.parts {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92em;
+            margin: 6px 0 10px;
+        }
+
+        table.parts td {
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        table.parts td.num {
+            text-align: right;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .comment {
+            background: #f5f8fc;
+            border-left: 3px solid #1565c0;
+            padding: 8px 12px;
+            margin: 10px 0;
+            font-size: 0.93em;
+            white-space: pre-wrap;
+        }
+
+        .files {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .files a,
+        .files button {
+            font: inherit;
+            font-size: 0.88em;
+            color: #1565c0;
+            background: #fff;
+            border: 1px solid #c5d6ee;
+            border-radius: 8px;
+            padding: 6px 12px;
+            cursor: pointer;
+            text-decoration: none;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .files a:hover,
+        .files button:hover {
+            background: #e3f2fd;
+        }
+
+        .footer {
+            margin-top: 32px;
+            color: #888;
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 480px) {
+            .summary { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <h1>My Grades</h1>
+    <div class="subtitle">BUFN736 &middot; Quantitative Investment Strategies</div>
+    <div id="app"><div class="notice">Loading&hellip;</div></div>
+
+    <script>
+        const WORKER_URL = "https://qis-grades.nitish-ranjan.workers.dev";
+        const app = document.getElementById("app");
+        const token = new URLSearchParams(location.hash.slice(1)).get("t") || "";
+
+        function el(tag, attrs, ...children) {
+            const node = document.createElement(tag);
+            for (const [k, v] of Object.entries(attrs || {})) {
+                if (k === "class") node.className = v;
+                else if (k.startsWith("on")) node.addEventListener(k.slice(2), v);
+                else node.setAttribute(k, v);
+            }
+            for (const c of children) if (c != null) node.append(c);
+            return node;
+        }
+
+        function notice(text, isError) {
+            app.replaceChildren(el("div", { class: "notice" + (isError ? " error" : "") }, text));
+        }
+
+        function fmt(n) {
+            return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100);
+        }
+
+        function fmtDate(s) {
+            const d = new Date(s);
+            if (isNaN(d)) return s;
+            return d.toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+        }
+
+        async function download(file, button) {
+            const label = button.textContent;
+            button.textContent = "Downloading…";
+            try {
+                const res = await fetch(`${WORKER_URL}/file?h=${file.hash}`, {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+                if (!res.ok) throw new Error();
+                const url = URL.createObjectURL(await res.blob());
+                el("a", { href: url, download: file.name }).click();
+                setTimeout(() => URL.revokeObjectURL(url), 10000);
+                button.textContent = label;
+            } catch {
+                button.textContent = "Download failed, try again";
+            }
+        }
+
+        function statusBadge(a) {
+            if (a.status === "submitted") return el("span", { class: "badge submitted" }, "Submitted · grading in progress");
+            if (new Date(a.due) < new Date()) return el("span", { class: "badge missing" }, "No submission on record");
+            return el("span", { class: "badge none" }, "Not yet submitted");
+        }
+
+        function renderAssignment(a) {
+            const right = a.status === "graded"
+                ? el("div", { class: "score" }, fmt(a.score), el("small", {}, ` / ${fmt(a.outOf)}`))
+                : statusBadge(a);
+            const meta = [`Due ${fmtDate(a.due)}`];
+            if (a.submittedAt) meta.push(`submitted ${fmtDate(a.submittedAt)}`);
+
+            const card = el("div", { class: "assignment" },
+                el("div", { class: "assignment-head" }, el("h2", {}, a.title), right),
+                el("div", { class: "meta" }, meta.join(" · ")));
+
+            if (a.parts) {
+                const table = el("table", { class: "parts" });
+                for (const p of a.parts) {
+                    table.append(el("tr", {}, el("td", {}, p.label), el("td", { class: "num" }, `${fmt(p.score)} / ${fmt(p.points)}`)));
+                }
+                if (a.deductions) {
+                    table.append(el("tr", {}, el("td", {}, "Deductions"), el("td", { class: "num" }, fmt(a.deductions))));
+                }
+                card.append(table);
+            }
+            if (a.comment) card.append(el("div", { class: "comment" }, a.comment));
+
+            const files = el("div", { class: "files" });
+            for (const f of a.files || []) {
+                const b = el("button", { type: "button", title: f.name }, `⬇ ${f.name}`);
+                b.addEventListener("click", () => download(f, b));
+                files.append(b);
+            }
+            for (const link of a.links || []) {
+                if (!/^https?:\/\//.test(link)) continue;
+                files.append(el("a", { href: link, target: "_blank", rel: "noopener noreferrer" }, "Open your Colab / Drive link ↗"));
+            }
+            if (files.childElementCount) card.append(files);
+            return card;
+        }
+
+        function render(d) {
+            const graded = d.assignments.filter((a) => a.status === "graded");
+            const earned = graded.reduce((s, a) => s + a.score, 0);
+            const possible = graded.reduce((s, a) => s + a.outOf, 0);
+            const submitted = d.assignments.filter((a) => a.status !== "none").length;
+
+            app.replaceChildren(
+                el("p", {}, `Hi ${d.name ? d.name.split(" ")[0] : ""}, here are your submissions and grades. Only grades your instructor has confirmed appear here.`),
+                el("div", { class: "summary" },
+                    el("div", { class: "tile" }, el("div", { class: "label" }, "Graded so far"),
+                        el("div", { class: "value" }, possible ? `${fmt(earned)} / ${fmt(possible)}` : "—")),
+                    el("div", { class: "tile" }, el("div", { class: "label" }, "Assignments submitted"),
+                        el("div", { class: "value" }, `${submitted} / ${d.assignments.length}`))),
+                ...d.assignments.map(renderAssignment),
+                el("div", { class: "footer" },
+                    `Last updated ${fmtDate(d.updatedAt)}. This link is personal: please don't share it. ` +
+                    "Questions about a grade? Reply to your feedback email."));
+        }
+
+        async function load() {
+            if (!token) {
+                notice("Open this page from the personal link in your instructor's email.");
+                return;
+            }
+            try {
+                const res = await fetch(`${WORKER_URL}/me`, { headers: { Authorization: `Bearer ${token}` } });
+                const data = await res.json();
+                if (!res.ok) return notice(data.error || "Something went wrong.", true);
+                render(data);
+            } catch {
+                notice("Could not reach the grades server. Check your connection and reload.", true);
+            }
+        }
+
+        load();
+    </script>
+</body>
+</html>

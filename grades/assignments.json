@@ -1,0 +1,33 @@
+{
+  "_comment": "Assignments shown on every student's dashboard, in this order. sync.py reads each workbook from ~/BUFN736/grading. Columns are matched by header text. Only 'Your final' is published; parts are shown only when they add up to it.",
+  "page": "https://nitishrsinha.github.io/teaching/qis/grades.html",
+  "assignments": [
+    {
+      "id": "ex1",
+      "title": "Exercise 1: Is the market efficient for your stock?",
+      "due": "2026-10-21T12:00-04:00",
+      "workbook": "week1_grades.xlsx",
+      "sheet": "Week 1 grades",
+      "outOf": 10,
+      "parts": [
+        {"label": "Ticker & run", "column": "Ticker & run (3)", "points": 3},
+        {"label": "Part A: past returns", "column": "Part A (3.5)", "points": 3.5},
+        {"label": "Part B: earnings announcements", "column": "Part B (3.5)", "points": 3.5}
+      ]
+    },
+    {
+      "id": "ex2",
+      "title": "Exercise 2: Factor loadings of Vanguard's Value ETF (VTV)",
+      "due": "2026-10-26T12:00-04:00",
+      "workbook": "week2_grades.xlsx",
+      "sheet": "Week 2 grades",
+      "outOf": 10,
+      "parts": [
+        {"label": "Data and merge", "column": "Tasks 1-3: data & merge (3)", "points": 3},
+        {"label": "CAPM regression", "column": "Task 4: CAPM (3)", "points": 3},
+        {"label": "Fama-French three-factor regression", "column": "Task 5: FF3 (4)", "points": 4}
+      ],
+      "deductions": "Deductions"
+    }
+  ]
+}

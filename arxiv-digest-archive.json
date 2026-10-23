@@ -1,8 +1,194 @@
 {
  "days": [
   {
+   "date": "2026-10-22",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.30886v1",
+     "title": "The Reaction of Financial Markets to the Releases of DeepSeek R1 and Kimi K3: A Critical Analysis",
+     "authors": [
+      "Marco Taboga"
+     ],
+     "date": "2026-10-22",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Comparing market reactions to DeepSeek R1 and Kimi K3, argues open-weight models redistribute rents along the AI value chain rather than eliminate them.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-23"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.30752v1",
+     "title": "The Delegation Divide: An Open Index of AI-Agent Delegability across Occupations and Countries",
+     "authors": [
+      "Cristian Espinal Maya",
+      "Santiago Jiménez Londoño"
+     ],
+     "date": "2026-10-22",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Builds a global index of AI-agent task delegability: 35.2% of world task time is partly delegable, only 2.5% fully, with delegability rising with country income.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-23"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.30999v1",
+     "title": "Truthful by Omission: Click Thinning for LLM-Native Advertising",
+     "authors": [
+      "Junhua Liu",
+      "Zhicheng Liang",
+      "Zejun Zhang",
+      "Langzhou He",
+      "Feng Qian"
+     ],
+     "date": "2026-10-22",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Designs a truthful ad auction for LLM-generated answers that randomly omits ads, achieving at least half of optimal welfare.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-23"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.30858v1",
+     "title": "Joules-to-GDP: How Much Economic Value Do AI Systems Produce per Unit of Energy?",
+     "authors": [
+      "Amirreza Zeinali",
+      "Jon Saad-Falcon",
+      "Avanika Narayan",
+      "Mersad Abbasi",
+      "Jonathan S. Hartley",
+      "John Hennessy",
+      "Christopher Re",
+      "Azalia Mirhoseini"
+     ],
+     "date": "2026-10-22",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Defines economic value per joule metrics for AI on GDPval tasks, finding occupations and models with highest value per task differ from those with highest value per unit of energy.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-23"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.31344v1",
+     "title": "Making Generative AI Workable at Work: Accountability, Localization, and Representation in Kenyan and Nigerian Small Businesses",
+     "authors": [
+      "Najeeb Gambo Abdulhamid",
+      "Stephanie Nyairo",
+      "Liz Ankrah",
+      "Jacki O'Neill"
+     ],
+     "date": "2026-10-22",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Interviews with Kenyan and Nigerian small businesses show generative AI's value depends on accountability 'release work' and repairing local context misfit, not just drafting.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-23"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.30945v1",
+     "title": "Metacognitive Scaffolds Create Productive Friction for AI-Assisted Knowledge Work",
+     "authors": [
+      "Viktor Kewenig",
+      "Lev Tankelevitch",
+      "Sean Rintel",
+      "Advait Sarkar",
+      "Abigail Sellen"
+     ],
+     "date": "2026-10-22",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Randomized experiment with 297 workers finds metacognitive scaffolds improve AI-assisted writing quality and recall, though users perceive the AI as less helpful.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-23"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.30891v1",
+     "title": "Equilibria and Learning in Competitive Market Making",
+     "authors": [
+      "Matteo Onger",
+      "Luigi Foscari"
+     ],
+     "date": "2026-10-22",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Proves pure Nash equilibria exist in competitive market making and that no-regret learners approach the equilibrium price envelope.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-23"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.31030v1",
+     "title": "What Does AI Success Look Like? A Mixed-Methods Analysis of Supranational AI Governance Instruments",
+     "authors": [
+      "Delaram Golpayegani",
+      "Marta Lasek-Markey",
+      "Monique Munarini",
+      "Arjumand Younus",
+      "Aphra Kerr",
+      "Dave Lewis"
+     ],
+     "date": "2026-10-22",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Analyses 13 supranational AI governance documents to categorize notions of AI success and recommends more coordinated governance.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-23"
+    }
+   ]
+  },
+  {
    "date": "2026-10-21",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.30324v1",
+     "title": "Paying for Information, Not for Clicks: A Block-Level Publisher Content Marketplace for AI Answers",
+     "authors": [
+      "Markus Mobius",
+      "Luca Braghieri",
+      "Sarah Eichmeyer",
+      "Daniel G. Goldstein",
+      "Nicole Immorlica",
+      "Oliver Kiss",
+      "Ro'ee Levy",
+      "Brendan Lucier",
+      "Ishan Mahajan",
+      "Jingyi Qiu",
+      "Tanya Rosenblat",
+      "David M. Rothschild",
+      "Andras Sari",
+      "Alexsandrs Slivkins",
+      "Colin Watson"
+     ],
+     "date": "2026-10-21",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Proposes a Shapley-based marketplace paying publishers for facts used in AI answers; payment rule choice matters only with a global index, shifting premium publishers' share from 42% to 46-50%.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-23"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.30307v1",
+     "title": "The Customer Is the Builder: How AI Coding Agents Are Rewriting the Economics of Software",
+     "authors": [
+      "Ripon Chandra Malo",
+      "Zimeng Yu",
+      "Tong Qiu"
+     ],
+     "date": "2026-10-21",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "AI coding agents expand customers' capacity to build rather than buy software; 32% of surveyed organizations report forgoing a software purchase, though broad market displacement is not yet evident.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-23"
+    },
     {
      "id": "http://arxiv.org/abs/2610.29294v1",
      "title": "Same Probabilities, Different Advice: Gain-Loss Framing Effects in High-Stakes LLM Decision Support",

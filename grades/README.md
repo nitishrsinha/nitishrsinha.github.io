@@ -30,6 +30,22 @@ cd grades
    run. Cloudflare caches KV reads, so a change can take up to a minute to show.
 4. New students get a link in `portal/links.csv`; put it in their feedback email.
 
+## Working from another laptop
+
+`~/BUFN736/grading` is the private repo `nitishrsinha/bufn736-grading`; its CLAUDE.md
+describes the grading workflow for Claude Code. On a new laptop, once:
+
+```bash
+git clone https://github.com/nitishrsinha/bufn736-grading.git ~/BUFN736/grading
+git clone https://github.com/nitishrsinha/nitishrsinha.github.io.git ~/site
+npx wrangler@4 login        # same Cloudflare account
+```
+
+Then `git pull` in `~/BUFN736/grading` before grading and commit and push after. `sync.py`
+refuses to publish while that repo is behind its remote, since every publish replaces
+all dashboards. Folder paths written on the other laptop are resolved relative to the
+grading folder, and `QIS_GRADING=/path` points sync.py somewhere else.
+
 Other commands: `sync.py --rotate EMAIL` (new link, old one stops working),
 `--add EMAIL "Name"` (link before a first submission), `--alias OTHER EMAIL`
 (a student who submits from two addresses).

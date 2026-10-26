@@ -8,7 +8,10 @@ each row's Folder, links from LINK.txt there or a "Submission link" column, and 
 "Comment for student" column, if a workbook has one, is shown to the student.
 
 Student tokens live in ~/BUFN736/grading/portal/roster.json, never in this repo,
-and each student's link is written to portal/links.csv.
+and each student's link is written to portal/links.csv. The grading folder is a
+private git repo shared between laptops (QIS_GRADING overrides its location);
+sync.py refuses to publish while it is behind its remote, so a stale laptop cannot
+roll back grades entered on the other one.
 
     python sync.py --dry-run            # show what would be published
     python sync.py                      # publish
@@ -16,7 +19,7 @@ and each student's link is written to portal/links.csv.
     python sync.py --rotate EMAIL       # new link for a student; the old one stops working
     python sync.py --alias OTHER EMAIL  # treat rows sent from OTHER as EMAIL's
 
-Needs openpyxl (~/.venvs/main) and a Cloudflare login for npx wrangler@4.
+Needs openpyxl (e.g. uv run --with openpyxl sync.py) and a Cloudflare login for npx wrangler@4.
 """
 
 import argparse
@@ -25,6 +28,7 @@ import csv
 import hashlib
 import json
 import mimetypes
+import os
 import secrets
 import subprocess
 import sys
@@ -35,7 +39,7 @@ from zoneinfo import ZoneInfo
 import openpyxl
 
 HERE = Path(__file__).resolve().parent
-GRADING = Path.home() / "BUFN736" / "grading"
+GRADING = Path(os.environ.get("QIS_GRADING", Path.home() / "BUFN736" / "grading")).expanduser()
 PORTAL = GRADING / "portal"
 ROSTER = PORTAL / "roster.json"
 FILE_TYPES = {".ipynb", ".pdf", ".py"}
@@ -88,9 +92,23 @@ def read_rows(assignment):
             yield row
 
 
+def local_folder(value):
+    """A Folder cell as a path on this laptop: relative to GRADING, or an absolute
+    path written on another laptop (/home/x/BUFN736/grading/week1_assignments/...)."""
+    if not value:
+        return None
+    path = Path(str(value).strip())
+    if not path.is_absolute():
+        return GRADING / path
+    if path.is_dir():
+        return path
+    parts = path.parts
+    return GRADING.joinpath(*parts[parts.index("grading") + 1 :]) if "grading" in parts else path
+
+
 def collect_files(folder):
     files, links = [], []
-    folder = Path(folder) if folder else None
+    folder = local_folder(folder)
     if not folder or not folder.is_dir():
         return files, links
     for p in sorted(folder.iterdir()):
@@ -161,6 +179,29 @@ def ensure_tokens(roster, dashboards):
         s = roster["students"].setdefault(email, {})
         s["name"] = d["name"] or s.get("name", "")
         s.setdefault("token", secrets.token_urlsafe(24))
+
+
+def git(*args):
+    return subprocess.run(["git", "-C", str(GRADING), *args], text=True, capture_output=True)
+
+
+def check_grading_repo():
+    """Refuse to publish from a copy that is missing the other laptop's commits."""
+    if git("rev-parse", "--git-dir").returncode != 0:
+        print(f"  note: {GRADING} is not a git repo; skipping the up-to-date check")
+        return
+    if git("fetch", "--quiet").returncode != 0:
+        sys.exit("Could not reach the grading repo's remote. Pull first, or publish once you are online.")
+    behind = git("rev-list", "--count", "HEAD..@{u}").stdout.strip()
+    if behind and behind != "0":
+        sys.exit(f"{GRADING} is {behind} commit(s) behind its remote. Run `git pull` there first.")
+
+
+def remind_to_push():
+    dirty = git("status", "--porcelain").stdout.strip()
+    ahead = git("rev-list", "--count", "@{u}..HEAD").stdout.strip()
+    if dirty or (ahead and ahead != "0"):
+        print(f"Reminder: commit and push {GRADING} so the other laptop has these grades.")
 
 
 def wrangler(*args, capture=False):
@@ -257,9 +298,11 @@ def main():
     if args.dry_run:
         print(f"Dry run: {len(dashboards)} dashboards, {len(files)} files. Nothing saved or published.")
         return
+    check_grading_repo()
     save_roster(roster)
     publish(roster, dashboards, files)
     write_links(config, roster)
+    remind_to_push()
 
 
 if __name__ == "__main__":

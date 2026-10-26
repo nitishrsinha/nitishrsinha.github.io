@@ -1,6 +1,73 @@
 {
  "days": [
   {
+   "date": "2026-10-23",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.32945v1",
+     "title": "Monetizing Intelligence: Advertising and Subscription Design on LLM Platforms",
+     "authors": [
+      "Yuhang Ji",
+      "Fasheng Xu",
+      "Tianjun Feng"
+     ],
+     "date": "2026-10-23",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Models an LLM platform choosing quality, ad intensity and subscription prices; ad-supported tiers broaden access but polarize utility, intermediate ad caps can maximize consumer surplus, and cheaper compute can raise ad revenue.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-26"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.32355v1",
+     "title": "AI-Augmented Research: Free to Write, Costly to Read",
+     "authors": [
+      "Wolfgang Kuhle"
+     ],
+     "date": "2026-10-23",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Model shows AI cutting writing costs faster than reading costs shrinks verification, making impact depend on reputation, and AI summaries fail once too many papers share the same AI's errors.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-26"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.32461v1",
+     "title": "The Effects of Generative AI on Collaboration and Social Networks Among Knowledge Workers",
+     "authors": [
+      "Giuseppe Soda",
+      "Alessandro Iorio",
+      "Leonardo Rizzo"
+     ],
+     "date": "2026-10-23",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Staggered Copilot rollout among 12,000 knowledge workers increased collaboration time and broadened networks while deepening reliance on strong prior ties, suggesting AI does not displace human interaction.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-26"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.32300v1",
+     "title": "Jawboning the Fed: Do Markets Listen When Administrations Talk?",
+     "authors": [
+      "Michela Baretti",
+      "Umberto Collodel",
+      "Jacopo Zacché"
+     ],
+     "date": "2026-10-23",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Using LLM-classified Reuters news, dovish political pressure on the Fed lowers near-term rate expectations about one basis point per event, while hawkish pressure has no effect.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-26"
+    }
+   ]
+  },
+  {
    "date": "2026-10-22",
    "papers": [
     {
@@ -230,6 +297,20 @@
   {
    "date": "2026-10-20",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.31693v1",
+     "title": "When AI Gets Cheaper, Do Prices Follow? Information Delays and Algorithmic Pricing",
+     "authors": [
+      "Krish Tadigotla"
+     ],
+     "date": "2026-10-20",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "In simulated duopolies with Q-learning pricing, AI cost reductions are only partly passed through (about 44–56%), consumer surplus stays below Nash, and information delays and repricing frequency show no significant interaction.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-26"
+    },
     {
      "id": "http://arxiv.org/abs/2610.28787v1",
      "title": "Is Anyone Enforcing the Cartel? What Reinforcement Learning Teaches LLM Agents in Markets",

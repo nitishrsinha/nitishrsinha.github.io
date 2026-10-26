@@ -269,17 +269,21 @@ def write_links(config, roster):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--add", nargs=2, metavar=("EMAIL", "NAME"))
+    ap.add_argument("--add", nargs=2, metavar=("EMAIL", "NAME"), action="append", default=[],
+                    help="repeat to add several students in one run")
     ap.add_argument("--rotate", metavar="EMAIL")
-    ap.add_argument("--alias", nargs=2, metavar=("OTHER", "EMAIL"))
+    ap.add_argument("--alias", nargs=2, metavar=("OTHER", "EMAIL"), action="append", default=[],
+                    help="repeat to add several aliases in one run")
     args = ap.parse_args()
 
     config = json.loads((HERE / "assignments.json").read_text())
     roster = load_roster()
-    if args.add:
-        roster["students"].setdefault(args.add[0].lower(), {})["name"] = args.add[1]
-    if args.alias:
-        roster["aliases"][args.alias[0].lower()] = args.alias[1].lower()
+    for email, name in args.add:
+        roster["students"].setdefault(email.lower(), {})["name"] = name
+    for other, email in args.alias:
+        if email.lower() not in roster["students"]:
+            sys.exit(f"--alias {other} {email}: {email} is not in the roster")
+        roster["aliases"][other.lower()] = email.lower()
     if args.rotate:
         email = args.rotate.lower()
         if email not in roster["students"]:

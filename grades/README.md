@@ -48,4 +48,5 @@ grading folder, and `QIS_GRADING=/path` points sync.py somewhere else.
 
 Other commands: `sync.py --rotate EMAIL` (new link, old one stops working),
 `--add EMAIL "Name"` (link before a first submission), `--alias OTHER EMAIL`
-(a student who submits from two addresses).
+(a student who submits from two addresses). `--add` and `--alias` can be repeated
+to make several changes in one publish.

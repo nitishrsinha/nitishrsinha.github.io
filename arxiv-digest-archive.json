@@ -1,8 +1,225 @@
 {
  "days": [
   {
+   "date": "2026-10-26",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.35338v1",
+     "title": "Who Pays for Thinking? Billing Hidden Reasoning Tokens in Model Cloud Contracts",
+     "authors": [
+      "Chao Feng",
+      "Burkhard Stiller"
+     ],
+     "date": "2026-10-26",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "A three-party model of billing for hidden reasoning tokens shows that metered pricing beats fixed pricing on welfare only when the extra inference it induces creates net social value.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.35831v1",
+     "title": "AI in Econometric Theory: An Example",
+     "authors": [
+      "Isaiah Andrews",
+      "Anna Mikusheva"
+     ],
+     "date": "2026-10-26",
+     "theme": "Methods",
+     "score": 4,
+     "summary": "Presents an econometric theory paper on 2SLS admissibility with weak instruments written using LLMs, and reflects on what this means for the field.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.35666v1",
+     "title": "Regression Adjustment for Ratios of Treatment Effects in Randomized Experiments",
+     "authors": [
+      "Haruo Kakehi"
+     ],
+     "date": "2026-10-26",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Proposes a cross-fitted two-step regression adjustment for ratios of treatment effects that is more efficient than existing estimators.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.34508v1",
+     "title": "Screening AI-equipped applicants",
+     "authors": [
+      "Pengyu Qian",
+      "Sophie H. Yu"
+     ],
+     "date": "2026-10-25",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "When generative AI makes applicant reports manipulable at dispersed costs, optimal hiring collapses toward observable quality; a dual-track mechanism recovers the remaining welfare gains from reports.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.34236v1",
+     "title": "A Truthful-in-Expectation 2-Approximation for Pair-Specific Cascade Auctions in AI-Generated Content",
+     "authors": [
+      "Tao Jiang",
+      "Minbo Gao",
+      "Shaowei Cai"
+     ],
+     "date": "2026-10-25",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Gives a truthful-in-expectation 2-approximation mechanism for cascade ad auctions inside AI-generated answers with arbitrary pair-specific click-through rates.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.34491v1",
+     "title": "What Effort Level Should I Choose? On the Economics of Reasoning Effort in LLM Agents",
+     "authors": [
+      "Kaiser Sun",
+      "Yongchan Kwon",
+      "Zain Hasan",
+      "Shang Zhu",
+      "Kaitlyn Zhou",
+      "Federico Bianchi"
+     ],
+     "date": "2026-10-25",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Treating LLM reasoning effort as a credence good, the paper finds higher effort often fails tasks lower effort solved and can cost up to 42x more.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.34591v1",
+     "title": "Does the Outfit Change the Price? Context Halo in Vision-Language Model Valuation of an Identical Low-Cost Necklace",
+     "authors": [
+      "Brianne Lee"
+     ],
+     "date": "2026-10-25",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Frontier vision-language models price an identical cheap necklace 1.9-3.3 times higher in formal settings and greatly overestimate its value overall.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.33994v1",
+     "title": "Resolving the Mobility-Equity-Emissions Trilemma: A Causal Machine Learning Framework for Dynamic Tolling Policy",
+     "authors": [
+      "Christian Mulomba Mukendi"
+     ],
+     "date": "2026-10-25",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Uses double machine learning to design dynamic tolling that preserves 93% of delay savings while widening residential coverage and cutting emissions, validated on synthetic data.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.33447v1",
+     "title": "Efficiency vs Capability in the Intelligence Explosion",
+     "authors": [
+      "Karthik Tadepalli"
+     ],
+     "date": "2026-10-24",
+     "theme": "Growth & macro",
+     "score": 5,
+     "summary": "A software-driven intelligence explosion requires both capability and efficiency gains; calibrated simulations put its probability at 49%, driven mainly by efficiency uncertainty.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.33728v1",
+     "title": "Strategic Calibration in LLM Multi-Agent Systems: Audited Pivot Scoring for Truthful Elicitation",
+     "authors": [
+      "Jinhao Zhou",
+      "Zhaohan Zhang",
+      "Xijian Xu",
+      "Jun Wu"
+     ],
+     "date": "2026-10-24",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Proposes an audited pivot scoring mechanism making truthful confidence reporting optimal for LLM agents competing for allocation; experiments show LLM agents inflate confidence under Top-K incentives.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.33651v1",
+     "title": "Jointly Modeling Preferences and Imperfect Decision-Making in Large Language Models",
+     "authors": [
+      "Axel Abels",
+      "Elias Fernández Domingos",
+      "Tom Lenaerts"
+     ],
+     "date": "2026-10-24",
+     "theme": "Other",
+     "score": 4,
+     "summary": "A preference-behavior model shows LLM preferences from elicitation instruments poorly predict social-dilemma behavior, but preferences fitted in one dilemma transfer to others.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.33605v1",
+     "title": "Data Governance for Generative and Agentic AI : Technology, Law, Economics, and Security",
+     "authors": [
+      "Narayana Darapaneni",
+      "Padmaja K",
+      "Gnana Chaithra D"
+     ],
+     "date": "2026-10-24",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "A book offering a unified technology, law and economics governance framework for generative and agentic AI, anchored in Indian law.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    }
+   ]
+  },
+  {
    "date": "2026-10-23",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.33352v1",
+     "title": "From Hype to ROI: An Economic Model for LLM Adoption in Information Systems and Security Operations",
+     "authors": [
+      "Pellegrino Casoria",
+      "Andrea Araldo",
+      "Rosario Patanè",
+      "Simon Pietro Romano"
+     ],
+     "date": "2026-10-23",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "A Monte Carlo ROI model of LLM adoption in security operations centers finds adoption economics are context-dependent and gated by accuracy and error costs.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
     {
      "id": "http://arxiv.org/abs/2610.32945v1",
      "title": "Monetizing Intelligence: Advertising and Subscription Design on LLM Platforms",
@@ -50,6 +267,52 @@
      "added": "2026-10-26"
     },
     {
+     "id": "http://arxiv.org/abs/2610.33334v1",
+     "title": "Joint Service Depth and Priority Design in Queueing Systems",
+     "authors": [
+      "Adam N. Elmachtoub",
+      "Yash Kanoria",
+      "Jonathan Y. Tan"
+     ],
+     "date": "2026-10-23",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Models welfare-optimal choice of AI reasoning depth and priority in queues, showing incentive constraints can create welfare gaps under private delay sensitivity.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.33122v1",
+     "title": "The Digital-Energy Recomposition of the Kitchin Cycle: Exploratory Evidence from U.S. IT and Irish Data-Centre Series (1995-2025)",
+     "authors": [
+      "Bartosz Ziollko",
+      "Adam Niedzialkowski",
+      "Bartosz Szyma"
+     ],
+     "date": "2026-10-23",
+     "theme": "Growth & macro",
+     "score": 3,
+     "summary": "Exploratory evidence finds US IT-GDP decoupling predates the AI era and Irish data-centre-GDP links largely reflect multinational accounting.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.33112v1",
+     "title": "Conformance as a Distribution: Delegation Contracts, Error Budgets, and the Allocation of Evaluation Authority in Use-Based AI Regulation",
+     "authors": [
+      "John deVadoss"
+     ],
+     "date": "2026-10-23",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Develops incentive mechanisms for truthful conformance claims and unbiased audits in use-based AI regulation under strategic deployers.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
+    {
      "id": "http://arxiv.org/abs/2610.32300v1",
      "title": "Jawboning the Fed: Do Markets Listen When Administrations Talk?",
      "authors": [
@@ -70,6 +333,20 @@
   {
    "date": "2026-10-22",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.33102v1",
+     "title": "The Capability Transfer: Cohort Reversal, Codified Expertise, and the Adaptability Tax of AI Transformation",
+     "authors": [
+      "Ina Catrinescu"
+     ],
+     "date": "2026-10-22",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Model shows automating codified junior work erodes the expert pipeline, halving senior stock and lengthening expertise formation while short-horizon managers cut wage bills.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
+    },
     {
      "id": "http://arxiv.org/abs/2610.30886v1",
      "title": "The Reaction of Financial Markets to the Releases of DeepSeek R1 and Kimi K3: A Critical Analysis",
@@ -116,6 +393,20 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-10-23"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.33103v1",
+     "title": "Prospect Theory in Large Language Models: A Meta-Analysis of Loss Aversion, Diminishing Sensitivity, and Probability Weighting",
+     "authors": [
+      "Adi Tarabeih"
+     ],
+     "date": "2026-10-22",
+     "theme": "Other",
+     "score": 4,
+     "summary": "Meta-analysis finds LLMs show weak loss aversion and near-linear value functions but human-like probability weighting.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-27"
     },
     {
      "id": "http://arxiv.org/abs/2610.30858v1",

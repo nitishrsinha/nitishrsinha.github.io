@@ -6,6 +6,8 @@ Only a numeric "Your final" counts as a grade; a row without one shows as
 "submitted, grading in progress". Submitted notebooks (.ipynb/.pdf/.py) come from
 each row's Folder, links from LINK.txt there or a "Submission link" column, and a
 "Comment for student" column, if a workbook has one, is shown to the student.
+Quizzes come from the qis-quiz worker's KV (../quiz): each student sees the quizzes
+they took, with a link to review their answers, and the score once review is open.
 
 Student tokens live in ~/BUFN736/grading/portal/roster.json, never in this repo,
 and each student's link is written to portal/links.csv. The grading folder is a
@@ -32,6 +34,7 @@ import os
 import secrets
 import subprocess
 import sys
+import urllib.parse
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -45,6 +48,7 @@ ROSTER = PORTAL / "roster.json"
 FILE_TYPES = {".ipynb", ".pdf", ".py"}
 MAX_FILE_BYTES = 20 * 1024 * 1024
 WRANGLER = ["npx", "--yes", "wrangler@4"]
+QUIZ_WORKER = HERE.parent / "quiz"
 
 
 def load_roster():
@@ -121,7 +125,59 @@ def collect_files(folder):
     return files, links
 
 
-def build(config, roster):
+def kv_json(out):
+    return json.loads(out[out.index("[") :] if out.lstrip()[:1] != "{" else out)
+
+
+def load_quizzes(config, roster):
+    """Quizzes given so far, and each student's submission, from the qis-quiz KV.
+
+    Returns (quizzes, {(email, quiz id): entry}, unmatched emails). A quiz counts as
+    given once it has submissions or is not closed; uploaded-but-unused ones stay hidden.
+    """
+    def kv(*args):
+        return wrangler("kv", "key", *args, "--binding=QUIZ", "--remote", capture=True, cwd=QUIZ_WORKER)
+
+    def get(key):
+        try:
+            return kv("get", key)
+        except subprocess.CalledProcessError:
+            return None
+
+    known, aliases = set(roster["students"]), roster["aliases"]
+    quizzes, entries, unmatched = [], {}, set()
+    for key in kv_json(kv("list", "--prefix=def:")):
+        qid = key["name"][len("def:") :]
+        quiz = json.loads(get(key["name"]))
+        state = (get(f"state:{qid}") or "closed").strip()
+        if state not in ("open", "review"):
+            state = "closed"
+        subs = kv_json(kv("list", f"--prefix=sub:{qid}:"))
+        if state == "closed" and not subs:
+            continue
+        out_of = sum(1 for q in quiz["questions"] if not q.get("bonus"))
+        quizzes.append({"id": qid, "title": quiz.get("title", qid), "state": state, "outOf": out_of})
+        for k in subs:
+            sub = k.get("metadata") or {}
+            if not sub.get("token"):
+                sub = json.loads(get(k["name"]))
+            email = aliases.get(sub["email"], sub["email"])
+            if email not in known:
+                unmatched.add(f"{sub['email']} ({sub.get('name', '')}, {qid})")
+                continue
+            hash_ = urllib.parse.urlencode({"email": sub["email"], "token": sub["token"]})
+            entry = {"status": "taken", "takenAt": sub.get("submittedAt"),
+                     "review": f"{config['quizPage']}?week={qid}#{hash_}"}
+            if state == "review":
+                # same rule as the quiz worker: every correct answer counts, bonus included
+                answers = sub.get("answers", {})
+                entry["score"] = sum(1 for q in quiz["questions"] if answers.get(q["id"]) == q["answer"])
+            entries[(email, qid)] = entry
+    quizzes.sort(key=lambda q: q["id"])
+    return quizzes, entries, sorted(unmatched)
+
+
+def build(config, roster, quizzes=(), quiz_entries=None):
     """Return (dashboards by email, files by hash)."""
     aliases = roster["aliases"]
     entries, names, files = {}, {}, {}
@@ -170,7 +226,12 @@ def build(config, roster):
         for a in config["assignments"]:
             entry = entries.get((email, a["id"]), {"status": "none", "files": [], "links": []})
             assignments.append({"id": a["id"], "title": a["title"], "due": a["due"], "outOf": a["outOf"], **entry})
-        dashboards[email] = {"name": name, "email": email, "updatedAt": now, "assignments": assignments}
+        taken = [
+            {**q, **(quiz_entries or {}).get((email, q["id"]), {"status": "none"})} for q in quizzes
+        ]
+        dashboards[email] = {
+            "name": name, "email": email, "updatedAt": now, "assignments": assignments, "quizzes": taken,
+        }
     return dashboards, files
 
 
@@ -204,9 +265,9 @@ def remind_to_push():
         print(f"Reminder: commit and push {GRADING} so the other laptop has these grades.")
 
 
-def wrangler(*args, capture=False):
+def wrangler(*args, capture=False, cwd=HERE):
     result = subprocess.run(
-        WRANGLER + list(args), cwd=HERE, check=True, text=True, capture_output=capture
+        WRANGLER + list(args), cwd=cwd, check=True, text=True, capture_output=capture
     )
     return result.stdout
 
@@ -290,14 +351,20 @@ def main():
             sys.exit(f"{email} is not in the roster")
         roster["students"][email]["token"] = secrets.token_urlsafe(24)
 
-    dashboards, files = build(config, roster)
+    quizzes, quiz_entries, unmatched = load_quizzes(config, roster)
+    dashboards, files = build(config, roster, quizzes, quiz_entries)
     ensure_tokens(roster, dashboards)
 
     for email, d in sorted(dashboards.items(), key=lambda kv: kv[1]["name"]):
         cells = []
         for a in d["assignments"]:
             cells.append(f"{a['id']}={a['score']}" if a["status"] == "graded" else f"{a['id']}:{a['status']}")
+        for q in d["quizzes"]:
+            cells.append(f"{q['id']}={q.get('score', 'taken')}" if q["status"] == "taken" else f"{q['id']}:-")
         print(f"  {d['name'] or '?':28} {email:32} {'  '.join(cells)}")
+
+    for u in unmatched:
+        print(f"  quiz taker not in the roster (use --alias or --add): {u}")
 
     if args.dry_run:
         print(f"Dry run: {len(dashboards)} dashboards, {len(files)} files. Nothing saved or published.")

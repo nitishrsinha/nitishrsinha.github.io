@@ -170,6 +170,15 @@
             background: #e3f2fd;
         }
 
+        h3.section {
+            margin: 32px 0 0;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #5a5a5a;
+        }
+
         .footer {
             margin-top: 32px;
             color: #888;
@@ -273,15 +282,41 @@
             return card;
         }
 
+        function renderQuiz(q) {
+            let right;
+            if (q.status !== "taken") right = el("span", { class: "badge none" }, "Not taken");
+            else if (q.score != null) right = el("div", { class: "score" }, fmt(q.score), el("small", {}, ` / ${fmt(q.outOf)}`));
+            else right = el("span", { class: "badge submitted" }, "Taken · results after review opens");
+
+            const card = el("div", { class: "assignment" },
+                el("div", { class: "assignment-head" }, el("h2", {}, q.title), right));
+            if (q.takenAt) card.append(el("div", { class: "meta" }, `Taken ${fmtDate(q.takenAt)}`));
+            if (q.review && /^https:\/\//.test(q.review)) {
+                card.append(el("div", { class: "files" },
+                    el("a", { href: q.review, target: "_blank", rel: "noopener noreferrer" },
+                        q.score != null ? "Review your answers ↗" : "Your quiz ↗")));
+            }
+            return card;
+        }
+
         function render(d) {
             const submitted = d.assignments.filter((a) => a.status !== "none").length;
+            const quizzes = d.quizzes || [];
+            const tiles = [
+                el("div", { class: "tile" }, el("div", { class: "label" }, "Assignments submitted"),
+                    el("div", { class: "value" }, `${submitted} / ${d.assignments.length}`)),
+            ];
+            if (quizzes.length) {
+                tiles.push(el("div", { class: "tile" }, el("div", { class: "label" }, "Quizzes taken"),
+                    el("div", { class: "value" }, `${quizzes.filter((q) => q.status === "taken").length} / ${quizzes.length}`)));
+            }
 
             app.replaceChildren(
-                el("p", {}, `Hi ${d.name ? d.name.split(" ")[0] : ""}, here are your submissions and grades. Only grades your instructor has confirmed appear here.`),
-                el("div", { class: "summary" },
-                    el("div", { class: "tile" }, el("div", { class: "label" }, "Assignments submitted"),
-                        el("div", { class: "value" }, `${submitted} / ${d.assignments.length}`))),
+                el("p", {}, `Hi ${d.name ? d.name.split(" ")[0] : ""}, here are your assignments, quizzes and grades. Only grades your instructor has confirmed appear here.`),
+                el("div", { class: "summary" }, ...tiles),
+                el("h3", { class: "section" }, "Assignments"),
                 ...d.assignments.map(renderAssignment),
+                ...(quizzes.length ? [el("h3", { class: "section" }, "Quizzes"), ...quizzes.map(renderQuiz)] : []),
                 el("div", { class: "footer" },
                     `Last updated ${fmtDate(d.updatedAt)}. This link is personal: please don't share it. ` +
                     "Questions about a grade? Reply to your feedback email."));

@@ -1,6 +1,7 @@
 {
   "_comment": "Assignments shown on every student's dashboard, in this order. sync.py reads each workbook from ~/BUFN736/grading. Columns are matched by header text. Only 'Your final' is published; parts are shown only when they add up to it.",
   "page": "https://nitishrsinha.github.io/teaching/qis/grades.html",
+  "quizPage": "https://nitishrsinha.github.io/teaching/qis/quiz.html",
   "assignments": [
     {
       "id": "ex1",

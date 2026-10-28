@@ -1,8 +1,79 @@
 {
  "days": [
   {
+   "date": "2026-10-27",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.36941v1",
+     "title": "Algorithmic Monoculture in Machine Learning-based Site-Specific Fertilizer Recommendation",
+     "authors": [
+      "Abdelghani Belgaid"
+     ],
+     "date": "2026-10-27",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Models how concentrated adoption of ML fertilizer recommendation models creates correlated errors and systemic social loss; accuracy-constrained diversification cuts modeled loss 11-42% in Moroccan cereal systems.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-28"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.37465v1",
+     "title": "What Carries Forward? Pretraining Disclosure Across Language Model Releases",
+     "authors": [
+      "Md Sakib Ul Islam",
+      "S M Mehedi Zaman"
+     ],
+     "date": "2026-10-27",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Audit finds successive language model releases often lose pretraining disclosure, with scores falling in 11 of 24 comparisons.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-28"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.36980v1",
+     "title": "AutoVend: Benchmarking LLM Agents on Long-Horizon Autonomous Vending Operations",
+     "authors": [
+      "Qiming Shi",
+      "Yikun Li",
+      "Beidi Luan",
+      "Rui Sun",
+      "Yan Ma",
+      "Jing Li",
+      "Daxin Jiang",
+      "Zuo Bai"
+     ],
+     "date": "2026-10-27",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Benchmark where LLM agents run 20 simulated vending machines for 180 days; four of five agents underperform a rule-based inventory baseline, and inference-cost-adjusted returns reorder model rankings.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-28"
+    }
+   ]
+  },
+  {
    "date": "2026-10-26",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.36008v1",
+     "title": "Practice Makes Perfect: Tacit Knowledge, Generative AI, and Returns to Schooling and Experience",
+     "authors": [
+      "Eduardo Levy Yeyati",
+      "Darío Judzik",
+      "Juan Ignacio Barbiero"
+     ],
+     "date": "2026-10-26",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "After ChatGPT's release, returns to schooling fell 0.55 log points in AI-exposed occupations while returns to early-career experience rose and late-career experience returns fell.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-28"
+    },
     {
      "id": "http://arxiv.org/abs/2610.35338v1",
      "title": "Who Pays for Thinking? Billing Hidden Reasoning Tokens in Model Cloud Contracts",
@@ -32,6 +103,25 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.35997v1",
+     "title": "PolicyMediator: Multi-Regional Policy Learning through Mediation Agents with Evolving Skills in OPC Ecosystems",
+     "authors": [
+      "Jie Li",
+      "Bin Guo",
+      "Georgina Curto",
+      "Zikang Liu",
+      "Mengqi Chen",
+      "yu li"
+     ],
+     "date": "2026-10-26",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Proposes an LLM mediator in a Stackelberg framework to align Chinese regional policies with AI-enabled one-person companies' location choices, outperforming baselines in simulations.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-28"
     },
     {
      "id": "http://arxiv.org/abs/2610.35666v1",

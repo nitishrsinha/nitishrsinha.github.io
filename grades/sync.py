@@ -8,6 +8,8 @@ each row's Folder, links from LINK.txt there or a "Submission link" column, and 
 "Comment for student" column, if a workbook has one, is shown to the student.
 Quizzes come from the qis-quiz worker's KV (../quiz): each student sees the quizzes
 they took, with a link to review their answers, and the score once review is open.
+Project groups come from groups.json in the grading folder: each student sees their
+group's name and the other members' names and emails.
 
 Student tokens live in ~/BUFN736/grading/portal/roster.json, never in this repo,
 and each student's link is written to portal/links.csv. The grading folder is a
@@ -45,6 +47,7 @@ HERE = Path(__file__).resolve().parent
 GRADING = Path(os.environ.get("QIS_GRADING", Path.home() / "BUFN736" / "grading")).expanduser()
 PORTAL = GRADING / "portal"
 ROSTER = PORTAL / "roster.json"
+GROUPS = GRADING / "groups.json"
 FILE_TYPES = {".ipynb", ".pdf", ".py"}
 MAX_FILE_BYTES = 20 * 1024 * 1024
 WRANGLER = ["npx", "--yes", "wrangler@4"]
@@ -177,7 +180,27 @@ def load_quizzes(config, roster):
     return quizzes, entries, sorted(unmatched)
 
 
-def build(config, roster, quizzes=(), quiz_entries=None):
+def load_groups(roster):
+    """{email: {name, topic, members: [the other members' {name, email}]}} from groups.json."""
+    if not GROUPS.exists():
+        return {}
+    students, by_email = roster["students"], {}
+    for g in json.loads(GROUPS.read_text())["groups"]:
+        members = [roster["aliases"].get(m.lower(), m.lower()) for m in g["members"]]
+        for m in members:
+            if m not in students:
+                sys.exit(f"groups.json: {m} is not in the roster")
+            if m in by_email:
+                sys.exit(f"groups.json: {m} is in two groups")
+        for m in members:
+            by_email[m] = {
+                "name": g.get("name"), "topic": g.get("topic"),
+                "members": [{"name": students[o].get("name", ""), "email": o} for o in members if o != m],
+            }
+    return by_email
+
+
+def build(config, roster, quizzes=(), quiz_entries=None, groups=None):
     """Return (dashboards by email, files by hash)."""
     aliases = roster["aliases"]
     entries, names, files = {}, {}, {}
@@ -232,6 +255,8 @@ def build(config, roster, quizzes=(), quiz_entries=None):
         dashboards[email] = {
             "name": name, "email": email, "updatedAt": now, "assignments": assignments, "quizzes": taken,
         }
+        if (groups or {}).get(email):
+            dashboards[email]["group"] = groups[email]
     return dashboards, files
 
 
@@ -352,7 +377,8 @@ def main():
         roster["students"][email]["token"] = secrets.token_urlsafe(24)
 
     quizzes, quiz_entries, unmatched = load_quizzes(config, roster)
-    dashboards, files = build(config, roster, quizzes, quiz_entries)
+    groups = load_groups(roster)
+    dashboards, files = build(config, roster, quizzes, quiz_entries, groups)
     ensure_tokens(roster, dashboards)
 
     for email, d in sorted(dashboards.items(), key=lambda kv: kv[1]["name"]):
@@ -361,8 +387,13 @@ def main():
             cells.append(f"{a['id']}={a['score']}" if a["status"] == "graded" else f"{a['id']}:{a['status']}")
         for q in d["quizzes"]:
             cells.append(f"{q['id']}={q.get('score', 'taken')}" if q["status"] == "taken" else f"{q['id']}:-")
+        if "group" in d:
+            cells.append(f"[{d['group']['name'] or 'group, no name'}]")
         print(f"  {d['name'] or '?':28} {email:32} {'  '.join(cells)}")
 
+    ungrouped = sorted(d["name"] or e for e, d in dashboards.items() if "group" not in d)
+    if groups and ungrouped:
+        print(f"  not in a project group: {', '.join(ungrouped)}")
     for u in unmatched:
         print(f"  quiz taker not in the roster (use --alias or --add): {u}")
 

@@ -8,7 +8,8 @@
  *
  * GET /me                 (Authorization: Bearer <token>)
  *                 -> {name, email, updatedAt, assignments: [{id, title, due, outOf,
- *                     status, score, parts, deductions, comment, submittedAt, links, files}]}
+ *                     status, score, parts, deductions, comment, submittedAt, links, files}],
+ *                     quizzes, group: {name, topic, members: [{name, email}]}}
  *                    status is "graded", "submitted" (grading in progress) or "none".
  *                    Only grades the instructor confirmed are ever uploaded.
  * GET /file?h=<sha256>    (same Authorization header)

@@ -1,6 +1,211 @@
 {
  "days": [
   {
+   "date": "2026-10-29",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.39660v1",
+     "title": "Sticky Collusion: Persistence of LLM Agent Collusion after Incentive Removal and Partner Replacement",
+     "authors": [
+      "Joshua Adrian Cahyono"
+     ],
+     "date": "2026-10-29",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Collusion among LLM agents persists after incentives are removed and survives partner replacement, carried by agents' memory, unlike Q-learning pricing agents.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.39375v1",
+     "title": "What is Work For? Labor, Politics, and Meaning in the Age of AI",
+     "authors": [
+      "Julian Jacobs"
+     ],
+     "date": "2026-10-29",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Survey across four countries finds most workers value non-monetary job aspects, informing responses to AI-driven work displacement and basic income.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.40259v1",
+     "title": "The Price of a Chance in Artificial Societies",
+     "authors": [
+      "Shuqi Zhao",
+      "Boyu Wang",
+      "Shuangyue Niu",
+      "Chenhao Zhang",
+      "Zhanzhan Zhao"
+     ],
+     "date": "2026-10-29",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Simulating 200 LLM agents in a reward contest shows prize size and coverage drive overcompetition or lying flat, and spreading smaller prizes can cut wasteful investment.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.40164v1",
+     "title": "Who Owns Digital News, and Who Gets Cited: Measuring Media Concentration Across 77 Countries and Seven AI Systems",
+     "authors": [
+      "Peter Carragher",
+      "Kathleen M. Carley"
+     ],
+     "date": "2026-10-29",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "AI system citations of news are up to 2.08x more concentrated than traffic, and full AI Overviews mediation would sharply raise US news market concentration.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.39995v1",
+     "title": "How Different are Different Differences-in-Differences? A Large-Scale Meta-Analysis",
+     "authors": [
+      "Peter Hull"
+     ],
+     "date": "2026-10-29",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "AI-assisted replication of 1,346 specifications finds TWFE closely matches modern DiD estimates, so negative weights matter little in practice.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.39846v1",
+     "title": "TokWatt: an open, boundary-annotated database of AI inference energy, from chat answers to agents",
+     "authors": [
+      "Abderaouf Bahi"
+     ],
+     "date": "2026-10-29",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Open database of 134 AI inference energy estimates harmonizes figures, e.g. 0.34 Wh per chat answer and 150 Wh per coding-agent task, linking use to grid load.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.38088v1",
+     "title": "What Can Firms Do in the Face of Model Distillation?",
+     "authors": [
+      "Diptangshu Sen",
+      "Jibang Wu",
+      "Juba Ziani"
+     ],
+     "date": "2026-10-28",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Game-theoretic model of AI model distillation shows penalty-based regulation can deter distillation but may harm competition and user surplus.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.38239v1",
+     "title": "The Indian Financial Automated Advice Bias (IFAAB) Dataset : Auditing Socioeconomic and Demographic Disparities in LLM-Generated Financial Advice in India",
+     "authors": [
+      "Kriti Mahajan"
+     ],
+     "date": "2026-10-28",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Audit of GPT-4o financial advice for Indian personas finds large gender and caste disparities in implied resources and advice content.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.38965v1",
+     "title": "Orthogonal Inference for Conditional Z-Estimation without Cross-Fitting: A Distributional Nearest-Neighbor Approach",
+     "authors": [
+      "Jakob R. Juergens"
+     ],
+     "date": "2026-10-28",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Orthogonal inference for conditional parameters using full-sample nuisance predictions and distributional nearest neighbors without cross-fitting.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.38883v1",
+     "title": "Can Artificial Intelligence Forecast Treatment Effects in Economics?",
+     "authors": [
+      "Eva Vivalt"
+     ],
+     "date": "2026-10-28",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "LLMs forecast pre-registered economics RCT treatment effects with small errors, beating naive benchmarks, suggesting value for policy and research.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.38529v1",
+     "title": "Debiasing Functionals of Conditional Distributions",
+     "authors": [
+      "Juan Carlos Escanciano",
+      "Gabriele Gazzei"
+     ],
+     "date": "2026-10-28",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Constructs debiased locally robust moments for parameters depending on estimated conditional distributions, with automatic Riesz-regression corrections.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.38487v1",
+     "title": "Simultaneous Gradient Learning in First-Price Auctions",
+     "authors": [
+      "Janik Bürgermeister",
+      "Julius Durmann",
+      "Martin Bichler",
+      "Mete Şeref Ahunbay",
+      "Bary Pradelski",
+      "Marco Scarsini"
+     ],
+     "date": "2026-10-28",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Introduces a refined equilibrium concept explaining why gradient-based learning bidders converge toward Bayes-Nash equilibrium in first-price auctions.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.38292v1",
+     "title": "Vendster: An Evaluation Arena to Investigate How Forecasting Tool Quality Affects LLM Agent Behaviors in Buyer-Vendor Negotiation",
+     "authors": [
+      "Charin Polpanumas"
+     ],
+     "date": "2026-10-28",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "In LLM buyer-vendor negotiations, forecast bias direction and agent reactivity, not forecast accuracy, drive outcomes; under-prediction bias improves results.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    }
+   ]
+  },
+  {
    "date": "2026-10-27",
    "papers": [
     {
@@ -16,6 +221,42 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-10-28"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.38077v1",
+     "title": "Infrastructure and its Discontents: Contestations of Power in Canada's AI Governance Scaffold",
+     "authors": [
+      "Christelle Tessono",
+      "Nusrat Jahan Mim",
+      "Shion Guha"
+     ],
+     "date": "2026-10-27",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Interviews on Canadian AI governance reveal power dynamics in expertise, strategic ignorance and weak accountability mechanisms.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.37984v1",
+     "title": "Who Else Is In? Multi-Agent Collusion Initation Via Strategic Vagueness",
+     "authors": [
+      "Pramod Kaushik",
+      "Sarath Sivaprasad",
+      "Laura Ferrarotti",
+      "Mario Fritz",
+      "Samuel F. Brown",
+      "Bruno Lepri",
+      "Sahar Abdelnabi"
+     ],
+     "date": "2026-10-27",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "LLM agents can initiate covert collusion via strategically vague public messages that coordinate partners while evading monitor detection.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
     },
     {
      "id": "http://arxiv.org/abs/2610.37465v1",
@@ -58,6 +299,20 @@
   {
    "date": "2026-10-26",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.37705v1",
+     "title": "Decorrelating the Advice Layer: A Calibrated Fragility Metric and Tested Mitigations for Synchronized Liquidation in Agentic Wealth Management",
+     "authors": [
+      "Saurabh Kohli"
+     ],
+     "date": "2026-10-26",
+     "theme": "Financial markets",
+     "score": 5,
+     "summary": "Agent-based model shows agentic AI wealth management amplifies tail liquidations via synchronized automation, which decorrelation measures cut by 63% without welfare cost.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-10-30"
+    },
     {
      "id": "http://arxiv.org/abs/2610.36008v1",
      "title": "Practice Makes Perfect: Tacit Knowledge, Generative AI, and Returns to Schooling and Experience",

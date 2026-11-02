@@ -1,8 +1,128 @@
 {
  "days": [
   {
+   "date": "2026-10-30",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.41866v1",
+     "title": "AI evaluators favor job applications written by certain AI models, independent of candidate quality",
+     "authors": [
+      "Nicolò Pagan",
+      "Michael Andreas Ebling",
+      "Stefania Ionescu",
+      "Anikó Hannák"
+     ],
+     "date": "2026-10-30",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "LLM hiring screeners favor cover letters written by certain LLMs and their own outputs, filtering out qualified candidates purely due to model mismatch.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-02"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.41132v1",
+     "title": "When Disclosure Is Compulsory: Evaluating Ride-Hailing Rebalancing Policies with Self-Interested LLM Driver Agents",
+     "authors": [
+      "Xinyu Wang",
+      "Andres Fielbaum"
+     ],
+     "date": "2026-10-30",
+     "theme": "Policy & regulation",
+     "score": 5,
+     "summary": "Simulating EU-mandated disclosure with self-interested LLM driver agents shows compliance rises, reactive rebalancing loses 3.7% profit while anticipatory policy is unaffected.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-02"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.42052v1",
+     "title": "Valid GMM Inference with Non-parametrically Generated Discrete Type",
+     "authors": [
+      "Taegyu Yang"
+     ],
+     "date": "2026-10-30",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Proposes a kernel-smoothed debiased GMM estimator for moments involving ML-predicted discrete types, showing sqrt(Nb)-consistency and asymptotic normality.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-02"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.42004v1",
+     "title": "TradeWar: A Benchmark for Execution-Grounded Trade Negotiation with Adaptive LLM Agents",
+     "authors": [
+      "Xiangyu Kong",
+      "Ruirui Yang",
+      "Xia Hou"
+     ],
+     "date": "2026-10-30",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Introduces TradeWar, a benchmark grounding LLM trade negotiations in executed tariff outcomes, and the TACTIC agent, which improves an economic health index across episodes.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-02"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.41854v1",
+     "title": "LLM Recommenders Produce Demographic Inequality Through Content Preferences",
+     "authors": [
+      "Nicolò Pagan",
+      "Petter Törnberg",
+      "Christopher A. Bail",
+      "Christopher Barrie"
+     ],
+     "date": "2026-10-30",
+     "theme": "Other",
+     "score": 3,
+     "summary": "LLM-based recommenders generate demographic inequality in surfaced authors through content preferences for longer, negative, opinionated posts, amplified by engagement metadata.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-02"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.41129v1",
+     "title": "When Should AI Agents Ask? Clarification Requests Under Limited Human Attention",
+     "authors": [
+      "Hanzhao Wang",
+      "Shengjie Liu",
+      "Zhengchao Wang"
+     ],
+     "date": "2026-10-30",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Models when AI agents should ask a shared human for clarification, proposing a near-optimal pairwise coordination policy under limited attention.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-02"
+    }
+   ]
+  },
+  {
    "date": "2026-10-29",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2610.40961v1",
+     "title": "Renegotiable Options Fail to Prevent Hold-Up Between Two Profit-Maximizing Frontier LLM Agents",
+     "authors": [
+      "Junwei Yao",
+      "Zike Yang",
+      "Yongxi Zhou",
+      "Yanxian Chen",
+      "Jianan Liu",
+      "Jiaxi Wen",
+      "Zhijun Wang"
+     ],
+     "date": "2026-10-29",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Profit-maximizing frontier LLM agents behave as game theory predicts in hold-up games, so renegotiable options fail to induce investment unlike in human experiments.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-02"
+    },
     {
      "id": "http://arxiv.org/abs/2610.39660v1",
      "title": "Sticky Collusion: Persistence of LLM Agent Collusion after Incentive Removal and Partner Replacement",
@@ -358,6 +478,21 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-10-27"
+    },
+    {
+     "id": "http://arxiv.org/abs/2610.40684v1",
+     "title": "Training for Alignment",
+     "authors": [
+      "Eric Gao",
+      "Alexander Wolitzky"
+     ],
+     "date": "2026-10-26",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Principal-agent model of training an agent with endogenous bias shows optimal training over-corrects and selects states non-greedily; corrigibility can help or harm, with applications to AI post-training.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-02"
     },
     {
      "id": "http://arxiv.org/abs/2610.35997v1",

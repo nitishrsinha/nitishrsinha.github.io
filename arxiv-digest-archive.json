@@ -1,6 +1,243 @@
 {
  "days": [
   {
+   "date": "2026-11-02",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.02910v1",
+     "title": "The Market for AI-Assisted Signaling",
+     "authors": [
+      "Federico Vaccari"
+     ],
+     "date": "2026-11-02",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Models AI providers selling signaling assistance, showing profitable AI can reduce welfare, and competition versus monopoly shapes information revelation.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.03199v1",
+     "title": "Cold-Start Pricing of LLM Services under Two-Sided Learning",
+     "authors": [
+      "Zhicheng Du",
+      "Pinyan Lu",
+      "Keyu Wang",
+      "Zihe Wang",
+      "Xiang Yan",
+      "Chunxue Yang"
+     ],
+     "date": "2026-11-02",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Studies cold-start pricing of LLM services with evolving user willingness to pay, deriving optimal regret rates that depend on serving cost regimes.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.02996v1",
+     "title": "LLMs and the Organization of Scientific Work",
+     "authors": [
+      "Stefano Bianchini",
+      "Georgiana-Ioana Coroama"
+     ],
+     "date": "2026-11-02",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "After ChatGPT, scientists' task participation fell and specialization rose within teams, concentrated in newly formed teams, per CRediT data from 120,000 PLOS ONE articles.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.03453v1",
+     "title": "Penalize the Common Trade: A Collision-Aware Layer for Learned Portfolios",
+     "authors": [
+      "Eric Benhamou",
+      "Jean-Jacques Ohana",
+      "Beatrice Guez",
+      "Ethan Setrouk",
+      "Chamyl Saadi",
+      "Thomas Jacquot"
+     ],
+     "date": "2026-11-02",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Models crowding externality when learned portfolio models make similar trades, proposes a collision penalty layer that cuts drawdown in an ETF panel, though bootstrap intervals include zero.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.02689v1",
+     "title": "The Customer Never Sees the Goal: Measuring and Detecting Vulnerability-Targeted Manipulation in LLM Assistants",
+     "authors": [
+      "Bohan Jiang",
+      "Dawei Li",
+      "Yasin Silva",
+      "Huan Liu"
+     ],
+     "date": "2026-11-02",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "14 of 15 LLM assistants push hidden operator commercial goals, often exploiting customers' disclosed distress or financial strain; fine-tuned detectors catch this with 79% accuracy.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.02265v1",
+     "title": "The Verification Bottleneck",
+     "authors": [
+      "Peter Achim"
+     ],
+     "date": "2026-11-01",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "General-equilibrium peer review model shows generative AI cheapening research production can reduce reviewer capacity and verified knowledge beyond a technological threshold.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.01799v1",
+     "title": "Learning AI Agents, Market Makers, and Stress in Automated Markets",
+     "authors": [
+      "Irene Aldridge"
+     ],
+     "date": "2026-11-01",
+     "theme": "Financial markets",
+     "score": 5,
+     "summary": "Models learning AI trading agents on AMMs, showing herd and arbitrage markets are indistinguishable by standard risk metrics and maker-taker pricing stabilizes liquidity.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.01656v1",
+     "title": "AIDA: An AI Outage Registry with Evidence from On-Chain MEV",
+     "authors": [
+      "Wenbin Wu"
+     ],
+     "date": "2026-11-01",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Builds an AI outage registry and shows AI coding outages temporarily reduce new MEV trading code deployment while existing bots keep trading.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.01566v1",
+     "title": "Principled Human-AI Collaboration in Agentic Workflows",
+     "authors": [
+      "Young Hyun Cho",
+      "Will Wei Sun"
+     ],
+     "date": "2026-11-01",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Statistical framework for deciding which AI outputs to release without human review, raising automation substantially while controlling error rates.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.02061v1",
+     "title": "Looking Forward to Constructing Better Causal Comparisons",
+     "authors": [
+      "Augusto Cerqua"
+     ],
+     "date": "2026-11-01",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Uses tabular foundation models to build prognostic scores for constructing comparison groups in observational causal inference.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.01829v1",
+     "title": "Same Text, Different Filename: Are LLM Judges Biased?",
+     "authors": [
+      "Sergey V. Popov"
+     ],
+     "date": "2026-11-01",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Frontier LLM judges used for journal quality assessment score identical documents differently depending on filename labels.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.01226v1",
+     "title": "Learning about Markets from Models: Evidence from an AI Hiring Platform",
+     "authors": [
+      "Hossein Alidaee",
+      "Tarun Khanna",
+      "Rembrand Koning"
+     ],
+     "date": "2026-10-31",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Firm-specific retention models on an AI hiring platform reveal that firms value worker traits very differently, creating a model comparison externality useful for policy and firms.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.00661v1",
+     "title": "Designing Behavioral Profiles for Language Model Simulation of Out-of-Distribution Human Behavior",
+     "authors": [
+      "Robin Na",
+      "Kehang Zhu",
+      "Logan Cross",
+      "Michiel A. Bakker"
+     ],
+     "date": "2026-10-31",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Selected one-feature behavioral profiles improve LLM simulation of human behavior in new economic game designs over personas, though cross-game transfer is uneven.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.00672v1",
+     "title": "Precedent Labels and Facts Shift LLM Approval Decisions in Opposite Directions",
+     "authors": [
+      "Junwei Yao",
+      "Zike Yang",
+      "Yongxi Zhou",
+      "Yanxian Chen",
+      "Jianan Liu",
+      "Jiaxi Wen",
+      "Zhijun Wang"
+     ],
+     "date": "2026-10-31",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Precedent decision labels raise LLM refund/claim approval by 30-55 points, while precedent facts push approvals in the opposite direction.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    }
+   ]
+  },
+  {
    "date": "2026-10-30",
    "papers": [
     {
@@ -34,6 +271,67 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-02"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.00462v1",
+     "title": "Siting and Curtailment Depth Limit the Grid Headroom Available to New Large Loads",
+     "authors": [
+      "Nils Johnson",
+      "Geoff Blanford",
+      "John E. T. Bistline"
+     ],
+     "date": "2026-10-30",
+     "theme": "Growth & macro",
+     "score": 4,
+     "summary": "Grid modeling shows 50 GW of flexible data-center load needs deep hourly curtailment, misaligned siting, and raises emissions and wholesale prices.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.00300v1",
+     "title": "Cross-Lingual Persona Effects in LLM Negotiation",
+     "authors": [
+      "Saehee Eom",
+      "Tejas Khandwekar"
+     ],
+     "date": "2026-10-30",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "LLM negotiators reach agreement far more often and at lower prices in Korean than English, showing persona effects vary across languages.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.00256v1",
+     "title": "Validating LLM-Generated Synthetic Survey Samples: A Use-Dependent Multi-Dimensional Framework for Social-Science Applications",
+     "authors": [
+      "Enrico Angelo Raffaele D'Ecclesiis",
+      "Fulvio Castellacci",
+      "Arash Ahmadi"
+     ],
+     "date": "2026-10-30",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Proposes multi-dimensional validation of LLM synthetic survey samples, finding they preserve distributional and substantive structure in Eurobarometer AI attitude data despite weak individual accuracy.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.00380v1",
+     "title": "Where Intention Goes, Responsibility Flows: Grounding AI Accountability in the Machine Learning Paradigm",
+     "authors": [
+      "Martin Hilbert"
+     ],
+     "date": "2026-10-30",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Argues AI liability should trace layered human intentions across the ML pipeline to apportion responsibility among actors.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-03"
     },
     {
      "id": "http://arxiv.org/abs/2610.42052v1",

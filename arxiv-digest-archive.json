@@ -1,6 +1,121 @@
 {
  "days": [
   {
+   "date": "2026-11-03",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.04686v1",
+     "title": "Designing AI-Mediated Communication in Teams",
+     "authors": [
+      "Wichinpong Park Sinchaisri",
+      "Zhiwei Wang"
+     ],
+     "date": "2026-11-03",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Models how firms should design AI-assistant information disclosure in teams, showing transparency trades off adaptation against truthful preference reporting.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.04272v1",
+     "title": "Agreements Have a Clock: Compute Growth and the Verification of AI Restraint",
+     "authors": [
+      "Li Gan"
+     ],
+     "date": "2026-11-03",
+     "theme": "Policy & regulation",
+     "score": 5,
+     "summary": "A game model of frontier AI pause agreements shows compute growth shortens response windows, limiting how long cooperation is sustainable.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.04266v1",
+     "title": "Prizes, Shared Hazard, and the Speed of Frontier AI",
+     "authors": [
+      "Li Gan"
+     ],
+     "date": "2026-11-03",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "A calibrated model of frontier AI labs racing under a hazard externality shows contests drive fast takeoff, which common rules or ideal open source slow.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.04886v1",
+     "title": "Modelling lock-in of AI adoption through skill erosion",
+     "authors": [
+      "Renaud Lambiotte"
+     ],
+     "date": "2026-11-03",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "A model of imitation and skill erosion shows AI adoption can exhibit bistability and hysteresis, creating history-dependent switching costs that make widespread AI reliance hard to reverse.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.04119v1",
+     "title": "Multidimensional Views Behind Target-Price Revisions: An LLM-Based Representation of Analyst Outlooks",
+     "authors": [
+      "Kiyoun Kim",
+      "Sung-Yeon Nathan Lim"
+     ],
+     "date": "2026-11-03",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "LLM-extracted question-based outlook scores from analyst reports improve prediction of target-price revisions beyond momentum and outperform dictionary and FinBERT sentiment.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.05148v1",
+     "title": "Creating Power Flexibility in Datacenters via Query Routing",
+     "authors": [
+      "Shivam Patel",
+      "Bingqing Chen",
+      "Jared Fernandez",
+      "Guannan Qu",
+      "Gauri Joshi"
+     ],
+     "date": "2026-11-03",
+     "theme": "Other",
+     "score": 3,
+     "summary": "LLM query routing can provide datacenter power flexibility up to 16% of consumption for grid support.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.04147v1",
+     "title": "AdSteer: Native Advertising in Large Language Model Generation",
+     "authors": [
+      "Shuhang Lin",
+      "Chuhao Zhou",
+      "Zhenyu Wang",
+      "Xiao Lin",
+      "Changsheng Wang",
+      "Saibo Geng",
+      "Dimitris N. Metaxas"
+     ],
+     "date": "2026-11-03",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "A decoding-time method integrates native ads into LLM responses to monetize LLM services, outperforming baselines in quality and token efficiency.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    }
+   ]
+  },
+  {
    "date": "2026-11-02",
    "papers": [
     {
@@ -50,6 +165,88 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-03"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.03993v1",
+     "title": "Whose startup does the AI back? An algorithm audit of reputation and demographic signals in LLM-assisted crowdfunding",
+     "authors": [
+      "Mirza Samad Ahmed Baig",
+      "Syeda Anshrah Gillani"
+     ],
+     "date": "2026-11-02",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Conjoint audit of seven LLMs advising crowdfunding backers finds founder demographics barely matter by default, but models favor Black and female founders when users request it.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.04070v1",
+     "title": "Are LLM Research Agents Reliable Judges of Predictability? Evidence from Planted-Signal Worlds",
+     "authors": [
+      "Chang Liu"
+     ],
+     "date": "2026-11-02",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "LLM research agents judging forecast predictability over-claim signals, are miscalibrated and swayed by framing, requiring fixed decision rules and holdouts.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.03985v1",
+     "title": "Thinking Fast, Trading Late: System One Decision Models vs the Market",
+     "authors": [
+      "Amir Dehkordi",
+      "Alireza Kargarzadeh",
+      "Nariman Khaledian",
+      "Navid Parvini",
+      "Sid Ghatak",
+      "Arman Khaledian"
+     ],
+     "date": "2026-11-02",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Under a strict anti-leakage protocol, LLM news readings align with overnight moves but offer no tradable edge after the open; markets price news first.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.03938v1",
+     "title": "Experimentally Validated Digital Twins: Evaluating Workforce Training Programs in the Age of Big Data",
+     "authors": [
+      "Raj Chetty",
+      "Jamie Fogel",
+      "Lawrence F. Katz",
+      "Kadeem Noray",
+      "Sonya Porter",
+      "James Reisinger"
+     ],
+     "date": "2026-11-02",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "ML counterfactuals on tax data replicate RCT estimates of workforce training effects and reveal large heterogeneity across sites and time.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.03946v1",
+     "title": "We Ran a Research Sprint With AI. The AI Worked. The Research Didn't",
+     "authors": [
+      "Anush Sankaran",
+      "Arijit Banerjee"
+     ],
+     "date": "2026-11-02",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "A pilot research sprint suggests personal AI tools create evaluation bottlenecks and research silos, motivating a Human-AI-Human collaboration design.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-04"
     },
     {
      "id": "http://arxiv.org/abs/2611.03453v1",

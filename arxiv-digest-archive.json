@@ -1,6 +1,143 @@
 {
  "days": [
   {
+   "date": "2026-11-04",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.06629v1",
+     "title": "Does Frontier AI Strengthen Cyber Defense? Evidence from Project Glasswing",
+     "authors": [
+      "Thomas Mosk"
+     ],
+     "date": "2026-11-04",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Firms given early access to a frontier vulnerability-finding AI more than doubled disclosures, external bug-bounty researchers shifted to other firms, and early exploitation shares fell.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.06888v1",
+     "title": "Dull, Dirty, Dangerous? Working Conditions and the Limits of Occupational AI Exposure",
+     "authors": [
+      "Siyi Yu"
+     ],
+     "date": "2026-11-04",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Higher occupational AI exposure is associated with worse working-condition scores, but adjusting for education, wages and physical demands shrinks the link, which becomes insignificant for LLM exposure.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.05870v1",
+     "title": "AI-Assisted Classification under Correlation Neglect and Trust",
+     "authors": [
+      "Dingwen Kong",
+      "Liang Lyu",
+      "Saurabh Amin",
+      "Amine Bennouna",
+      "Daniel Huttenlocher",
+      "Asuman Ozdaglar"
+     ],
+     "date": "2026-11-04",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Models human-AI decision-making with correlation neglect and trust; workers put only a quarter of Bayes-rational weight on AI advice, and more capable AI can reduce accuracy.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.06855v1",
+     "title": "Regression with Many Generated Controls",
+     "authors": [
+      "Timothy Christensen",
+      "Daniel Vebman"
+     ],
+     "date": "2026-11-04",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Shows that with many AI/ML-generated proxies for a latent control, regression can consistently estimate causal parameters without validation data, and compares the estimands of alternative approaches.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.06696v1",
+     "title": "You Know What You Will Like: People Predict Their Own Ratings Better Than Recommender Systems",
+     "authors": [
+      "Zihan Chen",
+      "Lei Nico Zheng",
+      "Di Zhu"
+     ],
+     "date": "2026-11-04",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "People predict their own movie ratings better than recommender systems, and adding self-forecasts cuts out-of-sample error by 26%.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.06687v1",
+     "title": "LifeVal: Evaluating AI Model Performance on Personalized Agentic Consumer Tasks",
+     "authors": [
+      "Jenny Yang",
+      "Elizabeth Proehl",
+      "Anjan Bharadwaj",
+      "Emily Fan",
+      "Charlotte Cole",
+      "James Kim",
+      "Noam Brown",
+      "Phoebe Thacker",
+      "Amelia Glaese",
+      "Tejal Patwardhan"
+     ],
+     "date": "2026-11-04",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Introduces LifeVal, a benchmark of personalized agentic consumer tasks weighted by a survey estimating $1.7 trillion annual willingness-to-pay for a digital superassistant.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.06116v1",
+     "title": "The Harness Is the Model: Agent Scaffolding Changes a Fixed LLM's Compliance with Banking Conduct Rules, Unevenly Across Models",
+     "authors": [
+      "Mehmet Murat Huyut"
+     ],
+     "date": "2026-11-04",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Agent harness design shifts a fixed LLM's compliance with banking conduct rules by up to 11.5 points for some models, and a same-model reviewer reduces violations.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.05835v1",
+     "title": "Pathwise-Budgeted LLM Routing: Online Allocation with K-Bit Tail-Cost Learning",
+     "authors": [
+      "Hanzhang Qin",
+      "Sophie H. Yu",
+      "Yuewei Zhang",
+      "Zhi-Hai Zhang"
+     ],
+     "date": "2026-11-04",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Proposes a budget-aware contextual bandit policy for routing tasks across LLMs, solving more than twice as many tasks as baselines at tight budgets and beating a commercial router.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
+    }
+   ]
+  },
+  {
    "date": "2026-11-03",
    "papers": [
     {
@@ -59,6 +196,37 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-04"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.05701v1",
+     "title": "Learning to Design Information",
+     "authors": [
+      "Ce Li",
+      "Tao Lin"
+     ],
+     "date": "2026-11-03",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Builds manipulation-robust learning algorithms letting information designers such as LLMs or platforms learn receivers' beliefs with fast no-regret convergence.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.05553v1",
+     "title": "Decision Models as Scalable Economic Surrogates that Capture Human Variation",
+     "authors": [
+      "Maxime Saxena",
+      "Fabio Caccioli",
+      "R. Maria del Rio-Chanona"
+     ],
+     "date": "2026-11-03",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Decision Models reproduce human response variation in economic surveys, games and experiments better than LLMs, at roughly ten times the speed and much lower cost.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
     },
     {
      "id": "http://arxiv.org/abs/2611.04119v1",
@@ -379,6 +547,22 @@
   {
    "date": "2026-10-31",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.05417v1",
+     "title": "Organizing Intelligence",
+     "authors": [
+      "Alex Imas",
+      "Andrew Koh",
+      "Shane Legg"
+     ],
+     "date": "2026-10-31",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Models AI and humans sorting into firms; improved AI coordination can break firm-size limits, causing a shift to concentrated AI-heavy firms with gradual or sudden employment effects.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-05"
+    },
     {
      "id": "http://arxiv.org/abs/2611.01226v1",
      "title": "Learning about Markets from Models: Evidence from an AI Hiring Platform",

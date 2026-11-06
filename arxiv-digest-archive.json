@@ -1,6 +1,53 @@
 {
  "days": [
   {
+   "date": "2026-11-05",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.07667v1",
+     "title": "Who Should Know What? Empirical Information Design for Multi-Agent LLM Economies",
+     "authors": [
+      "Mete Erdogan",
+      "Mirac Suzgun",
+      "Aneesh Pappu",
+      "Guowei Xu",
+      "Batu El",
+      "Andrew A. Schoen",
+      "Furong Huang",
+      "John P. Dickerson",
+      "Mert Pilanci",
+      "James Zou"
+     ],
+     "date": "2026-11-05",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Experiments with ten frontier LLMs in trade, bargaining and double auctions show finer information disclosure has model-dependent effects, with full disclosure causing market breakdown and welfare losses in double auctions.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-06"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.07650v1",
+     "title": "What the Middleman Delivers: Answer Behavior, Tool Permissions, and Billed Usage in LLM API Relays",
+     "authors": [
+      "Xiaodong Wu",
+      "Zhimin Zhao",
+      "Qi Li",
+      "Chaklam Cheong",
+      "Xiangman Li",
+      "Jianbing Ni"
+     ],
+     "date": "2026-11-05",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Audit of 20 LLM API relays finds behavioural differences, especially among cheap relays, and inflated input-token billing at some services.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-06"
+    }
+   ]
+  },
+  {
    "date": "2026-11-04",
    "papers": [
     {
@@ -49,6 +96,22 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-05"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.07249v1",
+     "title": "Double Machine Learning for Panel Data: Identification, Specification, and a Bank Regulation Effect",
+     "authors": [
+      "Ali Habibnia",
+      "Esfandiar Maasoumi",
+      "Gaurav Shah"
+     ],
+     "date": "2026-11-04",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Develops double machine learning for panel data and applies it to the 2018 US bank regulation, showing estimates are sensitive to specification and overlap.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-06"
     },
     {
      "id": "http://arxiv.org/abs/2611.06855v1",

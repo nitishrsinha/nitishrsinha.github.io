@@ -1,6 +1,114 @@
 {
  "days": [
   {
+   "date": "2026-11-06",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.09399v1",
+     "title": "Artificial Shoppers and Attention Competition",
+     "authors": [
+      "Xiaomeng Guo",
+      "Fasheng Xu",
+      "Xiaoli Zhang"
+     ],
+     "date": "2026-11-06",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Models AI shopping assistants and delegated agents on a platform, showing assistance can soften price competition and leave some consumers worse off despite accurate recommendations (an alignment paradox).",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-09"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.09870v1",
+     "title": "AI Exposure and the Changing Responsibilities in Job Postings",
+     "authors": [
+      "Dora Zhao",
+      "Lin Ai",
+      "Pranav Khadpe",
+      "Siddharth Suri",
+      "Scott Counts"
+     ],
+     "date": "2026-11-06",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "In 50,000 job postings, AI-exposed activities decline mildly in prevalence and increasingly come paired with explicit AI-related responsibilities.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-09"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.09730v1",
+     "title": "What to Delegate, What to Preserve: Human Preferences for Agentic AI Across Everyday Life and Work",
+     "authors": [
+      "Sarah Wheeler",
+      "Veronica Rammouz",
+      "Yaoyao Qian",
+      "Zexuan Liu",
+      "Mengyi Wei",
+      "Anthony Rios",
+      "Tianzhi He",
+      "Kyrie Zhou"
+     ],
+     "date": "2026-11-06",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Survey of 289 US adults finds trust, expected savings and prior use raise preference for delegating tasks to AI agents, while fulfillment concerns reduce it.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-09"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.08999v1",
+     "title": "Capital Efficiency, Isolation, Risk, and Ruin in Generative AI Inference Serving Infrastructure",
+     "authors": [
+      "Renée St. Amant",
+      "Anjaly Parayil",
+      "Ankur Mallick",
+      "Victor Rühle"
+     ],
+     "date": "2026-11-06",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Argues workload isolation is a fleet-level lever to improve the capital efficiency of capital-intensive generative AI inference serving, also informing pricing policy.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-09"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.08995v1",
+     "title": "Same Facts, Different Remedy: Linguistic Profiling and Arbitrariness in LLM and System One Decisions",
+     "authors": [
+      "Colin Priest"
+     ],
+     "date": "2026-11-06",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "LLM remedy decisions on consumer financial complaints show small style-based gaps favoring higher-SES writing, with individual decisions flipping 2.6-6.3% of the time.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-09"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.08839v1",
+     "title": "Functional Dependency beyond Similarity: Hierarchical Decomposition of Training Data Attribution in Music Generative Models",
+     "authors": [
+      "Changheon Han",
+      "Hugh Xuechen Liu",
+      "Ashkan Panahi",
+      "Kıvanç Tatar"
+     ],
+     "date": "2026-11-06",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Decomposes training data attribution in music generative models into global, group and specific influence, informing remuneration of training data contributors.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-09"
+    }
+   ]
+  },
+  {
    "date": "2026-11-05",
    "papers": [
     {
@@ -44,6 +152,22 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-06"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.08730v1",
+     "title": "Structuring Survey Histories for LLM Digital Twins: A Controlled Study of Background, Decision Procedure, and Evaluation Profiles",
+     "authors": [
+      "Iris Ye",
+      "Tianze Deng",
+      "Ozan Candogan"
+     ],
+     "date": "2026-11-05",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Structuring survey histories into background, decision procedure and evaluation profiles modestly improves LLM digital twins' prediction of individual responses, including pricing tasks.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-09"
     }
    ]
   },

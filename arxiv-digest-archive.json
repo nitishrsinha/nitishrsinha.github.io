@@ -1,8 +1,248 @@
 {
  "days": [
   {
+   "date": "2026-11-12",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.16471v1",
+     "title": "Accuracy Is Not Welfare: Evaluating AI Buyers under Strategic Price Complexity in a Synthetic Duopoly",
+     "authors": [
+      "Ning Jiaqu"
+     ],
+     "date": "2026-11-12",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "In a synthetic duopoly, more accurate AI buying agents do not necessarily raise consumer welfare once seller incentives and equilibrium pricing responses are considered.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.17098v1",
+     "title": "Speed-to-Power Dominates Energy Costs for AI Data Centers: Technoeconomic Analysis of Powering AI in the Continental United States",
+     "authors": [
+      "Alex C. Newkirk",
+      "Daniel L. Gerber",
+      "Erica R. H. Fuchs",
+      "Alex Hubbard",
+      "M. Granger Morgan",
+      "Arman Shehabi",
+      "Sarah J. Smith",
+      "Constantine Samaras"
+     ],
+     "date": "2026-11-12",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Valuing forgone compute from slow deployment, DC-coupled solar-plus-storage microgrids are the cheapest power option for AI data centers in 85% of US locations.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.16318v1",
+     "title": "Benchmarking AI risk behaviors",
+     "authors": [
+      "Luhan Mikaelson",
+      "Robert Adragna",
+      "Emmett Brosowsky",
+      "Hayley Clatterbuck"
+     ],
+     "date": "2026-11-12",
+     "theme": "Other",
+     "score": 4,
+     "summary": "Newer LLMs are more stable, consistent and risk neutral in risk-taking decisions, increasingly using expected value maximization.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.16095v1",
+     "title": "Data-center growth impacts household electricity costs more through wholesale prices than through grid reinforcement",
+     "authors": [
+      "Lingdong Zhou",
+      "Wenjia Xia",
+      "Jiyu Wang",
+      "Fei Ding",
+      "Xiangqi Zhu"
+     ],
+     "date": "2026-11-11",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Announced Texas data centers could raise residential electricity costs by 1.64 cents/kWh, mostly via higher wholesale prices rather than transmission charges, depending on siting and cost allocation.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.15371v1",
+     "title": "From the firm- to the application-level: A new typology of AI use in organisations",
+     "authors": [
+      "Fulvio Castellacci"
+     ],
+     "date": "2026-11-11",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Proposes an application-level typology of firm AI use along novelty, sourcing, objective and technology, highlighting neglected types like co-invention and internalisation.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.15017v1",
+     "title": "Beyond Named Mechanisms: Economic Institutions as a Design Space for Artificial Agents",
+     "authors": [
+      "Nikolos Gurney",
+      "Fred Morstatter"
+     ],
+     "date": "2026-11-11",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Argues economic institutions for AI agents form a larger design space, charting institutions as typed structures and simulating alternative institutionalizations of agent copying.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.15515v1",
+     "title": "Incentive-Responsive Agents: A Principal-Agent Framework, Metric Suite, and Runtime Architecture for Long-Lived Personal AI Agents",
+     "authors": [
+      "Jipu Su"
+     ],
+     "date": "2026-11-11",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "A principal-agent framework for AI agents shows prompt-level incentives have no effect while runtime resource contracts raise hard-task success at higher cost.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.14974v1",
+     "title": "Who Moved the Frontier? Paying Open Frontier Challenges with Free Identities",
+     "authors": [
+      "Luca Zanolini",
+      "Duc V. Le"
+     ],
+     "date": "2026-11-11",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Analyses payment rules for open challenges with free identities including AI agents, showing progress-based pay resists Sybil splitting and proposing fees and royalties.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.16058v1",
+     "title": "Human Capital in Context: What Employment Survival Reveals About Worker-Firm Match",
+     "authors": [
+      "Jung Ho Choi",
+      "Mario Milone"
+     ],
+     "date": "2026-11-11",
+     "theme": "Labor & productivity",
+     "score": 3,
+     "summary": "A neural two-tower measure of worker-firm match quality predicts separations, wages, firm growth, patents and mover destinations using data on 101 million workers.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.16028v1",
+     "title": "Scaling public input on AI policy with pluralistic agents",
+     "authors": [
+      "Jacy Reese Anthis",
+      "Ken Burke",
+      "David Madras",
+      "Crystal Qian",
+      "Meredith Ringel Morris",
+      "Logan Cross",
+      "Caroline Pantofaru",
+      "Utsav Prabhu"
+     ],
+     "date": "2026-11-11",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "AI agent representatives deliberating on AI policy shift outcomes toward personas' preferences; participants found them useful and fair but preferred direct participation.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.15911v1",
+     "title": "Smart Model Routing for Order-of-Magnitude LLM Cost Reduction",
+     "authors": [
+      "Hesham Elbakoury",
+      "Deep Shah",
+      "Ankur Sharma"
+     ],
+     "date": "2026-11-11",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Develops a cost-quality optimization framework for routing queries across LLMs, showing calibrated routing can cut inference cost roughly tenfold under stated pricing assumptions.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.15102v1",
+     "title": "One Fabrication Is Enough: A Fake News Article Changes the Forecasts of LLM Forecasting Systems",
+     "authors": [
+      "Zeyu Zhang",
+      "Bradly C. Stadie"
+     ],
+     "date": "2026-11-11",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "A single fabricated news article reverses 74-82% of opposing LLM forecasts on stock and prediction-market questions, while barely changing average accuracy.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.15009v1",
+     "title": "From Forecasting to World Modeling: Can Temporal Foundation Models Recover Causal Response?",
+     "authors": [
+      "Juwon Hong",
+      "Minha Hwang",
+      "Venkatesh Shankar"
+     ],
+     "date": "2026-11-11",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Foundation models' forecast accuracy does not imply accurate price-effect estimates, and raw instruments can worsen their causal error under confounding.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    }
+   ]
+  },
+  {
    "date": "2026-11-10",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.14708v1",
+     "title": "The Rebundling of Freelance Work in the AI Age",
+     "authors": [
+      "Caroline Chin",
+      "Shagun Kala",
+      "Nadav Kunievsky",
+      "Teng Liu",
+      "Alex Martin Richmond",
+      "Carl Shan"
+     ],
+     "date": "2026-11-10",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Tasks common in ChatGPT lose share on Upwork while AI-related postings bundle new task combinations into larger, higher-budget projects with similar hourly rates.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-13"
+    },
     {
      "id": "http://arxiv.org/abs/2611.14385v1",
      "title": "Semiparametric Inference in Panel Data with Interactive and High-dimensional Confounding",

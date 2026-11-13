@@ -115,6 +115,37 @@
         }
       ],
       "deductions": "Deductions"
+    },
+    {
+      "id": "case2",
+      "title": "Case 2: Martingale Asset Management (group)",
+      "due": "2026-11-09T12:00-05:00",
+      "workbook": "case2_grades.xlsx",
+      "sheet": "Case 2 grades",
+      "outOf": 10,
+      "parts": [
+        {
+          "label": "Q1: Martingale's edge and process",
+          "column": "Q1: edge and process (2.5)",
+          "points": 2.5
+        },
+        {
+          "label": "Q2: 130/30 vs long-only and market-neutral",
+          "column": "Q2: 130/30 vs long-only/MN (2.5)",
+          "points": 2.5
+        },
+        {
+          "label": "Q3: Low volatility, 130/30 and tracking error",
+          "column": "Q3: low vol, 130/30, TE (2.5)",
+          "points": 2.5
+        },
+        {
+          "label": "Q4: Persistence and data mining",
+          "column": "Q4: persistence, data mining (2.5)",
+          "points": 2.5
+        }
+      ],
+      "deductions": "Deductions"
     }
   ]
 }

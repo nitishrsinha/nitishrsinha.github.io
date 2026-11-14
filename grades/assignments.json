@@ -146,6 +146,32 @@
         }
       ],
       "deductions": "Deductions"
+    },
+    {
+      "id": "ex5",
+      "title": "Exercise 5: A bad afternoon with a sloppy teammate's notebook",
+      "due": "2026-11-30T12:00-05:00",
+      "workbook": "week5_grades.xlsx",
+      "sheet": "Week 5 grades",
+      "outOf": 10,
+      "parts": [
+        {
+          "label": "Six bugs found and fixed",
+          "column": "Six bugs found and fixed (6)",
+          "points": 6
+        },
+        {
+          "label": "Predictions and before/after",
+          "column": "Predictions and before/after (2)",
+          "points": 2
+        },
+        {
+          "label": "Closing questions",
+          "column": "Closing questions (2)",
+          "points": 2
+        }
+      ],
+      "deductions": "Deductions"
     }
   ]
 }

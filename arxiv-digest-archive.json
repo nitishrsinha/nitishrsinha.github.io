@@ -1,8 +1,102 @@
 {
  "days": [
   {
+   "date": "2026-11-13",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.18493v1",
+     "title": "TradeGauntlet: Evaluating Compliance Controls for Autonomous Trading Agents",
+     "authors": [
+      "Sandip Nandi",
+      "Aishwarya Bose",
+      "Apurba Bose",
+      "Soovadeep Bakshi"
+     ],
+     "date": "2026-11-13",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Simulator evaluating compliance controls for LLM trading agents finds gates eliminate self-match alerts but reduce fills, and searches find split-order schedules evading conduct rules.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.17933v1",
+     "title": "OutfitterBench: Evaluating LLM Agents on Long-Horizon Resource Allocation and Commitment Coordination",
+     "authors": [
+      "Jie Huang",
+      "Yuecheng Hong",
+      "Yao Chen",
+      "Shengding Jiao",
+      "Xudong Liu",
+      "Qiang Ye"
+     ],
+     "date": "2026-11-13",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Benchmark of LLM agents running a rental business over 200 days finds most frontier models underperform a simple rule-based baseline in resource allocation and commitment management.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.17914v1",
+     "title": "DOCKET: A Pluralistic Benchmark for Evaluating AI-Assisted Policy Feedback in U.S. Rulemaking",
+     "authors": [
+      "Alexander Spangher",
+      "Charlotte Peale",
+      "Sílvia Casacuberta",
+      "Victor Y. Wu",
+      "Mirac Suzgun",
+      "Olivia H. Martin",
+      "Dan Bateyko",
+      "Cassandra Handan-Nader",
+      "Diyi Yang",
+      "Sanmi Koyejo",
+      "Daniel E. Ho"
+     ],
+     "date": "2026-11-13",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Builds a dataset of 42.3M US federal rulemaking comments and finds only 18-30% of LLM-generated feedback aligns with real human comments, with models tending to agree with government.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-16"
+    }
+   ]
+  },
+  {
    "date": "2026-11-12",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.17530v1",
+     "title": "AI and the Two Margins of Work: Why Job Losses Show Up Before Job Creation",
+     "authors": [
+      "Mark Esposito",
+      "Liu Zhang"
+     ],
+     "date": "2026-11-12",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Models AI acting on job destruction and creation margins, showing payroll statistics record displacement before new-firm job creation and thus overstate AI-driven displacement for years.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.17515v1",
+     "title": "A Push Down the Mountain: Framing Effects and Internal State Interventions on Collusive Behavior in a Long-Horizon LLM Agent",
+     "authors": [
+      "Harrison C. Margolin"
+     ],
+     "date": "2026-11-12",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "In a silver-fixing market simulation, loss and blame framing raised an LLM agent's collusion participation substantially, while injected internal states shifted collusion in the opposite direction.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-16"
+    },
     {
      "id": "http://arxiv.org/abs/2611.16471v1",
      "title": "Accuracy Is Not Welfare: Evaluating AI Buyers under Strategic Price Complexity in a Synthetic Duopoly",
@@ -54,6 +148,20 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.17578v1",
+     "title": "Orthogonal Scores and Double/Debiased Machine Learning for Possibly Misspecified GMM",
+     "authors": [
+      "Byunghoon Kang"
+     ],
+     "date": "2026-11-12",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Develops misspecification-robust Neyman orthogonal scores for GMM, enabling valid double/debiased machine learning inference when moment conditions fail.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-16"
     }
    ]
   },

@@ -1,8 +1,232 @@
 {
  "days": [
   {
+   "date": "2026-11-16",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.20561v1",
+     "title": "When Better Artificial Intelligence Widens the Adoption Gap in Health Care",
+     "authors": [
+      "Jonas Fooken",
+      "Ali Furkan Kalay",
+      "Metin Uyanik"
+     ],
+     "date": "2026-11-16",
+     "theme": "Policy & regulation",
+     "score": 5,
+     "summary": "Model shows providers' gains from AI adoption rise then fall with AI capability, so provider influence causes under-adoption of autonomous AI and excessive review requirements relative to patient optimum.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.21207v1",
+     "title": "Who Is the Regression About? Auditing AI-Labeled Treatments When Effects Differ",
+     "authors": [
+      "Ayman Farahat"
+     ],
+     "date": "2026-11-16",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "LLM-labeled treatments can bias regressions selectively; in LinkedIn postings the remote pay gap is understated by about 40 percent, fixable by stratified audits.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-15",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.20242v1",
+     "title": "Markets for Compute and Inference: Structure, Financing, and Risk Transfer",
+     "authors": [
+      "Dr Gabriel Borrageiro"
+     ],
+     "date": "2026-11-15",
+     "theme": "Financial markets",
+     "score": 5,
+     "summary": "Compute and inference markets: exchange contracts reference spot rental rates unlike revenue-driving long contracts, rental hedges don't hedge token costs, and hedging demand sits in credit agreements.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.20204v1",
+     "title": "Paying Creators for Training Data Can Increase AI Displacement",
+     "authors": [
+      "Lijuan Luo",
+      "Emaad Manzoor",
+      "Nathan Yang",
+      "Fan Yao"
+     ],
+     "date": "2026-11-15",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Model shows mandatory compensation for training data can lead AI to fully displace low-quality creators, raising creator payoffs and total surplus but lowering consumer surplus.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.19849v1",
+     "title": "NoLBERT-Calls: Reading Earnings Calls Without Hindsight",
+     "authors": [
+      "Kevin Foley",
+      "Jonathan Hartadi",
+      "Shivesh Prakash",
+      "Hino Wirachapong Suwanphibun",
+      "Swapnil Vatsal"
+     ],
+     "date": "2026-11-15",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "A historically pretrained encoder adapted to earnings calls without post-2023 text avoids look-ahead bias while matching hindsight-trained models in answer retrieval.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-14",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.19417v1",
+     "title": "Are Revealed Preferences All You Need for AI Alignment?",
+     "authors": [
+      "Joshua S. Gans",
+      "Richard T. Holden"
+     ],
+     "date": "2026-11-14",
+     "theme": "Policy & regulation",
+     "score": 4,
+     "summary": "Revealed preferences suffice for AI agents' actions but can lead to gathering the wrong evidence, which greater capability may turn into wrong actions.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.19530v1",
+     "title": "LLM Trading Agents Earn Beta, Not Alpha: A Look-Ahead-Free Benchmark",
+     "authors": [
+      "Jackson Wang"
+     ],
+     "date": "2026-11-14",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "In a look-ahead-free benchmark, LLM trading agents earned no significant alpha; factor exposure explained most returns and picks matched random same-sector stocks.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.19311v1",
+     "title": "Macro Control and Capability Evaluation of Black-Box World Models: A Two-Regime Framework for LLM-Agent Markets",
+     "authors": [
+      "Zhiyang Niu",
+      "Chuanjie Li",
+      "Huayuan Shen",
+      "Mengmeng Zhao",
+      "Jiajia Zhang"
+     ],
+     "date": "2026-11-14",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "Proposes soft macro-control and a two-regime framework to evaluate LLM-agent markets, showing announced reference paths shift realized market prices toward targets and measuring structural bias.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.19111v1",
+     "title": "Conditional Endorsement: Simulating How Adults with Different Skills Evaluate Canada's National AI Strategy",
+     "authors": [
+      "Dipto Das",
+      "Felix Leduc",
+      "Shion Guha"
+     ],
+     "date": "2026-11-14",
+     "theme": "Policy & regulation",
+     "score": 4,
+     "summary": "Generative agents built from PIAAC data endorse Canada's AI strategy policies but doubt personal benefit, especially low-digital-skill adults, citing participation costs and limited control.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.19068v1",
+     "title": "Corporate Stances on Societal Issues in the US",
+     "authors": [
+      "Jacob Conway",
+      "Andrew Hall",
+      "Magdalena Larreboure",
+      "Caroline Le Pennec",
+      "Vincent Pons",
+      "Anna Sun"
+     ],
+     "date": "2026-11-14",
+     "theme": "Other",
+     "score": 3,
+     "summary": "LLM-coded data show US corporate stance-taking rose fourfold, is mostly liberal, tracks media attention, and reflects leadership partisanship.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.19670v1",
+     "title": "Architecting the Corporate AI Infrastructure: The Evolving Roles of AI Governance Committees and Chief Ethics Officers",
+     "authors": [
+      "David Hason Rudd",
+      "Dennis Singh",
+      "Cesar Sanin",
+      "Bryn James"
+     ],
+     "date": "2026-11-14",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Proposes a corporate AI governance architecture built around chief ethics officers and cross-functional AI governance committees.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    }
+   ]
+  },
+  {
    "date": "2026-11-13",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.18872v1",
+     "title": "The opposing informational effects of AI trading",
+     "authors": [
+      "Hajime Shimao"
+     ],
+     "date": "2026-11-13",
+     "theme": "Financial markets",
+     "score": 5,
+     "summary": "Better AI trading can substitute public-data analysis for private information, reducing private information in prices while spreading sophisticated analysis, and lowering the benefit of upgrading.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.18915v1",
+     "title": "The Human Side of ML Engineering: Analyzing the Collaboration and Communication Skills in ML Job Postings",
+     "authors": [
+      "Aidin Azamnouri",
+      "Phuong Thao Le",
+      "Justus Bogner",
+      "Stefan Wagner"
+     ],
+     "date": "2026-11-13",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Analysis of 1,000 job postings finds collaboration and communication demanded in most ML roles, often implicitly, at levels similar to software engineering roles.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
     {
      "id": "http://arxiv.org/abs/2611.18493v1",
      "title": "TradeGauntlet: Evaluating Compliance Controls for Autonomous Trading Agents",
@@ -19,6 +243,57 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-16"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.18934v1",
+     "title": "Short Windows, Unmodelled Costs, Unknown Cutoffs: A Pre-Registered Evidence Audit of 91 LLM Trading Papers",
+     "authors": [
+      "Henry Zhang"
+     ],
+     "date": "2026-11-13",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Pre-registered audit of 91 LLM trading papers finds most ignore trading costs, use short test windows and fail to control look-ahead bias from training cutoffs.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.18998v1",
+     "title": "Model Maps: A Documentation Framework for Tracing Foundation Model Ancestry and Understanding AI Entanglement",
+     "authors": [
+      "Rachel Hong",
+      "Madeleine Grunde-McLaughlin",
+      "Sarah Cen",
+      "Jevan Hutson",
+      "Jamie Morgenstern",
+      "Tadayoshi Kohno"
+     ],
+     "date": "2026-11-13",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Model maps trace foundation model ancestry, recording 2,778 dependencies across 15 models and arguing transparency requirements should cover the AI supply chain.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.18908v1",
+     "title": "MemeEconomy: Do LLM Agents Trade Ethics for Survival?",
+     "authors": [
+      "Syed Nazmus Sakib",
+      "Nafiul Haque",
+      "Ahnaf Tahmid Manan",
+      "M M Mahabub Morshed",
+      "Shifat E. Arman"
+     ],
+     "date": "2026-11-13",
+     "theme": "Other",
+     "score": 3,
+     "summary": "In a simulated meme market, LLM agents choose harmful content more often under economic survival pressure, and moderation penalties fail to deter harm.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
     },
     {
      "id": "http://arxiv.org/abs/2611.17933v1",
@@ -148,6 +423,21 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-13"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.18785v1",
+     "title": "Setting Optimal Reserve Prices using Fine-Tuned Language Models",
+     "authors": [
+      "Joshua Foster",
+      "Fredrik Odegaard"
+     ],
+     "date": "2026-11-12",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Fine-tuning a language model on auction bid likelihood sets item-specific reserve prices, implying a 14.6% revenue gain in used-vehicle auctions.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-17"
     },
     {
      "id": "http://arxiv.org/abs/2611.17578v1",

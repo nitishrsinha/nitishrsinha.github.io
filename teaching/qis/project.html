@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backtesting Project - Quantitative Investment Strategies</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.65; max-width: 680px; margin: 0 auto; padding: 48px 24px; color: #2c2c2c; background-color: #ffffff; }
+        h1 { color: #1565c0; font-size: 1.5em; font-weight: 400; margin: 0 0 6px; }
+        .subtitle { color: #5a5a5a; margin-bottom: 32px; }
+        h2 { font-size: 1.1em; font-weight: 600; color: #1565c0; margin: 36px 0 4px; }
+        h3 { font-size: 0.8em; font-weight: 600; color: #888; margin: 20px 0 8px; text-transform: uppercase; letter-spacing: 0.08em; }
+        a { color: #1565c0; }
+        ul, ol { padding-left: 20px; }
+        li { margin-bottom: 6px; }
+        .due { border-left: 3px solid #1565c0; background: #f3f7fc; padding: 12px 16px; margin: 20px 0; }
+        table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 0.95em; }
+        th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #e5e5e5; vertical-align: top; }
+        th { color: #5a5a5a; font-weight: 600; }
+        td.pts { text-align: right; white-space: nowrap; }
+        nav a { margin-right: 16px; }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html">&larr; Course page</a></nav>
+    <h1>The Backtesting Project</h1>
+    <div class="subtitle">BUFN736 &middot; Individual project &middot; 20% of the course grade</div>
+
+    <div class="due">
+        <strong>Final submission due Saturday, December 12, 11:59 pm ET.</strong><br>
+        Presentations in class on Monday, Dec 7 and Wednesday, Dec 9.
+    </div>
+
+    <p>You replicate a published strategy, then test it where the authors didn&rsquo;t: after their sample ended. The question you answer at the end is the one a portfolio manager would ask: <em>would you put money into this today?</em></p>
+
+    <h2>This is an individual project</h2>
+    <p>Each student does and submits their own project. If you chose a paper with teammates for Exercise #4, you may keep that paper. But your code, your numbers, your write-up and your presentation must be your own. Talking about the paper with classmates is fine. Sharing code or results is not.</p>
+
+    <h2>Timeline</h2>
+    <table>
+        <tr><th>When</th><th>What</th></tr>
+        <tr><td>Mon, Nov 16</td><td>Exercise #4 due: your paper, its data pull and the stock-month panel. This is the foundation of the project.</td></tr>
+        <tr><td>Wed, Dec 2</td><td>Check-in, in class (not graded): bring your version of the paper&rsquo;s main table, next to the paper&rsquo;s.</td></tr>
+        <tr><td>Mon, Dec 7 &amp; Wed, Dec 9</td><td>Presentations, 5 minutes each plus 1 minute of questions. The schedule will be posted the week before.</td></tr>
+        <tr><td><strong>Sat, Dec 12, 11:59 pm ET</strong></td><td><strong>Final notebook and write-up due by email.</strong></td></tr>
+    </table>
+
+    <h2>What to do</h2>
+    <ol>
+        <li><strong>Replicate the main result.</strong> Rebuild the paper&rsquo;s main table: the portfolio sort, long-short spread, factor or Fama-MacBeth slope. Use the paper&rsquo;s sample period and screens. Put your numbers next to the paper&rsquo;s. Where they differ, say why, and what you tried to close the gap. A careful replication that explains a gap is worth more than a matching table you can&rsquo;t explain.</li>
+        <li><strong>Test it after the sample ended.</strong> Extend the backtest through December 2025 (or the latest month in CRSP). Report the average monthly long-short return, its t-statistic and the Sharpe ratio in two periods: the paper&rsquo;s sample, and the months after it. Did the strategy keep working? The box below explains how to read the answer.</li>
+        <li><strong>Give a verdict.</strong> Would you put money into this strategy today? What result would make you stop?</li>
+    </ol>
+
+    <div class="due">
+        <strong>Background: the McLean&ndash;Pontiff test</strong>
+        <p>McLean and Pontiff, <em>Does Academic Research Destroy Stock Return Predictability?</em> (Journal of Finance, 2016; <a href="week03/index.html">Week 3</a>, Reading #14.5), ask what happens to a published anomaly after the paper&rsquo;s sample ends. They study 97 predictors and split each one&rsquo;s history into three periods:</p>
+        <ul>
+            <li><strong>In sample:</strong> the months the authors used.</li>
+            <li><strong>Out of sample, before publication:</strong> after the sample ends but before the paper is published. Investors don&rsquo;t know about the signal yet. A drop here points to data mining or luck: part of the in-sample return was never real.</li>
+            <li><strong>After publication:</strong> once the paper is public. An extra drop here points to investors learning from the paper and trading the signal away.</li>
+        </ul>
+        <p>Their test is one regression: the monthly long-short return on a dummy for the out-of-sample months and a dummy for the post-publication months. The constant is the in-sample average; each dummy&rsquo;s coefficient is how much the return falls in that period. Across their 97 predictors, returns are about 26% lower out of sample and about 58% lower after publication.</p>
+        <p>Use this to read your step 2. If your strategy&rsquo;s return fell after the sample ended, that is the typical pattern, not a failed replication. The question is how much it fell, and whether what is left is still worth trading. Running the regression yourself is optional.</p>
+    </div>
+
+    <h2>What to submit</h2>
+    <p>Email both files by <strong>Saturday, Dec 12, 11:59 pm ET</strong>, with the subject line <em>BUFN736 Project &ndash; Your Name</em>:</p>
+    <ul>
+        <li><strong>A Colab notebook</strong> that runs from top to bottom. It reads your raw WRDS files from your Google Drive, as in Exercise #4. Share the Drive folder with view access, and put the link in the first cell. Every number in your write-up and slides must come from this notebook.</li>
+        <li><strong>A write-up of at most 5 pages (PDF)</strong>, tables and figures included. Write it for a portfolio manager who has not read the paper: what the signal is, whether it replicated, whether it kept working after the sample ended, and your verdict.</li>
+    </ul>
+    <p>Also send your presentation slides by noon on the day you present.</p>
+    <p>Late projects receive at most 50% credit, as with exercises. Grades are due right after the term ends, so there are no extensions.</p>
+
+    <h2>Grading (20 points)</h2>
+    <table>
+        <tr><th>Part</th><th class="pts">Points</th></tr>
+        <tr><td>Replication of the main result, with gaps explained</td><td class="pts">7</td></tr>
+        <tr><td>Performance after the sample ended</td><td class="pts">5</td></tr>
+        <tr><td>Write-up and verdict</td><td class="pts">3</td></tr>
+        <tr><td>Presentation</td><td class="pts">5</td></tr>
+    </table>
+
+    <h2>Rules</h2>
+    <ul>
+        <li>No look-ahead: every characteristic must be known on the date you trade on it (<a href="week02/index.html">Week 2</a>).</li>
+        <li>You may use AI tools, as the syllabus allows. Say in the notebook how you used them. You must be able to explain any line of your code and any number in your write-up if asked.</li>
+        <li>If your signal is in Chen and Zimmermann&rsquo;s Open Source Asset Pricing library (Reading #24), build it yourself from WRDS. Use theirs only as a check.</li>
+        <li>Questions: ask in class or by email.</li>
+    </ul>
+</body>
+</html>

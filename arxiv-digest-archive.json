@@ -1,6 +1,114 @@
 {
  "days": [
   {
+   "date": "2026-11-17",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.22793v1",
+     "title": "Does the AI Reviewer Alleviate or Aggravate the Maintenance Burden? Evidence from GitHub Copilot Reviewer",
+     "authors": [
+      " Feiyang",
+      " Xu",
+      "Poonacha K. Medappa",
+      "Murat M. Tunc"
+     ],
+     "date": "2026-11-17",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "GitHub Copilot Reviewer raised PR volume and maintainer workload; human contributions fell while bot PRs persisted, increasing the maintenance burden despite faster review of human PRs.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-18"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.22033v1",
+     "title": "Thinking Harder Doesn't Lead to Better Choices: Reasoning Effort Increases the Confidence but Not the Correctness of LLM Shopping Agents",
+     "authors": [
+      "Adi Krishnamoorthy",
+      "X. Y. Han"
+     ],
+     "date": "2026-11-17",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "More reasoning effort raises LLM shopping agents' confidence but not purchase quality; models are poorly calibrated and share correlated errors, often choosing the same wrong product.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-18"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.22177v1",
+     "title": "The Only Edge Was Memorized in Training: LLM Trading Agents Around Earnings and Bad News",
+     "authors": [
+      "Jackson Wang"
+     ],
+     "date": "2026-11-17",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "LLM trading agents around earnings and bad-news drops beat no simple benchmarks; the only edge came from memorized training data.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-18"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.23174v1",
+     "title": "Inference after coding agents",
+     "authors": [
+      "Florian Gunsilius",
+      "David Van Dijcke",
+      "Kaspar Wüthrich"
+     ],
+     "date": "2026-11-17",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "AI coding agents produce spurious significant findings 54-98% of the time on null data; a replay-on-subsamples correction restores valid inference.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-18"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.22277v1",
+     "title": "Explaining Realized Returns: Roll's $R^2$ 40 Years Later",
+     "authors": [
+      "Bryan Kelly",
+      "Yinan Su",
+      "Chao Zhang"
+     ],
+     "date": "2026-11-17",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Generative AI-extracted reasons from WSJ market summaries explain 30-40% of out-of-sample equity return variation, versus under 10% for conventional variables.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-18"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.22238v1",
+     "title": "Context Has a Price: Adding and Removing Context for LLM Coding Agents under Prefix Caching",
+     "authors": [
+      "Zerui Yang",
+      "Miaomiao Dong",
+      "Quan Xue",
+      "Chaorui Zhang",
+      "Xuanyu Zheng",
+      "Xiyuan Wang",
+      "Haolin Ruan",
+      "Xueyan Niu",
+      "Guangcheng Song",
+      "Weixi Zhang",
+      "Wei Han",
+      "Bo Bai"
+     ],
+     "date": "2026-11-17",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Under prefix-caching token prices, adding retrieved context raises coding-agent costs 33-42% without better resolution, and context removal can raise or cut costs.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-18"
+    }
+   ]
+  },
+  {
    "date": "2026-11-16",
    "papers": [
     {
@@ -18,6 +126,23 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-17"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.21948v1",
+     "title": "Honest Brokers in AI Regulation: How Public Comments Introduce Evidence to Regulators",
+     "authors": [
+      "Sarah Tran",
+      "Anna-Maria Gueorguieva",
+      "Eva Maxfield Brown",
+      "Nicholas Weber"
+     ],
+     "date": "2026-11-16",
+     "theme": "Policy & regulation",
+     "score": 4,
+     "summary": "Analysing 2,664 public comments on US AI regulations, businesses supply less evidence than government, academic and civil society commenters, complicating narratives of information capture through comments.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-18"
     },
     {
      "id": "http://arxiv.org/abs/2611.21207v1",

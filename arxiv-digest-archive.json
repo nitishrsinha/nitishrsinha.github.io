@@ -1,8 +1,76 @@
 {
  "days": [
   {
+   "date": "2026-11-18",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.24071v1",
+     "title": "Measuring and Charging for Retained Context in Long-Context LLM Services",
+     "authors": [
+      "Yi Lu",
+      "Qianshi Lin",
+      "Yumeng Yang",
+      "Hongxia Wang"
+     ],
+     "date": "2026-11-18",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Proposes a framework for billing retained context in LLM services, showing caching cuts compute costs greatly and alternative tariffs reduce extreme session charges by 31-42%.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-19"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.24028v1",
+     "title": "Algorithmic Market Making Can Lead to Rough Volatility Through the Order Book",
+     "authors": [
+      "Sai Niranjan Ramachandran"
+     ],
+     "date": "2026-11-18",
+     "theme": "Financial markets",
+     "score": 3,
+     "summary": "Algorithmic market makers that adjust quotes via gradient-like rules on heterogeneous horizons generate power-law order-flow memory and rough volatility, supported by Binance data.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-19"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.24039v1",
+     "title": "A Capability Framework for Evaluating Agentic AI Platforms in Regulated Enterprises",
+     "authors": [
+      "Abbas Raza Ali",
+      "Muhammad Ajmal Siddiqui",
+      "Moona Zahid"
+     ],
+     "date": "2026-11-18",
+     "theme": "Other",
+     "score": 3,
+     "summary": "A bank's evaluation of ten agentic AI platforms found demonstration-based scoring dominated by a halo effect and proposes a gate-then-score procurement protocol.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-19"
+    }
+   ]
+  },
+  {
    "date": "2026-11-17",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.23354v1",
+     "title": "AI, Specialization, and the Organization of Knowledge Work: Evidence from Legal Services",
+     "authors": [
+      "Liu Zhang",
+      "Mark Esposito",
+      "Isabel Yang"
+     ],
+     "date": "2026-11-17",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "AI raised self-representation in US federal courts by 6.6 points, while lawyer employment did not shift toward client firms and premium law firms raised revenue on flat hours, consistent with markup increases.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-19"
+    },
     {
      "id": "http://arxiv.org/abs/2611.22793v1",
      "title": "Does the AI Reviewer Alleviate or Aggravate the Maintenance Burden? Evidence from GitHub Copilot Reviewer",
@@ -19,6 +87,20 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-18"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.23613v1",
+     "title": "MANGO Arena: Same Seeds, Different Chains Evaluating LLM Agents in a Disrupted Supply Chain",
+     "authors": [
+      "Sara Amar"
+     ],
+     "date": "2026-11-17",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "LLM agents running supply-chain firms strongly amplified the bullwhip effect, rarely broke rules and never proposed collusion, but results were unstable across reruns, highlighting evaluation pitfalls.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-19"
     },
     {
      "id": "http://arxiv.org/abs/2611.22033v1",

@@ -86,6 +86,37 @@
       "deductions": "Deductions"
     },
     {
+      "id": "ex4",
+      "title": "Exercise 4: A first dig into the Backtesting Project",
+      "due": "2026-11-16T12:00-05:00",
+      "workbook": "week4_grades.xlsx",
+      "sheet": "Week 4 grades",
+      "outOf": 10,
+      "parts": [
+        {
+          "label": "Paper and target table",
+          "column": "Paper and target table (2.5)",
+          "points": 2.5
+        },
+        {
+          "label": "Signal and formula",
+          "column": "Signal and formula (2.5)",
+          "points": 2.5
+        },
+        {
+          "label": "Variable-to-source table",
+          "column": "Variable-to-source table (2.5)",
+          "points": 2.5
+        },
+        {
+          "label": "WRDS pull and stocks-per-month plot",
+          "column": "WRDS pull and stocks-per-month plot (2.5)",
+          "points": 2.5
+        }
+      ],
+      "deductions": "Deductions"
+    },
+    {
       "id": "case1",
       "title": "Case 1: Grantham, Mayo, Van Otterloo & Co., 2001 (group)",
       "due": "2026-11-02T12:00-05:00",

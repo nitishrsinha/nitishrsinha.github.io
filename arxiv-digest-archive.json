@@ -1,8 +1,178 @@
 {
  "days": [
   {
+   "date": "2026-11-19",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.26108v1",
+     "title": "Pareto-Optimal and Strategyproof Data-Sharing Between Competitors",
+     "authors": [
+      "Morgan Colin-Mourre",
+      "Felipe Garrido-Lucero",
+      "Patrick Loiseau"
+     ],
+     "date": "2026-11-19",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Characterizes Pareto-optimal, strategyproof data-sharing contracts among competing firms whose ML model quality drives market share, keeping relative shares constant while raising all firms' profits.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.25585v1",
+     "title": "AI-Driven Transformation of Digital Platform Work: A Task-Based Model for Measuring Labour Disruption and Vulnerability, with Early Evidence from Online Freelancing in Kenya",
+     "authors": [
+      "Farhan Latif"
+     ],
+     "date": "2026-11-19",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "A task-based model finds high AI disruption but lower livelihood vulnerability for Kenyan online freelancers, with surveys showing intensifying competition and strategic AI use.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.26050v1",
+     "title": "Studying AI Act Mentions: A first look at the impact of the European Union's AI regulation on Hugging Face",
+     "authors": [
+      "Anamaria Mojica-Hanke",
+      "Tessi Aigbovbiosa-Igbinovia",
+      "Steffen Herbold"
+     ],
+     "date": "2026-11-19",
+     "theme": "Policy & regulation",
+     "score": 4,
+     "summary": "Explicit AI Act references on Hugging Face are rare and mostly assign compliance responsibility rather than describe how compliance is achieved.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.26338v1",
+     "title": "Structural economic change under the digital transformation",
+     "authors": [
+      "Marco Dueñas",
+      "Antoine Mandel"
+     ],
+     "date": "2026-11-19",
+     "theme": "Growth & macro",
+     "score": 3,
+     "summary": "An agent-based global model shows digital productivity gains raise output but reshape production networks and create labour reallocation pressures, larger when digital inputs are embedded.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.25420v1",
+     "title": "Structural Fine-Tuning under Economic Restrictions",
+     "authors": [
+      "Yi Niu",
+      "Yuecheng Su",
+      "Ethan Yang"
+     ],
+     "date": "2026-11-19",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Structural fine-tuning with economic restrictions lowers predicted-risk error by 28-39% versus standard fine-tuning in a credit simulation.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.25393v1",
+     "title": "The Coevolution and Coexistence of Humans and AI",
+     "authors": [
+      "Andrew W. Lo",
+      "Chaoyi Zhao"
+     ],
+     "date": "2026-11-19",
+     "theme": "Other",
+     "score": 3,
+     "summary": "An evolutionary model shows natural selection can favor AI alignment with humans, but this advantage can vanish as AI becomes autonomous or human support dilutes.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.25985v1",
+     "title": "Law at the Speed of AI: Critical Legal Infrastructure for the Machine Age: Autonomy Under Law Architecture (AULA)",
+     "authors": [
+      "Natasha E Blycha",
+      "James Myint",
+      "Chen Feng",
+      "Dr Amani Soysa",
+      "Koshin Jama",
+      "Schellie-Jayne Price",
+      "Matthew Blycha"
+     ],
+     "date": "2026-11-19",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Proposes a legal architecture registering AI agents and data as legal objects tied to persons to close a liability and rights attribution gap.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.25404v1",
+     "title": "Toward a Science of AI Agent Societies",
+     "authors": [
+      "Geon Lee",
+      "Fanchen Bu",
+      "Soo Yong Lee",
+      "Sunwoo Kim",
+      "Kijung Shin"
+     ],
+     "date": "2026-11-19",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Proposes AI agent societies as a research object, defining core properties and behavior classes including economic behaviors.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    }
+   ]
+  },
+  {
    "date": "2026-11-18",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.25213v1",
+     "title": "Moral AI and the Erosion of Its Own Demand",
+     "authors": [
+      "Wallice Ao",
+      "Jiabin Wu"
+     ],
+     "date": "2026-11-18",
+     "theme": "Other",
+     "score": 5,
+     "summary": "An evolutionary model shows moral AI that commits users to cooperation erodes cooperative preferences, so its adoption eventually vanishes.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.25269v1",
+     "title": "AI-Induced Social Erosion: Using LLMs for Work Tasks Reduces Help-Seeking Intentions Towards Colleagues",
+     "authors": [
+      "Kevin Chow",
+      "Sophia Deng",
+      "Bowen He",
+      "Hanyi Min",
+      "Qiaosi Wang",
+      "Koustuv Saha",
+      "Vedant Das Swain"
+     ],
+     "date": "2026-11-18",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "A vignette experiment with 248 knowledge workers finds AI use reduces help-seeking toward colleagues, especially for brainstorming.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    },
     {
      "id": "http://arxiv.org/abs/2611.24071v1",
      "title": "Measuring and Charging for Retained Context in Long-Context LLM Services",
@@ -19,6 +189,39 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-19"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.25238v1",
+     "title": "Stability Bands for Feature Attribution: The Core, the Nucleolus and the Bargaining Set of Explained-Variance Games",
+     "authors": [
+      "Fernando Delbianco",
+      "Fernando Tohmé"
+     ],
+     "date": "2026-11-18",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Proposes core and nucleolus-based stability bands for ML feature attribution, showing Shapley coincides with prenucleolus in 2-additive games, applied to a hedonic price model.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.25218v1",
+     "title": "The American Medical Directory Panel: Comparing AI-Assisted and LLM Transcription with Manual Data Entry at Scale",
+     "authors": [
+      "Christian M. Dahl",
+      "Sophie Li",
+      "Rasmus Emil Nyholm",
+      "Maja U. Pedersen",
+      "Anthony Wray"
+     ],
+     "date": "2026-11-18",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "AI-assisted transcription of historical physician directories matches about 97-98% of manual records at a tiny fraction of the cost.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
     },
     {
      "id": "http://arxiv.org/abs/2611.24028v1",
@@ -225,6 +428,22 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-18"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.24970v1",
+     "title": "HireWatch: Evaluating LLM Compliance with U.S. Employment Law Under Contextual Pressure",
+     "authors": [
+      "Huy Nghiem",
+      "Maria Kostylew",
+      "Noam Kolt"
+     ],
+     "date": "2026-11-16",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "LLMs used in hiring increasingly select unlawful interview questions under contextual pressure; explicit legal prompts help but do not eliminate violations.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-20"
     },
     {
      "id": "http://arxiv.org/abs/2611.21207v1",

@@ -1,6 +1,28 @@
 {
  "days": [
   {
+   "date": "2026-11-20",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.27210v1",
+     "title": "The Rise of Agents and the Human Labor Market",
+     "authors": [
+      "Nicola Borri",
+      "Anton Cheremukhin",
+      "Yukun Liu",
+      "Aleh Tsyvinski"
+     ],
+     "date": "2026-11-20",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Firms more exposed to agentic AI token consumption cut job postings growth, about 2-5% per standard deviation, concentrated in non-senior roles.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-23"
+    }
+   ]
+  },
+  {
    "date": "2026-11-19",
    "papers": [
     {

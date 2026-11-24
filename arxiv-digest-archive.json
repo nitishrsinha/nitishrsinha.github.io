@@ -1,6 +1,169 @@
 {
  "days": [
   {
+   "date": "2026-11-23",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.31083v1",
+     "title": "AI-Assisted Programming and Labor Demand",
+     "authors": [
+      "Lindsey Raymond",
+      "Eleanor Wiske Dillon"
+     ],
+     "date": "2026-11-23",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Using procurement-cycle variation across 5,414 firms, GitHub Copilot adoption cuts technical hiring by 29%, concentrated in junior coding-heavy roles, shifting demand toward experienced workers.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.29971v1",
+     "title": "Selling Training Data",
+     "authors": [
+      "Jingmin Huang",
+      "Wei Zhao",
+      "Renjie Zhong"
+     ],
+     "date": "2026-11-23",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Studies optimal selling of training data to model-builders, showing a single posted price for a fully informative dataset is optimal under conditions.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.30200v1",
+     "title": "Adopting AI Technologies without Traps: A Multi-Agent Reinforcement Learning Framework",
+     "authors": [
+      "Jitong Yang",
+      "Avinash Reddy Mudireddy",
+      "Ziqing Lu",
+      "Huan Cai",
+      "Weiyu Xu"
+     ],
+     "date": "2026-11-23",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Develops a multi-agent reinforcement learning framework to model optimal AI adoption, including skill erosion, firm workforce structure and human-AI employment equilibria.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.31095v1",
+     "title": "Tradeoffs between objective outcomes and human enjoyment of work in human-AI task allocation",
+     "authors": [
+      "Katherine M. Collins",
+      "Elizabeth Mieczkowski",
+      "Raja Marjieh",
+      "Marlene Berke",
+      "Joshua B. Tenenbaum",
+      "Max Kleiman-Weiner",
+      "Ilia Sucholutsky",
+      "Thomas L. Griffiths"
+     ],
+     "date": "2026-11-23",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Experiments (N=800) show people allocate tasks between AI and humans by balancing performance with worker enjoyment; LLMs also deviate from purely objective allocation, heterogeneously.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.30950v1",
+     "title": "Vetoes and missed agreements in language-model bargaining",
+     "authors": [
+      "Fuad Ali"
+     ],
+     "date": "2026-11-23",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "In LLM multi-party bargaining with vetoes, showing proposers which groups gain raised mutually beneficial agreements from 6/60 to 31/60.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.30130v1",
+     "title": "When Does Optical Context Compression Pay Off? A Decode-Aware Cost Analysis of Reasoning VLMs",
+     "authors": [
+      "Ziqing Ge"
+     ],
+     "date": "2026-11-23",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "Shows rendering text as images makes reasoning VLMs generate 1.5-3.5x longer outputs, so optical compression can raise inference costs; derives a pricing-based break-even rule.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.29684v1",
+     "title": "But Can You Draw It Live? The Emergence of AI Duidus for Adjudicating Suspected Generative AI Use in Digital Art Commission Communities",
+     "authors": [
+      "Elise Chenxinran Shen",
+      "Dashiel Carrera",
+      "Michelle Annett",
+      "Daniel Wigdor"
+     ],
+     "date": "2026-11-22",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Interviews describe 'AI duidus', livestreamed drawing bets with monetary stakes used by art commission communities to adjudicate suspected generative AI use.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.28610v1",
+     "title": "Agent Money Benchmark: Can AI Agents Be Trusted to Spend Money?",
+     "authors": [
+      "Zhe Chen",
+      "Emma Hsieh",
+      "Vicky Fu"
+     ],
+     "date": "2026-11-21",
+     "theme": "Markets & competition",
+     "score": 4,
+     "summary": "Benchmark of AI agents spending real money on data purchases finds most models fell for seller traps, with estimated waste of $21-$71 per $100.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.29069v1",
+     "title": "Do LLM Agents Compromise Like Humans? Risk and Responsibility in Dyadic Decision-Making",
+     "authors": [
+      "Noah S. Okada",
+      "Ketika Garg",
+      "Wenning Deng",
+      "Dean Mobbs"
+     ],
+     "date": "2026-11-21",
+     "theme": "Other",
+     "score": 3,
+     "summary": "LLM agents converge toward partners' risky choices like humans but via different dynamics, with responsibility attribution decoupled from compromise.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
+    }
+   ]
+  },
+  {
    "date": "2026-11-20",
    "papers": [
     {
@@ -19,6 +182,20 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-23"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.28377v1",
+     "title": "Using the Tool That Replaces You: Generative AI and the Adoption Bind among Bangladeshi Platform Freelancers",
+     "authors": [
+      "Naim Bin Hasan"
+     ],
+     "date": "2026-11-20",
+     "theme": "Labor & productivity",
+     "score": 4,
+     "summary": "Interviews with 30 Bangladeshi freelancers reveal an 'adoption bind': individuals adopt generative AI to stay competitive while it lowers market prices, hitting entry-level work first.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
     }
    ]
   },
@@ -70,6 +247,36 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-20"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.28158v1",
+     "title": "Measuring and Teaching Language Model Agents to Act on Delayed Consequences",
+     "authors": [
+      "Shardul Bansal",
+      "Seth Schilbe",
+      "Jarrod Barnes"
+     ],
+     "date": "2026-11-19",
+     "theme": "Other",
+     "score": 3,
+     "summary": "In a wholesale business simulator, only 3 of 16 frontier LLM agents beat a fixed buying rule, often diagnosing problems without acting on them.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.28148v1",
+     "title": "SYLVA: Self-Correcting Multi-Agent Markets over Frozen LLMs via Escrow Settlement, Step-Level Fault Isolation, and Contextual Routing",
+     "authors": [
+      "Hui Zhao"
+     ],
+     "date": "2026-11-19",
+     "theme": "Markets & competition",
+     "score": 3,
+     "summary": "SYLVA market protocol with escrow and fault isolation makes multi-agent LLM markets self-correcting, resisting wrapper/Sybil gaming and preserving creator revenue.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-24"
     },
     {
      "id": "http://arxiv.org/abs/2611.26338v1",

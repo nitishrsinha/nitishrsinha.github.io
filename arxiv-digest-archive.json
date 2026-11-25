@@ -1,8 +1,127 @@
 {
  "days": [
   {
+   "date": "2026-11-24",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.32389v1",
+     "title": "AgentBank: Banking on Blockchain Agentic Payments",
+     "authors": [
+      "Yuexin Xiang",
+      "Martin Perešíni",
+      "Yuchen Lei",
+      "Yuquan Li",
+      "Yuanzhe Zhang",
+      "Andreas Deppeler",
+      "Tsz Hon Yuen",
+      "Shiping Chen",
+      "Qin Wang",
+      "Burkhard Stiller"
+     ],
+     "date": "2026-11-24",
+     "theme": "Financial markets",
+     "score": 4,
+     "summary": "AgentBank, a smart-contract banking layer for AI agent payments, cuts idle liquidity 52-77% and analyzes reserve policies and automated bank-run risks.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-25"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.33069v1",
+     "title": "Pragmatic Deeply Debiased ML",
+     "authors": [
+      "Victor Chernozhukov",
+      "Chengchun Shi"
+     ],
+     "date": "2026-11-24",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Proposes deeply debiased ML targeting second-order bias in DML, showing it equals DML with a post-hoc kernel-weighted regression update, often serving as a diagnostic.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-25"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.33050v1",
+     "title": "Worth the Wait? How Response Time and Streaming Shape Judgments of Generative AI Answers and Chatbot Engagement",
+     "authors": [
+      "Zihan Chen",
+      "Di Zhu",
+      "Lei Nico Zheng"
+     ],
+     "date": "2026-11-24",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Using randomized replays in a French chatbot arena, instantly shown stored answers lost 25.8 points of blind-vote win probability versus streamed ones; slower responses reduced follow-up engagement.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-25"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.32663v1",
+     "title": "Economic World Model",
+     "authors": [
+      "Qirui Mi",
+      "Yujia Ming",
+      "Bo Li",
+      "Haifeng Zhang"
+     ],
+     "date": "2026-11-24",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Proposes an economic world model linking learned household policies to a calibrated macro model, matching consumption distributions and helping an LLM agent plan better under shocks.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-25"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.32084v1",
+     "title": "The algorithmic behavioral sink: Modeling the transition to irreversible demographic collapse",
+     "authors": [
+      "Feng Yu"
+     ],
+     "date": "2026-11-24",
+     "theme": "Growth & macro",
+     "score": 3,
+     "summary": "A physics-inspired marriage market model argues mobile internet and AI as emotional substitutes raise barriers to pair-bonding, projecting possibly irreversible fertility collapse after 2040.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-25"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.31960v1",
+     "title": "Typical-query energy figures mislead institutional AI electricity demand",
+     "authors": [
+      "Nathan Garland",
+      "Ryan Heneghan"
+     ],
+     "date": "2026-11-24",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Typical per-query energy figures underestimate institutional LLM electricity use by about 3.4x today and 15x in a 2030 scenario.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-25"
+    }
+   ]
+  },
+  {
    "date": "2026-11-23",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.31518v1",
+     "title": "Burning the Bridge: Agentification and Domestic Value Added",
+     "authors": [
+      "Eduardo Levy Yeyati"
+     ],
+     "date": "2026-11-23",
+     "theme": "Growth & macro",
+     "score": 5,
+     "summary": "In a small open economy, replacing local work with foreign AI agents can lower domestic value added; Brazil-calibrated thresholds show local-service adoption hurts once supplier bargaining share exceeds about 0.15.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-25"
+    },
     {
      "id": "http://arxiv.org/abs/2611.31083v1",
      "title": "AI-Assisted Programming and Labor Demand",
@@ -86,6 +205,21 @@
      "ai": true,
      "model": "claude-opus-5-5",
      "added": "2026-11-24"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.31613v1",
+     "title": "Training decision models for simulating human respondents",
+     "authors": [
+      "Davood Wadi",
+      "Yu Ma"
+     ],
+     "date": "2026-11-23",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Training LLM decision models on historical choice microdata cuts treatment-effect error of synthetic respondents by 22% to 89% on held-out studies, outperforming larger off-the-shelf models.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-25"
     },
     {
      "id": "http://arxiv.org/abs/2611.30130v1",

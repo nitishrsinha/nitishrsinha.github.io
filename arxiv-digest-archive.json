@@ -1,8 +1,153 @@
 {
  "days": [
   {
+   "date": "2026-11-25",
+   "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.34271v1",
+     "title": "AI Misalignment and the Limits of Market Discipline",
+     "authors": [
+      "Gabor Pinter"
+     ],
+     "date": "2026-11-25",
+     "theme": "Growth & macro",
+     "score": 5,
+     "summary": "General equilibrium model where AI agents may divert compute; prices discipline diversion but common-loss risk weakens it, allowing multiple equilibria and over- or underinvestment in AI capacity.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-26"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.34234v1",
+     "title": "AI, Automation, and Fiscal Pressure",
+     "authors": [
+      "Spencer Bastani",
+      "Georg Graetz",
+      "Bernat Pla",
+      "Oskar N. Skans"
+     ],
+     "date": "2026-11-25",
+     "theme": "Policy & regulation",
+     "score": 5,
+     "summary": "Calibrated EU model shows automation shifts income to lightly taxed capital, raising budget deficits by nearly one percentage point of value added as automation grows the economy 12%.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-26"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.34099v1",
+     "title": "Will AI Replace Juniors? How Task Complexity Reduces Automation Risk",
+     "authors": [
+      "Vincent Rost",
+      "Fabian Stephany"
+     ],
+     "date": "2026-11-25",
+     "theme": "Labor & productivity",
+     "score": 5,
+     "summary": "Survey experiment with 1,435 German managers finds complex tasks reduce willingness to substitute entry-level hires with AI, and managers expect AI to cut junior hiring more than experienced hiring.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-26"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.34068v1",
+     "title": "Budget, Readout or Reasoning? Where Small Reasoning Models Lose Value in Auction Bidding",
+     "authors": [
+      "Mahbod Khaleti",
+      "Seyed Reza Tavakoli",
+      "Baran Hoseini",
+      "Alireza Noori",
+      "Amir Amini",
+      "Koorosh Aslansefat",
+      "Marjan Alirezaie",
+      "Ali Habibnia"
+     ],
+     "date": "2026-11-25",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Small reasoning models bidding in auctions lose 7-17% of surplus through bias toward high bids, with operator choices like token caps causing further losses.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-26"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.34423v1",
+     "title": "Reading the Room with AI: FOMC Deliberation and Growth-at-Risk",
+     "authors": [
+      "Alvaro Ortiz",
+      "Tomasa Rodrigo"
+     ],
+     "date": "2026-11-25",
+     "theme": "Growth & macro",
+     "score": 3,
+     "summary": "AI-measured disagreement in FOMC minutes, absent from votes, lowers growth-at-risk out-of-sample loss by 4-6%.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-26"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.34536v1",
+     "title": "Kant-Q: A Q-Learning Algorithm for Kantian Equilibrium in Symmetric Markov Games",
+     "authors": [
+      "Rishi Bharadwaj",
+      "Sujit Gujar",
+      "Yadati Narahari"
+     ],
+     "date": "2026-11-25",
+     "theme": "Methods",
+     "score": 3,
+     "summary": "Kant-Q learning algorithm reaches Kantian equilibria in symmetric Markov games, outperforming baselines in Prisoner's Dilemma and fishery commons settings for interacting AI agents.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-26"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.34272v1",
+     "title": "Data Centers: The Error of Generalizing Environmental and Socioeconomic Impacts. The Need for a Contextualized Assessment of Computing Infrastructure in Brazil and Worldwide",
+     "authors": [
+      "Elzo Brito dos Santos Filho"
+     ],
+     "date": "2026-11-25",
+     "theme": "Policy & regulation",
+     "score": 3,
+     "summary": "Argues data center environmental and socioeconomic impacts must be assessed in local context, using Brazil as a case and proposing a multiscale framework.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-26"
+    },
+    {
+     "id": "http://arxiv.org/abs/2611.33851v1",
+     "title": "Language models call themselves AI but do not favor AI over people",
+     "authors": [
+      "Messi H. J. Lee"
+     ],
+     "date": "2026-11-25",
+     "theme": "Other",
+     "score": 3,
+     "summary": "Language models favor assigned groups but, absent assignment, give people more money than AI agents, showing no AI in-group bias.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-26"
+    }
+   ]
+  },
+  {
    "date": "2026-11-24",
    "papers": [
+    {
+     "id": "http://arxiv.org/abs/2611.33265v1",
+     "title": "Do Language Models Mix? Experimental Evidence from Asymmetric Matching Pennies",
+     "authors": [
+      "Joshua Foster"
+     ],
+     "date": "2026-11-24",
+     "theme": "Markets & competition",
+     "score": 5,
+     "summary": "Language models fail to implement mixed strategies in matching pennies without randomizers and remain exploitable, informing delegation of strategic decisions to AI.",
+     "ai": true,
+     "model": "claude-opus-5-5",
+     "added": "2026-11-26"
+    },
     {
      "id": "http://arxiv.org/abs/2611.32389v1",
      "title": "AgentBank: Banking on Blockchain Agentic Payments",
